@@ -11,7 +11,7 @@ Objektorienterat Programmeringsprojekt
 ## Komma igång
 1. Klona repositorien till din dator
 ```
-git clone https://github.com/DorisIT/TDA367.git
+git clone https://github.com/DorisIT/PaintIT.git
 ```
 2. Klart!
 
