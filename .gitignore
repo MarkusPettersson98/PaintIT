@@ -23,6 +23,7 @@
 hs_err_pid*
 
 # Maven
+log/
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -33,3 +34,11 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
