@@ -1,0 +1,30 @@
+﻿# User story 
+
+Story Identifier: STK001
+Story Name: Seeing the painting
+
+## Description 
+
+As a guesser, I need to be able to see the painting so that I can guess what it depicts.
+
+
+
+## Confirmation
+
+
+### Functional
+
+
+* Can i see a canvas?
+* Can i see something painted on the canvas?
+
+### Non-functional
+
+- availability
+* Can I see the painting under the whole duration of my turn?
+
+
+
+
+- security...
+*

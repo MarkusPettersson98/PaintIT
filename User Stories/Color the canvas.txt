@@ -1,0 +1,19 @@
+﻿# User story 
+
+Story Identifier: <id>
+Story Name: <Color to canvas>
+
+
+## Description 
+
+As a <Artist>, I need to be able to add color to a canvas so that i  can create are digitally.
+
+## Confirmation
+THe
+List all acceptance criteria; you should be able to test/confirm these.
+
+### Functional
+If i drag the mouse on the screen will there be color?         
+### Non-functional
+
+- availability...

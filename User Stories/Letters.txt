@@ -1,0 +1,26 @@
+﻿# User story 
+
+Story Identifier: STKXXX
+Story Name: Receive a bunch of letters when guessing the word.
+
+## Description 
+
+As a player, I need to receive a bunch of letter for the guessing part so the game doesn’t become too difficult to play.
+
+## Confirmation
+
+* Watch if two players are able to play the game without problems.
+
+### Functional
+
+   * Can I build the correct word with the given letters?
+
+### Non-functional
+
+Availability:
+   * Can I click on a letter to add it to one of the empty slots?
+   * Can I drag the letter to add it to one of the empty slots?
+
+
+Security:
+   * Can I add own letters in empty slots?

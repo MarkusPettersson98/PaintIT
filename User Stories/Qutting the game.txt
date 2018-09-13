@@ -1,0 +1,28 @@
+﻿# User story 
+
+Story Identifier: STK001
+Story Name: Quitting the game
+
+
+## Description 
+
+As a player, I need to be able to end the game at any time so that I can do something else.
+
+
+
+## Confirmation
+
+
+### Functional
+
+
+* Can I exit the game at any time?
+
+### Non-functional
+
+- availability
+* Can I exit the game at any time?
+
+
+- security...
+* Will everything that I did during my session become available to anyone?

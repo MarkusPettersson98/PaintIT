@@ -1,0 +1,27 @@
+﻿# User story 
+
+Story Identifier: STKXXX
+Story Name: How to play
+
+
+## Description 
+
+As a beginner, I need to be able to read the rules so I can play the game properly.
+
+## Confirmation
+
+* Let a beginner read the rules before trying to play the game and notice if he/she plays properly.
+
+### Functional
+
+   * Can I get answers if there are any uncertainty about the game?
+
+### Non-functional
+
+Availability:
+   * Can I reach “How to play” when I’m playing a game?
+   * Can I go back from “How to play” without restart the application?
+
+
+Security:
+   * Can I go to “How to play” without any bugs?

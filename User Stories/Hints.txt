@@ -1,0 +1,30 @@
+﻿# User story 
+
+Story Identifier: STK001
+Story Name: Hints
+
+
+## Description 
+
+As a player, I want to be able to get a hint towards the correct word in case my fellow player can’t draw (for shite);
+
+
+
+## Confirmation
+
+
+### Functional
+
+
+* Can I reveal one or more letters in the correct word?
+* Can I limit the letters I have to guess from?
+
+
+
+### Non-functional
+
+- availability
+* Can I receive more than one hint (both during a round and a session)?
+
+- security...
+   *

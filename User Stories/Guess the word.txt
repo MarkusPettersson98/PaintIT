@@ -1,0 +1,28 @@
+﻿# User story
+
+
+Story Identifier: STKXxX
+Story Name: Guess the word
+
+
+## Description
+
+
+As a player, I need to be able to guess the word corresponding to my friends painting in order for us to proceed with the session.
+
+
+## Confirmation
+
+
+List all acceptance criteria; you should be able to test/confirm these.
+
+
+### Functional
+Can I guess spell out a word using a keyboard?
+Can I guess spell out a word using point&click?
+ 
+### Non-functional
+Can I guess whatever I want?
+
+
+- availability...

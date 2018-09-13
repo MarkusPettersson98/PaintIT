@@ -1,0 +1,15 @@
+﻿# User story 
+
+Story Identifier: <id>
+Story Name: <Erase>
+
+
+## Description 
+
+As a <artist>, I need to be able to erase what I’ve painted so that it’s easier for me to correct myself when I’ve drawn wrong.
+
+## Confirmation
+List all acceptance criteria; you should be able to test/confirm these.
+
+### Functional
+Can i remove color from the canvas?

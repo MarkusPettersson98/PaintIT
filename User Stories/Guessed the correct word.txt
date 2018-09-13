@@ -1,0 +1,34 @@
+﻿# User story 
+
+
+Story Identifier: STKXXX
+Story Name: 
+
+
+
+
+## Description 
+
+
+As a player, I need to know when I have guessed the correct word so that I know when I am done with that turn.
+
+
+## Confirmation
+
+
+### Functional
+
+
+* Can I see when I have guessed the correct word?
+* Can I change the letters that I have placed?
+
+
+### Non-functional
+
+
+Availability
+* Can I at any time see when I have placed the correct word?
+
+
+Security
+* Can I change the word that I am supposed to guess?
