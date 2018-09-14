@@ -12,33 +12,33 @@ public class CanvasModelTest {
 
     @Before
     public void setupTest() {
-        this.canvasModel = new CanvasModel();
+        this.canvasModel = new CanvasModel(false);
     }
     @Test
     public void testToString() throws Exception {
-        String dummyCanvas = "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, false, false, ] \n";
+        String dummyCanvas = "[ false false false false false ] \n" +
+                             "[ false false false false false ] \n" +
+                             "[ false false false false false ] \n" +
+                             "[ false false false false false ] \n" +
+                             "[ false false false false false ] \n";
          assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
     @Test
     public void testSetPixel() {
         canvasModel.setPixel(3,3,true);
 
-        String dummyCanvas = "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, false, false, ] \n" +
-                             "[false, false, false, true, false, ] \n"  +
-                             "[false, false, false, false, false, ] \n";
+        String dummyCanvas = "[ false false false false false ] \n" +
+                             "[ false false false false false ] \n" +
+                             "[ false false false false false ] \n" +
+                             "[ false false false true false ] \n"  +
+                             "[ false false false false false ] \n";
 
         assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
     public void testSetPixelOutOfBounds() {
-        canvasModel.setPixel(10, 10, false);
+        canvasModel.setPixel(canvasModel.getX() + 1, canvasModel.getY() + 1, false);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CanvasModelTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testGetPixelOutOfBounds() {
-        canvasModel.getPixel(10,10);
+        canvasModel.getPixel(canvasModel.getX() + 1,canvasModel.getY() + 1);
     }
 
     @Test
@@ -58,6 +58,6 @@ public class CanvasModelTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testOutOfBounds() {
-        canvasModel.inBounds(10,10);
+        canvasModel.inBounds(canvasModel.getX() + 1,canvasModel.getY() + 1);
     }
 }

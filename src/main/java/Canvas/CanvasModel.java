@@ -1,14 +1,16 @@
 package Canvas;
 
+import lombok.Getter;
+
 public class CanvasModel {
 
-    private int x = 5, y = 5;
+    @Getter private int x = 5, y = 5;
     private boolean[][] canvas = new boolean[x][y];
 
-    public CanvasModel() {
+    public CanvasModel(boolean initValue) {
         for (int i = 0; i < y; i++) {
             for (int j = 0; j < x; j++) {
-                canvas[j][i] = false;
+                canvas[j][i] = initValue;
             }
         }
     }
@@ -19,7 +21,6 @@ public class CanvasModel {
 
         canvas[x][y] = newValue;
     }
-
 
 
     public boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
@@ -34,9 +35,9 @@ public class CanvasModel {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < y; i++) {
-            sb.append("[");
+            sb.append("[ ");
             for (int j = 0; j < x; j++) {
-                sb.append(canvas[j][i] + ", ");
+                sb.append(canvas[j][i] + " ");
             }
             sb.append("] \n");
         }
