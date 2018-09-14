@@ -13,11 +13,11 @@ public class CanvasModel {
         }
     }
 
-    public void setPixel(int x, int y, boolean newValue) {
+    public void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
         // Check if x and y are in bounds of canvas
         if((x < 0 || x > this.x) || (y < 0 || y > this.y)) {
             // x or y out of bounds, return
-            return;
+            throw new IndexOutOfBoundsException();
         }
         // Update 'pixel' in canvas
         canvas[x][y] = newValue;

@@ -14,4 +14,18 @@ public class CanvasModelTest extends TestCase {
          assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
 
+    public void testSetPixel() {
+        CanvasModel canvasModel = new CanvasModel();
+        canvasModel.setPixel(3,3,true);
+
+        String dummyCanvas = "[false, false, false, false, false, ] \n" +
+                             "[false, false, false, false, false, ] \n" +
+                             "[false, false, false, false, false, ] \n" +
+                             "[false, false, false, true, false, ] \n"  +
+                             "[false, false, false, false, false, ] \n";
+
+        assertTrue(dummyCanvas.equals(canvasModel.toString()));
+
+    }
+
 }
