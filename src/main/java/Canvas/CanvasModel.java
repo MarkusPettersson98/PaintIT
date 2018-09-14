@@ -4,19 +4,15 @@ import lombok.Getter;
 
 public class CanvasModel {
 
-    @Getter private int x = 5, y = 5;
-    private boolean[][] canvas = new boolean[x][y];
+    @Getter private int xMax = 5, yMax = 5;
+    private boolean[][] canvas = new boolean[xMax][yMax];
 
     public CanvasModel(boolean initValue) {
-        for (int i = 0; i < y; i++) {
-            for (int j = 0; j < x; j++) {
-                canvas[j][i] = initValue;
-            }
-        }
+        fillCanvas(initValue);
     }
 
     public void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
-        // Check if x and y are in bounds of canvas
+        // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
         canvas[x][y] = newValue;
@@ -24,19 +20,32 @@ public class CanvasModel {
 
 
     public boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
-        // Check if x and y are in bounds of canvas
+        // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
         return canvas[x][y];
 
     }
 
+    public void resetCanvas() {
+        fillCanvas(false);
+    }
+
+    private void fillCanvas(boolean color) {
+        for (int i = 0; i < yMax; i++) {
+            for (int j = 0; j < xMax; j++) {
+                canvas[j][i] = color;
+            }
+        }
+    }
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < y; i++) {
+        for(int i = 0; i < yMax; i++) {
             sb.append("[ ");
-            for (int j = 0; j < x; j++) {
+            for (int j = 0; j < xMax; j++) {
                 sb.append(canvas[j][i] + " ");
             }
             sb.append("] \n");
@@ -45,8 +54,8 @@ public class CanvasModel {
     }
 
     protected boolean inBounds(int x, int y) throws IndexOutOfBoundsException {
-        if((x < 0 || x > this.x) || (y < 0 || y > this.y)) {
-            // x or y out of bounds, throw exception
+        if((x < 0 || x > this.xMax) || (y < 0 || y > this.yMax)) {
+            // xMax or yMax out of bounds, throw exception
             throw new IndexOutOfBoundsException();
         }
         // Within bounds

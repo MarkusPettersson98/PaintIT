@@ -36,9 +36,20 @@ public class CanvasModelTest {
         assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
 
+    @Test
+    public void testResetCanvas() throws Exception {
+        // Fill a new canvas with true value
+        CanvasModel trueCanvasModel = new CanvasModel(true);
+        String dummyCanvas = new CanvasModel(false).toString();
+
+        trueCanvasModel.resetCanvas();
+
+        assertTrue(dummyCanvas.equals(trueCanvasModel.toString()));
+    }
+
     @Test (expected = IndexOutOfBoundsException.class)
     public void testSetPixelOutOfBounds() {
-        canvasModel.setPixel(canvasModel.getX() + 1, canvasModel.getY() + 1, false);
+        canvasModel.setPixel(canvasModel.getXMax() + 1, canvasModel.getYMax() + 1, false);
     }
 
     @Test
@@ -48,7 +59,7 @@ public class CanvasModelTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testGetPixelOutOfBounds() {
-        canvasModel.getPixel(canvasModel.getX() + 1,canvasModel.getY() + 1);
+        canvasModel.getPixel(canvasModel.getXMax() + 1,canvasModel.getYMax() + 1);
     }
 
     @Test
@@ -58,6 +69,6 @@ public class CanvasModelTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testOutOfBounds() {
-        canvasModel.inBounds(canvasModel.getX() + 1,canvasModel.getY() + 1);
+        canvasModel.inBounds(canvasModel.getXMax() + 1,canvasModel.getYMax() + 1);
     }
 }
