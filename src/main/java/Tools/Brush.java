@@ -1,9 +1,11 @@
 package Tools;
+import lombok.Setter;
+
 import java.math.*;
 
 public class Brush implements Tool {
 
-    int radius;
+    @Setter int radius;
     public Brush() {
 
     }
@@ -14,8 +16,16 @@ public class Brush implements Tool {
 
 
     public void apply(int x, int y) {
-        for(Observer observer : Observers)
-            observer.update(x, y, true);
+        // Check square area around cursor position
+        for(int posy = y-radius; posy <= y + radius; posy++) {
+            for(int posx = x-radius; posx <= x + radius; posx++) {
+                if(inCircle(x, y, posx, posy, radius)) {
+                    // If inside circle with radius, notify observers
+                    for(Observer observer : Observers)
+                        observer.update(posx, posy, true);
+                }
+            }
+        }
     }
 
 
