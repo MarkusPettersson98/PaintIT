@@ -17,8 +17,8 @@ public class Brush implements Tool {
 
     public void apply(int x, int y) {
         // Check square area around cursor position
-        for(int posy = y-radius; posy <= y + radius; posy++) {
-            for(int posx = x-radius; posx <= x + radius; posx++) {
+        for(int posy = Math.max(0, y-radius); posy <= y + radius; posy++) {
+            for(int posx = Math.max(0, x-radius); posx <= x + radius; posx++) {
                 if(inCircle(x, y, posx, posy, radius)) {
                     // If inside circle with radius, notify observers
                     for(Observer observer : Observers)

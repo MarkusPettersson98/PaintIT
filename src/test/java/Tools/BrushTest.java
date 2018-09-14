@@ -43,4 +43,22 @@ public class BrushTest  {
         assertEquals(dummyCircle, canvasController.toString());
     }
 
+    @Test
+    public void testPaintCircleOutsideCanvas() {
+
+        String dummyCircle = "[ true true true true true ] \n" +
+                "[ true true true true true ] \n" +
+                "[ true true true true true ] \n" +
+                "[ true true true true true ] \n" +
+                "[ true true true true true ] \n";
+
+        CanvasController canvasController = new CanvasController();
+
+        brush.setRadius(10);
+        brush.addObserver(canvasController);
+        brush.apply(2,2);
+
+        assertEquals(dummyCircle, canvasController.toString());
+    }
+
 }

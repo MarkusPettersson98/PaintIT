@@ -4,6 +4,7 @@ import lombok.Getter;
 
 public class CanvasModel {
 
+
     @Getter private int xMax = 5, yMax = 5;
     private boolean[][] canvas = new boolean[xMax][yMax];
 
@@ -60,5 +61,12 @@ public class CanvasModel {
         }
         // Within bounds
         return true;
+    }
+    public int getXBound() {
+        return xMax-1;
+    }
+
+    public int getYBound() {
+        return yMax-1;
     }
 }

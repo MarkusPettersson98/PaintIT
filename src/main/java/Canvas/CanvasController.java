@@ -11,7 +11,7 @@ public class CanvasController implements Observer {
     }
 
     public void paint(int x, int y, boolean color) {
-        canvasModel.setPixel(x, y, color);
+        canvasModel.setPixel(Math.min(x, canvasModel.getXBound()), Math.min(y, canvasModel.getYBound()), color);
     }
 
     public void clear() {
