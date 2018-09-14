@@ -15,7 +15,7 @@ public class CanvasModel {
 
     public void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
         // Check if x and y are in bounds of canvas
-        if(!InBounds(x, y)) {}
+        if(!inBounds(x, y)) {}
 
         canvas[x][y] = newValue;
     }
@@ -24,7 +24,7 @@ public class CanvasModel {
 
     public boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
         // Check if x and y are in bounds of canvas
-        if(!InBounds(x, y)) {}
+        if(!inBounds(x, y)) {}
 
         return canvas[x][y];
 
@@ -43,7 +43,7 @@ public class CanvasModel {
         return sb.toString();
     }
 
-    private boolean InBounds(int x, int y) throws IndexOutOfBoundsException {
+    protected boolean inBounds(int x, int y) throws IndexOutOfBoundsException {
         if((x < 0 || x > this.x) || (y < 0 || y > this.y)) {
             // x or y out of bounds, throw exception
             throw new IndexOutOfBoundsException();
