@@ -22,6 +22,7 @@ public class WordHandler {
         wordList.add("Kingen");
         wordList.add("Aron");
 
+
         for(int i= 0; i<wordList.size();i++){
             wordList.set(i,wordList.get(i).toUpperCase());
         }
