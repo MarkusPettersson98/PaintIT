@@ -6,8 +6,9 @@ import java.math.*;
 public class Brush implements Tool {
 
     @Setter int radius;
+    @Setter boolean color;
     public Brush() {
-
+        color = true;
     }
 
     public boolean inCircle(int x, int y, int posx, int posy, int r) {
@@ -22,7 +23,7 @@ public class Brush implements Tool {
                 if(inCircle(x, y, posx, posy, radius)) {
                     // If inside circle with radius, notify observers
                     for(Observer observer : Observers)
-                        observer.update(posx, posy, true);
+                        observer.update(posx, posy, color);
                 }
             }
         }
