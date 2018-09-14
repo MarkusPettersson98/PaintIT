@@ -23,6 +23,17 @@ public class CanvasModel {
         canvas[x][y] = newValue;
     }
 
+
+
+    public boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
+        // Check if x and y are in bounds of canvas
+        if((x < 0 || x > this.x) || (y < 0 || y > this.y)) {
+            // x or y out of bounds, return
+            throw new IndexOutOfBoundsException();
+        }
+        return canvas[x][y];
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
