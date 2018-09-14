@@ -9,6 +9,19 @@ import static org.junit.Assert.*;
 
 public class WordHandlerTest {
     @Test
+    public void removeCharFromGuess() throws Exception {
+        WordHandler wordHandler = new WordHandler();
+        wordHandler.addCharToGuess('c');
+        wordHandler.addCharToGuess('a');
+        wordHandler.addCharToGuess('h');
+        assertEquals(3,wordHandler.getGuessWord().size()); //Checks arraysize
+        wordHandler.removeCharFromGuess();
+        assertEquals(2,wordHandler.getGuessWord().size()); //makes sure removeCharFromGuess works
+        assertEquals('c',(char)wordHandler.getGuessWord().get(0));
+        assertEquals('a',(char)wordHandler.getGuessWord().get(1));
+    }
+
+    @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
         String word= null;
@@ -19,6 +32,21 @@ public class WordHandlerTest {
         assertNotNull(word);
     }
 
+    @Test
+    public void guessCurrentWord() throws Exception {
+        WordHandler wordHandler = new WordHandler();
+        wordHandler.createRandomWord();
+        String word = wordHandler.getCurrentWord();
+        String guess = word;
+
+
+        for(int i = 0; i<guess.length(); i++){
+            wordHandler.addCharToGuess(guess.charAt(i));
+        }
+          assertTrue(wordHandler.guessCurrentWord());
+        wordHandler.addCharToGuess('x');
+        assertFalse(wordHandler.guessCurrentWord());
+    }
     @Test
     public void getWordList() throws Exception {
             WordHandler wh = new WordHandler();
