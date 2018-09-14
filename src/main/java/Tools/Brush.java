@@ -4,7 +4,6 @@ import java.math.*;
 public class Brush implements Tool {
 
     int radius;
-
     public Brush() {
 
     }
