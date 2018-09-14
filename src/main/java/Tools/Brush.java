@@ -11,6 +11,11 @@ public class Brush implements Tool {
         color = true;
     }
 
+    public Brush(Observer observer) {
+        addObserver(observer);
+        color = true;
+    }
+
     public boolean inCircle(int x, int y, int posx, int posy, int r) {
         return (Math.pow((x-posx), 2) + Math.pow(y-posy, 2) <= Math.pow(r,2));
     }

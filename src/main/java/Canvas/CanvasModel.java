@@ -12,6 +12,12 @@ public class CanvasModel {
         fillCanvas(initValue);
     }
 
+    protected CanvasModel(int xSize, int ySize, boolean initValue) {
+        this.xMax = xSize; this.yMax = ySize;
+        this.canvas = new boolean[xSize][ySize];
+        fillCanvas(initValue);
+    }
+
     protected void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}

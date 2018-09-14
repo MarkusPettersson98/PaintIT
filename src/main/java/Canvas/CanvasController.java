@@ -10,6 +10,10 @@ public class CanvasController implements Observer {
         this.canvasModel = new CanvasModel(false);
     }
 
+    public CanvasController(int xSize, int ySize) {
+        this.canvasModel = new CanvasModel(xSize, ySize, false);
+    }
+
     public void paint(int x, int y, boolean newColor) {
         // Check if new color value is different from current value
         int xBound = Math.min(x, canvasModel.getXBound());
