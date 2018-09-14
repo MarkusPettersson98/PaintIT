@@ -13,6 +13,16 @@ public class CanvasModel {
         }
     }
 
+    public void setPixel(int x, int y, boolean newValue) {
+        // Check if x and y are in bounds of canvas
+        if((x < 0 || x > this.x) || (y < 0 || y > this.y)) {
+            // x or y out of bounds, return
+            return;
+        }
+        // Update 'pixel' in canvas
+        canvas[x][y] = newValue;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
