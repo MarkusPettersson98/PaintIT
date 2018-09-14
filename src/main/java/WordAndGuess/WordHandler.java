@@ -1,4 +1,4 @@
-package com.PaintIT.app;
+package WordAndGuess;
 
 
 
@@ -7,14 +7,14 @@ import java.util.Collections;
 import java.util.Random;
 
 public class WordHandler {
-    private ArrayList<Character> guessWord;
     private ArrayList<String> wordList;
     private ArrayList<Character> tiles;
     private String currentWord;
     private final int tileAmount = 8;
+    private Guess guess;
 
     public WordHandler(){
-        guessWord = new ArrayList<>();
+
         wordList= new ArrayList();
         wordList.add("Cat");
         wordList.add("Dog");
@@ -25,36 +25,22 @@ public class WordHandler {
         for(int i= 0; i<wordList.size();i++){
             wordList.set(i,wordList.get(i).toUpperCase());
         }
+        createRandomWord();
+        guess = new Guess(this.getCurrentWord());
     }
 
-    public void addCharToGuess(char c){
-        guessWord.add(c);
-    }
-
-    public ArrayList<Character> getGuessWord() {
-        return guessWord;
+    public Guess getGuess() {
+        return guess;
     }
 
     public int getTileAmount() {
         return tileAmount;
     }
 
-    public void removeCharFromGuess(){
-        if(guessWord.size()>0){
-            guessWord.remove(guessWord.size()-1);
 
-        }
-    }
-    public boolean guessCurrentWord(){
 
-        String guessWord = charArrayToString(this.guessWord);
-        if(guessWord.equals(currentWord)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public String charArrayToString(ArrayList<Character> list){
+
+    public static String charArrayToString(ArrayList<Character> list){
         StringBuilder sB= new StringBuilder();
         for(Character c: list){
             sB.append(c);
