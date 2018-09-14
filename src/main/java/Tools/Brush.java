@@ -13,8 +13,16 @@ public class Brush implements Tool {
         return (Math.pow((x-posx), 2) + Math.pow(y-posy, 2) <= Math.pow(r,2));
     }
 
-    public void apply(int x, int y) {
 
+    public void apply(int x, int y) {
+        for(Observer observer : Observers)
+            observer.update(x, y, true);
+    }
+
+
+    @Override
+    public void addObserver(Observer observer) {
+        Observers.add(observer);
     }
 
 }
