@@ -7,11 +7,11 @@ public class CanvasModel {
     @Getter private int xMax = 5, yMax = 5;
     private boolean[][] canvas = new boolean[xMax][yMax];
 
-    public CanvasModel(boolean initValue) {
+    protected CanvasModel(boolean initValue) {
         fillCanvas(initValue);
     }
 
-    public void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
+    protected void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
@@ -19,7 +19,7 @@ public class CanvasModel {
     }
 
 
-    public boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
+    protected boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
@@ -27,7 +27,7 @@ public class CanvasModel {
 
     }
 
-    public void resetCanvas() {
+    protected void resetCanvas() {
         fillCanvas(false);
     }
 
@@ -61,5 +61,4 @@ public class CanvasModel {
         // Within bounds
         return true;
     }
-
 }
