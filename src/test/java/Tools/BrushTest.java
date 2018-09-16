@@ -12,9 +12,12 @@ import static junit.framework.TestCase.assertTrue;
 public class BrushTest  {
 
     private Brush brush;
+    public CanvasController canvasController;
     @Before
     public void beforeBrushTest(){
         brush = new Brush();
+        canvasController = new CanvasController();
+        brush.addObserver(canvasController);
     }
 
     @Test
@@ -34,10 +37,7 @@ public class BrushTest  {
                              "[ false true true true false ] \n" +
                              "[ false false true false false ] \n";
 
-        CanvasController canvasController = new CanvasController();
-
         brush.setRadius(2);
-        brush.addObserver(canvasController);
         brush.apply(2,2);
 
         assertEquals(dummyCircle, canvasController.toString());
@@ -52,13 +52,47 @@ public class BrushTest  {
                 "[ true true true true true ] \n" +
                 "[ true true true true true ] \n";
 
-        CanvasController canvasController = new CanvasController();
-
         brush.setRadius(10);
-        brush.addObserver(canvasController);
         brush.apply(2,2);
 
         assertEquals(dummyCircle, canvasController.toString());
     }
 
+    @Test
+    public void testPaintNegativeRadius() {
+        brush.setRadius(-10);
+        String dummyCanvas = "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n";
+        brush.apply(2,2);
+
+        assertEquals(dummyCanvas,canvasController.toString());
+    }
+
+    @Test
+    public void testPaintZeroRadius() {
+        brush.setRadius(0);
+        String dummyCanvas = "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n";
+        brush.apply(2,2);
+
+        assertEquals(dummyCanvas,canvasController.toString());
+    }
+    @Test
+    public void testPaintOutOfBounds() { //TODO: review functionality with out-of-bounds data.
+        brush.setRadius(1);
+        brush.apply(10,10);
+        String dummyCanvas = "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false false ] \n" +
+                "[ false false false false true ] \n"; // <-
+
+        assertEquals(dummyCanvas,canvasController.toString());
+    }
 }
