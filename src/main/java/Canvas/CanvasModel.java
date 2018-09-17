@@ -5,7 +5,7 @@ import lombok.Getter;
 public class CanvasModel {
 
 
-    @Getter private int xMax = 5, yMax = 5;
+    @Getter private int xMax = 300, yMax = 300;
     private boolean[][] canvas = new boolean[xMax][yMax];
 
     protected CanvasModel(boolean initValue) {
@@ -20,7 +20,9 @@ public class CanvasModel {
 
     protected void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
-        if(!inBounds(x, y)) {}
+        if(!inBounds(x, y)) {
+            throw new IndexOutOfBoundsException();
+        }
 
         canvas[x][y] = newValue;
     }

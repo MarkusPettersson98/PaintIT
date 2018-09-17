@@ -12,7 +12,7 @@ public class CanvasModelTest {
 
     @Before
     public void setupTest() {
-        this.canvasModel = new CanvasModel(false);
+        this.canvasModel = new CanvasModel(5,5,false);
     }
     @Test
     public void testToString() throws Exception {

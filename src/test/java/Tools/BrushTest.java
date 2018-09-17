@@ -16,7 +16,7 @@ public class BrushTest  {
     @Before
     public void beforeBrushTest(){
         brush = new Brush();
-        canvasController = new CanvasController();
+        canvasController = new CanvasController(5,5);
         brush.addObserver(canvasController);
     }
 
