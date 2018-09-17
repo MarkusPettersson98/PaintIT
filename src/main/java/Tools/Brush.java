@@ -30,6 +30,7 @@ public class Brush implements Tool {
                         // If inside circle with radius, notify observers
                         for (Observer observer : Observers) {
                             observer.update(posx, posy, color);
+                            observer.update(posx,posy,color);
                         }
                     }
                 }

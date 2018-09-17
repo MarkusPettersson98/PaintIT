@@ -16,11 +16,13 @@ public class CanvasController implements Observer {
 
     public void paint(int x, int y, boolean newColor) {
         // Check if new color value is different from current value
-        int xBound = Math.min(x, canvasModel.getXBound());
-        int yBound = Math.min(y, canvasModel.getYBound());
-        if(canvasModel.getPixel(xBound, yBound) != newColor)
-            canvasModel.setPixel(xBound,yBound, newColor);
-    }
+        if(x > canvasModel.getXBound() || y > canvasModel.getYBound())
+            return;
+
+        if(canvasModel.getPixel(x, y) != newColor)
+         canvasModel.setPixel(x,y, newColor);
+
+      }
 
     public void clear() {
         canvasModel.resetCanvas();

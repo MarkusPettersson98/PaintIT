@@ -84,14 +84,14 @@ public class BrushTest  {
         assertEquals(dummyCanvas,canvasController.toString());
     }
     @Test
-    public void testPaintOutOfBounds() { //TODO: review functionality with out-of-bounds data.
+    public void testPaintOutOfBounds() {
         brush.setRadius(1);
         brush.apply(10,10);
         String dummyCanvas = "[ false false false false false ] \n" +
                 "[ false false false false false ] \n" +
                 "[ false false false false false ] \n" +
                 "[ false false false false false ] \n" +
-                "[ false false false false true ] \n"; // <-
+                "[ false false false false false ] \n";
 
         assertEquals(dummyCanvas,canvasController.toString());
     }
