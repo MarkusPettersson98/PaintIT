@@ -14,11 +14,8 @@ public class WordHandlerTest {
     @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
-        String word= null;
-        for (int i = 0; i<100; i++) {
-            wh.createRandomWord();
-            word = wh.getCurrentWord();
-        }
+        wh.createRandomWord();
+        String word = wh.getCurrentWord();
         assertNotNull(word);
     }
 

@@ -80,7 +80,7 @@ public class WordHandler {
         currentWord =  wordList.get(getRandomIndex());
 
     }
-    public int getRandomIndex(){
+    int getRandomIndex(){
         Random rand = new Random();
         int indexAmount = wordList.size();
         return rand.nextInt(indexAmount); //returns random index from the wordlist

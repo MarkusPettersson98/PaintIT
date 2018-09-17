@@ -17,6 +17,7 @@ public class GuessTest {
         assertEquals(2,wordHandler.getGuess().getGuessWord().size()); //makes sure removeCharFromGuess works
         assertEquals('c',(char)wordHandler.getGuess().getGuessWord().get(0));
         assertEquals('a',(char)wordHandler.getGuess().getGuessWord().get(1));
+
     }
     @Test
     public void guessCurrentWord() throws Exception {
@@ -24,12 +25,12 @@ public class GuessTest {
         String word = wordHandler.getCurrentWord();
         String guess = word;
 
-
         for(int i = 0; i<guess.length(); i++){
             wordHandler.getGuess().addCharToGuess(guess.charAt(i));
         }
         assertTrue(wordHandler.getGuess().guessCurrentWord());
         wordHandler.getGuess().addCharToGuess('x');
         assertFalse(wordHandler.getGuess().guessCurrentWord());
+
     }
 }
