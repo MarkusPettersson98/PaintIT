@@ -2,6 +2,7 @@ package Tools;
 
 import Canvas.CanvasController;
 import Canvas.CanvasModel;
+import javafx.scene.paint.Color;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,11 +32,11 @@ public class BrushTest  {
     @Test
     public void testPaintCircle() {
 
-        String dummyCircle = "[ false false true false false ] \n" +
-                             "[ false true true true false ] \n" +
-                             "[ true true true true true ] \n" +
-                             "[ false true true true false ] \n" +
-                             "[ false false true false false ] \n";
+        String dummyCircle = "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
 
         brush.setRadius(2);
         brush.apply(2,2);
@@ -46,12 +47,15 @@ public class BrushTest  {
     @Test
     public void testPaintCircleOutsideCanvas() {
 
-        String dummyCircle = "[ true true true true true ] \n" +
-                "[ true true true true true ] \n" +
-                "[ true true true true true ] \n" +
-                "[ true true true true true ] \n" +
-                "[ true true true true true ] \n";
+        String dummyCircle =
+                "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
 
+        brush.setColor(Color.BLACK);
+        canvasController.fillCanvas(Color.WHITE);
         brush.setRadius(10);
         brush.apply(2,2);
 
@@ -61,11 +65,14 @@ public class BrushTest  {
     @Test
     public void testPaintNegativeRadius() {
         brush.setRadius(-10);
-        String dummyCanvas = "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n";
+        canvasController.fillCanvas(Color.BLACK);
+        String dummyCanvas =
+                "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                        "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                        "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                        "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
+                        "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
+        brush.setColor(Color.WHITE);
         brush.apply(2,2);
 
         assertEquals(dummyCanvas,canvasController.toString());
@@ -74,11 +81,12 @@ public class BrushTest  {
     @Test
     public void testPaintZeroRadius() {
         brush.setRadius(0);
-        String dummyCanvas = "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n";
+        String dummyCanvas =
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
         brush.apply(2,2);
 
         assertEquals(dummyCanvas,canvasController.toString());
@@ -87,11 +95,12 @@ public class BrushTest  {
     public void testPaintOutOfBounds() {
         brush.setRadius(1);
         brush.apply(10,10);
-        String dummyCanvas = "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n" +
-                "[ false false false false false ] \n";
+        String dummyCanvas =
+                        "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                        "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                        "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                        "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                        "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
 
         assertEquals(dummyCanvas,canvasController.toString());
     }

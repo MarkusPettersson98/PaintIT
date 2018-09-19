@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -30,7 +31,7 @@ public class App extends Application {
 
         root.getChildren().add(canvas);
 
-        Brush brush = new Brush();
+        Brush brush = new Brush(Color.CORAL);
         CanvasController canvasController = new CanvasController(canvas);
 
         // Brush settings n stuff
@@ -41,6 +42,9 @@ public class App extends Application {
 
 
         primaryStage.setScene(new Scene(root, 300, 300));
+
+        System.out.println(canvasController.toString());
+
         primaryStage.show();
     }
 }

@@ -1,24 +1,25 @@
 package Canvas;
 
+import javafx.scene.paint.Color;
 import lombok.Getter;
 
 public class CanvasModel {
 
 
     @Getter private int xMax = 300, yMax = 300;
-    private boolean[][] canvas = new boolean[xMax][yMax];
+    private Color[][] canvas = new Color[xMax][yMax];
 
-    protected CanvasModel(boolean initValue) {
+    protected CanvasModel(Color initValue) {
         fillCanvas(initValue);
     }
 
-    protected CanvasModel(int xSize, int ySize, boolean initValue) {
+    protected CanvasModel(int xSize, int ySize, Color initColor) {
         this.xMax = xSize; this.yMax = ySize;
-        this.canvas = new boolean[xSize][ySize];
-        fillCanvas(initValue);
+        this.canvas = new Color[xSize][ySize];
+        fillCanvas(initColor);
     }
 
-    protected void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
+    protected void setPixel(int x, int y, Color newValue) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {
             throw new IndexOutOfBoundsException();
@@ -28,7 +29,7 @@ public class CanvasModel {
     }
 
 
-    protected boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
+    protected Color getPixel(int x, int y) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
@@ -37,10 +38,10 @@ public class CanvasModel {
     }
 
     protected void resetCanvas() {
-        fillCanvas(false);
+        fillCanvas(Color.WHITE);
     }
 
-    private void fillCanvas(boolean color) {
+    public void fillCanvas(Color color) {
         for (int i = 0; i < yMax; i++) {
             for (int j = 0; j < xMax; j++) {
                 canvas[j][i] = color;
@@ -55,7 +56,8 @@ public class CanvasModel {
         for(int i = 0; i < yMax; i++) {
             sb.append("[ ");
             for (int j = 0; j < xMax; j++) {
-                sb.append(canvas[j][i] + " ");
+                Color temp = canvas[j][i];
+                sb.append("[ " + temp.getRed() + ", " + temp.getGreen() + ", " + temp.getBlue() + " ] ");
             }
             sb.append("] \n");
         }

@@ -21,9 +21,9 @@ public class CanvasView extends Canvas {
         this.pixelWriter = graphicsContext.getPixelWriter();
     }
 
-    public void setPixel(int x, int y) {
+    public void setPixel(int x, int y, Color color) {
         //this.getGraphicsContext2D().fillOval(x,y,1,1);
-        pixelWriter.setColor(x,y,Color.CYAN);
+        pixelWriter.setColor(x,y,color);
     }
 
 }

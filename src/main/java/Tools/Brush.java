@@ -1,4 +1,5 @@
 package Tools;
+import javafx.scene.paint.Color;
 import lombok.Setter;
 
 import java.math.*;
@@ -6,18 +7,22 @@ import java.math.*;
 public class Brush implements Tool {
 
     @Setter private int radius;
-    @Setter private boolean color;
+    @Setter private Color color;
 
     static int counter = 0;
     static int total = 0;
 
     public Brush() {
-        color = true;
+        color = Color.BLACK;
+    }
+
+    public Brush(Color color) {
+        this.color = color;
     }
 
     public Brush(Observer observer) {
         addObserver(observer);
-        color = true;
+        color = Color.BLACK;
     }
 
     public boolean inCircle(int x0, int y0, int posx, int posy, int r) {
@@ -32,7 +37,7 @@ public class Brush implements Tool {
 
 
     public void apply(int x0, int y0) {
-        if (radius > 0) {
+        if (radius >= 0) {
             // Check square area around cursor position
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
