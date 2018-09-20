@@ -71,6 +71,13 @@ public class CanvasController implements Observer {
         paint(x, y, color);
         // Paint ACTUAL view
         canvasView.setPixel(canvasModel.getLatestPixelX(),canvasModel.getLatestPixelY(), color);
+    }
 
+    public void redraw() {
+        for(int y = 0; y < canvasModel.getYMax(); y++) {
+            for (int x = 0; x < canvasModel.getXMax(); x++) {
+                canvasView.setPixel(x, y, canvasModel.getPixel(x,y));
+            }
+        }
     }
 }

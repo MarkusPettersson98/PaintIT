@@ -31,6 +31,9 @@ public class PaintingView extends AnchorPane {
     @FXML
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
+    @FXML
+    Button clearBtn;
+
     final ToggleGroup group = new ToggleGroup();
 
     Color currentColor;
@@ -92,17 +95,20 @@ public class PaintingView extends AnchorPane {
         SprayCanToggleButton.setUserData(1);
         EraserToggleButton.setUserData(2);
 
-        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
-            public void changed(ObservableValue<? extends Toggle> ov,
-                                Toggle toggle, Toggle new_toggle) {
-                if (new_toggle == null)
-                    currentTool = tools.get(0);
-                else
-                    currentTool = tools.get((int)group.getSelectedToggle().getUserData());
-            }
+        group.selectedToggleProperty().addListener(e -> {
+            ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
+            currentTool = tools.get((int) selectedButton.getUserData());
         });
 
+        clearBtn.setOnAction(e -> clearCanvas());
+
     }
+
+    public void clearCanvas() {
+        canvasController.clear();
+        canvasController.redraw();
+    }
+
 
     public void setRadius(int radius) {
         for(Tool t : tools) {
