@@ -70,7 +70,7 @@ public class CanvasController implements Observer {
     public void update(int x, int y, Color color) {
         paint(x, y, color);
         // Paint ACTUAL view
-        //canvasView.getGraphicsContext().fillRect(x,y,x+1,y+1);
-        canvasView.setPixel(x,y, color); // TODO CHECK WITH MODEL INSTEAD
+        canvasView.setPixel(canvasModel.getLatestPixelX(),canvasModel.getLatestPixelY(), color);
+
     }
 }

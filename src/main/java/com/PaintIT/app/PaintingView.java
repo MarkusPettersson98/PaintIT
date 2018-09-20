@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,7 +42,6 @@ public class PaintingView extends AnchorPane {
             e.printStackTrace();
         }
 
-
         // Set up tools
         this.currentTool = new Brush();
         this.currentTool.addObserver(canvasController);
@@ -54,4 +54,8 @@ public class PaintingView extends AnchorPane {
             currentTool.apply((int) m.getX(), (int) m.getY());
         });
     }
+
+    public void setRadius(int radius) { this.currentTool.setRadius(radius);}
+
+    public void setColor(Color color) { this.currentTool.setColor(color);}
 }

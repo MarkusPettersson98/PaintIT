@@ -6,7 +6,9 @@ import lombok.Getter;
 public class CanvasModel {
 
 
-    @Getter private int xMax = 300, yMax = 300;
+    @Getter private int xMax = 1200, yMax = 500;
+    @Getter private int latestPixelY;
+    @Getter private int latestPixelX;
     private Color[][] canvas = new Color[xMax][yMax];
 
     protected CanvasModel(Color initValue) {
@@ -33,6 +35,9 @@ public class CanvasModel {
         }
 
         canvas[x][y] = newValue;
+
+        this.latestPixelX = x;
+        this.latestPixelY = y;
     }
 
     /** Returns the color of a pixel.

@@ -8,8 +8,8 @@ import lombok.Getter;
 
 public class CanvasView extends Canvas {
 
-    private static final int width = 300;
-    private static final int height = 300;
+    private static final int width = 1200;
+    private static final int height = 500;
 
     private PixelWriter pixelWriter;
 
@@ -19,10 +19,10 @@ public class CanvasView extends Canvas {
         super(width, height);
         this.graphicsContext = this.getGraphicsContext2D();
         this.pixelWriter = graphicsContext.getPixelWriter();
+        graphicsContext.getCanvas().toString();
     }
 
     public void setPixel(int x, int y, Color color) {
-        //this.getGraphicsContext2D().fillOval(x,y,1,1);
         pixelWriter.setColor(x,y,color);
     }
 

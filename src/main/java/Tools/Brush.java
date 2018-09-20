@@ -46,10 +46,6 @@ public class Brush implements Tool {
      */
 
     public boolean inCircle(int x0, int y0, int posx, int posy, int r) {
-        // System.out.println("x: " + Math.pow(x0-posx,2));
-        // System.out.println("y: " + Math.pow(y0-posy,2));
-        total++;
-        if(Math.pow(x0-posx,2) + Math.pow(y0-posy,2) <= Math.pow(r,2)) counter++;
         return ((Math.pow((posx - x0), 2) + Math.pow(posy - y0, 2)) <= Math.pow(r,2));
 
     }
@@ -77,8 +73,6 @@ public class Brush implements Tool {
                 }
             }
         }
-        System.out.println(counter);
-        System.out.println(total);
     }
 
 
