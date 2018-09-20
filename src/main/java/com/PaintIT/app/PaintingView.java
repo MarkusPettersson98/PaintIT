@@ -1,10 +1,7 @@
 package com.PaintIT.app;
 
 import Tools.Brush;
-<<<<<<< HEAD
-=======
 import Tools.Eraser;
->>>>>>> 0ecfc34287fd54acf883170902cc33c161f8c794
 import Tools.SprayCan;
 import Tools.Tool;
 import Canvas.CanvasController;
