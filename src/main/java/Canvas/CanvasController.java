@@ -24,6 +24,13 @@ public class CanvasController implements Observer {
         this.canvasView = new CanvasView();
     }
 
+    /** Paints model pixel with color
+     *
+     * @param x x-value of pixel.
+     * @param y y-value of pixel.
+     * @param newColor new color of pixel.
+     */
+
     public void paint(int x, int y, Color newColor) {
         // Check if new color value is different from current value
         if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0)
@@ -34,19 +41,31 @@ public class CanvasController implements Observer {
 
       }
 
+    /** Calls {@link CanvasModel#fillCanvas(Color)}
+     *
+      * @param color The color that fills the canvas.
+     */
     public void fillCanvas(Color color) {
         canvasModel.fillCanvas(color);
     }
 
 
+    /** Calls {@link CanvasModel#resetCanvas()}
+     *
+     */
     public void clear() {
         canvasModel.resetCanvas();
     }
+
+    /**
+     * Calls {@link CanvasModel#toString()}
+     * @return A string of the canvas.
+     */
     @Override
     public String toString() {
         return canvasModel.toString();
     }
-
+    
     @Override
     public void update(int x, int y, Color color) {
         paint(x, y, color);
