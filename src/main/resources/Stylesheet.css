@@ -1,0 +1,77 @@
+.text-normal {
+    -fx-font-size: 40px;
+    -fx-font-family: Chalkboard;
+}
+
+.text-big {
+    -fx-font-size: 70;
+    -fx-font-family: Chalkboard;
+    -fx-text-fill: #cf0100;
+    text-align: center;
+}
+
+.text-bigger {
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 100;
+}
+
+.text-veryBig {
+    -fx-font-size: 120;
+    -fx-font-family: SignPainter;
+}
+
+
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 3;
+    -fx-background-color: "lightblue";
+    -fx-text-fill: "white";
+}
+
+.button-play{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #d5090a 0%, #c20600 100%),
+            #cf0100,
+            #ef0b01,
+            radial-gradient(center 50% 50%, radius 100%, #ee0100, #ea0400);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 60px;
+    -fx-font-family: "Marker Felt";
+}
+
+.button-play:hover{
+    -fx-background-color: #ff2133;
+}
+
+.button-play:pressed{
+    -fx-background-color: #bc0002;
+}
+
+.button-mainMenu{
+    -fx-background-color:
+            linear-gradient(#ffd65b, #e68400),
+            linear-gradient(#ffef84, #f2ba44),
+            linear-gradient(#ffea6a, #efaa22),
+            linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+            linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+    -fx-padding: 10 20 10 20;
+    -fx-font-family: "Marker Felt";
+}
+
+.button-mainMenu:hover{
+    -fx-background-color: #ffd65b;
+}
+
+.button-mainMenu:pressed{
+    -fx-background-color: #e68400;
+}
