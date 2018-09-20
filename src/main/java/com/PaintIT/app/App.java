@@ -5,7 +5,9 @@ import Tools.Brush;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -19,25 +21,34 @@ import javafx.stage.Stage;
  * Hello world!
  *
  */
-public class App extends Application {
+
+public class App extends Application
+{
     public static void main( String[] args ) {
         launch(args);
+
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Hello World!");
+    public void start (Stage primaryStage) throws Exception{
 
-        Group root = new Group();
         CanvasView canvas = new CanvasView();
         CanvasController canvasController = new CanvasController(canvas);
         PaintingView paintingView = new PaintingView(canvasController);
 
-        root.getChildren().add(paintingView);
+        primaryStage.setTitle("PainIT");
 
+        Group root = new Group();
 
-        primaryStage.setScene(new Scene(root, 300, 300));
+        //root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/paintingView.fxml")));
+        root.getChildren().add(paintingView.getPaintingView());
+        // Parent root = FXMLLoader.load(getClass().getResource("/fxml/paintingView.fxml"));
+
+        Scene scene = new Scene(root, 1280, 720);
+        primaryStage.setScene(scene);
         primaryStage.show();
+
     }
+
 }
 

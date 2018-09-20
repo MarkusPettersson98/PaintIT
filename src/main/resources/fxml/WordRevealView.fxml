@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu.WordRevealView">
+   <children>
+      <Label fx:id="startingPlayerLabel" layoutX="308.0" layoutY="81.0" styleClass="text-big" text="PlayerX starts drawing" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="80.0" />
+      <Label fx:id="instructionsLabel" layoutX="220.0" layoutY="176.0" prefHeight="172.0" prefWidth="844.0" styleClass="text-normal" text="PlayerX turn the computer around, so that PlayerX can't see what you are drawing." textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="185.0" />
+      <Label layoutX="445.0" layoutY="346.0" prefHeight="76.0" prefWidth="386.0" styleClass="text-normal" text="Revealing word in..." textAlignment="CENTER" wrapText="true" AnchorPane.topAnchor="350.0" />
+      <Label fx:id="numberCountdownLabel" layoutX="603.0" layoutY="442.0" styleClass="text-bigger" text="5" AnchorPane.leftAnchor="611.0" AnchorPane.rightAnchor="612.0" AnchorPane.topAnchor="420.0" />
+      <Button fx:id="revealNowButton" layoutX="421.0" layoutY="582.0" mnemonicParsing="false" styleClass="button-play" text="...Or Reveal Now" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0" AnchorPane.topAnchor="550.0" />
+   </children>
+</AnchorPane>
