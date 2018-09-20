@@ -40,9 +40,7 @@ public class App extends Application
 
         Group root = new Group();
 
-        //root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/paintingView.fxml")));
-        root.getChildren().add(paintingView.getPaintingView());
-        // Parent root = FXMLLoader.load(getClass().getResource("/fxml/paintingView.fxml"));
+        root.getChildren().add(paintingView);
 
         Scene scene = new Scene(root, 1280, 720);
         primaryStage.setScene(scene);
@@ -51,4 +49,3 @@ public class App extends Application
     }
 
 }
-
