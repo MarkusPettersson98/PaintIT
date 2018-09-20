@@ -29,6 +29,9 @@ public class PaintingView extends AnchorPane {
     ColorPicker colorPicker;
 
     @FXML
+    Slider radiusSlider;
+
+    @FXML
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
@@ -102,6 +105,9 @@ public class PaintingView extends AnchorPane {
 
         clearBtn.setOnAction(e -> clearCanvas());
 
+        radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            setRadius(newValue.intValue());
+        });
     }
 
     public void clearCanvas() {
