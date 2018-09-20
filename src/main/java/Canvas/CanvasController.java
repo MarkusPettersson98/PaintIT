@@ -2,11 +2,12 @@ package Canvas;
 
 import Tools.Observer;
 import javafx.scene.paint.Color;
+import lombok.Getter;
 
 public class CanvasController implements Observer {
 
     CanvasModel canvasModel;
-    CanvasView canvasView;
+    @Getter CanvasView canvasView;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
