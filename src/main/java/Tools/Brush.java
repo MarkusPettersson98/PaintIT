@@ -14,22 +14,19 @@ public class Brush implements Tool {
      */
     @Setter private int radius;
 
-    /** Determines what color the brush paints with.
-     *
-     */
-    @Setter private Color color;
+    public Brush() { }
 
-    public Brush() {
-        color = Color.BLACK;
-    }
-
-    public Brush(Color color) {
-        this.color = color;
+    public Brush(int radius) {
+        this.radius = radius;
     }
 
     public Brush(Observer observer) {
         addObserver(observer);
-        color = Color.BLACK;
+    }
+
+    public Brush(Observer observer, int radius) {
+        addObserver(observer);
+        this.radius = radius;
     }
 
     /** Determines if point is in circle or not.
@@ -51,12 +48,12 @@ public class Brush implements Tool {
 
     /** Checks square area around brush and fills a circular area.
      * Notifies Observers ({@link Canvas.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
-     * The appearance of the circle is determined by {@link Brush#color} and {@link Brush#radius}
+     * The appearance of the circle is determined by {@link com.PaintIT.app.PaintingView#currentColor} and {@link Brush#radius}
      *
      * @param x0 Determines the x-value for the center of the circle.
      * @param y0 Determines the x-value for the center of the circle.
      */
-    public void apply(int x0, int y0) {
+    public void apply(int x0, int y0, Color color) {
         if (radius >= 0) {
             // Check square area around cursor position
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {

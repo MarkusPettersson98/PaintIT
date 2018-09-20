@@ -43,7 +43,6 @@ public class App extends Application
         root.getChildren().add(paintingView);
 
         paintingView.setRadius(10);
-        paintingView.setColor(Color.BLACK);
 
         Scene scene = new Scene(root, 1280, 720);
         primaryStage.setScene(scene);

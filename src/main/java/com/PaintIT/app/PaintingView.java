@@ -64,22 +64,22 @@ public class PaintingView extends AnchorPane {
         }
         this.currentTool = tools.get(1);
 
+        currentColor = colorPicker.getValue();
+
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY());
+            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY(), currentColor);
         });
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY());
+            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY(), currentColor);
         });
 
         colorPicker.setOnAction(e -> {
             currentColor = colorPicker.getValue();
-            currentTool.setColor(currentColor); // TODO refactor so that tool does not know about color, only paintingview needs to know this
         });
 
     }
 
     public void setRadius(int radius) { this.currentTool.setRadius(radius);}
 
-    public void setColor(Color color) { this.currentTool.setColor(color);}
 }

@@ -39,7 +39,7 @@ public class BrushTest  {
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
 
         brush.setRadius(2);
-        brush.apply(2,2);
+        brush.apply(2,2, Color.BLACK);
 
         assertEquals(dummyCircle, canvasController.toString());
     }
@@ -54,10 +54,9 @@ public class BrushTest  {
                 "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                 "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
 
-        brush.setColor(Color.BLACK);
         canvasController.fillCanvas(Color.WHITE);
         brush.setRadius(10);
-        brush.apply(2,2);
+        brush.apply(2,2, Color.BLACK);
 
         assertEquals(dummyCircle, canvasController.toString());
     }
@@ -72,8 +71,7 @@ public class BrushTest  {
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
-        brush.setColor(Color.WHITE);
-        brush.apply(2,2);
+        brush.apply(2,2, Color.WHITE);
 
         assertEquals(dummyCanvas,canvasController.toString());
     }
@@ -87,14 +85,14 @@ public class BrushTest  {
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
-        brush.apply(2,2);
+        brush.apply(2,2, Color.BLACK);
 
         assertEquals(dummyCanvas,canvasController.toString());
     }
     @Test
     public void testPaintOutOfBounds() {
         brush.setRadius(1);
-        brush.apply(10,10);
+        brush.apply(10,10, Color.BLACK);
         String dummyCanvas =
                         "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                         "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +

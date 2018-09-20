@@ -19,27 +19,24 @@ public class SprayCan implements Tool {
     @Setter
     private int radius;
 
-    /** Determines what color the brush paints with.
-     *
-     */
-    @Setter private Color color;
+    public SprayCan() { }
 
-    public SprayCan() {
-        color = Color.BLACK;
-    }
-
-    public SprayCan(Color color) {
-        this.color = color;
+    public SprayCan(int radius) {
+        this.radius = radius;
     }
 
     public SprayCan(Observer observer) {
         addObserver(observer);
-        color = Color.BLACK;
+    }
+
+    public SprayCan(Observer observer, int radius) {
+        addObserver(observer);
+        this.radius = radius;
     }
 
 
     @Override
-    public void apply(int x0, int y0) {
+    public void apply(int x0, int y0, Color color) {
         if (radius >= 0) {
             // Check square area around cursor position
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {

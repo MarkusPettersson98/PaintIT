@@ -11,15 +11,17 @@ public class Eraser implements Tool {
     @Setter
     private int radius;
 
-    private Color color = Color.WHITE;
-
     public Eraser() {
 
     }
 
+    public Eraser(int radius) {
+        this.radius = radius;
+    }
 
-    public Eraser(Observer observer) {
+    public Eraser(Observer observer, int radius) {
         addObserver(observer);
+        this.radius = radius;
     }
 
     /** Determines if point is in circle or not.
@@ -39,12 +41,12 @@ public class Eraser implements Tool {
 
     /** Checks square area around brush and fills a circular area.
      * Notifies Observers ({@link Canvas.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
-     * The appearance of the circle is determined by {@link Brush#color} and {@link Brush#radius}
+     * The appearance of the circle is determined by {@link com.PaintIT.app.PaintingView#currentColor} and {@link Brush#radius}
      *
      * @param x0 Determines the x-value for the center of the circle.
      * @param y0 Determines the x-value for the center of the circle.
      */
-    public void apply(int x0, int y0) {
+    public void apply(int x0, int y0, Color color) {
         if (radius >= 0) {
             // Check square area around cursor position
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
@@ -52,15 +54,13 @@ public class Eraser implements Tool {
                     if (inCircle(x0, y0, posx, posy, radius)) {
                         // If inside circle with radius, notify observers
                         for (Observer observer : Observers) {
-                            observer.update(posx, posy, this.color); // TODO Should player be able to change default color of canvas? If so, do not assume white
+                            observer.update(posx, posy, Color.WHITE); // TODO Should player be able to change default color of canvas? If so, do not assume white
                         }
                     }
                 }
             }
         }
     }
-
-    public void setColor(Color color) {/* Dummy method, maybe look into if interface Tool is too broad? */}
 
 
     @Override
