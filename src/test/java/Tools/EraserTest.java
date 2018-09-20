@@ -28,8 +28,7 @@ public class EraserTest {
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
         eraser.setRadius(1);
-        eraser.setColor(Color.WHITE);
-        eraser.apply(2,2);
+        eraser.apply(2,2, Color.WHITE);
         assertEquals(dummyCircle,canvasController.toString());
     }
 }
