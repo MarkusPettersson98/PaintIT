@@ -1,9 +1,14 @@
 package com.PaintIT.app;
 
 import Tools.Brush;
+<<<<<<< HEAD
+=======
+import Tools.Eraser;
+>>>>>>> 0ecfc34287fd54acf883170902cc33c161f8c794
 import Tools.SprayCan;
 import Tools.Tool;
 import Canvas.CanvasController;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
@@ -52,8 +57,15 @@ public class PaintingView extends AnchorPane {
         }
 
         // Set up tools
-        this.currentTool = new SprayCan();
-        this.currentTool.addObserver(canvasController);
+
+        tools.add(new Brush());
+        tools.add(new SprayCan());
+        tools.add(new Eraser());
+
+        for(Tool t : tools) {
+            t.addObserver(canvasController);
+        }
+        this.currentTool = tools.get(1);
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
@@ -67,6 +79,7 @@ public class PaintingView extends AnchorPane {
             currentColor = colorPicker.getValue();
             currentTool.setColor(currentColor); // TODO refactor so that tool does not know about color, only paintingview needs to know this
         });
+
     }
 
     public void setRadius(int radius) { this.currentTool.setRadius(radius);}
