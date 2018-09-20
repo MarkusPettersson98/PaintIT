@@ -3,10 +3,23 @@
     -fx-font-family: Chalkboard;
 }
 
+.text-big {
+    -fx-font-size: 70;
+    -fx-font-family: Chalkboard;
+    -fx-text-fill: #cf0100;
+    text-align: center;
+}
+
+.text-bigger {
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 100;
+}
+
 .text-veryBig {
     -fx-font-size: 120;
     -fx-font-family: SignPainter;
 }
+
 
 .button {
     -fx-border-color: transparent;
