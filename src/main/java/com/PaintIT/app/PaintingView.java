@@ -1,8 +1,11 @@
 package com.PaintIT.app;
 
 import Tools.Brush;
+import Tools.Eraser;
+import Tools.SprayCan;
 import Tools.Tool;
 import Canvas.CanvasController;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
@@ -43,8 +46,14 @@ public class PaintingView extends AnchorPane {
         }
 
         // Set up tools
-        this.currentTool = new Brush();
-        this.currentTool.addObserver(canvasController);
+        tools.add(new Brush());
+        tools.add(new SprayCan());
+        tools.add(new Eraser());
+
+        for(Tool t : tools) {
+            t.addObserver(canvasController);
+        }
+        this.currentTool = tools.get(1);
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
@@ -53,6 +62,7 @@ public class PaintingView extends AnchorPane {
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
             currentTool.apply((int) m.getX(), (int) m.getY());
         });
+
     }
 
     public void setRadius(int radius) { this.currentTool.setRadius(radius);}

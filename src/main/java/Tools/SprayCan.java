@@ -11,7 +11,7 @@ public class SprayCan implements Tool {
     /** Determines odds of pixel being colored.
      *
      */
-    @Setter private double odds = 0.5;
+    @Setter private double odds = 0.20;
 
     /** Determines how big the circle that will be painted is.
      *
@@ -44,7 +44,7 @@ public class SprayCan implements Tool {
             // Check square area around cursor position
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (r.nextDouble() > odds) {
+                    if (r.nextDouble() < odds) {
                         if (inCircle(x0, y0, posx, posy, radius)) {
                             // If inside circle with radius, notify observers
                             for (Observer observer : Observers) {
