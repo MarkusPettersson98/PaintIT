@@ -26,6 +26,8 @@ public class PaintingView extends AnchorPane {
     @FXML
     ColorPicker colorPicker;
 
+    Color currentColor;
+
     CanvasController canvasController;
 
     List<Tool> tools = new ArrayList<>();
@@ -62,7 +64,8 @@ public class PaintingView extends AnchorPane {
         });
 
         colorPicker.setOnAction(e -> {
-            currentTool.setColor(colorPicker.getValue());
+            currentColor = colorPicker.getValue();
+            currentTool.setColor(currentColor); // TODO refactor so that tool does not know about color, only paintingview needs to know this
         });
     }
 
