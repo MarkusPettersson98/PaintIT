@@ -1,11 +1,15 @@
 package com.PaintIT.app;
 
 import Tools.Brush;
+import Tools.SprayCan;
 import Tools.Tool;
 import Canvas.CanvasController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -18,6 +22,9 @@ public class PaintingView extends AnchorPane {
 
     @FXML
     Canvas canvas;
+
+    @FXML
+    ColorPicker colorPicker;
 
     CanvasController canvasController;
 
@@ -43,15 +50,19 @@ public class PaintingView extends AnchorPane {
         }
 
         // Set up tools
-        this.currentTool = new Brush();
+        this.currentTool = new SprayCan();
         this.currentTool.addObserver(canvasController);
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            currentTool.apply((int) m.getX(), (int) m.getY());
+            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY());
         });
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            currentTool.apply((int) m.getX(), (int) m.getY());
+            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY());
+        });
+
+        colorPicker.setOnAction(e -> {
+            currentTool.setColor(colorPicker.getValue());
         });
     }
 

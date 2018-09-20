@@ -13,9 +13,6 @@ public class Eraser implements Tool {
 
     private Color color = Color.WHITE;
 
-    static int counter = 0;
-    static int total = 0;
-
     public Eraser() {
 
     }

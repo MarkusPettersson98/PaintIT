@@ -19,9 +19,6 @@ public class Brush implements Tool {
      */
     @Setter private Color color;
 
-    static int counter = 0;
-    static int total = 0;
-
     public Brush() {
         color = Color.BLACK;
     }
