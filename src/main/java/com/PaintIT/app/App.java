@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -35,16 +36,18 @@ public class App extends Application {
         CanvasController canvasController = new CanvasController(canvas);
 
         // Brush settings n stuff
-        brush.setRadius(40);
+        brush.setRadius(10);
         brush.addObserver(canvasController);
-        brush.apply(100,100);
-        //System.out.println(canvasController.toString());
+
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
+            brush.apply((int) m.getX(), (int) m.getY());
+        });
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
+            brush.apply((int) m.getX(), (int) m.getY());
+        });
 
 
         primaryStage.setScene(new Scene(root, 300, 300));
-
-        System.out.println(canvasController.toString());
-
         primaryStage.show();
     }
 }
