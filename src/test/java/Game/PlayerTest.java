@@ -20,10 +20,4 @@ public class PlayerTest {
         assertTrue(player.getName().equals("Greta"));
     }
 
-    @Test
-    public void stateTest(){
-        player.setDrawer(true);
-        assertTrue(player.isDrawer());
-    }
-
 }
