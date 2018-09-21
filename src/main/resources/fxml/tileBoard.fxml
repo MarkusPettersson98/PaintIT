@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="720.0" type="VBox" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="testHBox" prefHeight="205.0" prefWidth="720.0">
+      <HBox fx:id="testHBox" maxHeight="1200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="1200.0">
          <children>
             <Label fx:id="testLbl" text="TEST">
                <font>
@@ -18,4 +17,4 @@
          </children>
       </HBox>
    </children>
-</VBox>
+</fx:root>
