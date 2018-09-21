@@ -3,6 +3,7 @@ package com.PaintIT.app;
 
 import MainMenu.*;
 import ViewObjects.TileBoard;
+import ViewObjects.TileSlot;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,9 +40,9 @@ public class App extends Application
     public void start (Stage primaryStage) throws Exception{
         primaryStage.setTitle("PainIT");
         TileBoard tileBoard = new TileBoard();
-
-
-        Scene scene = new Scene(tileBoard);
+        TileSlot tileSlot = new TileSlot();
+        
+        Scene scene = new Scene(tileSlot);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
