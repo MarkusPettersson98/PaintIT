@@ -10,9 +10,9 @@ import javafx.scene.layout.AnchorPane;
 public class TileSlot extends AnchorPane {
 
     @FXML Button tileButton;
-
+    private Character tileLetter;
     private String filePath = "/fxml/tileSlot.fxml";
-    public TileSlot(){
+    public TileSlot(Character tileLetter){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
@@ -21,7 +21,9 @@ public class TileSlot extends AnchorPane {
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        tileButton.setText("A");
+
+        this.tileLetter = tileLetter;
+        tileButton.setText(tileLetter.toString());
     }
 
 }

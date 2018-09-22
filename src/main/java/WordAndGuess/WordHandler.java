@@ -11,7 +11,7 @@ public class WordHandler {
     private ArrayList<Character> tiles;
     private String currentWord;
     private final int tileAmount = 8;
-    private Guess guess;
+    private GuessLogic guessLogic;
 
     public WordHandler(){
 
@@ -27,11 +27,12 @@ public class WordHandler {
             wordList.set(i,wordList.get(i).toUpperCase());
         }
         createRandomWord();
-        guess = new Guess(this.getCurrentWord());
+        createRandomTiles(this.currentWord);
+        guessLogic = new GuessLogic(this.getCurrentWord(),tiles);
     }
 
-    public Guess getGuess() {
-        return guess;
+    public GuessLogic getGuessLogic() {
+        return guessLogic;
     }
 
     public int getTileAmount() {

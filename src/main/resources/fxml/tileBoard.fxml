@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="720.0" type="VBox" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="testHBox" maxHeight="1200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="1200.0">
-         <children>
-            <Label fx:id="testLbl" text="TEST">
-               <font>
-                  <Font size="72.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <HBox fx:id="testHBox" maxHeight="1200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="1200.0" />
    </children>
 </fx:root>

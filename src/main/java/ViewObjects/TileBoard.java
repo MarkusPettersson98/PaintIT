@@ -17,14 +17,13 @@ public class TileBoard extends VBox {
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
 
-        Label testLbl = new Label("TESTAR");
 
         try {
             fxmlLoader.load();
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
-
+        testHBox.getChildren().add(new TileSlot('a'));
 
     }
 }
