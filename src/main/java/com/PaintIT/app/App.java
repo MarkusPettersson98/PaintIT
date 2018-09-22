@@ -46,10 +46,11 @@ public class App extends Application
         wordHandler.createRandomWord();
         wordHandler.createRandomTiles(wordHandler.getCurrentWord());
 
-        TileBoard tileBoard = new TileBoard();
 
         ArrayList<Character> tempTiles = wordHandler.getGuessLogic().getAvailableTiles();
-        
+        TileBoard tileBoard = new TileBoard(tempTiles);
+
+
         Scene scene = new Scene(tileBoard);
         primaryStage.setScene(scene);
         primaryStage.show();

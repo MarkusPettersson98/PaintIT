@@ -5,6 +5,6 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="50.0" prefWidth="80.0" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="tileButton" layoutX="27.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="Button" AnchorPane.bottomAnchor="9.600000000000001" AnchorPane.leftAnchor="24.6" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="10.0" />
+      <Button fx:id="tileButton" layoutX="17.5" layoutY="3.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="Button" />
    </children>
 </fx:root>
