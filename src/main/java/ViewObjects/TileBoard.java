@@ -3,6 +3,7 @@ package ViewObjects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -12,7 +13,7 @@ public class TileBoard extends VBox {
 
     @FXML
     HBox testHBox;
-
+    TextField textField;
 
     ArrayList<Character> availableTiles;
     String filePath = "/fxml/tileBoard.fxml";
@@ -43,5 +44,7 @@ public class TileBoard extends VBox {
             TileSlot temp = new TileSlot(c);
             testHBox.getChildren().add(temp);
         }
+        textField = new TextField();
+        
     }
 }
