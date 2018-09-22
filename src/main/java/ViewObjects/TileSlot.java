@@ -17,7 +17,7 @@ public class TileSlot extends AnchorPane {
             System.out.println(e.getMessage());
         }
 
-    this.getChildren().add(new Button("TileSLOT WORKS"));
+    
     }
 
 }
