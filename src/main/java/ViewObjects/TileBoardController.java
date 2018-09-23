@@ -15,13 +15,14 @@ public class TileBoardController {
         setTilesEL();
     }
 
-    public void handleTileClickedtest(){
-        System.out.println("Controller Works");
+    public void addTileToGuess(Character c){
+        System.out.println(c.toString());
+        wordHandler.getGuessLogic().addCharToGuess(c);
     }
 
     private void setTilesEL(){ //eventListeners
        for(TileSlot t: tileBoard.getTileSlotList()){
-           t.getTileButton().setOnAction(e-> handleTileClickedtest());
+           t.getTileButton().setOnAction(e-> addTileToGuess(t.getTileLetter()));
        }
     }
 }

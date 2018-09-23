@@ -23,6 +23,10 @@ public class GuessLogic {
 
     public void addCharToGuess(char c){
         guessWord.add(c);
+        if(guessWord.size() == currentWord.length()){
+            guessCurrentWord();
+
+        }
     }
 
     public ArrayList<Character> getGuessWord() {
@@ -36,6 +40,8 @@ public class GuessLogic {
     }
     public boolean guessCurrentWord(){
         String guessWord = WordHandler.charArrayToString(this.guessWord);
+        System.out.println("Guess is: " + guessWord);
+        System.out.println("Correct word is" + currentWord);
         if(guessWord.equals(currentWord)){
             return true;
         }else{

@@ -13,6 +13,11 @@ public class TileSlot extends AnchorPane {
     @FXML Button tileButton;
 
     private Character tileLetter;
+
+    public Character getTileLetter() {
+        return tileLetter;
+    }
+
     private String filePath = "/fxml/tileSlot.fxml";
     public TileSlot(Character tileLetter){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
