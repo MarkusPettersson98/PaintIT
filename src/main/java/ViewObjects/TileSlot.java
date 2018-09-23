@@ -1,15 +1,17 @@
 package ViewObjects;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 
 public class TileSlot extends AnchorPane {
 
     @FXML Button tileButton;
+
     private Character tileLetter;
     private String filePath = "/fxml/tileSlot.fxml";
     public TileSlot(Character tileLetter){
@@ -24,6 +26,10 @@ public class TileSlot extends AnchorPane {
 
         this.tileLetter = tileLetter;
         tileButton.setText(tileLetter.toString());
+
+    }
+    public Button getTileButton() {
+        return tileButton;
     }
 
 }

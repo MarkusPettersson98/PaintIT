@@ -15,9 +15,18 @@ public class TileBoard extends VBox {
     @FXML HBox hBoxTop;
     @FXML HBox hBoxBottom;
     @FXML VBox vBoxRoot;
-    TextField guessTxtf;
+    private TextField guessTxtf;
+    private Button testButton;
+    private ArrayList<TileSlot> tileSlotList;
 
-    ArrayList<Character> availableTiles;
+    public TextField getGuessTxtf() {
+        return guessTxtf;
+    }
+
+    public ArrayList<TileSlot> getTileSlotList() {
+        return tileSlotList;
+    }
+
     String filePath = "/fxml/tileBoard.fxml";
     public TileBoard() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
@@ -32,6 +41,7 @@ public class TileBoard extends VBox {
         }
 
     }
+
     public TileBoard(ArrayList<Character> availableTiles) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
@@ -42,14 +52,21 @@ public class TileBoard extends VBox {
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        for(Character c: availableTiles){
-            TileSlot temp = new TileSlot(c);
-            hBoxTop.getChildren().add(temp);
-        }
-         guessTxtf = new TextField();
+
+        tileSlotList =  new ArrayList<>();
+        createTileSlots(availableTiles);
+
+        guessTxtf = new TextField();
         hBoxBottom.getChildren().add(guessTxtf);
 
 
-
     }
+    private void createTileSlots(ArrayList<Character> availableTiles){
+        for(Character c: availableTiles){
+            TileSlot temp = new TileSlot(c);
+            tileSlotList.add(temp);
+            hBoxTop.getChildren().add(temp);
+        }
+    }
+
 }
