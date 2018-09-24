@@ -1,27 +1,24 @@
 package Canvas;
 
 import Tools.Observer;
+import Tools.ToolAbstract;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
-public class CanvasController implements Observer {
+public class CanvasController {
 
     CanvasModel canvasModel;
     @Getter CanvasView canvasView;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
-        this.canvasView = new CanvasView();
-    }
-
-    public CanvasController(CanvasView canvasView) {
-        this.canvasModel = new CanvasModel(Color.WHITE);
-        this.canvasView = canvasView;
+        this.canvasView = new CanvasView(canvasModel);
+        canvasModel.addObserver(canvasView);
     }
 
     public CanvasController(int xSize, int ySize) {
         this.canvasModel = new CanvasModel(xSize, ySize, Color.WHITE);
-        this.canvasView = new CanvasView();
+        this.canvasView = new CanvasView(canvasModel);
     }
 
     /** Paints model pixel with color
@@ -38,7 +35,6 @@ public class CanvasController implements Observer {
 
         if(!canvasModel.getPixel(x, y).equals(newColor))
          canvasModel.setPixel(x,y, newColor);
-
       }
 
     /** Calls {@link CanvasModel#fillCanvas(Color)}
@@ -64,13 +60,6 @@ public class CanvasController implements Observer {
     @Override
     public String toString() {
         return canvasModel.toString();
-    }
-    
-    @Override
-    public void update(int x, int y, Color color) {
-        paint(x, y, color);
-        // Paint ACTUAL view
-        canvasView.setPixel(canvasModel.getLatestPixelX(),canvasModel.getLatestPixelY(), color);
     }
 
     public void redraw() {

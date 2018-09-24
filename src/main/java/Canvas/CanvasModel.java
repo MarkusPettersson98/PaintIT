@@ -1,15 +1,21 @@
 package Canvas;
 
+import Tools.Observable;
+import Tools.Observer;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
-public class CanvasModel {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CanvasModel implements Observable {
 
 
     @Getter private int xMax = 1200, yMax = 500;
     @Getter private int latestPixelY;
     @Getter private int latestPixelX;
     private Color[][] canvas = new Color[xMax][yMax];
+    List<Observer> Observers = new ArrayList<>();
 
     protected CanvasModel(Color initValue) {
         fillCanvas(initValue);
@@ -38,6 +44,8 @@ public class CanvasModel {
 
         this.latestPixelX = x;
         this.latestPixelY = y;
+
+        notifyObservers();
     }
 
     /** Returns the color of a pixel.
@@ -73,6 +81,7 @@ public class CanvasModel {
                 canvas[j][i] = color;
             }
         }
+        notifyObservers();
     }
 
 
@@ -115,5 +124,21 @@ public class CanvasModel {
 
     public int getYBound() {
         return yMax-1;
+    }
+
+
+
+
+
+    @Override
+    public void addObserver(Observer observer) {
+        Observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer : Observers) {
+            observer.update();
+        }
     }
 }

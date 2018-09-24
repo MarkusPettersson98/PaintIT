@@ -1,9 +1,6 @@
 package com.PaintIT.app;
 
-import Tools.Brush;
-import Tools.Eraser;
-import Tools.SprayCan;
-import Tools.Tool;
+import Tools.*;
 import Canvas.CanvasController;
 import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
@@ -43,8 +40,8 @@ public class PaintingView extends AnchorPane {
 
     CanvasController canvasController;
 
-    List<Tool> tools = new ArrayList<>();
-    Tool currentTool;
+    List<ToolAbstract> tools = new ArrayList<>();
+    ToolAbstract currentTool;
 
     public PaintingView(CanvasController canvasController) {
 
@@ -70,22 +67,39 @@ public class PaintingView extends AnchorPane {
         tools.add(new SprayCan());
         tools.add(new Eraser());
 
-        for(Tool t : tools) {
-            t.addObserver(canvasController);
-        }
         this.currentTool = tools.get(0);
 
         currentColor = colorPicker.getValue();
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY(), currentColor);
-        });
-        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            currentTool.apply((int) m.getSceneX(), (int) m.getSceneY(), currentColor);
+            int x0 = (int) m.getSceneX();
+            int y0 = (int) m.getSceneY();
+            int radius = currentTool.getRadius();
+            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
+                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
+                    if (currentTool.apply(x0, y0, posx, posy)) {
+                        canvasController.paint(posx, posy, currentColor);
+                    }
+                }
+            }
         });
 
-        colorPicker.setOnAction(e -> {
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
+            //currentTool.apply((int) m.getSceneX(), (int) m.getSceneY(), currentColor);
+            int x0 = (int) m.getSceneX();
+            int y0 = (int) m.getSceneY();
+            int radius = currentTool.getRadius();
+            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
+                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
+                    if (currentTool.apply(x0, y0, posx, posy)) {
+                        canvasController.paint(posx, posy, currentColor);
+                    }
+                }
+            }
+        });
+
+            colorPicker.setOnAction(e -> {
             currentColor = colorPicker.getValue();
         });
 
@@ -117,7 +131,7 @@ public class PaintingView extends AnchorPane {
 
 
     public void setRadius(int radius) {
-        for(Tool t : tools) {
+        for(ToolAbstract t : tools) {
             t.setRadius(radius);
         }
     }

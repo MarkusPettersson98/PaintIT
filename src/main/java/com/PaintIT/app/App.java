@@ -32,8 +32,7 @@ public class App extends Application
     @Override
     public void start (Stage primaryStage) throws Exception{
 
-        CanvasView canvas = new CanvasView();
-        CanvasController canvasController = new CanvasController(canvas);
+        CanvasController canvasController = new CanvasController();
         PaintingView paintingView = new PaintingView(canvasController);
 
         primaryStage.setTitle("PainIT");

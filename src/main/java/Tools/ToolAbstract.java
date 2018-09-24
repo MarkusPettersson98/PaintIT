@@ -1,6 +1,7 @@
 package Tools;
 
 import javafx.scene.paint.Color;
+import lombok.Getter;
 import lombok.Setter;
 import javafx.scene.paint.Color;
 import lombok.Setter;
@@ -13,22 +14,13 @@ public abstract class ToolAbstract implements Tool {
     /**
      * Determines how big the circle that will be painted is.
      */
-    @Setter
+    @Getter @Setter
     private int radius;
 
     public ToolAbstract() {
     }
 
     public ToolAbstract(int radius) {
-        this.radius = radius;
-    }
-
-    public ToolAbstract(Observer observer) {
-        addObserver(observer);
-    }
-
-    public ToolAbstract(Observer observer, int radius) {
-        addObserver(observer);
         this.radius = radius;
     }
 
@@ -57,26 +49,20 @@ public abstract class ToolAbstract implements Tool {
      * @param x0 Determines the x-value for the center of the circle.
      * @param y0 Determines the x-value for the center of the circle.
      */
-    public void apply(int x0, int y0, Color color) {
+    public boolean apply(int x0, int y0, int x, int y) {
         if (radius >= 0) {
             // Check square area around cursor position
-            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (inCircle(x0, y0, posx, posy, radius)) {
-                        // If inside circle with radius, notify observers
-                        for (Observer observer : Observers) {
-                            observer.update(posx, posy, color);
-                        }
+            //for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
+                //for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
+                    if (inCircle(x0, y0, x, y, /*posx, posy,*/ radius)) {
+                        // If inside circle with radius, return true
+                        return true;
                     }
-                }
-            }
+              //  }
+           // }
         }
-    }
-
-
-    @Override
-    public void addObserver(Observer observer) {
-        Observers.add(observer);
+        // Pixel out of circle, return false
+        return false;
     }
 
 }

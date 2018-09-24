@@ -8,8 +8,6 @@ public class Eraser extends ToolAbstract implements Tool {
     /** Determines how big the circle that will be erased is.
      *
      */
-    @Setter
-    private int radius;
 
     /** Checks square area around brush and fills a circular area.
      * Notifies Observers ({@link Canvas.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
@@ -19,20 +17,5 @@ public class Eraser extends ToolAbstract implements Tool {
      * @param y0 Determines the x-value for the center of the circle.
      */
 
-    @Override
-    public void apply(int x0, int y0, Color color) {
-        if (radius >= 0) {
-            // Check square area around cursor position
-            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (super.inCircle(x0, y0, posx, posy, radius)) {
-                        // If inside circle with radius, notify observers
-                        for (Observer observer : Observers) {
-                            observer.update(posx, posy, Color.WHITE); // TODO Should player be able to change default color of canvas? If so, do not assume white
-                        }
-                    }
-                }
-            }
-        }
-    }
+
 }

@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class EraserTest {
-
+/*
     private Eraser eraser;
     public CanvasController canvasController;
     @Before
@@ -31,4 +31,5 @@ public class EraserTest {
         eraser.apply(2,2, Color.WHITE);
         assertEquals(dummyCircle,canvasController.toString());
     }
+    */
 }
