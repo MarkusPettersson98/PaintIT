@@ -1,7 +1,6 @@
 package WordAndGuess;
 
 
-import WordAndGuess.WordHandler;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class WordHandlerTest {
     @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
-        wh.createRandomWord();
+        wh.pickRandomWord();
         String word = wh.getCurrentWord();
         assertNotNull(word);
     }
@@ -39,7 +38,7 @@ public class WordHandlerTest {
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         WordHandler wordHandler = new WordHandler();
-        wordHandler.createRandomWord();
+        wordHandler.pickRandomWord();
         String word = wordHandler.getCurrentWord();
         wordHandler.createRandomTiles(word);
         ArrayList<Character> tiles = wordHandler.getTiles();

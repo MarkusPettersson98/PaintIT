@@ -2,18 +2,14 @@
 
 package com.PaintIT.app;
 
-import MainMenu.*;
 import ViewObjects.TileBoard;
 import ViewObjects.TileBoardController;
-import ViewObjects.TileSlot;
+import WordAndGuess.GuessLogic;
 import WordAndGuess.WordHandler;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -44,14 +40,11 @@ public class App extends Application
     public void start (Stage primaryStage) throws Exception{
         primaryStage.setTitle("PainIT");
 
-        WordHandler wordHandler = new WordHandler();
-        wordHandler.createRandomWord();
-        wordHandler.createRandomTiles(wordHandler.getCurrentWord());
+        GuessLogic guessLogic = new GuessLogic();
 
-
-        ArrayList<Character> tempTiles = wordHandler.getGuessLogic().getAvailableTiles();
+        ArrayList<Character> tempTiles = guessLogic.getAvailableTiles();
         TileBoard tileBoard = new TileBoard(tempTiles);
-        TileBoardController tileBoardController = new TileBoardController(wordHandler,tileBoard);
+        TileBoardController tileBoardController = new TileBoardController(guessLogic,tileBoard);
 
 
         Scene scene = new Scene(tileBoard);

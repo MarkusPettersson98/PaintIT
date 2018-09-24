@@ -28,19 +28,7 @@ public class TileBoard extends VBox {
     }
 
     String filePath = "/fxml/tileBoard.fxml";
-    public TileBoard() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
-        fxmlLoader.setController(this);
-        fxmlLoader.setRoot(this);
 
-
-        try {
-            fxmlLoader.load();
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
 
     public TileBoard(ArrayList<Character> availableTiles) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));

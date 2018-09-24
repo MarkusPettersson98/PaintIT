@@ -11,10 +11,14 @@ public class WordHandler {
     private ArrayList<Character> tiles;
     private String currentWord;
     private final int tileAmount = 8;
-    private GuessLogic guessLogic;
+
 
     public WordHandler(){
-
+        createWordList();
+        pickRandomWord();
+        createRandomTiles(this.currentWord);
+    }
+    private void createWordList(){
         wordList= new ArrayList();
         wordList.add("Cat");
         wordList.add("Dog");
@@ -26,14 +30,9 @@ public class WordHandler {
         for(int i= 0; i<wordList.size();i++){
             wordList.set(i,wordList.get(i).toUpperCase());
         }
-        createRandomWord();
-        createRandomTiles(this.currentWord);
-        guessLogic = new GuessLogic(this.getCurrentWord(),tiles);
     }
 
-    public GuessLogic getGuessLogic() {
-        return guessLogic;
-    }
+
 
     public int getTileAmount() {
         return tileAmount;
@@ -77,7 +76,7 @@ public class WordHandler {
         return currentWord;
     }
 
-    public void createRandomWord(){
+    public void pickRandomWord(){
         currentWord =  wordList.get(getRandomIndex());
 
     }

@@ -6,11 +6,14 @@ public class GuessLogic {
     private String currentWord;
     private ArrayList<Character> guessWord;
     private ArrayList<Character> availableTiles;
+    private WordHandler wordHandler;
 
-    public GuessLogic(String currentWord,ArrayList<Character> availableTiles){
-        this.availableTiles = availableTiles;
-        this.currentWord = currentWord;
+    public GuessLogic(){
+        this.wordHandler = new WordHandler();
+        this.availableTiles = wordHandler.getTiles();
+        this.currentWord = wordHandler.getCurrentWord();
         guessWord = new ArrayList<>();
+
     }
 
     public String getCurrentWord() {
