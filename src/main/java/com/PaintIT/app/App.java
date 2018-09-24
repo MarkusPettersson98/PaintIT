@@ -3,6 +3,7 @@ package com.PaintIT.app;
 import MainMenu.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -24,8 +25,12 @@ public class App extends Application
 
     @Override
     public void start (Stage primaryStage) throws Exception{
+
+        MainMenuView mainMenuView = new MainMenuView();
         primaryStage.setTitle("PainIT");
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuView.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/GameSetupView.fxml"));
+        Group root = new Group();
+        root.getChildren().add(mainMenuView);
         Scene scene = new Scene(root, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
