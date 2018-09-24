@@ -17,11 +17,27 @@ public abstract class Tool {
     @Getter @Setter
     private int radius;
 
+    @Getter @Setter
+    private Color color;
+
     public Tool() {
+        this.radius = 1;
+        this.color = Color.BLACK;
     }
 
     public Tool(int radius) {
         this.radius = radius;
+        this.color = Color.BLACK;
+    }
+
+    public Tool(Color color) {
+        this.radius = 1;
+        this.color = color;
+    }
+
+    public Tool(int radius, Color color) {
+        this.radius = radius;
+        this.color = color;
     }
 
     /**

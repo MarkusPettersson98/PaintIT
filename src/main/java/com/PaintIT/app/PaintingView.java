@@ -73,10 +73,11 @@ public class PaintingView extends AnchorPane {
             int x0 = (int) m.getSceneX();
             int y0 = (int) m.getSceneY();
             int radius = currentTool.getRadius();
+            Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
                     if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, currentColor);
+                        canvasController.paint(posx, posy, color);
                     }
                 }
             }
@@ -87,17 +88,18 @@ public class PaintingView extends AnchorPane {
             int x0 = (int) m.getSceneX();
             int y0 = (int) m.getSceneY();
             int radius = currentTool.getRadius();
+            Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
                     if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, currentColor);
+                        canvasController.paint(posx, posy, color);
                     }
                 }
             }
         });
 
-            colorPicker.setOnAction(e -> {
-            currentColor = colorPicker.getValue();
+        colorPicker.setOnAction(e -> {
+            currentTool.setColor(colorPicker.getValue());
         });
 
 
