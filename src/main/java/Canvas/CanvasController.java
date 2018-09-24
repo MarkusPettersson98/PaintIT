@@ -1,7 +1,5 @@
 package Canvas;
 
-import Tools.Observer;
-import Tools.ToolAbstract;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 

@@ -9,6 +9,11 @@ import static org.junit.Assert.*;
 
 public class SprayCanTest {
 /*
+
+    The reason why a lot of these tests are commented is because they are no longer relevant
+    after the refactor of how tools work. The business logic is a lot more compact and therefore
+    needs a lot fewer tests.
+
     private SprayCan sprayCan;
     public CanvasController canvasController;
     @Before

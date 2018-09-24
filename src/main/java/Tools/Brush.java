@@ -1,18 +1,13 @@
 package Tools;
-import javafx.scene.paint.Color;
-import lombok.Setter;
-
-import java.math.*;
 
 /** Represents a brush.
  *
  */
-public class Brush extends ToolAbstract implements Tool {
+public class Brush extends Tool {
 
     /** Determines how big the circle that will be painted is.
      *
      */
-    // @Setter private int radius;
 
     @Override
     public boolean apply(int x0, int y0, int x, int y) {

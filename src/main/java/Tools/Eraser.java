@@ -1,9 +1,6 @@
 package Tools;
 
-import javafx.scene.paint.Color;
-import lombok.Setter;
-
-public class Eraser extends ToolAbstract implements Tool {
+public class Eraser extends Tool {
 
     /** Determines how big the circle that will be erased is.
      *

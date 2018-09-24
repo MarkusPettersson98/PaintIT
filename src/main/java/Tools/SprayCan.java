@@ -1,11 +1,10 @@
 package Tools;
 
-import javafx.scene.paint.Color;
 import lombok.Setter;
 
 import java.util.Random;
 
-public class SprayCan extends ToolAbstract implements Tool  {
+public class SprayCan extends Tool {
 
     Random r = new Random();
     /** Determines odds of pixel being colored.

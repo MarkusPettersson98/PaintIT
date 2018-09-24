@@ -2,9 +2,6 @@ package com.PaintIT.app;
 
 import Tools.*;
 import Canvas.CanvasController;
-import javafx.animation.PauseTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
@@ -40,8 +37,8 @@ public class PaintingView extends AnchorPane {
 
     CanvasController canvasController;
 
-    List<ToolAbstract> tools = new ArrayList<>();
-    ToolAbstract currentTool;
+    List<Tool> tools = new ArrayList<>();
+    Tool currentTool;
 
     public PaintingView(CanvasController canvasController) {
 
@@ -131,7 +128,7 @@ public class PaintingView extends AnchorPane {
 
 
     public void setRadius(int radius) {
-        for(ToolAbstract t : tools) {
+        for(Tool t : tools) {
             t.setRadius(radius);
         }
     }

@@ -11,14 +11,13 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class BrushTest  {
-/*
+
     private Brush brush;
     public CanvasController canvasController;
     @Before
     public void beforeBrushTest(){
         brush = new Brush();
         canvasController = new CanvasController(5,5);
-        brush.addObserver(canvasController);
     }
 
     @Test
@@ -28,6 +27,13 @@ public class BrushTest  {
         int radius = 2;
         assertTrue(brush.inCircle(x, y, posx, posy, radius));
     }
+
+    /*
+
+    The reason why a lot of these tests are commented is because they are no longer relevant
+    after the refactor of how tools work. The business logic is a lot more compact and therefore
+    needs a lot fewer tests.
+
 
     @Test
     public void testPaintCircle() {
@@ -103,4 +109,5 @@ public class BrushTest  {
         assertEquals(dummyCanvas,canvasController.toString());
     }
     */
+
 }
