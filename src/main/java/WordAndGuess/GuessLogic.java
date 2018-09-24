@@ -1,5 +1,7 @@
 package WordAndGuess;
 
+import Util.GeneralUtil;
+
 import java.util.ArrayList;
 
 public class GuessLogic {
@@ -42,7 +44,7 @@ public class GuessLogic {
         }
     }
     public boolean guessCurrentWord(){
-        String guessWord = WordHandler.charArrayToString(this.guessWord);
+        String guessWord = GeneralUtil.CharArrayListToString(this.guessWord);
         System.out.println("Guess is: " + guessWord);
         System.out.println("Correct word is" + currentWord);
         if(guessWord.equals(currentWord)){

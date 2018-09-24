@@ -39,16 +39,6 @@ public class WordHandler {
     }
 
 
-
-
-    public static String charArrayToString(ArrayList<Character> list){
-        StringBuilder sB= new StringBuilder();
-        for(Character c: list){
-            sB.append(c);
-        }
-        return sB.toString();
-    }
-
     public ArrayList getWordList() {
         return wordList;
     }

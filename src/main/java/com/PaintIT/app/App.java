@@ -43,7 +43,7 @@ public class App extends Application
         GuessLogic guessLogic = new GuessLogic();
 
         ArrayList<Character> tempTiles = guessLogic.getAvailableTiles();
-        TileBoard tileBoard = new TileBoard(tempTiles);
+        TileBoard tileBoard = new TileBoard(guessLogic, tempTiles);
         TileBoardController tileBoardController = new TileBoardController(guessLogic,tileBoard);
 
 

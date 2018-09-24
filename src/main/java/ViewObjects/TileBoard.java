@@ -1,5 +1,7 @@
 package ViewObjects;
 
+import Util.GeneralUtil;
+import WordAndGuess.GuessLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -18,6 +20,7 @@ public class TileBoard extends VBox {
     private TextField guessTxtf;
     private Button testButton;
     private ArrayList<TileSlot> tileSlotList;
+    private GuessLogic guessLogic;
 
     public TextField getGuessTxtf() {
         return guessTxtf;
@@ -30,7 +33,7 @@ public class TileBoard extends VBox {
     String filePath = "/fxml/tileBoard.fxml";
 
 
-    public TileBoard(ArrayList<Character> availableTiles) {
+    public TileBoard(GuessLogic guessLogic, ArrayList<Character> availableTiles) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
@@ -40,12 +43,13 @@ public class TileBoard extends VBox {
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
-
+        this.guessLogic = guessLogic;
         tileSlotList =  new ArrayList<>();
         createTileSlots(availableTiles);
 
         guessTxtf = new TextField();
         hBoxBottom.getChildren().add(guessTxtf);
+
 
 
     }
@@ -55,6 +59,10 @@ public class TileBoard extends VBox {
             tileSlotList.add(temp);
             hBoxTop.getChildren().add(temp);
         }
+    }
+    public void updateView(){
+    guessTxtf.setText(GeneralUtil.CharArrayListToString(guessLogic.getGuessWord()));
+
     }
 
 }

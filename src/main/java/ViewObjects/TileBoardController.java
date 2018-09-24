@@ -1,5 +1,6 @@
 package ViewObjects;
 
+import Util.GeneralUtil;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.WordHandler;
 import javafx.event.EventHandler;
@@ -18,7 +19,8 @@ public class TileBoardController {
 
     public void addTileToGuess(Character c){
         System.out.println(c.toString());
-        guessLogic  .addCharToGuess(c);
+        guessLogic.addCharToGuess(c);
+        System.out.println(GeneralUtil.CharArrayListToString(guessLogic.getGuessWord()));
     }
 
     private void setTilesEL(){ //eventListeners
