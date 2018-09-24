@@ -1,5 +1,6 @@
 package Canvas;
 
+import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,26 +13,27 @@ public class CanvasModelTest {
 
     @Before
     public void setupTest() {
-        this.canvasModel = new CanvasModel(false);
+        this.canvasModel = new CanvasModel(5,5, Color.WHITE);
     }
     @Test
     public void testToString() throws Exception {
-        String dummyCanvas = "[ false false false false false ] \n" +
-                             "[ false false false false false ] \n" +
-                             "[ false false false false false ] \n" +
-                             "[ false false false false false ] \n" +
-                             "[ false false false false false ] \n";
+        String dummyCanvas = "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                             "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
          assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
     @Test
     public void testSetPixel() {
-        canvasModel.setPixel(3,3,true);
+        canvasModel.setPixel(3,3,Color.RED);
 
-        String dummyCanvas = "[ false false false false false ] \n" +
-                             "[ false false false false false ] \n" +
-                             "[ false false false false false ] \n" +
-                             "[ false false false true false ] \n"  +
-                             "[ false false false false false ] \n";
+        String dummyCanvas =
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
 
         assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
@@ -39,8 +41,8 @@ public class CanvasModelTest {
     @Test
     public void testResetCanvas() throws Exception {
         // Fill a new canvas with true value
-        CanvasModel trueCanvasModel = new CanvasModel(true);
-        String dummyCanvas = new CanvasModel(false).toString();
+        CanvasModel trueCanvasModel = new CanvasModel(Color.BLACK);
+        String dummyCanvas = new CanvasModel(Color.WHITE).toString();
 
         trueCanvasModel.resetCanvas();
 
@@ -49,12 +51,12 @@ public class CanvasModelTest {
 
     @Test (expected = IndexOutOfBoundsException.class)
     public void testSetPixelOutOfBounds() {
-        canvasModel.setPixel(canvasModel.getXMax() + 1, canvasModel.getYMax() + 1, false);
+        canvasModel.setPixel(canvasModel.getXMax() + 1, canvasModel.getYMax() + 1, Color.WHITE);
     }
 
     @Test
     public void testGetPixel() {
-        assertEquals(canvasModel.getPixel(1,1), false);
+        assertEquals(canvasModel.getPixel(1,1), Color.WHITE);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -71,4 +73,5 @@ public class CanvasModelTest {
     public void testOutOfBounds() {
         canvasModel.inBounds(canvasModel.getXMax() + 1,canvasModel.getYMax() + 1);
     }
+
 }

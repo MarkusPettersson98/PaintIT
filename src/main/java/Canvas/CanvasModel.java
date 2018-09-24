@@ -1,25 +1,61 @@
 package Canvas;
 
+import Tools.Observable;
+import Tools.Observer;
+import javafx.scene.paint.Color;
 import lombok.Getter;
 
-public class CanvasModel {
+import java.util.ArrayList;
+import java.util.List;
 
-    @Getter private int xMax = 5, yMax = 5;
-    private boolean[][] canvas = new boolean[xMax][yMax];
+public class CanvasModel implements Observable {
 
-    protected CanvasModel(boolean initValue) {
+
+    @Getter private int xMax = 1200, yMax = 500;
+    @Getter private int latestPixelY;
+    @Getter private int latestPixelX;
+    private Color[][] canvas = new Color[xMax][yMax];
+    List<Observer> Observers = new ArrayList<>();
+
+    protected CanvasModel(Color initValue) {
         fillCanvas(initValue);
     }
 
-    protected void setPixel(int x, int y, boolean newValue) throws IndexOutOfBoundsException {
-        // Check if xMax and yMax are in bounds of canvas
-        if(!inBounds(x, y)) {}
-
-        canvas[x][y] = newValue;
+    protected CanvasModel(int xSize, int ySize, Color initColor) {
+        this.xMax = xSize; this.yMax = ySize;
+        this.canvas = new Color[xSize][ySize];
+        fillCanvas(initColor);
     }
 
+    /** Sets the color of a pixel.
+     *
+     * @param x x-coordinate of pixel.
+     * @param y y-coordinate of pixel.
+     * @param newValue New color of the pixel.
+     * @throws IndexOutOfBoundsException Exception when you try to paint outside the canvas.
+     */
+    protected void setPixel(int x, int y, Color newValue) throws IndexOutOfBoundsException {
+        // Check if xMax and yMax are in bounds of canvas
+        if(!inBounds(x, y)) {
+            throw new IndexOutOfBoundsException();
+        }
 
-    protected boolean getPixel(int x, int y) throws IndexOutOfBoundsException {
+        canvas[x][y] = newValue;
+
+        this.latestPixelX = x;
+        this.latestPixelY = y;
+
+        notifyObservers();
+    }
+
+    /** Returns the color of a pixel.
+     * @param x x-coordinate of pixel.
+     * @param y y-coordinate of pixel.
+     * @return The color of the chosen pixel.
+     * @throws IndexOutOfBoundsException Exception when you try to get a pixel outside the canvas.
+     */
+
+    protected Color getPixel(int x, int y) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
@@ -27,32 +63,53 @@ public class CanvasModel {
 
     }
 
+    /**
+     * Sets entire canvas to white
+     */
     protected void resetCanvas() {
-        fillCanvas(false);
+        fillCanvas(Color.WHITE);
     }
 
-    private void fillCanvas(boolean color) {
+    /**
+     * Sets entire canvas to chosen color.
+     * @param color The color of which the canvas will be filled with.
+     */
+
+    public void fillCanvas(Color color) {
         for (int i = 0; i < yMax; i++) {
             for (int j = 0; j < xMax; j++) {
                 canvas[j][i] = color;
             }
         }
+        notifyObservers();
     }
 
 
+    /**
+     * Creates and returns a string of the canvas, used exclusively for testing.
+     * @return Returns a String of the Canvas.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < yMax; i++) {
             sb.append("[ ");
             for (int j = 0; j < xMax; j++) {
-                sb.append(canvas[j][i] + " ");
+                Color temp = canvas[j][i];
+                sb.append("[ " + temp.getRed() + ", " + temp.getGreen() + ", " + temp.getBlue() + " ] ");
             }
             sb.append("] \n");
         }
         return sb.toString();
     }
 
+    /** Checks if x and y value is within CanvasModels bounds.
+     *
+     * @param x x-value to check.
+     * @param y y-value to check.
+     * @return Whether or not the values is within CanvasModel bounds.
+     * @throws IndexOutOfBoundsException Throws exception if out of bounds.
+     */
     protected boolean inBounds(int x, int y) throws IndexOutOfBoundsException {
         if((x < 0 || x > this.xMax) || (y < 0 || y > this.yMax)) {
             // xMax or yMax out of bounds, throw exception
@@ -60,5 +117,28 @@ public class CanvasModel {
         }
         // Within bounds
         return true;
+    }
+    public int getXBound() {
+        return xMax-1;
+    }
+
+    public int getYBound() {
+        return yMax-1;
+    }
+
+
+
+
+
+    @Override
+    public void addObserver(Observer observer) {
+        Observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer : Observers) {
+            observer.update();
+        }
     }
 }

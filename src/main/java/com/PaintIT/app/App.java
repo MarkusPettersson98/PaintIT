@@ -1,4 +1,5 @@
 
+
 package com.PaintIT.app;
 
 import MainMenu.*;
@@ -59,5 +60,6 @@ public class App extends Application
     }
 
 }
+
 
 
