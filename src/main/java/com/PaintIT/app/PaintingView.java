@@ -10,9 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PaintingView extends AnchorPane {
 
@@ -33,11 +33,10 @@ public class PaintingView extends AnchorPane {
 
     final ToggleGroup group = new ToggleGroup();
 
-    Color currentColor;
-
     CanvasController canvasController;
 
-    List<Tool> tools = new ArrayList<>();
+    HashMap<String, Tool> tools = new HashMap<>();
+    // List<Tool> tools = new ArrayList<>();
     Tool currentTool;
 
     public PaintingView(CanvasController canvasController) {
@@ -58,65 +57,63 @@ public class PaintingView extends AnchorPane {
             e.printStackTrace();
         }
 
+        colorPicker.setValue(Color.BLACK);
+
         // Set up tools
 
-        tools.add(new Brush());
-        tools.add(new SprayCan());
-        tools.add(new Eraser());
+        tools.put(Brush.class.getSimpleName(), new Brush());
+        tools.put(SprayCan.class.getSimpleName(),new SprayCan());
+        tools.put(Eraser.class.getSimpleName(), new Eraser());
 
-        this.currentTool = tools.get(0);
+        setupButton(BrushToggleButton, Brush.class.getSimpleName());
+        setupButton(SprayCanToggleButton, SprayCan.class.getSimpleName());
+        setupButton(EraserToggleButton, Eraser.class.getSimpleName());
 
-        currentColor = colorPicker.getValue();
+        group.selectedToggleProperty().addListener(e -> {
+            ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
+            currentTool = tools.get(selectedButton.getText());
+            colorPicker.setValue(currentTool.getColor());
+        });
+
+        currentTool = tools.get(Brush.class.getSimpleName());
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
             int x0 = (int) m.getSceneX();
             int y0 = (int) m.getSceneY();
             int radius = currentTool.getRadius();
+            Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
                     if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, currentColor);
+                        canvasController.paint(posx, posy, color);
                     }
                 }
             }
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            //currentTool.apply((int) m.getSceneX(), (int) m.getSceneY(), currentColor);
             int x0 = (int) m.getSceneX();
             int y0 = (int) m.getSceneY();
             int radius = currentTool.getRadius();
+            Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
                     if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, currentColor);
+                        canvasController.paint(posx, posy, color);
                     }
                 }
             }
         });
 
-            colorPicker.setOnAction(e -> {
-            currentColor = colorPicker.getValue();
+        colorPicker.setOnAction(e -> {
+            currentTool.setColor(colorPicker.getValue());
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToStack();
                 });
 
-
-        SprayCanToggleButton.setToggleGroup(group);
-        BrushToggleButton.setToggleGroup(group);
-        EraserToggleButton.setToggleGroup(group);
-
-        BrushToggleButton.setUserData(0);
-        SprayCanToggleButton.setUserData(1);
-        EraserToggleButton.setUserData(2);
-
-        group.selectedToggleProperty().addListener(e -> {
-            ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
-            currentTool = tools.get((int) selectedButton.getUserData());
-        });
 
         clearBtn.setOnAction(e -> clearCanvas());
 
@@ -125,6 +122,13 @@ public class PaintingView extends AnchorPane {
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());
         });
+
+        setRadius((int) radiusSlider.getValue());
+    }
+
+    private void setupButton(ToggleButton button, String name) {
+        button.setText(name);
+        button.setToggleGroup(this.group);
     }
 
     public void clearCanvas() {
@@ -134,9 +138,7 @@ public class PaintingView extends AnchorPane {
 
 
     public void setRadius(int radius) {
-        for(Tool t : tools) {
-            t.setRadius(radius);
-        }
+        tools.forEach((k, v) -> v.setRadius(radius));
     }
 
 }

@@ -8,13 +8,17 @@ import java.util.Random;
 
 public class WordHandler {
     private ArrayList<String> wordList;
-    private ArrayList<Character> tiles;
+    private ArrayList<Tile> tiles;
     private String currentWord;
     private final int tileAmount = 8;
-    private Guess guess;
+
 
     public WordHandler(){
-
+        createWordList();
+        pickRandomWord();
+        createRandomTiles(this.currentWord);
+    }
+    private void createWordList(){
         wordList= new ArrayList();
         wordList.add("Cat");
         wordList.add("Dog");
@@ -26,34 +30,20 @@ public class WordHandler {
         for(int i= 0; i<wordList.size();i++){
             wordList.set(i,wordList.get(i).toUpperCase());
         }
-        createRandomWord();
-        guess = new Guess(this.getCurrentWord());
     }
 
-    public Guess getGuess() {
-        return guess;
-    }
+
 
     public int getTileAmount() {
         return tileAmount;
     }
 
 
-
-
-    public static String charArrayToString(ArrayList<Character> list){
-        StringBuilder sB= new StringBuilder();
-        for(Character c: list){
-            sB.append(c);
-        }
-        return sB.toString();
-    }
-
     public ArrayList getWordList() {
         return wordList;
     }
 
-    public ArrayList<Character> getTiles() {
+    public ArrayList<Tile> getTiles() {
 
         return tiles;
     }
@@ -61,13 +51,15 @@ public class WordHandler {
         Random r = new Random();
 
         tiles = new ArrayList<>();
+
      for(int i = 0; i< word.length(); i ++){
          char c = Character.toUpperCase(word.charAt(i));
-         tiles.add(c);
+
+         tiles.add(new Tile(c,i));
      }
      for(int i = word.length(); i<tileAmount; i++){
          char d = Character.toUpperCase((char)(r.nextInt(26) + 'a'));
-         tiles.add(d);
+         tiles.add(new Tile(d,i));
      }
         Collections.shuffle(tiles);
     }
@@ -76,7 +68,7 @@ public class WordHandler {
         return currentWord;
     }
 
-    public void createRandomWord(){
+    public void pickRandomWord(){
         currentWord =  wordList.get(getRandomIndex());
 
     }

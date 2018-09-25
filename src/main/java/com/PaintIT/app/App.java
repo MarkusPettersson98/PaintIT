@@ -1,52 +1,59 @@
+
+
 package com.PaintIT.app;
 
-import Canvas.*;
-import Tools.Brush;
+import ViewObjects.TileBoard;
+import ViewObjects.TileBoardController;
+import WordAndGuess.GuessLogic;
+import WordAndGuess.Tile;
+import WordAndGuess.WordHandler;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 
 /**
  * Hello world!
  *
  */
-
 public class App extends Application
 {
-    public static void main( String[] args ) {
+    public static void main( String[] args )
+    {
         launch(args);
 
     }
 
-    @Override
+    /*@Override
     public void start (Stage primaryStage) throws Exception{
-
-        CanvasController canvasController = new CanvasController();
-        PaintingView paintingView = new PaintingView(canvasController);
-
         primaryStage.setTitle("PainIT");
-
-        Group root = new Group();
-
-        root.getChildren().add(paintingView);
-
-        paintingView.setRadius(10);
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuView.fxml"));
 
         Scene scene = new Scene(root, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
 
+    */
+    @Override
+    public void start (Stage primaryStage) throws Exception{
+        primaryStage.setTitle("PainIT");
+
+        GuessLogic guessLogic = new GuessLogic();
+
+        ArrayList<Tile> tempTiles = guessLogic.getAvailableTiles();
+        TileBoard tileBoard = new TileBoard(guessLogic, tempTiles);
+        TileBoardController tileBoardController = new TileBoardController(guessLogic,tileBoard);
+
+
+        Scene scene = new Scene(tileBoard);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
 }
+
+
+

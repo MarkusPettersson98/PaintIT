@@ -1,7 +1,6 @@
 package WordAndGuess;
 
 
-import WordAndGuess.WordHandler;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class WordHandlerTest {
     @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
-        wh.createRandomWord();
+        wh.pickRandomWord();
         String word = wh.getCurrentWord();
         assertNotNull(word);
     }
@@ -38,20 +37,21 @@ public class WordHandlerTest {
     }
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
-        WordHandler wordHandler = new WordHandler();
-        wordHandler.createRandomWord();
-        String word = wordHandler.getCurrentWord();
-        wordHandler.createRandomTiles(word);
-        ArrayList<Character> tiles = wordHandler.getTiles();
+        GuessLogic guessLogic = new GuessLogic();
+        ArrayList<Tile> tiles = guessLogic.getAvailableTiles();
+        ArrayList<Character> letters = new ArrayList<>();
+        for(Tile t: tiles){
+            letters.add(t.getLetter());
+        }
+        String word = guessLogic.getCurrentWord();
         for(int i = 0; i<word.length(); i++){
-          if(!tiles.contains(word.charAt(i))){
+          if(!letters.contains(word.charAt(i))){
              assertFalse(true);
           }
-
         }
         System.out.println("----------------------createRandomTilesTest---------------------------");
         System.out.println("THIS IS THE WORD :" + word);
-       System.out.println("These are the Tiles" + tiles);
+       System.out.println("These are the Tiles" + letters);
         assertTrue(true);
 
     }
