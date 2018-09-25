@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.*;
 
@@ -29,7 +28,7 @@ public class PaintingView extends AnchorPane {
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn, regretBtn;
+    Button clearBtn, undoBtn, redoBtn;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -111,13 +110,16 @@ public class PaintingView extends AnchorPane {
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
-            canvasController.pushToStack();
+            canvasController.pushToUndoStack();
                 });
 
 
         clearBtn.setOnAction(e -> clearCanvas());
 
-        regretBtn.setOnAction(e -> canvasController.regret());
+        undoBtn.setOnAction(e -> canvasController.undo());
+
+        redoBtn.setOnAction(e -> canvasController.redo());
+
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());
