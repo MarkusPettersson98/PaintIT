@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
-public class TileBoard extends VBox {
+public class TileBoardView extends VBox {
 
     @FXML HBox hBoxTop;
     @FXML HBox hBoxBottom;
@@ -22,6 +22,7 @@ public class TileBoard extends VBox {
     private Button testButton;
     private ArrayList<TileSlot> tileSlotList;
     private GuessLogic guessLogic;
+    private TileBoardController tileBoardController;
 
     public TextField getGuessTxtf() {
         return guessTxtf;
@@ -30,11 +31,9 @@ public class TileBoard extends VBox {
     public ArrayList<TileSlot> getTileSlotList() {
         return tileSlotList;
     }
-
     String filePath = "/fxml/tileBoard.fxml";
 
-
-    public TileBoard(GuessLogic guessLogic, ArrayList<Tile> availableTiles) {
+    public TileBoardView(GuessLogic guessLogic) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
@@ -46,12 +45,19 @@ public class TileBoard extends VBox {
         }
         this.guessLogic = guessLogic;
         tileSlotList =  new ArrayList<>();
-        createTileSlots(availableTiles);
+        createTileSlots(guessLogic.getAvailableTiles());
 
         guessTxtf = new TextField();
         hBoxBottom.getChildren().add(guessTxtf);
+        tileBoardController = new TileBoardController(guessLogic);
+        setTilesActionListeners();
 
 
+    }
+    private void setTilesActionListeners(){ //eventListeners
+        for(TileSlot t: tileSlotList){
+            t.getTileButton().setOnAction(e-> tileBoardController.addTileToGuess(t.getTile()));
+        }
 
     }
     private void createTileSlots(ArrayList<Tile> availableTiles){
@@ -62,6 +68,7 @@ public class TileBoard extends VBox {
         }
     }
     public void updateView(){
+        System.out.println("Listener works");
     guessTxtf.setText(GeneralUtil.tileListToString(guessLogic.getGuessWord()));
 
     }

@@ -3,6 +3,8 @@ package com.PaintIT.app;
 import MainMenu.GameSetupView;
 import MainMenu.MainMenuView;
 import MainMenu.WordRevealView;
+import ViewObjects.TileBoardView;
+import WordAndGuess.GuessLogic;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
 
@@ -12,6 +14,7 @@ public class TopController {
     private MainMenuView mainMenuView;
     private GameSetupView gameSetupView;
     private WordRevealView wordRevealView;
+    private TileBoardView tileBoardView; //Remove this once we´ve implemented GuessingView
 
     @Getter private Pane currentView;
 
@@ -20,8 +23,9 @@ public class TopController {
         mainMenuView = new MainMenuView();
         gameSetupView = new GameSetupView();
         wordRevealView = new WordRevealView();
-
-        currentView = mainMenuView;
+//TODO FIX SO THAT TILEBOARD HAS A GUESSLOGIC
+        tileBoardView = new TileBoardView(new GuessLogic());
+        currentView = tileBoardView;
     }
 
 

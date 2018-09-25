@@ -1,6 +1,5 @@
 package ViewObjects;
 
-import Util.GeneralUtil;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
 
@@ -8,21 +7,18 @@ import WordAndGuess.Tile;
 public class TileBoardController {
 
 
-    TileBoard tileBoard;
+    TileBoardView tileBoardView;
     GuessLogic guessLogic;
-    public TileBoardController(GuessLogic guessLogic, TileBoard tileBoard) {
-        this.tileBoard = tileBoard;
+    public TileBoardController(GuessLogic guessLogic) {
+        this.tileBoardView = tileBoardView;
         this.guessLogic = guessLogic;
-        setTilesActionListeners();
     }
 
     public void addTileToGuess(Tile c){
         guessLogic.addTileToGuess(c);
+        System.out.println("IT WORKS IN TILEBOARD");
+
     }
 
-    private void setTilesActionListeners(){ //eventListeners
-       for(TileSlot t: tileBoard.getTileSlotList()){
-           t.getTileButton().setOnAction(e-> addTileToGuess(t.getTile()));
-       }
-    }
+
 }

@@ -37,6 +37,7 @@ public class TileSlot extends AnchorPane {
         }
         this.tile = tile;
         tileButton.setText(Character.toString(tile.getLetter()));
+
     }
     public Button getTileButton() {
         return tileButton;
