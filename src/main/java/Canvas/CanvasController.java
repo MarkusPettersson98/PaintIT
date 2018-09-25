@@ -4,14 +4,16 @@ import javafx.scene.paint.Color;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class CanvasController {
 
     CanvasModel canvasModel;
     @Getter CanvasView canvasView;
 
-    ArrayList<ColorPoint> tempArray = new ArrayList<>();
-    ArrayList<ColorPoint> tempArray2 = new ArrayList<>();
+    ArrayList<ColorPoint> tempArrayList = new ArrayList<>();
+
+    Stack<ArrayList<ColorPoint>> colorPointStack = new Stack<>();
 
     Color tempColor;
 
@@ -41,7 +43,7 @@ public class CanvasController {
         if(!canvasModel.getPixel(x, y).equals(newColor)) {
             tempColor = canvasModel.getPixel(x,y);
 
-            tempArray.add(new ColorPoint(x,y, tempColor));
+            tempArrayList.add(new ColorPoint(x,y, tempColor));
 
             canvasModel.setPixel(x, y, newColor);
         }
@@ -61,8 +63,7 @@ public class CanvasController {
      */
     public void clear() {
         canvasModel.resetCanvas();
-        tempArray2.clear();
-        tempArray.clear();
+        tempArrayList.clear();
     }
 
     /**
@@ -82,12 +83,16 @@ public class CanvasController {
         }
     }
 
+    public void pushToStack() {
+        colorPointStack.push(new ArrayList<>(tempArrayList));
+        tempArrayList.clear();
+    }
+
     public void regret() {
-        for (ColorPoint cp : tempArray) {
-            tempArray2.add(cp);
-        }
-        for (ColorPoint cp2 : tempArray2) {
-            paint(cp2.getX(),cp2.getY(), cp2.getC());
+        if(!colorPointStack.empty()) {
+            for (ColorPoint cp2 : colorPointStack.pop()) {
+                paint(cp2.getX(), cp2.getY(), cp2.getC());
+            }
         }
     }
 }

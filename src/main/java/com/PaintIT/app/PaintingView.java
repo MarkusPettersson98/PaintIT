@@ -101,7 +101,7 @@ public class PaintingView extends AnchorPane {
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
-            //push to stack
+            canvasController.pushToStack();
                 });
 
 
