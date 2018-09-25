@@ -17,9 +17,9 @@ public class MainMenuView extends AnchorPane{
     @FXML private Button howToPlay;
     @FXML private Button highScore;
 
-    public MainMenuView () {
+    public MainMenuView (FXMLLoader fxmlLoader) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

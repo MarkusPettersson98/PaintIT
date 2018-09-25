@@ -35,17 +35,17 @@ public class PaintingView extends AnchorPane {
     CanvasController canvasController;
 
     HashMap<String, Tool> tools = new HashMap<>();
-    // List<Tool> tools = new ArrayList<>();
+
     Tool currentTool;
 
-    public PaintingView() {
+    public PaintingView(FXMLLoader fxmlLoader) {
 
         this.canvasController = new CanvasController();
         this.canvas = canvasController.getCanvasView();
 
         this.getChildren().add(canvas);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

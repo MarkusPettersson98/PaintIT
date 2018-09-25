@@ -15,8 +15,8 @@ public class WordRevealView extends AnchorPane{
     @FXML public Label numberCountdownLabel;
     @FXML public Button revealNowButton;
 
-    public WordRevealView (){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WordRevealView.fxml"));
+    public WordRevealView (FXMLLoader fxmlLoader){
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WordRevealView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
