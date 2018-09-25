@@ -32,6 +32,7 @@ public class GuessLogic implements Observable {
 
     public void addTileToGuess(Tile c){
         guessWord.add(c);
+        c.setStatus(Tile.Status.Used);
         if(guessWord.size() == currentWord.length()){
             guessCurrentWord();
         }
@@ -47,8 +48,8 @@ public class GuessLogic implements Observable {
     }
     public void removeCharFromGuess() {
         if (guessWord.size() > 0) {
+            guessWord.get(guessWord.size()-1).setStatus(Tile.Status.Available);
             guessWord.remove(guessWord.size() - 1);
-
         }
         notifyObservers();
     }

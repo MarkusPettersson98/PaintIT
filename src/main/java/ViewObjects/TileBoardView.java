@@ -70,5 +70,8 @@ public class TileBoardView extends VBox implements Observer{
     @Override
     public void update() {
         guessTxtf.setText(guessLogic.getGuessString());
+        for(TileSlot t: tileSlotList){
+           t.update();
+        }
     }
 }

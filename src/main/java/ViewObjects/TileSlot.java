@@ -42,5 +42,12 @@ public class TileSlot extends AnchorPane {
     public Button getTileButton() {
         return tileButton;
     }
+    public void update(){
+        if(tile.getStatus() == Tile.Status.Used){
+            tileButton.setVisible(false);
+        }else{
+            tileButton.setVisible(true);
+        }
+    }
 
 }
