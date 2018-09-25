@@ -21,6 +21,7 @@ public class App extends Application
     @Override
     public void start (Stage primaryStage) throws Exception{
         primaryStage.setTitle("PainIT");
+        TopController.getInstance();
         TopController.show(MainMenuView.class.getSimpleName());
 
         Scene scene = new Scene(TopController.getCurrentView());

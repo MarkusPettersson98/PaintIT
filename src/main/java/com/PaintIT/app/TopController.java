@@ -13,7 +13,7 @@ public class TopController {
 
     @Getter private static Pane currentView = new Pane();
 
-    private static TopController instance = new TopController();
+    private static TopController instance;
 
     private TopController() {
         for(Pair<String, Pane> viewPair : ViewFactory.createAllViews()) {
@@ -24,6 +24,11 @@ public class TopController {
     public static void show(String url) {
         currentView.getChildren().clear();
         currentView.getChildren().add(applicationPanes.get(url));
+    }
+
+    public static TopController getInstance() {
+        if(instance == null) instance = new TopController();
+        return instance;
     }
 
 
