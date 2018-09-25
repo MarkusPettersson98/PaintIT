@@ -1,13 +1,30 @@
 package MainMenu;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
-public class WordRevealView {
+import java.io.IOException;
+
+public class WordRevealView extends AnchorPane{
 
     @FXML public Label startingPlayerLabel;
     @FXML public Label instructionsLabel;
     @FXML public Label numberCountdownLabel;
     @FXML public Button revealNowButton;
+
+    public WordRevealView (){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WordRevealView.fxml"));
+
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

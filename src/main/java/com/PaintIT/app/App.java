@@ -26,11 +26,14 @@ public class App extends Application
     @Override
     public void start (Stage primaryStage) throws Exception{
 
-        MainMenuView mainMenuView = new MainMenuView();
+        //MainMenuView mainMenuView = new MainMenuView();
+        //GameSetupView gameSetupView = new GameSetupView();
+        WordRevealView wordRevealView = new WordRevealView();
         primaryStage.setTitle("PainIT");
-        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/GameSetupView.fxml"));
         Group root = new Group();
-        root.getChildren().add(mainMenuView);
+        //root.getChildren().add(mainMenuView);
+        //root.getChildren().add(gameSetupView);
+        root.getChildren().add(wordRevealView);
         Scene scene = new Scene(root, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
