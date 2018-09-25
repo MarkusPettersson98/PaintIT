@@ -8,6 +8,10 @@ public class Player {
         name = "No Name";
     }
 
+    public Player(String name){
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

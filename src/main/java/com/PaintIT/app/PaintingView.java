@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import javax.swing.*;
@@ -17,7 +18,7 @@ import java.util.*;
 public class PaintingView extends AnchorPane {
 
     @FXML
-    Canvas canvas;
+    HBox hbox;
 
     @FXML
     ColorPicker colorPicker;
@@ -42,9 +43,7 @@ public class PaintingView extends AnchorPane {
     public PaintingView() {
 
         this.canvasController = new CanvasController();
-        this.canvas = canvasController.getCanvasView();
-
-        this.getChildren().add(canvas);
+        Canvas canvas = canvasController.getCanvasView();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
 
@@ -56,6 +55,8 @@ public class PaintingView extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        this.hbox.getChildren().add(canvas);
 
         colorPicker.setValue(Color.BLACK);
 
@@ -79,8 +80,8 @@ public class PaintingView extends AnchorPane {
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            int x0 = (int) m.getSceneX();
-            int y0 = (int) m.getSceneY();
+            int x0 = (int) m.getX();
+            int y0 = (int) m.getY();
             int radius = currentTool.getRadius();
             Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
@@ -93,8 +94,8 @@ public class PaintingView extends AnchorPane {
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            int x0 = (int) m.getSceneX();
-            int y0 = (int) m.getSceneY();
+            int x0 = (int) m.getX();
+            int y0 = (int) m.getY();
             int radius = currentTool.getRadius();
             Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
@@ -124,6 +125,9 @@ public class PaintingView extends AnchorPane {
         });
 
         setRadius((int) radiusSlider.getValue());
+
+        canvasController.fillCanvas(Color.RED);
+
     }
 
     private void setupButton(ToggleButton button, String name) {
