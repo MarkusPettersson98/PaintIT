@@ -5,6 +5,7 @@ package com.PaintIT.app;
 import ViewObjects.TileBoard;
 import ViewObjects.TileBoardController;
 import WordAndGuess.GuessLogic;
+import WordAndGuess.Tile;
 import WordAndGuess.WordHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -42,7 +43,7 @@ public class App extends Application
 
         GuessLogic guessLogic = new GuessLogic();
 
-        ArrayList<Character> tempTiles = guessLogic.getAvailableTiles();
+        ArrayList<Tile> tempTiles = guessLogic.getAvailableTiles();
         TileBoard tileBoard = new TileBoard(guessLogic, tempTiles);
         TileBoardController tileBoardController = new TileBoardController(guessLogic,tileBoard);
 

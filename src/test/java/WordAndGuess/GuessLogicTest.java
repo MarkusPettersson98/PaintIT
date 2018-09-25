@@ -9,14 +9,14 @@ public class GuessLogicTest {
     @Test
     public void removeCharFromGuess() throws Exception {
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.addCharToGuess('c');
-        guessLogic.addCharToGuess('a');
-        guessLogic.addCharToGuess('h');
+        guessLogic.addTileToGuess(new Tile('c',0));
+        guessLogic.addTileToGuess(new Tile('a',1));
+        guessLogic.addTileToGuess(new Tile('h',2));
         assertEquals(3,guessLogic.getGuessWord().size()); //Checks array size
         guessLogic.removeCharFromGuess();
         assertEquals(2,guessLogic.getGuessWord().size()); //makes sure removeCharFromGuess works
-        assertEquals('c',(char)guessLogic.getGuessWord().get(0));
-        assertEquals('a',(char)guessLogic.getGuessWord().get(1));
+        assertEquals('c',guessLogic.getGuessWord().get(0).getLetter());
+        assertEquals('a',guessLogic.getGuessWord().get(1).getLetter());
 
     }
     @Test
@@ -26,10 +26,11 @@ public class GuessLogicTest {
         String guess = word;
 
         for(int i = 0; i<guess.length(); i++){
-            guessLogic.addCharToGuess(guess.charAt(i));
+            //TODO CREATE SOME FORLOOP THAT CREATES TILES OR SOMETHING NICE
+            guessLogic.addTileToGuess(new Tile(guess.charAt(i),i));
         }
         assertTrue(guessLogic.guessCurrentWord());
-        guessLogic.addCharToGuess('x');
+        guessLogic.addTileToGuess(new Tile('x',4));
         assertFalse(guessLogic.guessCurrentWord());
 
     }

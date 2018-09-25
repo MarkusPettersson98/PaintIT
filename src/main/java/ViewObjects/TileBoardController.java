@@ -2,8 +2,7 @@ package ViewObjects;
 
 import Util.GeneralUtil;
 import WordAndGuess.GuessLogic;
-import WordAndGuess.WordHandler;
-import javafx.event.EventHandler;
+import WordAndGuess.Tile;
 
 
 public class TileBoardController {
@@ -14,18 +13,16 @@ public class TileBoardController {
     public TileBoardController(GuessLogic guessLogic, TileBoard tileBoard) {
         this.tileBoard = tileBoard;
         this.guessLogic = guessLogic;
-        setTilesEL();
+        setTilesActionListeners();
     }
 
-    public void addTileToGuess(Character c){
-        System.out.println(c.toString());
-        guessLogic.addCharToGuess(c);
-        System.out.println(GeneralUtil.CharArrayListToString(guessLogic.getGuessWord()));
+    public void addTileToGuess(Tile c){
+        guessLogic.addTileToGuess(c);
     }
 
-    private void setTilesEL(){ //eventListeners
+    private void setTilesActionListeners(){ //eventListeners
        for(TileSlot t: tileBoard.getTileSlotList()){
-           t.getTileButton().setOnAction(e-> addTileToGuess(t.getTileLetter()));
+           t.getTileButton().setOnAction(e-> addTileToGuess(t.getTile()));
        }
     }
 }

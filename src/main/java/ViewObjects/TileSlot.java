@@ -1,5 +1,6 @@
 package ViewObjects;
 
+import WordAndGuess.Tile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,26 +13,30 @@ public class TileSlot extends AnchorPane {
 
     @FXML Button tileButton;
 
-    private Character tileLetter;
+    private Tile tile;
 
-    public Character getTileLetter() {
-        return tileLetter;
+    public Tile getTileLetter() {
+        return tile;
     }
 
     private String filePath = "/fxml/tileSlot.fxml";
-    public TileSlot(Character tileLetter){
+
+    public Tile getTile() {
+        return tile;
+    }
+
+    public TileSlot(Tile tile){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();
         } catch(Exception e) {
+
             System.out.println(e.getMessage());
         }
-
-        this.tileLetter = tileLetter;
-        tileButton.setText(tileLetter.toString());
-
+        this.tile = tile;
+        tileButton.setText(Character.toString(tile.getLetter()));
     }
     public Button getTileButton() {
         return tileButton;

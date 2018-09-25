@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class GuessLogic {
     private String currentWord;
-    private ArrayList<Character> guessWord;
-    private ArrayList<Character> availableTiles;
+    private ArrayList<Tile> guessWord;
+    private ArrayList<Tile> availableTiles;
     private WordHandler wordHandler;
 
     public GuessLogic(){
@@ -22,11 +22,11 @@ public class GuessLogic {
         return currentWord;
     }
 
-    public ArrayList<Character> getAvailableTiles() {
+    public ArrayList<Tile> getAvailableTiles() {
         return availableTiles;
     }
 
-    public void addCharToGuess(char c){
+    public void addTileToGuess(Tile c){
         guessWord.add(c);
         if(guessWord.size() == currentWord.length()){
             guessCurrentWord();
@@ -34,7 +34,11 @@ public class GuessLogic {
         }
     }
 
-    public ArrayList<Character> getGuessWord() {
+    public String guessToString(){
+        return  GeneralUtil.tileListToString(guessWord);
+    }
+
+    public ArrayList<Tile> getGuessWord() {
         return guessWord;
     }
     public void removeCharFromGuess() {
@@ -44,8 +48,9 @@ public class GuessLogic {
         }
     }
     public boolean guessCurrentWord(){
-        String guessWord = GeneralUtil.CharArrayListToString(this.guessWord);
-        System.out.println("Guess is: " + guessWord);
+
+        String guessWord = GeneralUtil.tileListToString(this.guessWord);
+        System.out.println("Guess is: " + guessToString());
         System.out.println("Correct word is" + currentWord);
         if(guessWord.equals(currentWord)){
             return true;

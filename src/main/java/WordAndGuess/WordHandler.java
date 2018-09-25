@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class WordHandler {
     private ArrayList<String> wordList;
-    private ArrayList<Character> tiles;
+    private ArrayList<Tile> tiles;
     private String currentWord;
     private final int tileAmount = 8;
 
@@ -43,7 +43,7 @@ public class WordHandler {
         return wordList;
     }
 
-    public ArrayList<Character> getTiles() {
+    public ArrayList<Tile> getTiles() {
 
         return tiles;
     }
@@ -51,13 +51,15 @@ public class WordHandler {
         Random r = new Random();
 
         tiles = new ArrayList<>();
+
      for(int i = 0; i< word.length(); i ++){
          char c = Character.toUpperCase(word.charAt(i));
-         tiles.add(c);
+
+         tiles.add(new Tile(c,i));
      }
      for(int i = word.length(); i<tileAmount; i++){
          char d = Character.toUpperCase((char)(r.nextInt(26) + 'a'));
-         tiles.add(d);
+         tiles.add(new Tile(d,i));
      }
         Collections.shuffle(tiles);
     }
