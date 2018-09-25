@@ -1,4 +1,4 @@
-package MainMenu;
+package Views;
 
 import Util.ButtonFactory;
 import com.PaintIT.app.TopController;

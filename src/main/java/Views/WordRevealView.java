@@ -1,4 +1,4 @@
-package MainMenu;
+package Views;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

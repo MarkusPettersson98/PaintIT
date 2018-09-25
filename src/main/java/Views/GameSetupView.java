@@ -1,4 +1,4 @@
-package MainMenu;
+package Views;
 
 import Game.Player;
 import Util.ButtonFactory;

@@ -1,9 +1,8 @@
 package com.PaintIT.app;
 
-import MainMenu.GameSetupView;
-import MainMenu.MainMenuView;
-import MainMenu.WordRevealView;
+import Util.ViewFactory;
 import javafx.scene.layout.Pane;
+import javafx.util.Pair;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -14,18 +13,12 @@ public class TopController {
 
     @Getter private static Pane currentView = new Pane();
 
+    private static TopController instance = new TopController();
 
-    public TopController() {
-        loadPane(PaintingView.class.getSimpleName(), new PaintingView());
-        loadPane(MainMenuView.class.getSimpleName(), new MainMenuView());
-        loadPane(GameSetupView.class.getSimpleName(), new GameSetupView());
-        loadPane(WordRevealView.class.getSimpleName(), new WordRevealView());
-
-        show(MainMenuView.class.getSimpleName());
-    }
-
-    private void loadPane(String paneName, Pane pane) {
-        applicationPanes.put(paneName, pane);
+    private TopController() {
+        for(Pair<String, Pane> viewPair : ViewFactory.createAllViews()) {
+            applicationPanes.put(viewPair.getKey(), viewPair.getValue());
+        }
     }
 
     public static void show(String url) {

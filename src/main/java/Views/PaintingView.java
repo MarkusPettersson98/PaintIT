@@ -1,4 +1,4 @@
-package com.PaintIT.app;
+package Views;
 
 import Tools.*;
 import Canvas.CanvasController;
