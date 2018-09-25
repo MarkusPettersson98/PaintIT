@@ -30,7 +30,7 @@ public class GuessLogicTest {
             guessLogic.addTileToGuess(new Tile(guess.charAt(i),i));
         }
         assertTrue(guessLogic.getCorrectGuessMade());
-        
+
 
 
     }

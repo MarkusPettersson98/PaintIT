@@ -61,8 +61,6 @@ public class GuessLogic implements Observable {
     }
     public void guessCurrentWord(){
         String guessWord = GeneralUtil.tileListToString(this.guessWord);
-        System.out.println("Guess is: " + getGuessString());
-        System.out.println("Correct word is" + currentWord);
         if(guessWord.equals(currentWord)){
             correctGuessMade = true;
         }
