@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -15,10 +16,12 @@ import java.util.ArrayList;
 
 public class TileBoardView extends VBox implements Observer{
 
-    @FXML HBox hBoxTop;
+    @FXML AnchorPane ancTop;
     @FXML HBox hBoxBottom;
+    @FXML Button removeTileBtn;
     @FXML VBox vBoxRoot;
-    private TextField guessTxtf;
+    @FXML TextField guessTxtf;
+
     private Button testButton;
     private ArrayList<TileSlot> tileSlotList;
     private GuessLogic guessLogic;
@@ -47,11 +50,15 @@ public class TileBoardView extends VBox implements Observer{
         tileSlotList =  new ArrayList<>();
         createTileSlots(guessLogic.getAvailableTiles());
 
-        guessTxtf = new TextField();
-        hBoxBottom.getChildren().add(guessTxtf);
+    
         tileBoardController = new TileBoardController(guessLogic);
-        setTilesActionListeners();
+        setActionListeners();
         guessLogic.addObserver(this);
+    }
+
+    private void setActionListeners(){
+        removeTileBtn.setOnAction(e->tileBoardController.removeTileFromGuess());
+        setTilesActionListeners();
     }
     private void setTilesActionListeners(){ //eventListeners
         for(TileSlot t: tileSlotList){
@@ -63,7 +70,7 @@ public class TileBoardView extends VBox implements Observer{
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
             tileSlotList.add(temp);
-            hBoxTop.getChildren().add(temp);
+            hBoxBottom.getChildren().add(temp);
         }
     }
 

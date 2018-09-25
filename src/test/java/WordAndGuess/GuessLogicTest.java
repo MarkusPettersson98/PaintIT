@@ -13,8 +13,8 @@ public class GuessLogicTest {
         guessLogic.addTileToGuess(new Tile('a',1));
         guessLogic.addTileToGuess(new Tile('h',2));
         assertEquals(3,guessLogic.getGuessWord().size()); //Checks array size
-        guessLogic.removeCharFromGuess();
-        assertEquals(2,guessLogic.getGuessWord().size()); //makes sure removeCharFromGuess works
+        guessLogic.removeTileFromGuess();
+        assertEquals(2,guessLogic.getGuessWord().size()); //makes sure removeTileFromGuess works
         assertEquals('c',guessLogic.getGuessWord().get(0).getLetter());
         assertEquals('a',guessLogic.getGuessWord().get(1).getLetter());
 

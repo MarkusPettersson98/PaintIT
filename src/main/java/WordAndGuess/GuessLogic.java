@@ -46,7 +46,7 @@ public class GuessLogic implements Observable {
     public ArrayList<Tile> getGuessWord() {
         return guessWord;
     }
-    public void removeCharFromGuess() {
+    public void removeTileFromGuess() {
         if (guessWord.size() > 0) {
             guessWord.get(guessWord.size()-1).setStatus(Tile.Status.Available);
             guessWord.remove(guessWord.size() - 1);
