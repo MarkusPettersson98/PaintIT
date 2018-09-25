@@ -100,6 +100,10 @@ public class PaintingView extends AnchorPane {
             currentColor = colorPicker.getValue();
         });
 
+        canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
+            //push to stack
+                });
+
 
         SprayCanToggleButton.setToggleGroup(group);
         BrushToggleButton.setToggleGroup(group);
@@ -115,6 +119,7 @@ public class PaintingView extends AnchorPane {
         });
 
         clearBtn.setOnAction(e -> clearCanvas());
+
         regretBtn.setOnAction(e -> canvasController.regret());
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {

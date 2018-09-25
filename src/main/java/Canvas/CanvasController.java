@@ -3,12 +3,17 @@ package Canvas;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
+import java.util.ArrayList;
+
 public class CanvasController {
 
     CanvasModel canvasModel;
     @Getter CanvasView canvasView;
 
+    ArrayList<ColorPoint> tempArray = new ArrayList<>();
+    ArrayList<ColorPoint> tempArray2 = new ArrayList<>();
 
+    Color tempColor;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -33,8 +38,13 @@ public class CanvasController {
         if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0)
             return;
 
-        if(!canvasModel.getPixel(x, y).equals(newColor))
-         canvasModel.setPixel(x,y, newColor);
+        if(!canvasModel.getPixel(x, y).equals(newColor)) {
+            tempColor = canvasModel.getPixel(x,y);
+
+            tempArray.add(new ColorPoint(x,y, tempColor));
+
+            canvasModel.setPixel(x, y, newColor);
+        }
       }
 
     /** Calls {@link CanvasModel#fillCanvas(Color)}
@@ -51,6 +61,8 @@ public class CanvasController {
      */
     public void clear() {
         canvasModel.resetCanvas();
+        tempArray2.clear();
+        tempArray.clear();
     }
 
     /**
@@ -71,6 +83,11 @@ public class CanvasController {
     }
 
     public void regret() {
-
+        for (ColorPoint cp : tempArray) {
+            tempArray2.add(cp);
+        }
+        for (ColorPoint cp2 : tempArray2) {
+            paint(cp2.getX(),cp2.getY(), cp2.getC());
+        }
     }
 }
