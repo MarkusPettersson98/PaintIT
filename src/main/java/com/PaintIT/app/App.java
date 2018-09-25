@@ -38,6 +38,7 @@ public class App extends Application
     @Override
     public void start (Stage primaryStage) throws Exception{
         primaryStage.setTitle("PainIT");
+        TopController topController = new TopController();
 
         GuessLogic guessLogic = new GuessLogic();
 
@@ -46,7 +47,7 @@ public class App extends Application
         TileBoardController tileBoardController = new TileBoardController(guessLogic,tileBoard);
 
 
-        Scene scene = new Scene(tileBoard);
+        Scene scene = new Scene(topController.getCurrentView());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

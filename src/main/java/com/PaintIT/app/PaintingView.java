@@ -39,10 +39,10 @@ public class PaintingView extends AnchorPane {
     // List<Tool> tools = new ArrayList<>();
     Tool currentTool;
 
-    public PaintingView(CanvasController canvasController) {
+    public PaintingView() {
 
+        this.canvasController = new CanvasController();
         this.canvas = canvasController.getCanvasView();
-        this.canvasController = canvasController;
 
         this.getChildren().add(canvas);
 
