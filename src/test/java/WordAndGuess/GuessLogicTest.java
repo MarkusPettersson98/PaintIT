@@ -25,13 +25,13 @@ public class GuessLogicTest {
         String word = guessLogic.getCurrentWord();
         String guess = word;
 
+        assertFalse(guessLogic.getCorrectGuessMade());
         for(int i = 0; i<guess.length(); i++){
-            //TODO CREATE SOME FORLOOP THAT CREATES TILES OR SOMETHING NICE
             guessLogic.addTileToGuess(new Tile(guess.charAt(i),i));
         }
-        assertTrue(guessLogic.guessCurrentWord());
-        guessLogic.addTileToGuess(new Tile('x',4));
-        assertFalse(guessLogic.guessCurrentWord());
+        assertTrue(guessLogic.getCorrectGuessMade());
+        
+
 
     }
 }

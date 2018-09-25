@@ -1,7 +1,6 @@
 package ViewObjects;
 
 import Tools.Observer;
-import Util.GeneralUtil;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
 import javafx.fxml.FXML;
@@ -50,7 +49,7 @@ public class TileBoardView extends VBox implements Observer{
         tileSlotList =  new ArrayList<>();
         createTileSlots(guessLogic.getAvailableTiles());
 
-    
+
         tileBoardController = new TileBoardController(guessLogic);
         setActionListeners();
         guessLogic.addObserver(this);
@@ -64,8 +63,8 @@ public class TileBoardView extends VBox implements Observer{
         for(TileSlot t: tileSlotList){
             t.getTileButton().setOnAction(e-> tileBoardController.addTileToGuess(t.getTile()));
         }
-
     }
+
     private void createTileSlots(ArrayList<Tile> availableTiles){
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
@@ -79,6 +78,9 @@ public class TileBoardView extends VBox implements Observer{
         guessTxtf.setText(guessLogic.getGuessString());
         for(TileSlot t: tileSlotList){
            t.update();
+        }
+        if(guessLogic.getCorrectGuessMade()){
+            guessTxtf.setText("CORRECT GUESS : " + guessLogic.getGuessString());
         }
     }
 }

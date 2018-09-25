@@ -12,8 +12,14 @@ public class GuessLogic implements Observable {
     private ArrayList<Tile> availableTiles;
     private WordHandler wordHandler;
     private ArrayList<Observer> observers;
+    private Boolean correctGuessMade;
+
+    public Boolean getCorrectGuessMade() {
+        return correctGuessMade;
+    }
 
     public GuessLogic(){
+        correctGuessMade = false;
         this.wordHandler = new WordHandler();
         this.availableTiles = wordHandler.getTiles();
         this.currentWord = wordHandler.getCurrentWord();
@@ -53,14 +59,12 @@ public class GuessLogic implements Observable {
         }
         notifyObservers();
     }
-    public boolean guessCurrentWord(){
+    public void guessCurrentWord(){
         String guessWord = GeneralUtil.tileListToString(this.guessWord);
         System.out.println("Guess is: " + getGuessString());
         System.out.println("Correct word is" + currentWord);
         if(guessWord.equals(currentWord)){
-            return true;
-        }else{
-            return false;
+            correctGuessMade = true;
         }
     }
 
