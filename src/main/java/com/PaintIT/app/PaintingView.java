@@ -29,7 +29,7 @@ public class PaintingView extends AnchorPane {
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn;
+    Button clearBtn, regretBtn;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -115,6 +115,7 @@ public class PaintingView extends AnchorPane {
         });
 
         clearBtn.setOnAction(e -> clearCanvas());
+        regretBtn.setOnAction(e -> canvasController.regret());
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());

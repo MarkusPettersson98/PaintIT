@@ -67,4 +67,8 @@ public class CanvasController {
             }
         }
     }
+
+    public void regret() {
+
+    }
 }
