@@ -8,6 +8,8 @@ public class CanvasController {
     CanvasModel canvasModel;
     @Getter CanvasView canvasView;
 
+
+
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
