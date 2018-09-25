@@ -12,18 +12,13 @@ public class PlayerTest {
 
     @Before
     public void setUp(){
-        player = new Player("Greta");
+        player = new Player();
+        player.setName("Greta");
     }
 
     @Test
     public void nameTest(){
         assertTrue(player.getName().equals("Greta"));
-    }
-
-    @Test
-    public void stateTest(){
-        player.setDrawer(true);
-        assertTrue(player.isDrawer());
     }
 
 }

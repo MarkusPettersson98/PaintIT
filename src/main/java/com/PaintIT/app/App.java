@@ -1,5 +1,3 @@
-
-
 package com.PaintIT.app;
 
 import ViewObjects.TileBoard;
@@ -54,6 +52,3 @@ public class App extends Application
     }
 
 }
-
-
-
