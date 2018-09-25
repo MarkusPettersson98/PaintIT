@@ -6,26 +6,29 @@ import MainMenu.WordRevealView;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
 
+import java.util.HashMap;
+
 public class TopController {
 
-    private PaintingView paintingView;
-    private MainMenuView mainMenuView;
-    private GameSetupView gameSetupView;
-    private WordRevealView wordRevealView;
+    private static HashMap<String, Pane> applicationPanes = new HashMap<>();
 
-    @Getter private Pane currentView;
+    @Getter private static Pane currentView;
 
     public TopController() {
-        paintingView = new PaintingView();
-        mainMenuView = new MainMenuView();
-        gameSetupView = new GameSetupView();
-        wordRevealView = new WordRevealView();
+        loadPane(PaintingView.class.getSimpleName(), new PaintingView());
+        loadPane(MainMenuView.class.getSimpleName(), new MainMenuView());
+        loadPane(GameSetupView.class.getSimpleName(), new GameSetupView());
+        loadPane(WordRevealView.class.getSimpleName(), new WordRevealView());
 
-        currentView = mainMenuView;
+        show(MainMenuView.class.getSimpleName());
     }
 
+    private void loadPane(String paneName, Pane pane) {
+        applicationPanes.put(paneName, pane);
+    }
 
-
-
+    public static void show(String url) {
+        currentView = applicationPanes.get(url);
+    }
 
 }
