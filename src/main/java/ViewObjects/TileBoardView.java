@@ -1,19 +1,19 @@
 package ViewObjects;
 
+import Tools.Observer;
 import Util.GeneralUtil;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
-public class TileBoardView extends VBox {
+public class TileBoardView extends VBox implements Observer{
 
     @FXML HBox hBoxTop;
     @FXML HBox hBoxBottom;
@@ -51,8 +51,7 @@ public class TileBoardView extends VBox {
         hBoxBottom.getChildren().add(guessTxtf);
         tileBoardController = new TileBoardController(guessLogic);
         setTilesActionListeners();
-
-
+        guessLogic.addObserver(this);
     }
     private void setTilesActionListeners(){ //eventListeners
         for(TileSlot t: tileSlotList){
@@ -67,10 +66,9 @@ public class TileBoardView extends VBox {
             hBoxTop.getChildren().add(temp);
         }
     }
-    public void updateView(){
-        System.out.println("Listener works");
-    guessTxtf.setText(GeneralUtil.tileListToString(guessLogic.getGuessWord()));
 
+    @Override
+    public void update() {
+        guessTxtf.setText(guessLogic.getGuessString());
     }
-
 }
