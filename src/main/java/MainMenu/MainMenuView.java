@@ -1,10 +1,11 @@
 package MainMenu;
 
+import Util.ButtonFactory;
+import com.PaintIT.app.TopController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 
@@ -29,11 +30,9 @@ public class MainMenuView extends AnchorPane{
             e.printStackTrace();
         }
 
-        play.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("hej");
-            }
+        play.setId(ButtonFactory.createGameSetupViewBtnId());
+        play.setOnAction(e -> {
+            TopController.show(play.getId());
         });
 
         howToPlay.setOnAction(new EventHandler<ActionEvent>() {

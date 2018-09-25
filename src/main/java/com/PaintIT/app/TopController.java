@@ -12,7 +12,8 @@ public class TopController {
 
     private static HashMap<String, Pane> applicationPanes = new HashMap<>();
 
-    @Getter private static Pane currentView;
+    @Getter private static Pane currentView = new Pane();
+
 
     public TopController() {
         loadPane(PaintingView.class.getSimpleName(), new PaintingView());
@@ -28,7 +29,9 @@ public class TopController {
     }
 
     public static void show(String url) {
-        currentView = applicationPanes.get(url);
+        currentView.getChildren().clear();
+        currentView.getChildren().add(applicationPanes.get(url));
     }
+
 
 }

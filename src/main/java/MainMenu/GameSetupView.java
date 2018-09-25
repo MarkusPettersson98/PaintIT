@@ -1,6 +1,8 @@
 package MainMenu;
 
 import Game.Player;
+import Util.ButtonFactory;
+import com.PaintIT.app.TopController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,12 +35,9 @@ public class GameSetupView extends AnchorPane {
             e.printStackTrace();
         }
 
-        startDrawing.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                setNames();
-                System.out.println("Players' names are " + player1.getName() + " and " + player2.getName());
-            }
+        startDrawing.setId(ButtonFactory.createPaintingViewBtnId());
+        startDrawing.setOnAction(e -> {
+            TopController.show(startDrawing.getId());
         });
 
     }

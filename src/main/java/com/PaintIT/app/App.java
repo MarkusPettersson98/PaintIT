@@ -7,6 +7,7 @@ import WordAndGuess.Tile;
 import WordAndGuess.WordHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -46,8 +47,7 @@ public class App extends Application
         TileBoard tileBoard = new TileBoard(guessLogic, tempTiles);
         TileBoardController tileBoardController = new TileBoardController(guessLogic,tileBoard);
 
-
-        Scene scene = new Scene(topController.getCurrentView());
+        Scene scene = new Scene(TopController.getCurrentView());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
