@@ -21,7 +21,7 @@ public class TopController {
         gameSetupView = new GameSetupView();
         wordRevealView = new WordRevealView();
 
-        currentView = mainMenuView;
+        currentView = wordRevealView;
     }
 
 
