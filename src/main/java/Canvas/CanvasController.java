@@ -16,11 +16,7 @@ public class CanvasController {
 
 
     Stack<ArrayList<ColorPoint>> undoStack = new Stack<>();
-
     Stack<ArrayList<ColorPoint>> redoStack = new Stack<>();
-
-
-    Color tempColor;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -46,14 +42,15 @@ public class CanvasController {
             return;
 
         if(!canvasModel.getPixel(x, y).equals(newColor)) {
-            tempColor = canvasModel.getPixel(x,y);
-
-            undoArrayList.add(new ColorPoint(x,y, tempColor));
+            undoArrayList.add(getOldColor(x,y));
 
             canvasModel.setPixel(x, y, newColor);
-            //redoArrayList.add(new ColorPoint(x,y, newColor));
         }
       }
+
+    public ColorPoint getOldColor(int x, int y) {
+          return new ColorPoint(x,y,canvasModel.getPixel(x,y));
+    }
 
     /** Calls {@link CanvasModel#fillCanvas(Color)}
      *
@@ -91,35 +88,27 @@ public class CanvasController {
 
     public void pushToUndoStack() {
         undoStack.push(new ArrayList<>(undoArrayList));
-        //redoStack.push(new ArrayList<>(redoArrayList));
-        //redoArrayList.clear();
         undoArrayList.clear();
     }
 
     public void undo() {
         if(!undoStack.empty()) {
-            for (ColorPoint cP : undoStack.peek()) {
-                redoArrayList.add(new ColorPoint(cP.getX(), cP.getY(), canvasModel.getPixel(cP.getX(),cP.getY())));
+            for (ColorPoint cp : undoStack.pop()) {
+                redoArrayList.add(getOldColor(cp.getX(), cp.getY()));
+                paint(cp.getX(), cp.getY(), cp.getC());
             }
             redoStack.push(new ArrayList<>(redoArrayList));
             redoArrayList.clear();
-            for (ColorPoint cp : undoStack.pop()) {
-                paint(cp.getX(), cp.getY(), cp.getC());
-            }
         }
     }
 
     public void redo() {
-        if (!redoStack.empty()) {
-
-            for (ColorPoint cP : redoStack.peek()) {
-                undoArrayList.add(new ColorPoint(cP.getX(), cP.getY(), canvasModel.getPixel(cP.getX(),cP.getY())));
-            }
-            undoStack.push(new ArrayList<>(undoArrayList));
-            undoArrayList.clear();
+        if(!redoStack.empty()) {
             for (ColorPoint cp : redoStack.pop()) {
                 paint(cp.getX(), cp.getY(), cp.getC());
             }
+            undoStack.push(new ArrayList<>(undoArrayList));
+            undoArrayList.clear();
         }
     }
 }
