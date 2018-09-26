@@ -41,7 +41,8 @@ public class CanvasController {
             undoArrayList.add(getOldColor(x,y));
             canvasModel.setPixel(x, y, newColor);
         }
-      }
+    }
+
 
     public ColorPoint getOldColor(int x, int y) {
           return new ColorPoint(x,y,canvasModel.getPixel(x,y));
@@ -89,7 +90,7 @@ public class CanvasController {
     public void undo() {
         if(!undoStack.empty()) {
             for (ColorPoint cp : undoStack.pop()) {
-                paint(cp.getX(), cp.getY(), cp.getC());
+                canvasModel.setPixel(cp.getX(),cp.getY(),cp.getC());
             }
         }
     }
