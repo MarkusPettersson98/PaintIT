@@ -12,10 +12,7 @@ public class CanvasController {
     @Getter CanvasView canvasView;
 
     ArrayList<ColorPoint> undoArrayList = new ArrayList<>();
-    ArrayList<ColorPoint> redoArrayList = new ArrayList<>();
-
     Stack<ArrayList<ColorPoint>> undoStack = new Stack<>();
-    Stack<ArrayList<ColorPoint>> redoStack = new Stack<>();
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -42,7 +39,6 @@ public class CanvasController {
 
         if(!canvasModel.getPixel(x, y).equals(newColor)) {
             undoArrayList.add(getOldColor(x,y));
-
             canvasModel.setPixel(x, y, newColor);
         }
       }
@@ -93,21 +89,8 @@ public class CanvasController {
     public void undo() {
         if(!undoStack.empty()) {
             for (ColorPoint cp : undoStack.pop()) {
-                redoArrayList.add(getOldColor(cp.getX(), cp.getY()));
                 paint(cp.getX(), cp.getY(), cp.getC());
             }
-            redoStack.push(new ArrayList<>(redoArrayList));
-            redoArrayList.clear();
-        }
-    }
-
-    public void redo() {
-        if(!redoStack.empty()) {
-            for (ColorPoint cp : redoStack.pop()) {
-                paint(cp.getX(), cp.getY(), cp.getC());
-            }
-            undoStack.push(new ArrayList<>(undoArrayList));
-            undoArrayList.clear();
         }
     }
 }
