@@ -14,7 +14,6 @@ public class CanvasController {
     ArrayList<ColorPoint> undoArrayList = new ArrayList<>();
     ArrayList<ColorPoint> redoArrayList = new ArrayList<>();
 
-
     Stack<ArrayList<ColorPoint>> undoStack = new Stack<>();
     Stack<ArrayList<ColorPoint>> redoStack = new Stack<>();
 
@@ -66,7 +65,7 @@ public class CanvasController {
      */
     public void clear() {
         canvasModel.resetCanvas();
-        undoArrayList.clear();
+        //undoArrayList.clear();
     }
 
     /**
