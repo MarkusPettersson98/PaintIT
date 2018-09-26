@@ -1,8 +1,8 @@
 package Util;
 
-import MainMenu.GameSetupView;
-import MainMenu.WordRevealView;
-import com.PaintIT.app.PaintingView;
+import Views.GameSetupView;
+import Views.WordRevealView;
+import Views.PaintingView;
 
 public abstract class ButtonFactory {
 

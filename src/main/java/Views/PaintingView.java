@@ -1,4 +1,4 @@
-package com.PaintIT.app;
+package Views;
 
 import Tools.*;
 import Canvas.CanvasController;
@@ -36,15 +36,15 @@ public class PaintingView extends AnchorPane {
     CanvasController canvasController;
 
     HashMap<String, Tool> tools = new HashMap<>();
-    // List<Tool> tools = new ArrayList<>();
+
     Tool currentTool;
 
-    public PaintingView() {
+    public PaintingView(FXMLLoader fxmlLoader) {
 
         this.canvasController = new CanvasController();
         Canvas canvas = canvasController.getCanvasView();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

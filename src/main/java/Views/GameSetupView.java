@@ -1,4 +1,4 @@
-package MainMenu;
+package Views;
 
 import Game.Player;
 import Util.ButtonFactory;
@@ -22,9 +22,9 @@ public class GameSetupView extends AnchorPane {
     Player player1 = new Player();
     Player player2 = new Player();
 
-    public GameSetupView (){
+    public GameSetupView (FXMLLoader fxmlLoader){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GameSetupView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GameSetupView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

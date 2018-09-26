@@ -1,4 +1,4 @@
-package MainMenu;
+package Views;
 
 import Util.ButtonFactory;
 import com.PaintIT.app.TopController;
@@ -17,9 +17,9 @@ public class MainMenuView extends AnchorPane{
     @FXML private Button howToPlay;
     @FXML private Button highScore;
 
-    public MainMenuView () {
+    public MainMenuView (FXMLLoader fxmlLoader) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
