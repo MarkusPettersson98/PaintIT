@@ -6,7 +6,9 @@ public class GameSession {
 
     private Team team;
 
-    private GameSession() {}
+    private GameLogic gameLogic;
+
+    private GameSession() { this.gameLogic = new GameLogic(); }
 
     public static GameSession getInstance() {
         if(instance == null) { instance = new GameSession(); }
