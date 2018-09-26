@@ -27,11 +27,6 @@ public class App extends Application
         TopController.getInstance();
         TopController.show(MainMenuView.class.getSimpleName());
 
-        GameSession gameSession = GameSession.getInstance();
-        gameSession.addTeam(new Team( new Player("Markus"),
-                                    new Player("Robert"),
-                                            "Besegrade"));
-
         Scene scene = new Scene(TopController.getCurrentView());
         primaryStage.setScene(scene);
         primaryStage.show();

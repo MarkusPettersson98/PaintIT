@@ -1,11 +1,13 @@
 package Game;
 
+import lombok.Getter;
+
 public class Team {
 
     private Player playerOne;
     private Player playerTwo;
-    public final String teamName;
-    private int streak;
+    @Getter private final String teamName;
+    @Getter private int streak;
 
     public Team(Player playerOne, Player playerTwo, String teamName) {
         this.playerOne = playerOne;

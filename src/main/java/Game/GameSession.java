@@ -18,4 +18,10 @@ public class GameSession {
     public void addTeam(Team team) {
         if(this.team == null) { this.team = team; }
     }
+
+    public String getTeamName() throws AssertionError {
+        if(team != null)
+            return team.getTeamName();
+        else return "There's no team!";
+    }
 }
