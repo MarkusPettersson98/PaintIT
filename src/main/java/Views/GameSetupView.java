@@ -24,8 +24,7 @@ public class GameSetupView extends AnchorPane {
 
     public GameSetupView (FXMLLoader fxmlLoader){
 
-        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GameSetupView.fxml"));
-
+        fxmlLoader.setLocation(getClass().getResource("/fxml/GameSetupView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

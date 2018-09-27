@@ -19,8 +19,7 @@ public class MainMenuView extends AnchorPane{
 
     public MainMenuView (FXMLLoader fxmlLoader) {
 
-        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
-
+        fxmlLoader.setLocation(getClass().getResource("/fxml/MainMenuView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

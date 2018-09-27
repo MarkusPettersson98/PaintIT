@@ -44,8 +44,7 @@ public class PaintingView extends AnchorPane {
         this.canvasController = new CanvasController();
         Canvas canvas = canvasController.getCanvasView();
 
-        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
-
+        fxmlLoader.setLocation(getClass().getResource("/fxml/paintingView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
