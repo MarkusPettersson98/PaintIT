@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,10 +15,10 @@ import java.io.IOException;
 
 public class WordRevealView extends AnchorPane{
 
-    @FXML public Label startingPlayerLabel;
-    @FXML public Label instructionsLabel;
-    @FXML public Label numberCountdownLabel;
-    @FXML public Button revealNowButton;
+    @FXML private Label startingPlayerLabel;
+    @FXML private Label instructionsLabel;
+    @FXML private Label numberCountdownLabel;
+    @FXML private Button revealNowButton;
     private int secondsleft;
 
     public WordRevealView (){
@@ -33,6 +35,8 @@ public class WordRevealView extends AnchorPane{
 
         setTimer(13);
         startTimer();
+
+        revealNowButton.setOnAction(e -> {System.out.println("Update view"); });
     }
 
 
@@ -64,4 +68,6 @@ public class WordRevealView extends AnchorPane{
     public void setTimer(int seconds){
         secondsleft = seconds;
     }
+
+
 }
