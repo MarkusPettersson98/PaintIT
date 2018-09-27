@@ -9,13 +9,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.*;
+
+import static javafx.scene.input.KeyCode.*;
 
 public class PaintingView extends AnchorPane {
 
@@ -33,6 +35,9 @@ public class PaintingView extends AnchorPane {
 
     @FXML
     Button clearBtn, undoBtn, doneBtn;
+
+    final KeyCombination ctrlZ = new KeyCodeCombination(Z,
+            KeyCombination.CONTROL_DOWN);
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -61,6 +66,8 @@ public class PaintingView extends AnchorPane {
 
         GameSession.getInstance().setCanvasModel(canvasController.getCanvasModel());
 
+
+        BrushToggleButton.setSelected(true);
         colorPicker.setValue(Color.BLACK);
 
         // Set up tools
@@ -132,6 +139,35 @@ public class PaintingView extends AnchorPane {
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            switch(m.getCode()) {
+                case E:
+                    currentTool = tools.get(Eraser.class.getSimpleName());
+                    EraserToggleButton.setSelected(true);
+                    break;
+                case B:
+                    currentTool = tools.get(Brush.class.getSimpleName());
+                    BrushToggleButton.setSelected(true);
+                    break;
+                case S:
+                    currentTool = tools.get(SprayCan.class.getSimpleName());
+                    SprayCanToggleButton.setSelected(true);
+                    break;
+                case SLASH:
+                    radiusSlider.decrement();
+                    break;
+                case MINUS:
+                    radiusSlider.increment();
+                    break;
+            }
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+                if (m.getCode().equals(Z) && (m.isControlDown()||m.isMetaDown())) {
+                    canvasController.undo();
+                }
         });
 
         setRadius((int) radiusSlider.getValue());

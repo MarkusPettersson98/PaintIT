@@ -1,6 +1,9 @@
 package com.PaintIT.app;
 
+
 import Util.ViewFactory;
+
+
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 import lombok.Getter;
@@ -9,9 +12,13 @@ import java.util.HashMap;
 
 public class TopController {
 
+
     private static HashMap<String, Pane> applicationPanes = new HashMap<>();
 
+
+
     @Getter private static Pane currentView = new Pane();
+
 
     private static TopController instance;
 
@@ -19,6 +26,7 @@ public class TopController {
         for(Pair<String, Pane> viewPair : ViewFactory.createAllViews()) {
             applicationPanes.put(viewPair.getKey(), viewPair.getValue());
         }
+
     }
 
     public static void show(String url) {

@@ -45,15 +45,25 @@ public class CanvasController {
 
 
     public ColorPoint getOldColor(int x, int y) {
-          return new ColorPoint(x,y,canvasModel.getPixel(x,y));
+        return new ColorPoint(x,y,canvasModel.getPixel(x,y));
     }
 
     /** Calls {@link CanvasModel#fillCanvas(Color)}
      *
-      * @param color The color that fills the canvas.
+     * @param color The color that fills the canvas.
      */
     public void fillCanvas(Color color) {
         canvasModel.fillCanvas(color);
+    }
+
+
+    public void copyModelToList() {
+        for(int y = 0; y < canvasModel.getYMax(); y++) {
+            for (int x = 0; x < canvasModel.getXMax(); x++) {
+                undoArrayList.add(new ColorPoint(x,y,canvasModel.getPixel(x,y)));
+
+            }
+        }
     }
 
 
@@ -61,8 +71,12 @@ public class CanvasController {
      *
      */
     public void clear() {
+        //while(!undoStack.empty())
+        //  undoStack.pop();
+        undoArrayList.clear();
+        copyModelToList();
+        undoStack.push(undoArrayList);
         canvasModel.resetCanvas();
-        //undoArrayList.clear();
     }
 
     /**
