@@ -1,5 +1,6 @@
 package Util;
 
+import Game.GameSession;
 import Views.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
@@ -11,7 +12,7 @@ import java.util.List;
 public abstract class ViewFactory {
 
     private static FXMLLoader fxmlLoader = new FXMLLoader();
-
+/*
     public static List<Pair<String, Pane>> createAllViews() {
         List<Pair<String, Pane>> allViews = new ArrayList<>();
 
@@ -23,11 +24,11 @@ public abstract class ViewFactory {
 
         return allViews;
     }
-
-    public static MainMenuView createMainMenuView() { return new MainMenuView(fxmlLoader); }
-    public static GameSetupView createGameSetupView() { return new GameSetupView(fxmlLoader); }
-    public static WordRevealView createWordRevealView() { return new WordRevealView(fxmlLoader); }
-    public static PaintingView createPaintingView() { return new PaintingView(fxmlLoader); }
-    public static GuessingView createGuessingView() { return new GuessingView(fxmlLoader); }
+*/
+    public static MainMenuView createMainMenuView(GameSession gameSession) { return new MainMenuView(fxmlLoader, gameSession); }
+    public static GameSetupView createGameSetupView(GameSession gameSession) { return new GameSetupView(fxmlLoader, gameSession); }
+    public static WordRevealView createWordRevealView(GameSession gameSession) { return new WordRevealView(fxmlLoader, gameSession); }
+    public static PaintingView createPaintingView(GameSession gameSession) { return new PaintingView(fxmlLoader, gameSession); }
+    public static GuessingView createGuessingView(GameSession gameSession) { return new GuessingView(fxmlLoader, gameSession); }
 
 }

@@ -15,7 +15,7 @@ public class GuessingView extends AnchorPane {
     @FXML
     HBox hbox;
 
-    public GuessingView(FXMLLoader fxmlLoader) {
+    public GuessingView(FXMLLoader fxmlLoader, GameSession gameSession) {
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GuessingView.fxml"));
         fxmlLoader.setRoot(this);
@@ -27,7 +27,7 @@ public class GuessingView extends AnchorPane {
             e.printStackTrace();
         }
 
-        CanvasView canvasView = new CanvasView(GameSession.getInstance().getCanvas());
+        CanvasView canvasView = new CanvasView(gameSession.getCanvas());
         hbox.getChildren().add(canvasView);
     }
 

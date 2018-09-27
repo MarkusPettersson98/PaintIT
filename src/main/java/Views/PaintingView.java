@@ -47,7 +47,7 @@ public class PaintingView extends AnchorPane {
 
     Tool currentTool;
 
-    public PaintingView(FXMLLoader fxmlLoader) {
+    public PaintingView(FXMLLoader fxmlLoader, GameSession gameSession) {
 
         this.canvasController = new CanvasController();
         Canvas canvas = canvasController.getCanvasView();
@@ -64,7 +64,7 @@ public class PaintingView extends AnchorPane {
 
         this.hbox.getChildren().add(canvasController.getCanvasView());
 
-        GameSession.getInstance().setCanvasModel(canvasController.getCanvasModel());
+        gameSession.setCanvasModel(canvasController.getCanvasModel());
 
 
         BrushToggleButton.setSelected(true);
@@ -133,8 +133,7 @@ public class PaintingView extends AnchorPane {
         doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
-
-            TopController.show(doneBtn.getId());
+            gameSession.show(doneBtn.getId());
         });
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {

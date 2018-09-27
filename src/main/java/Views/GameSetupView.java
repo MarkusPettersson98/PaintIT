@@ -25,7 +25,10 @@ public class GameSetupView extends AnchorPane {
     @FXML private Button backButton;
     @FXML private ImageView backButtonImageView;
 
-    public GameSetupView (FXMLLoader fxmlLoader){
+    private GameSession gameSession;
+
+    public GameSetupView (FXMLLoader fxmlLoader, GameSession gameSession){
+        this.gameSession = gameSession;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GameSetupView.fxml"));
         fxmlLoader.setRoot(this);
@@ -42,14 +45,14 @@ public class GameSetupView extends AnchorPane {
             // Create team and add it to game backend
             setNames();
             // Start word reveal countdown (in WordRevealView)
-            GameSession.getInstance().startWordRevealCountdown();
+            gameSession.startWordRevealCountdown();
             // Show next view
-            TopController.show(startDrawing.getId());
+            gameSession.show(startDrawing.getId());
         });
 
         backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
         backButtonImageView.setOnMouseClicked(e -> {
-            TopController.show(backButtonImageView.getId());
+            gameSession.show(backButtonImageView.getId());
             String path = "images/icon_back.png";
             backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
         });
@@ -73,7 +76,7 @@ public class GameSetupView extends AnchorPane {
         String player1 = player1TextField.getText();
         String player2 = player2TextField.getText();
 
-        GameSession.getInstance().addTeam(new Team(player1,
+        gameSession.addTeam(new Team(player1,
                                                    player2,
                                           player1 + " and " + player2));
 

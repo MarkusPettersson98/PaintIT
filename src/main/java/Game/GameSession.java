@@ -16,12 +16,9 @@ import java.util.List;
 
 public class GameSession {
 
-    private static GameSession instance;
-
     private Team team;
 
     private GameLogic gameLogic;
-
 
     MainMenuView mainMenuView;
     GameSetupView gameSetupView;
@@ -29,29 +26,25 @@ public class GameSession {
     PaintingView paintingView;
     GuessingView guessingView;
 
-    private TopController topController;
+    private final TopController topController;
 
     public GameSession() {
-        instance = this;
         gameLogic = new GameLogic();
         List<Pane> panes = new ArrayList<>();
         // Create an object of every view in the application
-        mainMenuView = ViewFactory.createMainMenuView(); panes.add(mainMenuView);
-        gameSetupView = ViewFactory.createGameSetupView(); panes.add(gameSetupView);
-        wordRevealView = ViewFactory.createWordRevealView(); panes.add(wordRevealView);
-        paintingView = ViewFactory.createPaintingView(); panes.add(paintingView);
-        guessingView = ViewFactory.createGuessingView(); panes.add(guessingView);
+        mainMenuView = ViewFactory.createMainMenuView(this); panes.add(mainMenuView);
+        gameSetupView = ViewFactory.createGameSetupView(this); panes.add(gameSetupView);
+        wordRevealView = ViewFactory.createWordRevealView(this); panes.add(wordRevealView);
+        paintingView = ViewFactory.createPaintingView(this); panes.add(paintingView);
+        guessingView = ViewFactory.createGuessingView(this); panes.add(guessingView);
 
-        topController = TopController.getInstance();
-        topController.loadPanes(panes);
+        topController = new TopController(panes);
 
     }
 
-    public Pane getCurrentPane() { return TopController.getCurrentView(); }
+    public Pane getCurrentPane() { return topController.getCurrentView(); }
 
-    public static GameSession getInstance() {
-        return instance;
-    }
+    public void show(String url) { topController.show(url); }
 
     public void addTeam(Team team) {
         if(this.team == null) { this.team = team; }

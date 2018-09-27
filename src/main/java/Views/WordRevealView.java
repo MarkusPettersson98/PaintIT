@@ -1,5 +1,6 @@
 package Views;
 
+import Game.GameSession;
 import Util.ButtonFactory;
 import com.PaintIT.app.TopController;
 import javafx.application.Platform;
@@ -23,7 +24,7 @@ public class WordRevealView extends AnchorPane{
     @FXML private Button revealNowButton;
     private int secondsleft;
 
-    public WordRevealView (FXMLLoader fxmlLoader){
+    public WordRevealView (FXMLLoader fxmlLoader, GameSession gameSession){
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/WordRevealView.fxml"));
         fxmlLoader.setRoot(this);
@@ -37,7 +38,7 @@ public class WordRevealView extends AnchorPane{
 
         revealNowButton.setId(ButtonFactory.createPaintingViewBtnId());
         revealNowButton.setOnAction(e -> {
-            TopController.show(revealNowButton.getId()); });
+            gameSession.show(revealNowButton.getId()); });
     }
 
 
@@ -56,7 +57,8 @@ public class WordRevealView extends AnchorPane{
                 secondsleft--;
 
                 if(secondsleft == 0){
-                    Platform.runLater(() -> TopController.show(revealNowButton.getId()));
+                    // time's up, go to next page
+                    Platform.runLater(() -> revealNowButton.fire());
                     timer.cancel();
                 }
             }
