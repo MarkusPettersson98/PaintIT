@@ -48,48 +48,16 @@ public class MainMenuView extends AnchorPane{
             TopController.show(play.getId());
         });
 
-        howToPlay.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("tjena");
+        howToPlay.setOnAction(e -> {
                 showHowToPlay();
-            }
         });
 
-        highScore.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        highScore.setOnAction(e -> {
                 System.out.println("tja");
-            }
         });
 
-        closeButtonImageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+        lightBoxAnchorPane.setOnMouseClicked(e ->{
                 showMainMenu();
-                closeButtonMouseClickedOrExited();
-            }
-        });
-
-        closeButtonImageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                closeButtonMouseEntered();
-            }
-        });
-
-        closeButtonImageView.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                closeButtonMouseClickedOrExited();
-            }
-        });
-
-        lightBoxAnchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                showMainMenu();
-            }
         });
 
         howToPlayAnchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -101,12 +69,21 @@ public class MainMenuView extends AnchorPane{
 
     }
 
+    @FXML
     private void closeButtonMouseEntered(){
         String path = "images/icon_close_hover.png";
         closeButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
     }
 
-    private void closeButtonMouseClickedOrExited(){
+    @FXML
+    private void closeButtonMouseClicked(){
+        String path = "images/icon_close.png";
+        closeButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        showMainMenu();
+    }
+
+    @FXML
+    private void closeButtonMouseExited(){
         String path = "images/icon_close.png";
         closeButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
     }
