@@ -2,16 +2,19 @@ package com.PaintIT.app;
 
 import Tools.*;
 import Canvas.CanvasController;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.*;
+
+import static javafx.scene.input.KeyCode.Z;
 
 public class PaintingView extends AnchorPane {
 
@@ -29,6 +32,9 @@ public class PaintingView extends AnchorPane {
 
     @FXML
     Button clearBtn, undoBtn;
+
+    final KeyCombination ctrlZ = new KeyCodeCombination(Z,
+            KeyCombination.CONTROL_DOWN);
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -120,6 +126,12 @@ public class PaintingView extends AnchorPane {
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+                if (m.getCode().equals(Z) && (m.isControlDown()||m.isMetaDown())) {
+                    canvasController.undo();
+                }
         });
 
         setRadius((int) radiusSlider.getValue());
