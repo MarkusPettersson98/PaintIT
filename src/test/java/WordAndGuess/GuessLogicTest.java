@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class GuessLogicTest {
 
     @Test
-    public void removeCharFromGuess() throws Exception {
+    public void addAndRemoveCharFromGuess() throws Exception {
         GuessLogic guessLogic = new GuessLogic();
         guessLogic.addTileToGuess(new Tile('c',0));
         guessLogic.addTileToGuess(new Tile('a',1));
