@@ -1,31 +1,40 @@
 package com.PaintIT.app;
 
-import MainMenu.GameSetupView;
-import MainMenu.MainMenuView;
-import MainMenu.WordRevealView;
+
+import Util.ViewFactory;
+
+
 import javafx.scene.layout.Pane;
+import javafx.util.Pair;
 import lombok.Getter;
+
+import java.util.HashMap;
 
 public class TopController {
 
-    private PaintingView paintingView;
-    private MainMenuView mainMenuView;
-    private GameSetupView gameSetupView;
-    private WordRevealView wordRevealView;
 
-    @Getter private Pane currentView;
+    private static HashMap<String, Pane> applicationPanes = new HashMap<>();
 
-    public TopController() {
-        paintingView = new PaintingView();
-        mainMenuView = new MainMenuView();
-        gameSetupView = new GameSetupView();
-        wordRevealView = new WordRevealView();
+    @Getter private static Pane currentView = new Pane();
 
-        currentView = wordRevealView;
+    private static TopController instance;
+
+    private TopController() {
+        for(Pair<String, Pane> viewPair : ViewFactory.createAllViews()) {
+            applicationPanes.put(viewPair.getKey(), viewPair.getValue());
+        }
+
     }
 
+    public static void show(String url) {
+        currentView.getChildren().clear();
+        currentView.getChildren().add(applicationPanes.get(url));
+    }
 
-
+    public static TopController getInstance() {
+        if(instance == null) instance = new TopController();
+        return instance;
+    }
 
 
 }

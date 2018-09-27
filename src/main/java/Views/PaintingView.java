@@ -1,4 +1,4 @@
-package com.PaintIT.app;
+package Views;
 
 import Tools.*;
 import Canvas.CanvasController;
@@ -8,16 +8,16 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.*;
 
 public class PaintingView extends AnchorPane {
 
     @FXML
-    Canvas canvas;
+    HBox hbox;
 
     @FXML
     ColorPicker colorPicker;
@@ -29,24 +29,22 @@ public class PaintingView extends AnchorPane {
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn, regretBtn;
+    Button clearBtn, undoBtn;
 
     final ToggleGroup group = new ToggleGroup();
 
     CanvasController canvasController;
 
     HashMap<String, Tool> tools = new HashMap<>();
-    // List<Tool> tools = new ArrayList<>();
+
     Tool currentTool;
 
-    public PaintingView() {
+    public PaintingView(FXMLLoader fxmlLoader) {
 
         this.canvasController = new CanvasController();
-        this.canvas = canvasController.getCanvasView();
+        Canvas canvas = canvasController.getCanvasView();
 
-        this.getChildren().add(canvas);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -56,6 +54,8 @@ public class PaintingView extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        this.hbox.getChildren().add(canvas);
 
         colorPicker.setValue(Color.BLACK);
 
@@ -79,8 +79,8 @@ public class PaintingView extends AnchorPane {
 
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            int x0 = (int) m.getSceneX();
-            int y0 = (int) m.getSceneY();
+            int x0 = (int) m.getX();
+            int y0 = (int) m.getY();
             int radius = currentTool.getRadius();
             Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
@@ -93,8 +93,8 @@ public class PaintingView extends AnchorPane {
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            int x0 = (int) m.getSceneX();
-            int y0 = (int) m.getSceneY();
+            int x0 = (int) m.getX();
+            int y0 = (int) m.getY();
             int radius = currentTool.getRadius();
             Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
@@ -111,19 +111,22 @@ public class PaintingView extends AnchorPane {
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
-            canvasController.pushToStack();
+            canvasController.pushToUndoStack();
                 });
 
 
         clearBtn.setOnAction(e -> clearCanvas());
 
-        regretBtn.setOnAction(e -> canvasController.regret());
+        undoBtn.setOnAction(e -> canvasController.undo());
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());
         });
 
         setRadius((int) radiusSlider.getValue());
+
+        canvasController.fillCanvas(Color.RED);
+
     }
 
     private void setupButton(ToggleButton button, String name) {

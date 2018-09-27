@@ -78,10 +78,9 @@ public class CanvasModel implements Observable {
     public void fillCanvas(Color color) {
         for (int i = 0; i < yMax; i++) {
             for (int j = 0; j < xMax; j++) {
-                canvas[j][i] = color;
+                setPixel(j, i, color);
             }
         }
-        notifyObservers();
     }
 
 

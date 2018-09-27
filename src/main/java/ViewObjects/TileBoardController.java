@@ -1,28 +1,26 @@
 package ViewObjects;
 
-import Util.GeneralUtil;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
+import javafx.event.Event;
+import javafx.scene.input.KeyCode;
+
+import java.awt.event.KeyEvent;
 
 
 public class TileBoardController {
-
-
-    TileBoard tileBoard;
     GuessLogic guessLogic;
-    public TileBoardController(GuessLogic guessLogic, TileBoard tileBoard) {
-        this.tileBoard = tileBoard;
+    public TileBoardController(GuessLogic guessLogic) {
         this.guessLogic = guessLogic;
-        setTilesActionListeners();
     }
 
-    public void addTileToGuess(Tile c){
-        guessLogic.addTileToGuess(c);
+    public void addTileToGuess(Tile t){
+        guessLogic.addTileToGuess(t);
+    }
+    public void removeTileFromGuess(){
+        guessLogic.removeTileFromGuess();
     }
 
-    private void setTilesActionListeners(){ //eventListeners
-       for(TileSlot t: tileBoard.getTileSlotList()){
-           t.getTileButton().setOnAction(e-> addTileToGuess(t.getTile()));
-       }
-    }
+
+
 }

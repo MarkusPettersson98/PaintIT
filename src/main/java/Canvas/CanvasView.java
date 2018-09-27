@@ -1,11 +1,14 @@
 package Canvas;
 
 import Tools.Observer;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 import lombok.Getter;
+
+import java.io.IOException;
 
 public class CanvasView extends Canvas implements Observer {
 
@@ -22,6 +25,7 @@ public class CanvasView extends Canvas implements Observer {
         this.graphicsContext = this.getGraphicsContext2D();
         this.pixelWriter = graphicsContext.getPixelWriter();
         this.canvasModel = canvasModel;
+
         graphicsContext.getCanvas().toString();
     }
 

@@ -1,5 +1,7 @@
-package MainMenu;
+package Views;
 
+import Util.ButtonFactory;
+import com.PaintIT.app.TopController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import sun.plugin.javascript.navig.Anchor;
@@ -25,9 +28,9 @@ public class MainMenuView extends AnchorPane{
     @FXML private AnchorPane lightBoxAnchorPane;
     @FXML private ImageView closeButtonImageView;
 
-    public MainMenuView () {
+    public MainMenuView (FXMLLoader fxmlLoader) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainMenuView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -40,11 +43,9 @@ public class MainMenuView extends AnchorPane{
 
         showMainMenu();
 
-        play.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("hej");
-            }
+        play.setId(ButtonFactory.createGameSetupViewBtnId());
+        play.setOnAction(e -> {
+            TopController.show(play.getId());
         });
 
         howToPlay.setOnAction(new EventHandler<ActionEvent>() {

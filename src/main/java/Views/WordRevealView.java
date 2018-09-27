@@ -1,4 +1,4 @@
-package MainMenu;
+package Views;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -21,8 +21,8 @@ public class WordRevealView extends AnchorPane{
     @FXML private Button revealNowButton;
     private int secondsleft;
 
-    public WordRevealView (){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WordRevealView.fxml"));
+    public WordRevealView (FXMLLoader fxmlLoader){
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WordRevealView.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
