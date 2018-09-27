@@ -14,6 +14,10 @@ public abstract class ButtonFactory {
         return (GameSetupView.class.getSimpleName());
     }
 
+    public static String createGuessingViewBtnId() {
+        return (GameSetupView.class.getSimpleName());
+    }
+
     public static String createWordRevealViewBtnId() {
         return (WordRevealView.class.getSimpleName());
     }

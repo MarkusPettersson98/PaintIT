@@ -18,6 +18,7 @@ public abstract class ViewFactory {
         allViews.add(new Pair<>(MainMenuView.class.getSimpleName(), new MainMenuView(fxmlLoader)));
         allViews.add(new Pair<>(GameSetupView.class.getSimpleName(), new GameSetupView(fxmlLoader)));
         allViews.add(new Pair<>(WordRevealView.class.getSimpleName(), new WordRevealView(fxmlLoader)));
+        allViews.add(new Pair<>(GuessingView.class.getSimpleName(), new GuessingView(fxmlLoader)));
 
         return allViews;
     }
