@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 
-<fx:root prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" >
+<fx:root prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="logo" fitHeight="252.0" fitWidth="626.0" layoutX="305.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="100.0">
-         <image>
-            <Image url="@../images/paintit.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="play" layoutX="611.0" layoutY="408.0" mnemonicParsing="false" styleClass="button-play" stylesheets="@../Stylesheet.css" text="Let's Play!" AnchorPane.leftAnchor="480.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="350.0" />
-      <Button fx:id="howToPlay" layoutX="465.0" layoutY="520.0" mnemonicParsing="false" styleClass="button-mainMenu" text="How To Play" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="520.0" />
-      <Button fx:id="highScore" layoutX="731.0" layoutY="522.0" mnemonicParsing="false" styleClass="button-mainMenu" text="High Score" AnchorPane.rightAnchor="430.0" AnchorPane.topAnchor="520.0" />
+      <StackPane prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane fx:id="mainMenuAnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="text-area">
+               <children>
+                  <ImageView fx:id="logo" fitHeight="252.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="100.0">
+                     <image>
+                        <Image url="@../images/paintit.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="play" mnemonicParsing="false" styleClass="button-play" stylesheets="@../Stylesheet.css" text="Let's Play!" AnchorPane.leftAnchor="480.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="350.0" />
+                  <Button fx:id="howToPlay" mnemonicParsing="false" styleClass="button-mainMenu" text="How To Play" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="520.0" />
+                  <Button fx:id="highScore" mnemonicParsing="false" styleClass="button-mainMenu" text="High Score" AnchorPane.rightAnchor="430.0" AnchorPane.topAnchor="520.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="lightBoxAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+               <children>
+                  <AnchorPane fx:id="howToPlayAnchorPane" prefHeight="200.0" prefWidth="200.0" styleClass="text-area" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+                     <children>
+                        <ImageView fx:id="closeButtonImageView" fitHeight="58.0" fitWidth="65.0" layoutX="977.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <image>
+                              <Image url="@../images/icon_close.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="291.0" layoutY="56.0" styleClass="text-veryBig" text="How To Play" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
+                        <TextArea editable="false" layoutX="252.0" layoutY="264.0" prefHeight="200.0" prefWidth="200.0" styleClass="text-area" wrapText="true" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
    </children>
 </fx:root>
