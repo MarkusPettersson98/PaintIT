@@ -15,10 +15,7 @@ public class TopController {
 
     private static HashMap<String, Pane> applicationPanes = new HashMap<>();
 
-
-
     @Getter private static Pane currentView = new Pane();
-
 
     private static TopController instance;
 
