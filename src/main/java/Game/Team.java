@@ -1,5 +1,6 @@
 package Game;
 
+import javafx.util.Pair;
 import lombok.Getter;
 
 public class Team {
@@ -21,6 +22,9 @@ public class Team {
         this.teamName = teamName;
     }
 
+    public Pair<String, String> getPlayerNames() {
+        return new Pair<>(playerOne.getName(), playerTwo.getName());
+    }
 
 
 }

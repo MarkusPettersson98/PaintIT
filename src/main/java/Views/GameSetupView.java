@@ -39,8 +39,11 @@ public class GameSetupView extends AnchorPane {
 
         startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
+            // Create team and add it to game backend
             setNames();
+            // Start word reveal countdown (in WordRevealView)
             GameSession.getInstance().startWordRevealCountdown();
+            // Show next view
             TopController.show(startDrawing.getId());
         });
 

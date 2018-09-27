@@ -8,6 +8,7 @@ import Views.*;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.util.Pair;
 
 import javax.swing.text.View;
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public class GameSession {
 
     private TopController topController;
 
-
     public GameSession() {
         instance = this;
         gameLogic = new GameLogic();
@@ -42,7 +42,6 @@ public class GameSession {
         paintingView = ViewFactory.createPaintingView(); panes.add(paintingView);
         guessingView = ViewFactory.createGuessingView(); panes.add(guessingView);
 
-
         topController = TopController.getInstance();
         topController.loadPanes(panes);
 
@@ -51,7 +50,6 @@ public class GameSession {
     public Pane getCurrentPane() { return TopController.getCurrentView(); }
 
     public static GameSession getInstance() {
-        // if(instance == null) { instance = new GameSession(); }
         return instance;
     }
 
@@ -65,6 +63,10 @@ public class GameSession {
         else return "There's no team!";
     }
 
+    public Pair<String, String> getPlayerNames() {
+        return team.getPlayerNames();
+    }
+
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
@@ -72,5 +74,6 @@ public class GameSession {
     public void startWordRevealCountdown() {
         wordRevealView.setTimer(6);
         wordRevealView.startTimer();
+        wordRevealView.setPlayerNameLabels(team.getPlayerNames());
     }
 }

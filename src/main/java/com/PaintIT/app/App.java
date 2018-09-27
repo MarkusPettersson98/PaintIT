@@ -31,7 +31,7 @@ public class App extends Application
         // TopController.getInstance();
         GameSession gameSession = new GameSession();
 
-        Scene scene = new Scene(TopController.getCurrentView());
+        Scene scene = new Scene(gameSession.getCurrentPane());
         TopController.show(MainMenuView.class.getSimpleName());
 
         primaryStage.setScene(scene);
