@@ -26,8 +26,11 @@ public class CanvasView extends Canvas implements Observer {
         this.pixelWriter = graphicsContext.getPixelWriter();
         this.canvasModel = canvasModel;
 
+        canvasModel.addObserver(this);
+
         graphicsContext.getCanvas().toString();
     }
+
 
     public void setPixel(int x, int y, Color color) {
         pixelWriter.setColor(x,y,color);

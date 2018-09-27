@@ -22,5 +22,6 @@
       <Slider fx:id="radiusSlider" blockIncrement="5.0" layoutX="699.0" layoutY="650.0" showTickLabels="true" showTickMarks="true" value="10.0" />
       <Button fx:id="clearBtn" layoutX="294.0" layoutY="580.0" mnemonicParsing="false" text="Clear" />
       <Button fx:id="undoBtn" layoutX="294.0" layoutY="614.0" mnemonicParsing="false" text="Undo" />
+      <Button fx:id="doneBtn" layoutX="1099.0" layoutY="628.0" mnemonicParsing="false" text="DONE" />
    </children>
 </fx:root>

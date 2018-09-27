@@ -1,10 +1,12 @@
 package Game;
 
-import javafx.scene.canvas.Canvas;
+import Canvas.CanvasModel;
+import lombok.Getter;
+import lombok.Setter;
 
 class GameLogic {
 
-    private Canvas currentPainting;
+    @Setter @Getter private CanvasModel currentPainting;
 
     private String word;
 

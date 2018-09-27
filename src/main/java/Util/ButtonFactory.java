@@ -1,6 +1,7 @@
 package Util;
 
 import Views.GameSetupView;
+import Views.GuessingView;
 import Views.WordRevealView;
 import Views.PaintingView;
 
@@ -15,7 +16,7 @@ public abstract class ButtonFactory {
     }
 
     public static String createGuessingViewBtnId() {
-        return (GameSetupView.class.getSimpleName());
+        return (GuessingView.class.getSimpleName());
     }
 
     public static String createWordRevealViewBtnId() {

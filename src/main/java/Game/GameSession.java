@@ -1,5 +1,10 @@
 package Game;
 
+
+import Canvas.CanvasModel;
+import Canvas.CanvasView;
+import javafx.scene.paint.Color;
+
 public class GameSession {
 
     private static GameSession instance;
@@ -24,4 +29,8 @@ public class GameSession {
             return team.getTeamName();
         else return "There's no team!";
     }
+
+    public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
+
+    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
 }

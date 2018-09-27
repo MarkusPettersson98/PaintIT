@@ -14,6 +14,7 @@ public abstract class ViewFactory {
 
     public static List<Pair<String, Pane>> createAllViews() {
         List<Pair<String, Pane>> allViews = new ArrayList<>();
+
         allViews.add(new Pair<>(PaintingView.class.getSimpleName(), new PaintingView(fxmlLoader)));
         allViews.add(new Pair<>(MainMenuView.class.getSimpleName(), new MainMenuView(fxmlLoader)));
         allViews.add(new Pair<>(GameSetupView.class.getSimpleName(), new GameSetupView(fxmlLoader)));

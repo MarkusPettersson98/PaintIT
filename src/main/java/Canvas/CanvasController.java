@@ -1,5 +1,6 @@
 package Canvas;
 
+import Game.GameSession;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
@@ -8,7 +9,7 @@ import java.util.Stack;
 
 public class CanvasController {
 
-    CanvasModel canvasModel;
+    @Getter CanvasModel canvasModel;
     @Getter CanvasView canvasView;
 
     ArrayList<ColorPoint> undoArrayList = new ArrayList<>();
@@ -17,7 +18,6 @@ public class CanvasController {
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
-        canvasModel.addObserver(canvasView);
     }
 
     public CanvasController(int xSize, int ySize) {

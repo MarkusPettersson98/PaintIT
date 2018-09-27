@@ -1,7 +1,10 @@
 package Views;
 
+import Game.GameSession;
 import Tools.*;
 import Canvas.CanvasController;
+import Util.ButtonFactory;
+import com.PaintIT.app.TopController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
@@ -29,7 +32,7 @@ public class PaintingView extends AnchorPane {
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn, undoBtn;
+    Button clearBtn, undoBtn, doneBtn;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -54,7 +57,9 @@ public class PaintingView extends AnchorPane {
             e.printStackTrace();
         }
 
-        this.hbox.getChildren().add(canvas);
+        this.hbox.getChildren().add(canvasController.getCanvasView());
+
+        GameSession.getInstance().setCanvasModel(canvasController.getCanvasModel());
 
         colorPicker.setValue(Color.BLACK);
 
@@ -117,6 +122,13 @@ public class PaintingView extends AnchorPane {
         clearBtn.setOnAction(e -> clearCanvas());
 
         undoBtn.setOnAction(e -> canvasController.undo());
+
+        doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
+        doneBtn.setOnAction(e -> {
+            // Finished drawing
+
+            TopController.show(doneBtn.getId());
+        });
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             setRadius(newValue.intValue());
