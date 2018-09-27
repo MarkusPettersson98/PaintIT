@@ -42,7 +42,7 @@ public class GameSession {
         paintingView = ViewFactory.createPaintingView(); panes.add(paintingView);
         guessingView = ViewFactory.createGuessingView(); panes.add(guessingView);
 
-        
+
         topController = TopController.getInstance();
         topController.loadPanes(panes);
 
@@ -68,4 +68,9 @@ public class GameSession {
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
+
+    public void startWordRevealCountdown() {
+        wordRevealView.setTimer(6);
+        wordRevealView.startTimer();
+    }
 }

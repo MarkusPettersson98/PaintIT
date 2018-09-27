@@ -40,6 +40,7 @@ public class GameSetupView extends AnchorPane {
         startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
             setNames();
+            GameSession.getInstance().startWordRevealCountdown();
             TopController.show(startDrawing.getId());
         });
 

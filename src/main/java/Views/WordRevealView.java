@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,26 +34,19 @@ public class WordRevealView extends AnchorPane{
             e.printStackTrace();
         }
 
-        setTimer(13);
-        startTimer();
-
         revealNowButton.setId(ButtonFactory.createPaintingViewBtnId());
         revealNowButton.setOnAction(e -> {
             TopController.show(revealNowButton.getId()); });
     }
 
 
-    private void startTimer(){
+    public void startTimer(){
         Timer timer = new Timer();
-
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
 
-                if (secondsleft <= 11){
-                    Platform.runLater(() -> update());
-                }
-
+                Platform.runLater(() -> update());
                 secondsleft--;
 
                 if(secondsleft == 0){
