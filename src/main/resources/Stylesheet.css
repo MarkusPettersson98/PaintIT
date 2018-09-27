@@ -76,3 +76,7 @@
 .button-mainMenu:pressed{
     -fx-background-color: #e68400;
 }
+
+.text-area  {
+    -fx-background-color: white;
+}
