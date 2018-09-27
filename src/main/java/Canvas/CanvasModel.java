@@ -27,7 +27,7 @@ public class CanvasModel implements Observable {
         fillCanvas(initColor);
     }
 
-    /** Sets the color of a pixel.
+    /** Sets the color of a pixel and notifies observers using {@link CanvasModel#notifyObservers()}
      *
      * @param x x-coordinate of pixel.
      * @param y y-coordinate of pixel.
@@ -83,7 +83,6 @@ public class CanvasModel implements Observable {
         }
     }
 
-
     /**
      * Creates and returns a string of the canvas, used exclusively for testing.
      * @return Returns a String of the Canvas.
@@ -125,15 +124,14 @@ public class CanvasModel implements Observable {
         return yMax-1;
     }
 
-
-
-
-
     @Override
     public void addObserver(Observer observer) {
         Observers.add(observer);
     }
 
+    /**
+     * Notifies observers that model has been changed.
+     */
     @Override
     public void notifyObservers() {
         for(Observer observer : Observers) {

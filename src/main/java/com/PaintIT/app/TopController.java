@@ -14,12 +14,7 @@ public class TopController {
 
 
     private static HashMap<String, Pane> applicationPanes = new HashMap<>();
-
-
-
     @Getter private static Pane currentView = new Pane();
-
-
     private static TopController instance;
 
     private TopController() {
@@ -38,6 +33,4 @@ public class TopController {
         if(instance == null) instance = new TopController();
         return instance;
     }
-
-
 }

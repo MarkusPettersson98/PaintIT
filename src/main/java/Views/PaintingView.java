@@ -17,8 +17,6 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.*;
 
-import static javafx.scene.input.KeyCode.*;
-
 public class PaintingView extends AnchorPane {
 
     @FXML
@@ -36,8 +34,6 @@ public class PaintingView extends AnchorPane {
     @FXML
     Button clearBtn, undoBtn, doneBtn;
 
-    final KeyCombination ctrlZ = new KeyCodeCombination(Z,
-            KeyCombination.CONTROL_DOWN);
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -179,7 +175,7 @@ public class PaintingView extends AnchorPane {
 
     public void clearCanvas() {
         canvasController.clear();
-        canvasController.redraw();
+        canvasController.redrawCanvasView();
     }
 
 
