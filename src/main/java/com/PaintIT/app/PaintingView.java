@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.*;
 
-import static javafx.scene.input.KeyCode.Z;
+import static javafx.scene.input.KeyCode.*;
 
 public class PaintingView extends AnchorPane {
 
@@ -41,7 +41,6 @@ public class PaintingView extends AnchorPane {
     CanvasController canvasController;
 
     HashMap<String, Tool> tools = new HashMap<>();
-    // List<Tool> tools = new ArrayList<>();
     Tool currentTool;
 
     public PaintingView() {
@@ -61,7 +60,7 @@ public class PaintingView extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        BrushToggleButton.setSelected(true);
         colorPicker.setValue(Color.BLACK);
 
         // Set up tools
@@ -133,6 +132,42 @@ public class PaintingView extends AnchorPane {
                     canvasController.undo();
                 }
         });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            if (m.getCode().equals(E)) {
+                currentTool = tools.get(Eraser.class.getSimpleName());
+                EraserToggleButton.setSelected(true);
+            }
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            if (m.getCode().equals(B)) {
+                currentTool = tools.get(Brush.class.getSimpleName());
+                BrushToggleButton.setSelected(true);
+            }
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            if (m.getCode().equals(S)) {
+                currentTool = tools.get(SprayCan.class.getSimpleName());
+                SprayCanToggleButton.setSelected(true);
+            }
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            if (m.getCode().equals(SLASH)) {
+                System.out.println("you pressed -");
+                radiusSlider.decrement();
+            }
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> { //So this is actually +
+            if (m.getCode().equals(MINUS)) {
+                System.out.println("you pressed +");
+                radiusSlider.increment();
+            }
+        });
+
 
         setRadius((int) radiusSlider.getValue());
     }
