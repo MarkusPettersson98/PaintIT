@@ -1,5 +1,7 @@
 package Views;
 
+import Util.ButtonFactory;
+import com.PaintIT.app.TopController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +38,9 @@ public class WordRevealView extends AnchorPane{
         setTimer(13);
         startTimer();
 
-        revealNowButton.setOnAction(e -> {System.out.println("Update view"); });
+        revealNowButton.setId(ButtonFactory.createPaintingViewBtnId());
+        revealNowButton.setOnAction(e -> {
+            TopController.show(revealNowButton.getId()); });
     }
 
 
@@ -54,7 +58,7 @@ public class WordRevealView extends AnchorPane{
                 secondsleft--;
 
                 if(secondsleft == 0){
-                    Platform.runLater(() -> numberCountdownLabel.setText("Update view"));
+                    Platform.runLater(() -> TopController.show(revealNowButton.getId()));
                     timer.cancel();
                 }
             }

@@ -39,7 +39,7 @@ public class GameSetupView extends AnchorPane {
             e.printStackTrace();
         }
 
-        startDrawing.setId(ButtonFactory.createPaintingViewBtnId());
+        startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
             TopController.show(startDrawing.getId());
         });
