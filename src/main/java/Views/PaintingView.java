@@ -161,19 +161,15 @@ public class PaintingView extends AnchorPane {
                 case MINUS:
                     radiusSlider.increment();
                     break;
+                case Z:
+                    if(m.isControlDown() || m.isMetaDown()) {
+                        canvasController.undo();
+                    }
+                    break;
             }
         });
 
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-                if (m.getCode().equals(Z) && (m.isControlDown()||m.isMetaDown())) {
-                    canvasController.undo();
-                }
-        });
-
         setRadius((int) radiusSlider.getValue());
-
-        canvasController.fillCanvas(Color.RED);
-
     }
 
     private void setupButton(ToggleButton button, String name) {

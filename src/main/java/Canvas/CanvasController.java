@@ -43,6 +43,12 @@ public class CanvasController {
         }
     }
 
+    /**
+     * Returns the CanvasModels Color, x and y in form of a ColorPoint.
+     * @param x the x-pixel in the canvas.
+     * @param y the y-pixel in the canvas.
+     * @return A new ColorPoint from the canvasModel.
+     */
 
     public ColorPoint getOldColor(int x, int y) {
         return new ColorPoint(x,y,canvasModel.getPixel(x,y));
