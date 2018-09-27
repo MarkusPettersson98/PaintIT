@@ -1,6 +1,8 @@
 package Views;
 
+import Game.GameSession;
 import Game.Player;
+import Game.Team;
 import Util.ButtonFactory;
 import com.PaintIT.app.TopController;
 import javafx.event.ActionEvent;
@@ -19,9 +21,6 @@ public class GameSetupView extends AnchorPane {
     @FXML private TextField player2TextField;
     @FXML private Button startDrawing;
 
-    Player player1 = new Player();
-    Player player2 = new Player();
-
     public GameSetupView (FXMLLoader fxmlLoader){
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GameSetupView.fxml"));
@@ -36,16 +35,21 @@ public class GameSetupView extends AnchorPane {
 
         startDrawing.setId(ButtonFactory.createPaintingViewBtnId());
         startDrawing.setOnAction(e -> {
+            setNames();
             TopController.show(startDrawing.getId());
         });
 
     }
 
-    private void setNames (){
-        String player1Name = player1TextField.getText();
-        player1.setName(player1Name);
-        String player2Name = player2TextField.getText();
-        player2.setName(player2Name);
+    private void setNames () {
+
+        String player1 = player1TextField.getText();
+        String player2 = player2TextField.getText();
+
+        GameSession.getInstance().addTeam(new Team(player1,
+                                                   player2,
+                                          player1 + " and " + player2));
+
     }
 
 
