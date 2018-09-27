@@ -3,7 +3,15 @@ package Game;
 
 import Canvas.CanvasModel;
 import Canvas.CanvasView;
+import Util.ViewFactory;
+import Views.*;
+import com.PaintIT.app.TopController;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
+import javax.swing.text.View;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameSession {
 
@@ -13,10 +21,37 @@ public class GameSession {
 
     private GameLogic gameLogic;
 
-    private GameSession() { this.gameLogic = new GameLogic(); }
+
+    MainMenuView mainMenuView;
+    GameSetupView gameSetupView;
+    WordRevealView wordRevealView;
+    PaintingView paintingView;
+    GuessingView guessingView;
+
+    private TopController topController;
+
+
+    public GameSession() {
+        instance = this;
+        gameLogic = new GameLogic();
+        List<Pane> panes = new ArrayList<>();
+        // Create an object of every view in the application
+        mainMenuView = ViewFactory.createMainMenuView(); panes.add(mainMenuView);
+        gameSetupView = ViewFactory.createGameSetupView(); panes.add(gameSetupView);
+        wordRevealView = ViewFactory.createWordRevealView(); panes.add(wordRevealView);
+        paintingView = ViewFactory.createPaintingView(); panes.add(paintingView);
+        guessingView = ViewFactory.createGuessingView(); panes.add(guessingView);
+
+        
+        topController = TopController.getInstance();
+        topController.loadPanes(panes);
+
+    }
+
+    public Pane getCurrentPane() { return TopController.getCurrentView(); }
 
     public static GameSession getInstance() {
-        if(instance == null) { instance = new GameSession(); }
+        // if(instance == null) { instance = new GameSession(); }
         return instance;
     }
 

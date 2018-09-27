@@ -28,10 +28,11 @@ public class App extends Application
     public void start (Stage primaryStage) throws Exception{
         primaryStage.setTitle("PainIT");
 
-        TopController.getInstance();
-        TopController.show(MainMenuView.class.getSimpleName());
+        // TopController.getInstance();
+        GameSession gameSession = new GameSession();
 
         Scene scene = new Scene(TopController.getCurrentView());
+        TopController.show(MainMenuView.class.getSimpleName());
 
         primaryStage.setScene(scene);
         primaryStage.show();

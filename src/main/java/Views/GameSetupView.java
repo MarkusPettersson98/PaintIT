@@ -73,6 +73,7 @@ public class GameSetupView extends AnchorPane {
                                                    player2,
                                           player1 + " and " + player2));
 
+
     }
 
 

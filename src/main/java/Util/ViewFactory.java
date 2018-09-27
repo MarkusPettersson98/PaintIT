@@ -24,4 +24,10 @@ public abstract class ViewFactory {
         return allViews;
     }
 
+    public static MainMenuView createMainMenuView() { return new MainMenuView(fxmlLoader); }
+    public static GameSetupView createGameSetupView() { return new GameSetupView(fxmlLoader); }
+    public static WordRevealView createWordRevealView() { return new WordRevealView(fxmlLoader); }
+    public static PaintingView createPaintingView() { return new PaintingView(fxmlLoader); }
+    public static GuessingView createGuessingView() { return new GuessingView(fxmlLoader); }
+
 }
