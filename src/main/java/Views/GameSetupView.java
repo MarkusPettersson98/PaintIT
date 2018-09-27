@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -20,6 +22,8 @@ public class GameSetupView extends AnchorPane {
     @FXML private TextField player1TextField;
     @FXML private TextField player2TextField;
     @FXML private Button startDrawing;
+    @FXML private Button backButton;
+    @FXML private ImageView backButtonImageView;
 
     public GameSetupView (FXMLLoader fxmlLoader){
 
@@ -33,12 +37,31 @@ public class GameSetupView extends AnchorPane {
             e.printStackTrace();
         }
 
-        startDrawing.setId(ButtonFactory.createPaintingViewBtnId());
+        startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
             setNames();
             TopController.show(startDrawing.getId());
         });
 
+        backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
+        backButtonImageView.setOnMouseClicked(e -> {
+            TopController.show(backButtonImageView.getId());
+            String path = "images/icon_back.png";
+            backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        });
+
+    }
+
+    @FXML
+    private void backButtonImageViewEntered (){
+        String path = "images/icon_back_hover.png";
+        backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+    }
+
+    @FXML
+    private void backButtonImageViewExited (){
+        String path = "images/icon_back.png";
+        backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
     }
 
     private void setNames () {

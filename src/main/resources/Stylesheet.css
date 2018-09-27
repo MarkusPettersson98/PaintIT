@@ -7,12 +7,13 @@
     -fx-font-size: 70;
     -fx-font-family: Chalkboard;
     -fx-text-fill: #cf0100;
-    text-align: center;
+    -fx-text-alignment: center;
 }
 
 .text-bigger {
     -fx-font-family: Chalkboard;
     -fx-font-size: 100;
+    -fx-text-alignment: center;
 }
 
 .text-veryBig {
@@ -74,4 +75,8 @@
 
 .button-mainMenu:pressed{
     -fx-background-color: #e68400;
+}
+
+.text-area  {
+    -fx-background-color: white;
 }
