@@ -37,9 +37,17 @@ public class TileSlot extends AnchorPane {
         }
         this.tile = tile;
         tileButton.setText(Character.toString(tile.getLetter()));
+
     }
     public Button getTileButton() {
         return tileButton;
+    }
+    public void update(){
+        if(tile.getStatus() == Tile.Status.Used){
+            tileButton.setVisible(false);
+        }else{
+            tileButton.setVisible(true);
+        }
     }
 
 }
