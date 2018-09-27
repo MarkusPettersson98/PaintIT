@@ -132,46 +132,33 @@ public class PaintingView extends AnchorPane {
         });
 
         this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            switch(m.getCode()) {
+                case E:
+                    currentTool = tools.get(Eraser.class.getSimpleName());
+                    EraserToggleButton.setSelected(true);
+                    break;
+                case B:
+                    currentTool = tools.get(Brush.class.getSimpleName());
+                    BrushToggleButton.setSelected(true);
+                    break;
+                case S:
+                    currentTool = tools.get(SprayCan.class.getSimpleName());
+                    SprayCanToggleButton.setSelected(true);
+                    break;
+                case SLASH:
+                    radiusSlider.decrement();
+                    break;
+                case MINUS:
+                    radiusSlider.increment();
+                    break;
+            }
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
                 if (m.getCode().equals(Z) && (m.isControlDown()||m.isMetaDown())) {
                     canvasController.undo();
                 }
         });
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-            if (m.getCode().equals(E)) {
-                currentTool = tools.get(Eraser.class.getSimpleName());
-                EraserToggleButton.setSelected(true);
-            }
-        });
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-            if (m.getCode().equals(B)) {
-                currentTool = tools.get(Brush.class.getSimpleName());
-                BrushToggleButton.setSelected(true);
-            }
-        });
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-            if (m.getCode().equals(S)) {
-                currentTool = tools.get(SprayCan.class.getSimpleName());
-                SprayCanToggleButton.setSelected(true);
-            }
-        });
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-            if (m.getCode().equals(SLASH)) {
-                System.out.println("you pressed -");
-                radiusSlider.decrement();
-            }
-        });
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> { //So this is actually +
-            if (m.getCode().equals(MINUS)) {
-                System.out.println("you pressed +");
-                radiusSlider.increment();
-            }
-        });
-
 
         setRadius((int) radiusSlider.getValue());
 
