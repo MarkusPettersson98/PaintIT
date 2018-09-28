@@ -2,17 +2,17 @@ package Game;
 
 
 import Canvas.CanvasModel;
-import Canvas.CanvasView;
 import Util.ViewFactory;
 import Views.*;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
-import javax.swing.text.View;
-import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Main class, this is where most parts of the application is connected.
+ */
 
 public class GameSession {
 
@@ -26,11 +26,15 @@ public class GameSession {
         gameLogic = new GameLogic();
         List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
-
     }
 
     public Pane getCurrentPane() { return topController.getCurrentView(); }
 
+    /**
+     * Method for invoking {@link GameScreen#init()} of view to be shown and switching current view
+     * in {@link TopController}.
+     * @param url
+     */
     public void show(String url) {
         // Get next view to be shown
         topController.prepareNextView(url);
@@ -40,6 +44,11 @@ public class GameSession {
         // Show next view
         topController.show();
     }
+
+    /**
+     * If there's no prior instance of {@link Team}, add passed reference to {@link GameSession#team}
+     * @param team
+     */
 
     public void addTeam(Team team) {
         if(this.team == null) { this.team = team; }
