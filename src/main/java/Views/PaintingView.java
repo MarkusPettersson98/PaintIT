@@ -4,7 +4,6 @@ import Game.GameSession;
 import Tools.*;
 import Canvas.CanvasController;
 import Util.ButtonFactory;
-import com.PaintIT.app.TopController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;

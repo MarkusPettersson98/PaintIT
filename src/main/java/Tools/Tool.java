@@ -68,19 +68,7 @@ public abstract class Tool {
      * @return whether or not the radius is less or equal to 0, uses {@link Tool#inCircle}
      */
     public boolean apply(int x0, int y0, int x, int y) {
-        if (radius >= 0) {
-            // Check square area around cursor position
-            //for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                //for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (inCircle(x0, y0, x, y, /*posx, posy,*/ radius)) {
-                        // If inside circle with radius, return true
-                        return true;
-                    }
-              //  }
-           // }
-        }
-        // Pixel out of circle, return false
-        return false;
+        return (inCircle(x0, y0, x, y, radius) && (radius >=0));
     }
 
 }

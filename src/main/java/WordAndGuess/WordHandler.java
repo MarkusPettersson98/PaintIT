@@ -10,13 +10,14 @@ public class WordHandler {
     private ArrayList<String> wordList;
     private ArrayList<Tile> tiles;
     private String currentWord;
-    private final int tileAmount = 8;
+    private final int tileAmount;
 
 
     public WordHandler(){
         createWordList();
         pickRandomWord();
         createRandomTiles(this.currentWord);
+        tileAmount = 8;
     }
     private void createWordList(){
         wordList= new ArrayList();
