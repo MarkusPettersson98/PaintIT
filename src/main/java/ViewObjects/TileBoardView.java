@@ -16,23 +16,21 @@ import java.util.ArrayList;
 
 public class TileBoardView extends VBox implements Observer{
 
-    @FXML AnchorPane ancTop;
+
     @FXML HBox hBoxBottom;
-    @FXML Button removeTileBtn;
+    @FXML HBox hBoxTop;
     @FXML VBox vBoxRoot;
-    @FXML TextField guessTxtf;
+
 
     private Button testButton;
-    private ArrayList<TileSlot> tileSlotList;
+    private ArrayList<TileSlot> availableTileSlotList;
     private GuessLogic guessLogic;
     private TileBoardController tileBoardController;
+    private ArrayList<TileSlot> guessTileSlotList;
 
-    public TextField getGuessTxtf() {
-        return guessTxtf;
-    }
 
-    public ArrayList<TileSlot> getTileSlotList() {
-        return tileSlotList;
+    public ArrayList<TileSlot> getAvailableTileSlotList() {
+        return availableTileSlotList;
     }
     String filePath = "/fxml/tileBoard.fxml";
 
@@ -46,8 +44,11 @@ public class TileBoardView extends VBox implements Observer{
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        tileSlotList =  new ArrayList<>();
+        availableTileSlotList =  new ArrayList<>();
+        guessTileSlotList = new ArrayList<>();
         createTileSlots(guessLogic.getAvailableTiles());
+        createEmptyTileSlots();
+
 
 
         tileBoardController = new TileBoardController(guessLogic);
@@ -56,12 +57,20 @@ public class TileBoardView extends VBox implements Observer{
 
     }
 
+    private void createEmptyTileSlots(){
+        for(int i = 0; i < guessLogic.getCurrentWord().length(); i++){
+            guessTileSlotList.add(new TileSlot(new Tile('0',i)));
+        }
+        for(TileSlot tileSlot: guessTileSlotList){
+            hBoxTop.getChildren().add(tileSlot);
+        }
+    }
+
     private void setActionListeners(){
-        removeTileBtn.setOnAction(e->tileBoardController.removeTileFromGuess());
         setTilesActionListeners();
     }
     private void setTilesActionListeners(){ //eventListeners
-        for(TileSlot t: tileSlotList){
+        for(TileSlot t: availableTileSlotList){
             t.getTileButton().setOnAction(e-> tileBoardController.addTileToGuess(t.getTile()));
         }
     }
@@ -69,19 +78,18 @@ public class TileBoardView extends VBox implements Observer{
     private void createTileSlots(ArrayList<Tile> availableTiles){
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
-            tileSlotList.add(temp);
+            availableTileSlotList.add(temp);
             hBoxBottom.getChildren().add(temp);
         }
     }
 
     @Override
     public void update() {
-        guessTxtf.setText(guessLogic.getGuessString());
-        for(TileSlot t: tileSlotList){
+        for(TileSlot t: availableTileSlotList){
            t.update();
         }
         if(guessLogic.getCorrectGuessMade()){
-            guessTxtf.setText("CORRECT GUESS : " + guessLogic.getGuessString());
+            System.out.println("CORRECT GUESS");
         }
     }
 }
