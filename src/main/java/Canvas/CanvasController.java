@@ -46,8 +46,9 @@ public class CanvasController {
      */
     public void paint(int x, int y, Color newColor) {
         // Check if new color value is different from current value
-        if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0)
+        if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0) {
             return;
+        }
 
         if(!canvasModel.getPixel(x, y).equals(newColor)) {
             undoArrayList.add(getOldColor(x,y));
