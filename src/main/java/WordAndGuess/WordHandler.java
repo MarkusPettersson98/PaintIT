@@ -4,11 +4,12 @@ package WordAndGuess;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class WordHandler {
-    private ArrayList<String> wordList;
-    private ArrayList<Tile> tiles;
+    private List<String> wordList;
+    private List<Tile> tiles;
     private String currentWord;
     private final int tileAmount;
 
@@ -40,12 +41,11 @@ public class WordHandler {
     }
 
 
-    public ArrayList getWordList() {
+    public List getWordList() {
         return wordList;
     }
 
-    public ArrayList<Tile> getTiles() {
-
+    public List<Tile> getTiles() {
         return tiles;
     }
     public void createRandomTiles(String word){

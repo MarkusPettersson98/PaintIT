@@ -1,10 +1,10 @@
 package Canvas;
 
-import Game.GameSession;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class CanvasController {
@@ -21,12 +21,12 @@ public class CanvasController {
     /**
      * Holds {@link ColorPoint} of drawn over pixels, practically saving old pixels
      */
-    ArrayList<ColorPoint> undoArrayList = new ArrayList<>();
+    List<ColorPoint> undoArrayList = new ArrayList<>();
 
     /**
      * Holds the {@link CanvasController#undoArrayList} in a stack allowing for "first in last out"-undoing.
      */
-    Stack<ArrayList<ColorPoint>> undoStack = new Stack<>();
+    Stack<List<ColorPoint>> undoStack = new Stack<>();
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);

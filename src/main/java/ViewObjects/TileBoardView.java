@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TileBoardView extends VBox implements Observer{
 
@@ -22,7 +23,7 @@ public class TileBoardView extends VBox implements Observer{
     @FXML TextField guessTxtf;
 
     private Button testButton;
-    private ArrayList<TileSlot> tileSlotList;
+    private List<TileSlot> tileSlotList;
     private GuessLogic guessLogic;
     private TileBoardController tileBoardController;
 
@@ -30,7 +31,7 @@ public class TileBoardView extends VBox implements Observer{
         return guessTxtf;
     }
 
-    public ArrayList<TileSlot> getTileSlotList() {
+    public List<TileSlot> getTileSlotList() {
         return tileSlotList;
     }
     String filePath = "/fxml/tileBoard.fxml";
@@ -65,7 +66,7 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
 
-    private void createTileSlots(ArrayList<Tile> availableTiles){
+    private void createTileSlots(List<Tile> availableTiles){
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
             tileSlotList.add(temp);

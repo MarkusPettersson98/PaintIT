@@ -39,7 +39,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     CanvasController canvasController;
 
-    HashMap<String, Tool> tools = new HashMap<>();
+    Map<String, Tool> tools = new HashMap<>();
 
     Tool currentTool;
 

@@ -5,13 +5,14 @@ import Tools.Observer;
 import Util.GeneralUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuessLogic implements Observable {
     private String currentWord;
-    private ArrayList<Tile> guessWord;
-    private ArrayList<Tile> availableTiles;
+    private List<Tile> guessWord;
+    private List<Tile> availableTiles;
     private WordHandler wordHandler;
-    private ArrayList<Observer> observers;
+    private List<Observer> observers;
     private Boolean correctGuessMade;
 
     public Boolean getCorrectGuessMade() {
@@ -32,7 +33,7 @@ public class GuessLogic implements Observable {
         return currentWord;
     }
 
-    public ArrayList<Tile> getAvailableTiles() {
+    public List<Tile> getAvailableTiles() {
         return availableTiles;
     }
 
@@ -49,7 +50,7 @@ public class GuessLogic implements Observable {
         return  GeneralUtil.tileListToString(guessWord);
     }
 
-    public ArrayList<Tile> getGuessWord() {
+    public List<Tile> getGuessWord() {
         return guessWord;
     }
     public void removeTileFromGuess() {

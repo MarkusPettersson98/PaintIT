@@ -2,8 +2,6 @@ package com.PaintIT.app;
 
 
 import Game.GameSession;
-import Game.Player;
-import Game.Team;
 import Views.MainMenuView;
 
 

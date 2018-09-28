@@ -1,12 +1,8 @@
 package Views;
 
 import Game.GameSession;
-import Game.Player;
 import Game.Team;
 import Util.ButtonFactory;
-import com.PaintIT.app.TopController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

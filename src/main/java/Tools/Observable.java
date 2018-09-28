@@ -1,8 +1,5 @@
 package Tools;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Represents observable objects, using the Observer-Pattern
  */

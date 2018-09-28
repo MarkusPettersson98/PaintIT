@@ -4,6 +4,7 @@ package WordAndGuess;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -38,8 +39,8 @@ public class WordHandlerTest {
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
-        ArrayList<Tile> tiles = guessLogic.getAvailableTiles();
-        ArrayList<Character> letters = new ArrayList<>();
+        List<Tile> tiles = guessLogic.getAvailableTiles();
+        List<Character> letters = new ArrayList<>();
         for(Tile t: tiles){
             letters.add(t.getLetter());
         }
