@@ -81,5 +81,11 @@ public class GameSession {
 
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
-    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
+    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
+
+    public String getCurrentWord() {
+        // TODO PLACEHOLDER, GRAB WORD FROM GAMELOGIC
+        // return gameLogic...
+        return "Placeholder";
+    }
 }
