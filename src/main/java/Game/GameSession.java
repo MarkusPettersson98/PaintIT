@@ -18,7 +18,7 @@ public class GameSession {
 
     private Team team;
 
-    private GameLogic gameLogic;
+    private final GameLogic gameLogic;
 
     private final TopController topController;
 

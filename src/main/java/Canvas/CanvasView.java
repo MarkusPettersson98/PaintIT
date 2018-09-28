@@ -15,7 +15,7 @@ public class CanvasView extends Canvas implements Observer {
     /**
      * Is used to paint on {@link Canvas}, see Oracle.
      */
-    private PixelWriter pixelWriter;
+    private final PixelWriter pixelWriter;
 
     /**
      * How the view gets the pixel that has been changed

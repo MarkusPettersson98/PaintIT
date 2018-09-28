@@ -49,9 +49,9 @@ public class CanvasController {
         if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0) {
             return;
         }
-
-        if(!canvasModel.getPixel(x, y).equals(newColor)) {
-            undoArrayList.add(getOldColor(x,y));
+        Color tmpColor = canvasModel.getPixel(x,y);
+        if(!tmpColor.equals(newColor)) {
+            undoArrayList.add(getColorPoint(x,y));
             canvasModel.setPixel(x, y, newColor);
         }
     }
@@ -63,7 +63,7 @@ public class CanvasController {
      * @return A new ColorPoint from the canvasModel.
      */
 
-    public ColorPoint getOldColor(int x, int y) {
+    public ColorPoint getColorPoint(int x, int y) {
         return new ColorPoint(x,y,canvasModel.getPixel(x,y));
     }
 
