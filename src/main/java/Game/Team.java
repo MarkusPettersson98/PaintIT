@@ -26,6 +26,13 @@ public class Team {
         this.teamName = teamName;
     }
 
+    public void incrementStreak() { streak++; }
+
+    public void resetStreak() {
+        // Someone guessed the wrong word one too many times. What a pity..
+        streak = 0;
+    }
+
     /** Returns the teams players.
      *
      * @return returns a {@link Pair} of {@link Team#playerOne} and {@link Team#playerTwo}

@@ -8,6 +8,9 @@ import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 
+import WordAndGuess.GuessLogic;
+
+
 import java.util.List;
 
 /**
@@ -19,6 +22,7 @@ public class GameSession {
     private Team team;
 
     private final GameLogic gameLogic;
+
 
     private final TopController topController;
 
@@ -62,6 +66,9 @@ public class GameSession {
             return team.getTeamName();
         else return "There's no team!";
     }
+    public GuessLogic getGuessLogic(){
+        return gameLogic.getGuessLogic();
+    }
 
     /**
      *
@@ -71,7 +78,21 @@ public class GameSession {
         return team.getPlayerNames();
     }
 
+    public int getTeamStreak() { return team.getStreak(); }
+
+    public void incrementTeamStreak() { team.incrementStreak();}
+
+    public void resetTeamStreak() {
+        team.resetStreak();
+    }
+
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
-    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
+    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
+
+    public String getCurrentWord() {
+        // TODO PLACEHOLDER, GRAB WORD FROM GAMELOGIC
+        // return gameLogic...
+        return "Placeholder";
+    }
 }
