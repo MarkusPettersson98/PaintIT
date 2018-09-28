@@ -34,6 +34,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @FXML
     Button clearBtn, undoBtn, doneBtn;
 
+    @FXML
+    Label currentWordLbl;
+
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -43,7 +46,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     Tool currentTool;
 
+    private GameSession gameSession;
+
     public PaintingView(FXMLLoader fxmlLoader, GameSession gameSession) {
+        this.gameSession = gameSession;
 
         this.canvasController = new CanvasController();
         Canvas canvas = canvasController.getCanvasView();
@@ -126,7 +132,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         undoBtn.setOnAction(e -> canvasController.undo());
 
-        doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
+        // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
+        doneBtn.setId(ButtonFactory.createDoneViewBtnId());
+        // doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
             gameSession.show(doneBtn.getId());
@@ -184,7 +192,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     @Override
     public void init() {
-
+        // Update label with current word
+        currentWordLbl.setText(gameSession.getCurrentWord());
     }
 
     @Override

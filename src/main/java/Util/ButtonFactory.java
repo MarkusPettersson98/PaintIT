@@ -1,10 +1,6 @@
 package Util;
 
-import Views.GameSetupView;
-import Views.GuessingView;
-import Views.MainMenuView;
-import Views.WordRevealView;
-import Views.PaintingView;
+import Views.*;
 
 /**
  * Mimicing the FactoryPattern this class assigns buttons an ID which is relevant for identifying and switching between {@link Views.GameScreen} via {@link Game.GameSession}.
@@ -28,4 +24,6 @@ public abstract class ButtonFactory {
     public static String createWordRevealViewBtnId() {
         return (WordRevealView.class.getSimpleName());
     }
+
+    public static String createDoneViewBtnId() { return DoneView.class.getSimpleName(); }
 }
