@@ -1,8 +1,7 @@
 package Views;
 
+import Game.GameSession;
 import Util.ButtonFactory;
-import com.PaintIT.app.TopController;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +12,10 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import java.io.IOException;
 
-public class MainMenuView extends AnchorPane{
+public class MainMenuView extends AnchorPane implements GameScreen{
 
     @FXML private AnchorPane mainMenuAnchorPane;
     @FXML private Button play;
@@ -26,7 +26,7 @@ public class MainMenuView extends AnchorPane{
     @FXML private AnchorPane lightBoxAnchorPane;
     @FXML private ImageView closeButtonImageView;
 
-    public MainMenuView (FXMLLoader fxmlLoader) {
+    public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/MainMenuView.fxml"));
         fxmlLoader.setRoot(this);
@@ -42,7 +42,7 @@ public class MainMenuView extends AnchorPane{
 
         play.setId(ButtonFactory.createGameSetupViewBtnId());
         play.setOnAction(e -> {
-            TopController.show(play.getId());
+            gameSession.show(play.getId());
         });
 
         howToPlay.setOnAction(e -> {
@@ -98,6 +98,15 @@ public class MainMenuView extends AnchorPane{
         event.consume();
     }
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Pane getPane() {
+        return this;
+    }
 }
 
 

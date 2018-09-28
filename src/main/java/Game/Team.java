@@ -1,6 +1,11 @@
 package Game;
 
+import javafx.util.Pair;
 import lombok.Getter;
+
+/**
+ * Represents a team consisting of two {@link Player}s.
+ */
 
 public class Team {
 
@@ -21,6 +26,13 @@ public class Team {
         this.teamName = teamName;
     }
 
+    /** Returns the teams players.
+     *
+     * @return returns a {@link Pair} of {@link Team#playerOne} and {@link Team#playerTwo}
+     */
+    public Pair<String, String> getPlayerNames() {
+        return new Pair<>(playerOne.getName(), playerTwo.getName());
+    }
 
 
 }

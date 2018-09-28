@@ -14,10 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class GameSetupView extends AnchorPane {
+public class GameSetupView extends AnchorPane implements GameScreen {
 
     @FXML private TextField player1TextField;
     @FXML private TextField player2TextField;
@@ -25,7 +26,10 @@ public class GameSetupView extends AnchorPane {
     @FXML private Button backButton;
     @FXML private ImageView backButtonImageView;
 
-    public GameSetupView (FXMLLoader fxmlLoader){
+    private GameSession gameSession;
+
+    public GameSetupView (FXMLLoader fxmlLoader, GameSession gameSession){
+        this.gameSession = gameSession;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GameSetupView.fxml"));
         fxmlLoader.setRoot(this);
@@ -39,13 +43,17 @@ public class GameSetupView extends AnchorPane {
 
         startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
+            // Create team and add it to game backend
             setNames();
-            TopController.show(startDrawing.getId());
+            // Start word reveal countdown (in WordRevealView)
+            // gameSession.startWordRevealCountdown();
+            // Show next view
+            gameSession.show(startDrawing.getId());
         });
 
         backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
         backButtonImageView.setOnMouseClicked(e -> {
-            TopController.show(backButtonImageView.getId());
+            gameSession.show(backButtonImageView.getId());
             String path = "images/icon_back.png";
             backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
         });
@@ -69,11 +77,21 @@ public class GameSetupView extends AnchorPane {
         String player1 = player1TextField.getText();
         String player2 = player2TextField.getText();
 
-        GameSession.getInstance().addTeam(new Team(player1,
+        gameSession.addTeam(new Team(player1,
                                                    player2,
                                           player1 + " and " + player2));
+
 
     }
 
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Pane getPane() {
+        return this;
+    }
 }

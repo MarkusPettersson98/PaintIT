@@ -9,12 +9,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CanvasModel implements Observable {
-
-
-    @Getter private int xMax = 1200, yMax = 500;
-    @Getter private int latestPixelY;
+    /**
+     * Represents the canvas x-size.
+     */
+    @Getter private int xMax = 1200;
+    /**
+     * Represents the canvas y-size.
+     */
+    @Getter private int yMax = 500;
+    /**
+     * Represents the x-value of the latest pixel that has been modified.
+     */
     @Getter private int latestPixelX;
+    /**
+     * Represents the y-value of the latest pixel that has been modified.
+     */
+    @Getter private int latestPixelY;
+    /**
+     * An array of the Canvas. Using the Arrays structure so that the x and y value represents a pixel while its content ({@link ColorPoint})
+      represents the value.
+     */
     private Color[][] canvas = new Color[xMax][yMax];
+    /**
+     * In this case, a list of {@link CanvasView}.
+     */
     List<Observer> Observers = new ArrayList<>();
 
     protected CanvasModel(Color initValue) {
@@ -54,13 +72,11 @@ public class CanvasModel implements Observable {
      * @return The color of the chosen pixel.
      * @throws IndexOutOfBoundsException Exception when you try to get a pixel outside the canvas.
      */
-
     protected Color getPixel(int x, int y) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {}
 
         return canvas[x][y];
-
     }
 
     /**

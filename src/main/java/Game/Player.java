@@ -1,5 +1,8 @@
 package Game;
 
+/**
+ * Represents a Player.
+ */
 public class Player {
 
     private String name;

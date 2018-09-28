@@ -1,35 +1,48 @@
 package com.PaintIT.app;
 
-
-import Util.ViewFactory;
-
-
+import Views.GameScreen;
 import javafx.scene.layout.Pane;
-import javafx.util.Pair;
 import lombok.Getter;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class TopController {
 
-    private static HashMap<String, Pane> applicationPanes = new HashMap<>();
-    @Getter private static Pane currentView = new Pane();
-    private static TopController instance;
+    /**
+     * Class responsible for viewing a pane. A reference of {@link TopController#currentView} is passed
+     * to {@link javafx.scene.Scene} in {@link App}.
+     */
 
-    private TopController() {
-        for(Pair<String, Pane> viewPair : ViewFactory.createAllViews()) {
-            applicationPanes.put(viewPair.getKey(), viewPair.getValue());
+    private static HashMap<String, GameScreen> applicationPanes = new HashMap<>();
+
+    @Getter private Pane currentView = new Pane();
+
+    @Getter private GameScreen nextScreen;
+
+    public TopController(List<GameScreen> gameScreens) {
+        for(GameScreen gameScreen : gameScreens) {
+
+            System.out.println(gameScreen.getClass().getSimpleName());
+
+            applicationPanes.put(gameScreen.getClass().getSimpleName(), gameScreen);
         }
-
     }
 
-    public static void show(String url) {
+    /**
+     * Adds {@link TopController#nextScreen} as child node of {@link TopController#currentView}. The child
+     * of {@link TopController#currentView} is the one being displayed in the main application.
+     */
+    public void show() {
         currentView.getChildren().clear();
-        currentView.getChildren().add(applicationPanes.get(url));
+        currentView.getChildren().add(nextScreen.getPane());
     }
 
-    public static TopController getInstance() {
-        if(instance == null) instance = new TopController();
-        return instance;
+    /**
+     * Sets {@link TopController#nextScreen} to a new {@link Pane}.
+     * @param url
+     */
+    public void prepareNextView(String url) {
+        nextScreen = applicationPanes.get(url);
     }
 }
