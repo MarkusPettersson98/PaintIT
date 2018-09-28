@@ -7,10 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class GuessingView extends AnchorPane {
+public class GuessingView extends AnchorPane implements GameScreen {
 
     @FXML
     HBox hbox;
@@ -31,4 +32,13 @@ public class GuessingView extends AnchorPane {
         hbox.getChildren().add(canvasView);
     }
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Pane getPane() {
+        return this;
+    }
 }

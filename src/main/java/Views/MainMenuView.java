@@ -14,11 +14,12 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 
-public class MainMenuView extends AnchorPane{
+public class MainMenuView extends AnchorPane implements GameScreen{
 
     @FXML private AnchorPane mainMenuAnchorPane;
     @FXML private Button play;
@@ -101,6 +102,15 @@ public class MainMenuView extends AnchorPane{
         event.consume();
     }
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Pane getPane() {
+        return this;
+    }
 }
 
 

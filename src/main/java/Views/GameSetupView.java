@@ -14,10 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class GameSetupView extends AnchorPane {
+public class GameSetupView extends AnchorPane implements GameScreen {
 
     @FXML private TextField player1TextField;
     @FXML private TextField player2TextField;
@@ -84,4 +85,13 @@ public class GameSetupView extends AnchorPane {
     }
 
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Pane getPane() {
+        return this;
+    }
 }

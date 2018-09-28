@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.*;
 
 import static javafx.scene.input.KeyCode.*;
 
-public class PaintingView extends AnchorPane {
+public class PaintingView extends AnchorPane implements GameScreen {
 
     @FXML
     HBox hbox;
@@ -190,4 +191,13 @@ public class PaintingView extends AnchorPane {
         tools.forEach((k, v) -> v.setRadius(radius));
     }
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public Pane getPane() {
+        return this;
+    }
 }

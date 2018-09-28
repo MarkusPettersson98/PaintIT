@@ -30,21 +30,30 @@ public class GameSession {
 
     public GameSession() {
         gameLogic = new GameLogic();
-        List<Pane> panes = new ArrayList<>();
+        List<GameScreen> gameScreens = ViewFactory.createAllView(this);
+        topController = new TopController(gameScreens);
         // Create an object of every view in the application
-        mainMenuView = ViewFactory.createMainMenuView(this); panes.add(mainMenuView);
-        gameSetupView = ViewFactory.createGameSetupView(this); panes.add(gameSetupView);
-        wordRevealView = ViewFactory.createWordRevealView(this); panes.add(wordRevealView);
-        paintingView = ViewFactory.createPaintingView(this); panes.add(paintingView);
-        guessingView = ViewFactory.createGuessingView(this); panes.add(guessingView);
-
-        topController = new TopController(panes);
+        /*
+        mainMenuView = ViewFactory.createMainMenuView(this); gameScreens.add(mainMenuView);
+        gameSetupView = ViewFactory.createGameSetupView(this); gameScreens.add(gameSetupView);
+        wordRevealView = ViewFactory.createWordRevealView(this); gameScreens.add(wordRevealView);
+        paintingView = ViewFactory.createPaintingView(this); gameScreens.add(paintingView);
+        guessingView = ViewFactory.createGuessingView(this); gameScreens.add(guessingView);
+        */
 
     }
 
     public Pane getCurrentPane() { return topController.getCurrentView(); }
 
-    public void show(String url) { topController.show(url); }
+    public void show(String url) {
+        // Get next view to be shown
+        topController.prepareNextView(url);
+        // Call init method on next view
+        GameScreen gameScreenTmp = topController.getNextScreen();
+        gameScreenTmp.init();
+        // Show next view
+        topController.show();
+    }
 
     public void addTeam(Team team) {
         if(this.team == null) { this.team = team; }
@@ -63,10 +72,11 @@ public class GameSession {
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
-
+/*
     public void startWordRevealCountdown() {
         wordRevealView.setTimer(6);
         wordRevealView.startTimer();
         wordRevealView.setPlayerNameLabels(team.getPlayerNames());
     }
+    */
 }

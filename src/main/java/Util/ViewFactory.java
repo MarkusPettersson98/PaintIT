@@ -31,4 +31,15 @@ public abstract class ViewFactory {
     public static PaintingView createPaintingView(GameSession gameSession) { return new PaintingView(fxmlLoader, gameSession); }
     public static GuessingView createGuessingView(GameSession gameSession) { return new GuessingView(fxmlLoader, gameSession); }
 
+    public static List<GameScreen> createAllView(GameSession gameSession) {
+        List<GameScreen> gameScreens = new ArrayList<>();
+
+        gameScreens.add(createMainMenuView(gameSession));
+        gameScreens.add(createGameSetupView(gameSession));
+        gameScreens.add(createWordRevealView(gameSession));
+        gameScreens.add(createPaintingView(gameSession));
+        gameScreens.add(createGuessingView(gameSession));
+
+        return gameScreens;
+    }
 }
