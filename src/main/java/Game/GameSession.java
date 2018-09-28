@@ -8,6 +8,9 @@ import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 
+import WordAndGuess.GuessLogic;
+
+
 import java.util.List;
 
 /**
@@ -18,7 +21,7 @@ public class GameSession {
 
     private Team team;
 
-    private GameLogic gameLogic;
+     private GameLogic gameLogic;
 
     private final TopController topController;
 
@@ -61,6 +64,9 @@ public class GameSession {
         if(team != null)
             return team.getTeamName();
         else return "There's no team!";
+    }
+    public GuessLogic getGuessLogic(){
+        return gameLogic.getGuessLogic();
     }
 
     /**

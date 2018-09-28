@@ -1,6 +1,7 @@
 package Game;
 
 import Canvas.CanvasModel;
+import WordAndGuess.GuessLogic;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,8 +9,9 @@ class GameLogic {
 
     @Setter @Getter private CanvasModel currentPainting;
 
-    private String word;
-
-    private char[] guess;
+    @Getter private final GuessLogic guessLogic;
+    GameLogic(){
+        guessLogic = new GuessLogic();
+    }
 
 }

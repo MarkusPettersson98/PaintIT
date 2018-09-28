@@ -1,0 +1,5 @@
+.tileBoard {
+     -fx-border-color:  #777777;
+     -fx-background-color: #FFFFFF;
+     -fx-border: 5px;
+}
