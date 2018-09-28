@@ -15,8 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import sun.plugin.javascript.navig.Anchor;
-
 import java.io.IOException;
 
 public class MainMenuView extends AnchorPane implements GameScreen{

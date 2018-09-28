@@ -183,7 +183,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     public void clearCanvas() {
         canvasController.clear();
-        canvasController.redraw();
+        canvasController.redrawCanvasView();
     }
 
 
