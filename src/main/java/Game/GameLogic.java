@@ -14,4 +14,12 @@ class GameLogic {
         guessLogic = new GuessLogic();
     }
 
+    public String getCurrentWord() {
+        return guessLogic.getCurrentWord();
+    }
+
+    public void generateNewWord() {
+        guessLogic.generateNewWord();
+    }
+
 }

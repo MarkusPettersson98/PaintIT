@@ -70,9 +70,9 @@ public class WordHandler {
     }
 
     public void pickRandomWord(){
-        currentWord =  wordList.get(getRandomIndex());
-
+        currentWord = wordList.get(getRandomIndex());
     }
+
     int getRandomIndex(){
         Random rand = new Random();
         int indexAmount = wordList.size();

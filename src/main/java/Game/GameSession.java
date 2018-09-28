@@ -90,8 +90,11 @@ public class GameSession {
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
 
     public String getCurrentWord() {
-        // TODO PLACEHOLDER, GRAB WORD FROM GAMELOGIC
-        // return gameLogic...
-        return "Placeholder";
+        return gameLogic.getCurrentWord();
+    }
+
+    public void newTurn() {
+        // Turn over, generate, switch guesser/drawer..
+        gameLogic.generateNewWord();
     }
 }
