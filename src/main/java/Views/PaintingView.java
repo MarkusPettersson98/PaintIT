@@ -127,7 +127,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         undoBtn.setOnAction(e -> canvasController.undo());
 
-        doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
+        // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
+        doneBtn.setId(ButtonFactory.createDoneViewBtnId());
+        // doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
             gameSession.show(doneBtn.getId());

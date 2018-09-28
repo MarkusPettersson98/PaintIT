@@ -42,6 +42,8 @@ public class DoneView extends AnchorPane implements GameScreen {
     }
     @Override
     public void init() {
+        // TODO MOVE THIS LOGIC TO GUESSINGVIEW?
+        gameSession.incrementTeamStreak();
         // Update labels
         congratsLbl.setText("You made it!");
         Integer currentStreak = gameSession.getTeamStreak();

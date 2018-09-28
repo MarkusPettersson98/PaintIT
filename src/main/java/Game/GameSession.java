@@ -73,6 +73,12 @@ public class GameSession {
 
     public int getTeamStreak() { return team.getStreak(); }
 
+    public void incrementTeamStreak() { team.incrementStreak();}
+
+    public void resetTeamStreak() {
+        team.resetStreak();
+    }
+
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
