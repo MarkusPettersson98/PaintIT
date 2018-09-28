@@ -71,6 +71,8 @@ public class GameSession {
         return team.getPlayerNames();
     }
 
+    public int getTeamStreak() { return team.getStreak(); }
+
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
