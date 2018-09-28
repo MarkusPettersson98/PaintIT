@@ -20,26 +20,12 @@ public class GameSession {
 
     private GameLogic gameLogic;
 
-    MainMenuView mainMenuView;
-    GameSetupView gameSetupView;
-    WordRevealView wordRevealView;
-    PaintingView paintingView;
-    GuessingView guessingView;
-
     private final TopController topController;
 
     public GameSession() {
         gameLogic = new GameLogic();
-        List<GameScreen> gameScreens = ViewFactory.createAllView(this);
+        List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
-        // Create an object of every view in the application
-        /*
-        mainMenuView = ViewFactory.createMainMenuView(this); gameScreens.add(mainMenuView);
-        gameSetupView = ViewFactory.createGameSetupView(this); gameScreens.add(gameSetupView);
-        wordRevealView = ViewFactory.createWordRevealView(this); gameScreens.add(wordRevealView);
-        paintingView = ViewFactory.createPaintingView(this); gameScreens.add(paintingView);
-        guessingView = ViewFactory.createGuessingView(this); gameScreens.add(guessingView);
-        */
 
     }
 

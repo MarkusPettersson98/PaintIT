@@ -51,7 +51,7 @@ public abstract class ViewFactory {
      * @param gameSession
      * @return
      */
-    public static List<GameScreen> createAllView(GameSession gameSession) {
+    public static List<GameScreen> createAllViews(GameSession gameSession) {
         List<GameScreen> gameScreens = new ArrayList<>();
 
         gameScreens.add(createMainMenuView(gameSession));
