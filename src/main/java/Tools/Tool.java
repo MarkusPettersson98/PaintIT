@@ -14,6 +14,9 @@ public abstract class Tool {
     @Getter @Setter
     private int radius;
 
+    /**
+     * Determines the color of the Tool.
+     */
     @Getter @Setter
     private Color color;
 
@@ -38,14 +41,14 @@ public abstract class Tool {
     }
 
     /**
-     * Determines if point is in circle or not.
+     * Determines if point is in circle or not. Meaning, returns if the point (posx,posy) is in the circle that is formed around (x0,y0) with the radius r.
      *
      * @param x0   x-value of the origin of circle.
      * @param y0   y-value of the origin of circle.
      * @param posx x-value of the point that is being checked.
      * @param posy y-value of the point that is being checked.
      * @param r    radius of circle.
-     * @return Whether or not the point was in the circle or not.
+     * @return Whether or not x^2 + y^2 is less or equal to r^2.
      */
 
     public boolean inCircle(int x0, int y0, int posx, int posy, int r) {
@@ -54,13 +57,17 @@ public abstract class Tool {
     }
 
 
-    /**
-     * Checks square area around brush and fills a circular area.
-     * Notifies Observers ({@link Canvas.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
-     * The appearance of the circle is determined by {@link PaintingView#currentColor} and {@link Tools.Brush#radius}
+    //Notifies Observers ({@link Canvas.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
+    // The appearance of the circle is determined by {@link PaintingView} and {@link Tools.Tool#radius}
+    // TODO: fix this javadoc or functionality of apply
+    /** Doesn't really do anything.
      *
-     * @param x0 Determines the x-value for the center of the circle.
-     * @param y0 Determines the x-value for the center of the circle.
+     *
+     * @param x0 The x-value for the center of the circle.
+     * @param y0 The y-value for the center of the circle.
+     * @param x The x-value to be checked if in circle.
+     * @param y the y-value to be checked if in circle.
+     * @return whether or not the radius is less or equal to 0, uses {@link Tool#inCircle}
      */
     public boolean apply(int x0, int y0, int x, int y) {
         if (radius >= 0) {

@@ -17,8 +17,6 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.*;
 
-import static javafx.scene.input.KeyCode.*;
-
 public class PaintingView extends AnchorPane {
 
     @FXML
@@ -36,8 +34,6 @@ public class PaintingView extends AnchorPane {
     @FXML
     Button clearBtn, undoBtn, doneBtn;
 
-    final KeyCombination ctrlZ = new KeyCodeCombination(Z,
-            KeyCombination.CONTROL_DOWN);
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -161,19 +157,15 @@ public class PaintingView extends AnchorPane {
                 case MINUS:
                     radiusSlider.increment();
                     break;
+                case Z:
+                    if(m.isControlDown() || m.isMetaDown()) {
+                        canvasController.undo();
+                    }
+                    break;
             }
         });
 
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-                if (m.getCode().equals(Z) && (m.isControlDown()||m.isMetaDown())) {
-                    canvasController.undo();
-                }
-        });
-
         setRadius((int) radiusSlider.getValue());
-
-        canvasController.fillCanvas(Color.RED);
-
     }
 
     private void setupButton(ToggleButton button, String name) {
@@ -183,7 +175,7 @@ public class PaintingView extends AnchorPane {
 
     public void clearCanvas() {
         canvasController.clear();
-        canvasController.redraw();
+        canvasController.redrawCanvasView();
     }
 
 
