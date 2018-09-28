@@ -53,6 +53,7 @@ public class TileBoardView extends VBox implements Observer{
         tileBoardController = new TileBoardController(guessLogic);
         setActionListeners();
         guessLogic.addObserver(this);
+
     }
 
     private void setActionListeners(){

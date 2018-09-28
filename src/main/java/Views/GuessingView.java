@@ -29,7 +29,7 @@ public class GuessingView extends AnchorPane {
 
         CanvasView canvasView = new CanvasView(GameSession.getInstance().getCanvas());
        vBox.getChildren().add(canvasView);
-         vBox.getChildren().add(tileBoardView);
+       vBox.getChildren().add(tileBoardView);
 
     }
 
