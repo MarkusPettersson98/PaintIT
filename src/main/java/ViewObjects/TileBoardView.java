@@ -1,5 +1,6 @@
 package ViewObjects;
 
+import Game.GameSession;
 import Tools.Observer;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
@@ -35,17 +36,16 @@ public class TileBoardView extends VBox implements Observer{
     }
     String filePath = "/fxml/tileBoard.fxml";
 
-    public TileBoardView(GuessLogic guessLogic) {
+    public TileBoardView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
-
+        this.guessLogic = GameSession.getInstance().getGuessLogic();
         try {
             fxmlLoader.load();
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        this.guessLogic = guessLogic;
         tileSlotList =  new ArrayList<>();
         createTileSlots(guessLogic.getAvailableTiles());
 

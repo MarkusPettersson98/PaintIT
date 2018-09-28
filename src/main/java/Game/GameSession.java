@@ -3,7 +3,9 @@ package Game;
 
 import Canvas.CanvasModel;
 import Canvas.CanvasView;
+import WordAndGuess.GuessLogic;
 import javafx.scene.paint.Color;
+import lombok.Getter;
 
 public class GameSession {
 
@@ -11,7 +13,7 @@ public class GameSession {
 
     private Team team;
 
-    private GameLogic gameLogic;
+     private GameLogic gameLogic;
 
     private GameSession() { this.gameLogic = new GameLogic(); }
 
@@ -28,6 +30,9 @@ public class GameSession {
         if(team != null)
             return team.getTeamName();
         else return "There's no team!";
+    }
+    public GuessLogic getGuessLogic(){
+        return gameLogic.getGuessLogic();
     }
 
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
