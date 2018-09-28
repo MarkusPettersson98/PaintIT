@@ -24,6 +24,7 @@ public class WordRevealView extends AnchorPane implements GameScreen{
     @FXML private Label numberCountdownLabel;
     @FXML private Button revealNowButton;
 
+    private Timer timer;
     private int secondsleft;
     private final int COUNTDOWNSTARTVALUE = 6;
 
@@ -44,13 +45,15 @@ public class WordRevealView extends AnchorPane implements GameScreen{
 
         revealNowButton.setId(ButtonFactory.createPaintingViewBtnId());
         revealNowButton.setOnAction(e -> {
-            gameSession.show(revealNowButton.getId()); });
+            gameSession.show(revealNowButton.getId());
+            timer.cancel();
+        });
     }
 
 
 
     public void startTimer() {
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -58,10 +61,9 @@ public class WordRevealView extends AnchorPane implements GameScreen{
                 Platform.runLater(() -> update());
                 secondsleft--;
 
-                if(secondsleft == 0){
+                if(secondsleft <= 0){
                     // time's up, go to next page
                     Platform.runLater(() -> revealNowButton.fire());
-                    timer.cancel();
                 }
             }
         },0,1000);
