@@ -12,13 +12,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Initilizes all the
+ * Initilizes the entire program.
  *
  */
-public class App extends Application
-{
-    public static void main( String[] args )
-    {
+public class App extends Application {
+    public static void main( String[] args ) {
         launch(args);
 
     }
@@ -27,7 +25,6 @@ public class App extends Application
     public void start (Stage primaryStage) throws Exception{
         primaryStage.setTitle("PainIT");
 
-        // TopController.getInstance();
         GameSession gameSession = new GameSession();
 
         Scene scene = new Scene(gameSession.getCurrentPane());

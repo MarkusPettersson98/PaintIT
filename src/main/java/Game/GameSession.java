@@ -67,11 +67,4 @@ public class GameSession {
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
-/*
-    public void startWordRevealCountdown() {
-        wordRevealView.setTimer(6);
-        wordRevealView.startTimer();
-        wordRevealView.setPlayerNameLabels(team.getPlayerNames());
-    }
-    */
 }

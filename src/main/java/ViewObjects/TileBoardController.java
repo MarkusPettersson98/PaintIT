@@ -2,11 +2,6 @@ package ViewObjects;
 
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
-import javafx.event.Event;
-import javafx.scene.input.KeyCode;
-
-import java.awt.event.KeyEvent;
-
 
 public class TileBoardController {
     GuessLogic guessLogic;
