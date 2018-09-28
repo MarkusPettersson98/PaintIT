@@ -46,7 +46,7 @@ public class GameSession {
     }
 
     /**
-     * If there's no prior instance of {@link Team}, add passed reference to {@link GameSession#team}
+     * If there's no prior instance of {@link Team}, add passed reference to {@link GameSession#team}.
      * @param team
      */
 
@@ -54,12 +54,19 @@ public class GameSession {
         if(this.team == null) { this.team = team; }
     }
 
-    public String getTeamName() throws AssertionError {
+    /**
+     * @return Name of {@link GameSession#team}.
+     */
+    public String getTeamName() {
         if(team != null)
             return team.getTeamName();
         else return "There's no team!";
     }
 
+    /**
+     *
+     * @return Name of players in {@link GameSession#team} as a {@link Pair<String, String>}.
+     */
     public Pair<String, String> getPlayerNames() {
         return team.getPlayerNames();
     }
@@ -67,11 +74,5 @@ public class GameSession {
     public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel);}
-/*
-    public void startWordRevealCountdown() {
-        wordRevealView.setTimer(6);
-        wordRevealView.startTimer();
-        wordRevealView.setPlayerNameLabels(team.getPlayerNames());
-    }
-    */
+
 }
