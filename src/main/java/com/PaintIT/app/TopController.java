@@ -37,6 +37,4 @@ public class TopController {
     public void prepareNextView(String url) {
         nextScreen = applicationPanes.get(url);
     }
-
-
 }

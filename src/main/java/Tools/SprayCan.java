@@ -4,6 +4,9 @@ import lombok.Setter;
 
 import java.util.Random;
 
+/** Represents a SprayCan.
+ *
+ */
 public class SprayCan extends Tool {
 
     Random r = new Random();
@@ -11,11 +14,6 @@ public class SprayCan extends Tool {
      *
      */
     @Setter private double odds = 0.20;
-
-    /** Determines how big the circle that will be painted is.
-     *
-     */
-
     @Override
     public boolean apply(int x0, int y0, int x, int y) {
         if (getRadius() >= 0) {
