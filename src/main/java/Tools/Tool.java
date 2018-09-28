@@ -50,14 +50,13 @@ public abstract class Tool {
 
     public boolean inCircle(int x0, int y0, int posx, int posy, int r) {
         return ((Math.pow((posx - x0), 2) + Math.pow(posy - y0, 2)) <= Math.pow(r, 2));
-
     }
 
 
     /**
      * Checks square area around brush and fills a circular area.
      * Notifies Observers ({@link Canvas.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
-     * The appearance of the circle is determined by {@link PaintingView#currentColor} and {@link Tools.Brush#radius}
+     * The appearance of the circle is determined by {@link Tool#color} and {@link Tool#radius}
      *
      * @param x0 Determines the x-value for the center of the circle.
      * @param y0 Determines the x-value for the center of the circle.

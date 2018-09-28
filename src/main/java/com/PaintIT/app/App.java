@@ -11,9 +11,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 /**
- * Hello world!
+ * Initilizes all the
  *
  */
 public class App extends Application
