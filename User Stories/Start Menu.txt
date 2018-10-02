@@ -6,15 +6,9 @@ Story Name: StartMenu
 
 ## Description 
 
-As a player, I want to be greated by a startmenu when I start the game so that i can start playing easily.
+As a player, I want to be greated by a startmenu when I start the game so that I can start playing easily.
 
 ## Confirmation
-When the app opens with a startmenu that leads the player to the game (canvas).
 
-### Functional
-
-
-* Opens a startmenu when the application opens. 
-* The startmenu leads to the canvas.
-
-### Non-functional
+- Is a startmenu shown when the application starts?
+- Does the startmenu direct the player so that he can start the game?

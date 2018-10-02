@@ -6,23 +6,10 @@ Story Name: Quitting the game
 
 ## Description 
 
-As a player, I need to be able to end the game at any time so that I can do something else.
-
-
+As a player, I need to be able to end the game at any time so that the program shuts down correctly
 
 ## Confirmation
 
+- Can I exit the game at any point in the game?
+- Will my highscore be saved when I exit the game?
 
-### Functional
-
-
-* Can I exit the game at any time?
-
-### Non-functional
-
-- availability
-* Can I exit the game at any time?
-
-
-- security...
-* Will everything that I did during my session become available to anyone?

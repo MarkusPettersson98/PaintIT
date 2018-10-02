@@ -1,30 +1,16 @@
 ﻿# User story 
 
-Story Identifier: STK001
+Story Identifier: STK006
 Story Name: Hints
 
 
 ## Description 
 
-As a player, I want to be able to get a hint towards the correct word in case my fellow player can’t draw (for shite);
-
+As a player, I need to be able to get a hint that makes it easier to guess the word drawn so that I dont get stuck.
 
 
 ## Confirmation
 
-
-### Functional
-
-
-* Can I reveal one or more letters in the correct word?
-* Can I limit the letters I have to guess from?
-
-
-
-### Non-functional
-
-- availability
-* Can I receive more than one hint (both during a round and a session)?
-
-- security...
-   *
+- Can I reveal one or more letters in the correct word?
+- Can I limit the letters I have to guess from?
+- Is there a consequence/cost for the player getting a hint?

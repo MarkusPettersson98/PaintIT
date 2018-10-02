@@ -1,0 +1,19 @@
+# User story 
+
+
+Story Identifier: STKXXX
+Story Name: Undo on the Canvas.
+
+## Description 
+
+As a painter in the game, I need to be able to undo my last action so that it's easier for me to make a good painting.
+
+
+## Confirmation
+
+- Can I undo my last action?
+- Can I undo all my previous actions?
+- Can I undo using keyboard shortcuts?
+
+
+

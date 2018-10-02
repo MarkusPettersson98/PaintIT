@@ -1,0 +1,22 @@
+﻿# User story 
+
+
+Story Identifier: STKXXX
+Story Name: Finish a painting
+
+
+
+
+## Description 
+
+
+As a drawer in the game, I need to be able to finish a painting so that the guesser can make his guess.
+
+
+## Confirmation
+
+- Can I my mark my painting as done?
+- Will it be the other players turn if I mark my painting as done?
+- Is the painting shown to guesser
+- Is the painting unmutable after I mark it done?
+

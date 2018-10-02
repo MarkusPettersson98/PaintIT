@@ -1,26 +1,14 @@
 ﻿# User story 
 
-Story Identifier: STKXXX
-Story Name: Receive a bunch of letters when guessing the word.
+Story Identifier: STK008
+Story Name: Guess Tiles
 
-## Description 
-
-As a player, I need to receive a bunch of letter for the guessing part so the game doesn’t become too difficult to play.
+## Description
+As a guesser in the game I need to receive tiles to make a guess from so that the guess is a bit easier.
 
 ## Confirmation
 
-* Watch if two players are able to play the game without problems.
-
-### Functional
-
-   * Can I build the correct word with the given letters?
-
-### Non-functional
-
-Availability:
-   * Can I click on a letter to add it to one of the empty slots?
-   * Can I drag the letter to add it to one of the empty slots?
-
-
-Security:
-   * Can I add own letters in empty slots?
+- Can I build the correct word with the given letters?
+- Are the tiles easy to see and choose from?
+- Can I see which Tiles that are included in my guess?
+- Can I only use a guess tile once in my guess?

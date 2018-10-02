@@ -1,8 +1,8 @@
 ﻿# User story 
 
 
-Story Identifier: STKXXX
-Story Name: Countdown
+Story Identifier: <STK002>
+Story Name: <Countdown>
 
 
 
@@ -10,26 +10,11 @@ Story Name: Countdown
 ## Description 
 
 
-As a player, I need to know when my turn starts and have time to turn the computer around so that the other player can’t see the word that I am going to draw.
+As a player of this game, I need to get a countdown before the guessing-phase so that the guesser has time to prepare.
 
 
 ## Confirmation
 
-
-### Functional
-
-
-* Can I see how long time it is left before my turn starts?
-* Do I have enough time to turn the computer around?
-* Is it clear when my turn starts?
-
-
-### Non-functional
-
-
-Availability
-* Can I start my turn at any time?
-
-
-Security
-* Can the other player start my turn immediately after his/her turn, so that she/he can see the word that I am going to draw?
+- Can I see how long time it is left before my turn starts?
+- Do I have enough time to turn the computer around for the guesser?
+- Is it clear when my turn starts?

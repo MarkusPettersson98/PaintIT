@@ -6,22 +6,11 @@ Story Name: Scoreboard
 
 ## Description 
 
-As a competitive player, I want to be able to track my score during gameplay
+As a competitive player, I want to be able to see all best scores on a scoreboard so that I can compete with them.
 
 ## Confirmation
-Some kind of counter keeping track of streaks of correct consecutive guesses.
-
-### Functional
 
 
-* Can I keep track of score while the game progresses?
-* Can I save my score between sessions?
-
-### Non-functional
-
-- availability
-* Can I view the score at a later time (after a session is done)?
-* Can I compare my score to others?
-
-- security...
-   *
+- Can I keep track of my score while the game progresses?
+- Can I see other players highscores.
+- Can I get on to the Scoreboard if I make a good score?

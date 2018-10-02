@@ -1,0 +1,15 @@
+﻿# User story 
+
+Story Identifier: STKXXX
+Story Name: Receive relevant words
+
+
+## Description 
+
+As a player, I need to receive words that I’m able to paint and guess.
+
+## Confirmation
+
+- Are users able to paint the words given?
+- Are the users enjoying to draw the words given?
+- Are the user able to choose the difficulty of the word?

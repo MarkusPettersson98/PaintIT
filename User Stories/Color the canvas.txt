@@ -1,19 +1,16 @@
 ﻿# User story 
 
-Story Identifier: <id>
+Story Identifier: <STK001>
 Story Name: <Color to canvas>
 
 
 ## Description 
 
-As a <Artist>, I need to be able to add color to a canvas so that i  can create are digitally.
+As a <Artist>, I need to be able to add color to a canvas so that i  can create art digitally.
 
 ## Confirmation
-THe
-List all acceptance criteria; you should be able to test/confirm these.
 
-### Functional
-If i drag the mouse on the screen will there be color?         
-### Non-functional
+- If I drag the mouse on the canvas, will there be color?
+- if I drag the mouse outside the canvas does it not draw?
+- Am I only able to draw on the canvas during the drawing-phase of the game?
 
-- availability...

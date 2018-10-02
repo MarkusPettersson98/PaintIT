@@ -6,24 +6,9 @@ Story Name: Picking Names
 
 ## Description 
 
-As a player, I need to have the ability to choose a name so that I can compete with other players.
-
-
+As a player, I need to have the ability to choose a name so that it can be shown in the game.
 
 ## Confirmation
 
-
-### Functional
-
-
-* Can I add a customizable name to a player?
-* Is the name used correctly during play?
-
-### Non-functional
-
-- availability
-* Can the program use my name at any time?
-
-
-- security...
-* Does the program really need my social security number?
+- Can I add name to the players?
+- Is the name used to adress the players throughout the game?

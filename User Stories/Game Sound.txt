@@ -1,0 +1,21 @@
+# User story 
+
+
+Story Identifier: STKXXX
+Story Name: Game Sound
+
+
+
+
+## Description 
+
+As a player of the game I want to be able to hear sounds, to make the game more fun and interactive.
+
+## Confirmation
+
+- Can I choose whether or not I want the game to play sounds?
+- Does the sound enhance the game experience?
+- Are sounds implemented to relevant actions in the game. Clicking a button, make a stroke with the brush,
+  selecting the spray can etc.
+
+

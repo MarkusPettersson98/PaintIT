@@ -1,7 +1,7 @@
 ﻿# User story
 
 
-Story Identifier: STKXxX
+Story Identifier: STK004
 Story Name: Guess the word
 
 
@@ -13,16 +13,8 @@ As a player, I need to be able to guess the word corresponding to my friends pai
 
 ## Confirmation
 
-
-List all acceptance criteria; you should be able to test/confirm these.
-
-
-### Functional
-Can I guess spell out a word using a keyboard?
-Can I guess spell out a word using point&click?
+- Can I use the keyboard to make a guess?
+- Can I use the mouse and click to make a guess?
+- Do I receive feedback whether the guess was correct or not?
+- Can I Guess many times?
  
-### Non-functional
-Can I guess whatever I want?
-
-
-- availability...

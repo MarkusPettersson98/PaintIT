@@ -1,0 +1,17 @@
+﻿# User story 
+
+Story Identifier: STK009
+Story Name: Advanced drawing
+
+
+## Description 
+
+As an artist, I need to be able to use different colors and tools in order to make a detailed drawing.
+
+
+## Confirmation
+
+- Can I change the color which I am using?
+- Can I change the drawing tool that i am using?
+- Can I change the size of the tool I am using?
+- Am I able to find the functionality above?

@@ -1,0 +1,13 @@
+﻿# User story 
+
+Story Identifier: <STK010>
+Story Name: <Choose Color>
+
+## Description 
+
+As an artist, I need to be able to choose color when I paint digitally so that I can draw with more detail.
+
+## Confirmation
+
+- Can I change color when I´m drawing?
+- Are the colors easy to choose from?
