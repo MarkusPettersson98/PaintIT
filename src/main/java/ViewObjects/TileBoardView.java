@@ -35,6 +35,11 @@ public class TileBoardView extends VBox implements Observer{
     String filePath = "/fxml/tileBoard.fxml";
 
     public TileBoardView() {
+        initFXML();
+        initTiles();
+
+    }
+    private void initFXML(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
@@ -44,17 +49,17 @@ public class TileBoardView extends VBox implements Observer{
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    private void initTiles(){
         availableTileSlotList =  new ArrayList<>();
         guessTileSlotList = new TileSlot[guessLogic.getCurrentWord().length()];
-        createTileSlots(guessLogic.getAvailableTiles());
+        createAvailableTileSlots(guessLogic.getAvailableTiles());
         createEmptyTileSlots();
-
-
 
         tileBoardController = new TileBoardController(guessLogic);
         setActionListeners();
         guessLogic.addObserver(this);
-
+        update();
     }
 
     private void createEmptyTileSlots(){
@@ -80,8 +85,7 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
 
-    private void createTileSlots(ArrayList<Tile> availableTiles){
-
+    private void createAvailableTileSlots(ArrayList<Tile> availableTiles){
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
             availableTileSlotList.add(temp);
@@ -91,23 +95,26 @@ public class TileBoardView extends VBox implements Observer{
 
     @Override
     public void update() {
+        updateAvailableTileSlots();
+        updateGuessTileSlots();
+
+
+    }
+    private void updateAvailableTileSlots(){
         for(TileSlot t: availableTileSlotList){
-           t.update();
+            t.update();
         }
 
+    }
+    private void updateGuessTileSlots(){
         for(int i =0; i<guessLogic.getGuessWord().length; i++){
             if(guessLogic.getGuessWord()[i] != null &&guessLogic.getGuessWord()[i].getPosGuess() != -1){
-
                 guessTileSlotList[i].setTile(guessLogic.getGuessWord()[i]);
                 guessTileSlotList[i].getTileButton().setVisible(true);
                 guessTileSlotList[i].getTileButton().setText(Character.toString(guessTileSlotList[i].getTile().getLetter()));
             }else{
                 guessTileSlotList[i].getTileButton().setVisible(false);
             }
-        }
-
-        if(guessLogic.guessCurrentWord()){
-            System.out.println("CORRECT GUESS");
         }
     }
 }
