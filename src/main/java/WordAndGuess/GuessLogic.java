@@ -8,22 +8,19 @@ import java.util.ArrayList;
 
 public class GuessLogic implements Observable {
     private String currentWord;
-    private ArrayList<Tile> guessWord;
+    private Tile[] guessWord;
     private ArrayList<Tile> availableTiles;
     private WordHandler wordHandler;
     private ArrayList<Observer> observers;
-    private Boolean correctGuessMade;
 
-    public Boolean getCorrectGuessMade() {
-        return correctGuessMade;
-    }
+
 
     public GuessLogic(){
-        correctGuessMade = false;
+
         this.wordHandler = new WordHandler();
         this.availableTiles = wordHandler.getTiles();
         this.currentWord = wordHandler.getCurrentWord();
-        guessWord = new ArrayList<>();
+        guessWord = new Tile[8];
         observers = new ArrayList<>();
 
     }
@@ -36,34 +33,41 @@ public class GuessLogic implements Observable {
         return availableTiles;
     }
 
-    public void addTileToGuess(Tile c){
-        guessWord.add(c);
-        c.setStatus(Tile.Status.Used);
-        if(guessWord.size() == currentWord.length()){
-            guessCurrentWord();
+    public void addTileToGuess(Tile t){
+        for(int i = 0; i<guessWord.length;i++){
+            if(guessWord[i] == null){
+                guessWord[i] = t;
+                break;
+            }
         }
+        t.setStatus(Tile.Status.Used);
         notifyObservers();
     }
 
     public String getGuessString(){
-        return  GeneralUtil.tileListToString(guessWord);
+        return  GeneralUtil.tileArrayToString(guessWord);
     }
 
-    public ArrayList<Tile> getGuessWord() {
+    public Tile[] getGuessWord() {
         return guessWord;
     }
     public void removeTileFromGuess() {
-        if (guessWord.size() > 0) {
-            guessWord.get(guessWord.size()-1).setStatus(Tile.Status.Available);
-            guessWord.remove(guessWord.size() - 1);
-        }
+      for(int i = guessWord.length-1; i>=0; i--){
+          if (guessWord[i]!= null){
+              guessWord[i].setStatus(Tile.Status.Available);
+              guessWord[i] = null;
+                  break;
+          }
+      }
         notifyObservers();
     }
-    public void guessCurrentWord(){
-        String guessWord = GeneralUtil.tileListToString(this.guessWord);
+
+    public boolean guessCurrentWord(){
+        String guessWord = GeneralUtil.tileArrayToString(this.guessWord);
         if(guessWord.equals(currentWord)){
-            correctGuessMade = true;
+            return true;
         }
+        return false;
     }
 
     @Override

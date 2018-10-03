@@ -88,7 +88,7 @@ public class TileBoardView extends VBox implements Observer{
         for(TileSlot t: availableTileSlotList){
            t.update();
         }
-        if(guessLogic.getCorrectGuessMade()){
+        if(guessLogic.guessCurrentWord()){
             System.out.println("CORRECT GUESS");
         }
     }
