@@ -26,7 +26,7 @@ public class TileBoardView extends VBox implements Observer{
     private ArrayList<TileSlot> availableTileSlotList;
     private GuessLogic guessLogic;
     private TileBoardController tileBoardController;
-    private ArrayList<TileSlot> guessTileSlotList;
+    private TileSlot[] guessTileSlotList;
 
 
     public ArrayList<TileSlot> getAvailableTileSlotList() {
@@ -45,7 +45,7 @@ public class TileBoardView extends VBox implements Observer{
             System.out.println(e.getMessage());
         }
         availableTileSlotList =  new ArrayList<>();
-        guessTileSlotList = new ArrayList<>();
+        guessTileSlotList = new TileSlot[guessLogic.getCurrentWord().length()];
         createTileSlots(guessLogic.getAvailableTiles());
         createEmptyTileSlots();
 
@@ -59,7 +59,7 @@ public class TileBoardView extends VBox implements Observer{
 
     private void createEmptyTileSlots(){
         for(int i = 0; i < guessLogic.getCurrentWord().length(); i++){
-            guessTileSlotList.add(new TileSlot(new Tile('0',i)));
+            guessTileSlotList[i] =(new TileSlot(new Tile('0',i)));
         }
         for(TileSlot tileSlot: guessTileSlotList){
             hBoxTop.getChildren().add(tileSlot);
@@ -69,13 +69,19 @@ public class TileBoardView extends VBox implements Observer{
     private void setActionListeners(){
         setTilesActionListeners();
     }
+
+
     private void setTilesActionListeners(){ //eventListeners
         for(TileSlot t: availableTileSlotList){
             t.getTileButton().setOnAction(e-> tileBoardController.addTileToGuess(t.getTile()));
         }
+        for(TileSlot t: guessTileSlotList){
+            t.getTileButton().setOnAction(e-> tileBoardController.removeTileFromGuess(t.getTile()));
+        }
     }
 
     private void createTileSlots(ArrayList<Tile> availableTiles){
+
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
             availableTileSlotList.add(temp);
@@ -88,6 +94,18 @@ public class TileBoardView extends VBox implements Observer{
         for(TileSlot t: availableTileSlotList){
            t.update();
         }
+
+        for(int i =0; i<guessLogic.getGuessWord().length; i++){
+            if(guessLogic.getGuessWord()[i] != null &&guessLogic.getGuessWord()[i].getPosGuess() != -1){
+
+                guessTileSlotList[i].setTile(guessLogic.getGuessWord()[i]);
+                guessTileSlotList[i].getTileButton().setVisible(true);
+                guessTileSlotList[i].getTileButton().setText(Character.toString(guessTileSlotList[i].getTile().getLetter()));
+            }else{
+                guessTileSlotList[i].getTileButton().setVisible(false);
+            }
+        }
+
         if(guessLogic.guessCurrentWord()){
             System.out.println("CORRECT GUESS");
         }

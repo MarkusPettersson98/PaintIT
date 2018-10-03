@@ -17,8 +17,8 @@ public class TileBoardController {
     public void addTileToGuess(Tile t){
         guessLogic.addTileToGuess(t);
     }
-    public void removeTileFromGuess(){
-        guessLogic.removeTileFromGuess();
+    public void removeTileFromGuess(Tile t){
+        guessLogic.removeTileFromGuess(t);
     }
 
 

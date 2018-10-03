@@ -11,7 +11,7 @@ public class TileTest {
         tile.setLetter('a');
 
         assertEquals('a',tile.getLetter());
-        assertEquals(2,tile.getPos());
+        assertEquals(2,tile.getPosAvailable());
     }
 
     @Test

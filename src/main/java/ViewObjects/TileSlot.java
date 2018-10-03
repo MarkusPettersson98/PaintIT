@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import lombok.Setter;
 
 
 public class TileSlot extends AnchorPane {
@@ -14,7 +15,7 @@ public class TileSlot extends AnchorPane {
     @FXML Button tileButton;
 
 
-    private Tile tile;
+    @Setter private Tile tile;
 
     public Tile getTileLetter() {
         return tile;

@@ -20,7 +20,7 @@ public class GuessLogic implements Observable {
         this.wordHandler = new WordHandler();
         this.availableTiles = wordHandler.getTiles();
         this.currentWord = wordHandler.getCurrentWord();
-        guessWord = new Tile[8];
+        guessWord = new Tile[currentWord.length()];
         observers = new ArrayList<>();
 
     }
@@ -37,6 +37,7 @@ public class GuessLogic implements Observable {
         for(int i = 0; i<guessWord.length;i++){
             if(guessWord[i] == null){
                 guessWord[i] = t;
+                t.setPosGuess(i);
                 break;
             }
         }
@@ -61,6 +62,13 @@ public class GuessLogic implements Observable {
       }
         notifyObservers();
     }
+    public void removeTileFromGuess(Tile tile){
+        guessWord[tile.getPosGuess()] = null;
+        tile.setStatus(Tile.Status.Available);
+        tile.setPosGuess(-1);
+        notifyObservers();
+    }
+
 
     public boolean guessCurrentWord(){
         String guessWord = GeneralUtil.tileArrayToString(this.guessWord);

@@ -1,8 +1,12 @@
 package WordAndGuess;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Tile {
    private char letter;
-   private int pos;
+   private int posAvailable;
+  @Getter @Setter private int posGuess;
    private Status status;
 
 
@@ -11,17 +15,18 @@ public class Tile {
        Available,
         Used;
     }
-    public Tile(char letter, int pos){
+    public Tile(char letter, int posAvailable){
         this.letter = letter;
-        this.pos = pos;
+        this.posAvailable = posAvailable;
         status= Status.Available;
+        posGuess = -1;
     }
     public void setLetter(char letter) {
         this.letter = letter;
     }
 
-    public void setPos(int pos) {
-        this.pos = pos;
+    public void setPosAvailable(int posAvailable) {
+        this.posAvailable = posAvailable;
     }
 
     public char getLetter() {
@@ -29,8 +34,8 @@ public class Tile {
         return letter;
     }
 
-    public int getPos() {
-        return pos;
+    public int getPosAvailable() {
+        return posAvailable;
     }
 
     public void setStatus(Status status) {

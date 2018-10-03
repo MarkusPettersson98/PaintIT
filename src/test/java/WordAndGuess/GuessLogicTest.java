@@ -15,8 +15,6 @@ public class GuessLogicTest {
         assertEquals("cah",guessLogic.getGuessString()); //Checks array size
         guessLogic.removeTileFromGuess();
         assertEquals("ca",guessLogic.getGuessString()); //makes sure removeTileFromGuess works
-
-
     }
     @Test
     public void guessCurrentWord() throws Exception {
