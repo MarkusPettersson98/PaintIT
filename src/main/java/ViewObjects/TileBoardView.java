@@ -6,13 +6,8 @@ import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import java.util.ArrayList;
 
 public class TileBoardView extends VBox implements Observer{
 
@@ -20,17 +15,13 @@ public class TileBoardView extends VBox implements Observer{
     @FXML HBox hBoxBottom;
     @FXML HBox hBoxTop;
     @FXML VBox vBoxRoot;
-
-
-    private Button testButton;
-    private ArrayList<TileSlot> availableTileSlotList;
+    private TileSlot[] availableTileSlotArray;
     private GuessLogic guessLogic;
     private TileBoardController tileBoardController;
-    private TileSlot[] guessTileSlotList;
+    private TileSlot[] guessTileSlotArray;
 
-
-    public ArrayList<TileSlot> getAvailableTileSlotList() {
-        return availableTileSlotList;
+    public TileSlot[] getAvailableTileSlotArray() {
+        return availableTileSlotArray;
     }
     String filePath = "/fxml/tileBoard.fxml";
 
@@ -51,8 +42,8 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
     private void initTiles(){
-        availableTileSlotList =  new ArrayList<>();
-        guessTileSlotList = new TileSlot[guessLogic.getCurrentWord().length()];
+        availableTileSlotArray =  new TileSlot[guessLogic.getAvailableTiles().length];
+        guessTileSlotArray = new TileSlot[guessLogic.getCurrentWord().length()];
         createAvailableTileSlots(guessLogic.getAvailableTiles());
         createEmptyTileSlots();
 
@@ -64,9 +55,9 @@ public class TileBoardView extends VBox implements Observer{
 
     private void createEmptyTileSlots(){
         for(int i = 0; i < guessLogic.getCurrentWord().length(); i++){
-            guessTileSlotList[i] =(new TileSlot(new Tile('0',i)));
+            guessTileSlotArray[i] =(new TileSlot(new Tile('0',i)));
         }
-        for(TileSlot tileSlot: guessTileSlotList){
+        for(TileSlot tileSlot: guessTileSlotArray){
             hBoxTop.getChildren().add(tileSlot);
         }
     }
@@ -77,10 +68,10 @@ public class TileBoardView extends VBox implements Observer{
 
 
     private void setTilesActionListeners(){ //eventListeners
-        for(TileSlot t: availableTileSlotList){
+        for(TileSlot t: availableTileSlotArray){
             t.getTileButton().setOnAction(e-> tileBoardController.addTileToGuess(t.getTile()));
         }
-        for(TileSlot t: guessTileSlotList){
+        for(TileSlot t: guessTileSlotArray){
             t.getTileButton().setOnAction(e-> tileBoardController.removeTileFromGuess(t.getTile()));
         }
     }
@@ -88,7 +79,7 @@ public class TileBoardView extends VBox implements Observer{
     private void createAvailableTileSlots(Tile[] availableTiles){
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
-            availableTileSlotList.add(temp);
+            availableTileSlotArray[tile.getPosAvailable()] = temp;
             hBoxBottom.getChildren().add(temp);
         }
     }
@@ -101,7 +92,7 @@ public class TileBoardView extends VBox implements Observer{
 
     }
     private void updateAvailableTileSlots(){
-        for(TileSlot t: availableTileSlotList){
+        for(TileSlot t: availableTileSlotArray){
             t.update();
         }
 
@@ -109,11 +100,11 @@ public class TileBoardView extends VBox implements Observer{
     private void updateGuessTileSlots(){
         for(int i =0; i<guessLogic.getGuessWord().length; i++){
             if(guessLogic.getGuessWord()[i] != null &&guessLogic.getGuessWord()[i].getPosGuess() != -1){
-                guessTileSlotList[i].setTile(guessLogic.getGuessWord()[i]);
-                guessTileSlotList[i].getTileButton().setVisible(true);
-                guessTileSlotList[i].getTileButton().setText(Character.toString(guessTileSlotList[i].getTile().getLetter()));
+                guessTileSlotArray[i].setTile(guessLogic.getGuessWord()[i]);
+                guessTileSlotArray[i].getTileButton().setVisible(true);
+                guessTileSlotArray[i].getTileButton().setText(Character.toString(guessTileSlotArray[i].getTile().getLetter()));
             }else{
-                guessTileSlotList[i].getTileButton().setVisible(false);
+                guessTileSlotArray[i].getTileButton().setVisible(false);
             }
         }
     }
