@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GuessLogic implements Observable {
     private String currentWord;
     private Tile[] guessWord;
-    private ArrayList<Tile> availableTiles;
+    private Tile[] availableTiles;
     private WordHandler wordHandler;
     private ArrayList<Observer> observers;
 
@@ -29,7 +29,7 @@ public class GuessLogic implements Observable {
         return currentWord;
     }
 
-    public ArrayList<Tile> getAvailableTiles() {
+    public Tile[] getAvailableTiles() {
         return availableTiles;
     }
 

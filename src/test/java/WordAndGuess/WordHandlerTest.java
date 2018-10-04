@@ -38,7 +38,7 @@ public class WordHandlerTest {
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
-        ArrayList<Tile> tiles = guessLogic.getAvailableTiles();
+        Tile[] tiles = guessLogic.getAvailableTiles();
         ArrayList<Character> letters = new ArrayList<>();
         for(Tile t: tiles){
             letters.add(t.getLetter());

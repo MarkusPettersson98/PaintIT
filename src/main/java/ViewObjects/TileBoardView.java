@@ -85,7 +85,7 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
 
-    private void createAvailableTileSlots(ArrayList<Tile> availableTiles){
+    private void createAvailableTileSlots(Tile[] availableTiles){
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlot(tile);
             availableTileSlotList.add(temp);
