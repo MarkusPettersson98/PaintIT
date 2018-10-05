@@ -13,13 +13,19 @@ public class Tile {
 
     public enum Status{
        Available,
-        Used;
+        Used,
+        NotInitialized;
     }
     public Tile(char letter, int posAvailable){
         this.letter = letter;
         this.posAvailable = posAvailable;
         status= Status.Available;
         posGuess = -1;
+    }
+    public Tile(){
+        status = Status.NotInitialized;
+        letter = '0';
+
     }
     public void setLetter(char letter) {
         this.letter = letter;

@@ -55,7 +55,7 @@ public class TileBoardView extends VBox implements Observer{
 
     private void createEmptyTileSlots(){
         for(int i = 0; i < guessLogic.getCurrentWord().length(); i++){
-            guessTileSlotArray[i] =(new TileSlot(new Tile('0',i)));
+            guessTileSlotArray[i] = new TileSlot();
         }
         for(TileSlot tileSlot: guessTileSlotArray){
             hBoxTop.getChildren().add(tileSlot);
@@ -89,23 +89,20 @@ public class TileBoardView extends VBox implements Observer{
         updateAvailableTileSlots();
         updateGuessTileSlots();
 
-
     }
     private void updateAvailableTileSlots(){
+
         for(TileSlot t: availableTileSlotArray){
             t.update();
         }
-
     }
     private void updateGuessTileSlots(){
-        for(int i =0; i<guessLogic.getGuessWord().length; i++){
-            if(guessLogic.getGuessWord()[i] != null &&guessLogic.getGuessWord()[i].getPosGuess() != -1){
-                guessTileSlotArray[i].setTile(guessLogic.getGuessWord()[i]);
-                guessTileSlotArray[i].getTileButton().setVisible(true);
-                guessTileSlotArray[i].getTileButton().setText(Character.toString(guessTileSlotArray[i].getTile().getLetter()));
-            }else{
-                guessTileSlotArray[i].getTileButton().setVisible(false);
-            }
+
+        int count = 0;
+        for(Tile t: guessLogic.getGuessWord()){
+            guessTileSlotArray[count].setTile(t);
+            guessTileSlotArray[count].update();
+            count++;
         }
     }
 }

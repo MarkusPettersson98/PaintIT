@@ -45,17 +45,37 @@ public class TileSlot extends AnchorPane {
         update();
 
     }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
+    }
+
+    public TileSlot(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
+        fxmlLoader.setController(this);
+        fxmlLoader.setRoot(this);
+        try {
+            fxmlLoader.load();
+        } catch(Exception e) {
+
+
+            System.out.println(e.getMessage());
+        }
+        tileButton.getStylesheets().add("/Css/TileBoardView.css");
+        update();
+    }
+
     public Button getTileButton() {
         return tileButton;
     }
     public void update(){
         tileButton.getStyleClass().clear();
-        if(tile.getStatus() == Tile.Status.Used){
+        if(tile == null){
             tileButton.setDisable(true);
             tileButton.getStyleClass().add("emptyButton");
-
         }else{
             tileButton.getStyleClass().add("visibleButton");
+            tileButton.setText(Character.toString(tile.getLetter()));
            tileButton.setDisable(false);
         }
     }
