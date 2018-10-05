@@ -41,6 +41,9 @@ public class TileSlot extends AnchorPane {
         }
         this.tile = tile;
         tileButton.setText(Character.toString(tile.getLetter()));
+        tileButton.getStylesheets().add("/Css/TileBoardView.css");
+
+        tileButton.getStyleClass().add("visibleButton");
 
     }
     public Button getTileButton() {
