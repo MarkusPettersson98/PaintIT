@@ -42,18 +42,21 @@ public class TileSlot extends AnchorPane {
         this.tile = tile;
         tileButton.setText(Character.toString(tile.getLetter()));
         tileButton.getStylesheets().add("/Css/TileBoardView.css");
-
-        tileButton.getStyleClass().add("visibleButton");
+        update();
 
     }
     public Button getTileButton() {
         return tileButton;
     }
     public void update(){
+        tileButton.getStyleClass().clear();
         if(tile.getStatus() == Tile.Status.Used){
-            tileButton.setVisible(false);
+            tileButton.setDisable(true);
+            tileButton.getStyleClass().add("emptyButton");
+
         }else{
-            tileButton.setVisible(true);
+            tileButton.getStyleClass().add("visibleButton");
+           tileButton.setDisable(false);
         }
     }
 

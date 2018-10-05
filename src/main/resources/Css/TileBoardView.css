@@ -7,6 +7,14 @@
 .visibleButton {
      -fx-background-color: #FFFFFF;
      -fx-border: 5px;
-     -fx-border-color:  #777777;
+     -fx-border-color:  #99ff66;
+}
+.visibleButton:focused {
+-fx-border-color: #33ccff;
+}
 
+.emptyButton {
+     -fx-background-color: #FFFFFF;
+     -fx-border: 5px;
+     -fx-border-color:  #ff0000;
 }
