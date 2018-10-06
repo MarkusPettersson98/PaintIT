@@ -8,13 +8,15 @@
      -fx-background-color: #FFFFFF;
      -fx-border: 5px;
      -fx-border-color:  #99ff66;
+     -fx-font-size: 40pt;
+     -fx-alignment: center;
 }
 .visibleButton:focused {
 -fx-border-color: #33ccff;
 }
-
 .emptyButton {
      -fx-background-color: #FFFFFF;
      -fx-border: 5px;
      -fx-border-color:  #ff0000;
+     -fx-font-size: 1pt;
 }

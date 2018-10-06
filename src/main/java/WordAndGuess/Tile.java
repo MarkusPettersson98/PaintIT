@@ -17,12 +17,10 @@ public class Tile {
         this.letter = letter;
         this.posAvailable = posAvailable;
         status= Status.Available;
-
     }
     public Tile(){
         status = Status.NotInitialized;
         letter = '0';
-
     }
     public void setLetter(char letter) {
         this.letter = letter;
