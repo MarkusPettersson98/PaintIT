@@ -6,11 +6,8 @@ import lombok.Setter;
 public class Tile {
    private char letter;
    private int posAvailable;
-  @Getter @Setter private int posGuess;
+
    private Status status;
-
-
-
     public enum Status{
        Available,
         Used,
@@ -20,7 +17,7 @@ public class Tile {
         this.letter = letter;
         this.posAvailable = posAvailable;
         status= Status.Available;
-        posGuess = -1;
+
     }
     public Tile(){
         status = Status.NotInitialized;

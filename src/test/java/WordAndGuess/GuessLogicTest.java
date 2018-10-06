@@ -13,8 +13,15 @@ public class GuessLogicTest {
         guessLogic.addTileToGuess(new Tile('a',1));
         guessLogic.addTileToGuess(new Tile('h',2));
         assertEquals("cah",guessLogic.getGuessString()); //Checks array size
-        guessLogic.removeTileFromGuess();
-        assertEquals("ca",guessLogic.getGuessString()); //makes sure removeTileFromGuess works
+        guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[1]);
+        assertEquals("ch",guessLogic.getGuessString()); //makes sure removeTileFromGuess works
+        guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[0]);
+        assertEquals("h",guessLogic.getGuessString());
+        assertEquals(null,guessLogic.getGuessWord()[0]);
+        Tile tempTest =new Tile();
+        guessLogic.addTileToGuess(tempTest);
+        assertEquals(tempTest,guessLogic.getGuessWord()[0]);
+
     }
     @Test
     public void guessCurrentWord() throws Exception {

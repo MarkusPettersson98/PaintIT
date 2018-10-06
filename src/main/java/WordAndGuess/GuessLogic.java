@@ -37,7 +37,6 @@ public class GuessLogic implements Observable {
         for(int i = 0; i<guessWord.length;i++){
             if(guessWord[i] == null){
                 guessWord[i] = t;
-                t.setPosGuess(i);
                 break;
             }
         }
@@ -63,9 +62,16 @@ public class GuessLogic implements Observable {
         notifyObservers();
     }
     public void removeTileFromGuess(Tile tile){
-        guessWord[tile.getPosGuess()] = null;
-        tile.setStatus(Tile.Status.Available);
-        tile.setPosGuess(-1);
+        int count = 0;
+        for(Tile t: guessWord){
+            if(guessWord[count] == tile) {
+                tile.setStatus(Tile.Status.Available);
+                guessWord[count] = null;
+                count++;
+                break;
+            }
+            count++;
+        }
         notifyObservers();
     }
 
