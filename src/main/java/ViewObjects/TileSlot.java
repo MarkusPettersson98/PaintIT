@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import lombok.Setter;
 
 
-public class TileSlot extends AnchorPane {
+public abstract class TileSlot extends AnchorPane {
 
     @FXML Button tileButton;
 
@@ -57,8 +57,6 @@ public class TileSlot extends AnchorPane {
         try {
             fxmlLoader.load();
         } catch(Exception e) {
-
-
             System.out.println(e.getMessage());
         }
         tileButton.getStylesheets().add("/Css/TileBoardView.css");
@@ -69,15 +67,7 @@ public class TileSlot extends AnchorPane {
         return tileButton;
     }
     public void update(){
-        tileButton.getStyleClass().clear();
-        if(tile == null){
-            tileButton.setDisable(true);
-            tileButton.getStyleClass().add("emptyButton");
-        }else{
-            tileButton.getStyleClass().add("visibleButton");
-            tileButton.setText(Character.toString(tile.getLetter()));
-           tileButton.setDisable(false);
-        }
+
     }
 
 }
