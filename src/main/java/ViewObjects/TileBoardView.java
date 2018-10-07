@@ -4,10 +4,13 @@ import Game.GameSession;
 import Tools.Observer;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
+import com.sun.javafx.css.Size;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import sun.plugin.javascript.navig.Anchor;
 
 public class TileBoardView extends VBox implements Observer{
 
@@ -57,9 +60,22 @@ public class TileBoardView extends VBox implements Observer{
         for(int i = 0; i < guessLogic.getCurrentWord().length(); i++){
             guessTileSlotArray[i] = new TileSlotGuess();
         }
+
+        hBoxTop.getChildren().add(getGuessTileOffset());
         for(TileSlot tileSlot: guessTileSlotArray){
             hBoxTop.getChildren().add(tileSlot);
         }
+    }
+
+    private AnchorPane getGuessTileOffset(){
+        AnchorPane buffer = new AnchorPane();
+        buffer.setPrefSize((double)(200+(8-guessTileSlotArray.length)*50),100);
+        return  buffer;
+    }
+    private AnchorPane getAvailableTileOffset(){
+        AnchorPane buffer = new AnchorPane();
+        buffer.setPrefSize(200,100);
+        return  buffer;
     }
 
     private void setActionListeners(){
@@ -77,18 +93,26 @@ public class TileBoardView extends VBox implements Observer{
     }
 
     private void createAvailableTileSlots(Tile[] availableTiles){
+        hBoxBottom.getChildren().add(getAvailableTileOffset());
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlotAvailable(tile);
             availableTileSlotArray[tile.getPosAvailable()] = temp;
             hBoxBottom.getChildren().add(temp);
         }
     }
-
     @Override
     public void update() {
         updateAvailableTileSlots();
         updateGuessTileSlots();
+        checkIfCorrectGuess();
 
+    }
+    private void checkIfCorrectGuess(){
+        if(guessLogic.guessCurrentWord()){
+            System.out.println("Correct Guess");
+        }else{
+            System.out.println("Incorrect Guess");
+        }
     }
     private void updateAvailableTileSlots(){
 
@@ -97,7 +121,6 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
     private void updateGuessTileSlots(){
-
         int count = 0;
         for(Tile t: guessLogic.getGuessWord()){
             guessTileSlotArray[count].setTile(t);
