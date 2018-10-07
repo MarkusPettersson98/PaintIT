@@ -1,22 +1,26 @@
 .tileBoard {
      -fx-border-color:  #777777;
      -fx-background-color: #FFFFFF;
-     -fx-border: 5px;
+     -fx-border-width: 2px;
 }
 
 .visibleButton {
      -fx-background-color: #FFFFFF;
-     -fx-border: 5px;
-     -fx-border-color:  #99ff66;
-     -fx-font-size: 30pt;
+     -fx-border-width: 2px;
+     -fx-border-color:  #33ccff;
+     -fx-font-size: 33pt;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
      -fx-alignment: center;
 }
 .visibleButton:focused {
--fx-border-color: #33ccff;
+-fx-border-color: #000000;
 }
 .emptyButton {
-     -fx-background-color: #FFFFFF;
-     -fx-border: 5px;
-     -fx-border-color:  #ff0000;
+     -fx-background-color: #d0d0e1;
+     -fx-border-width: 2px;
+     -fx-border-color:  #737373;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
      -fx-font-size: 1pt;
 }
