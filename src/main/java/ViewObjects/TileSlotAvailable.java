@@ -1,7 +1,9 @@
 package ViewObjects;
 
 import WordAndGuess.Tile;
-
+/**
+ *Represents an available Tile from the backend.
+ */
 public class TileSlotAvailable extends TileSlot {
 
 
