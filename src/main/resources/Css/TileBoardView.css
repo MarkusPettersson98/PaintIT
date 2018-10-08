@@ -12,6 +12,7 @@
      -fx-border-radius: 10px;
      -fx-background-radius: 10px;
      -fx-alignment: center;
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1.5) , 5, 0.0 , 0 , 3 );
 }
 .correctButton {
      -fx-background-color: #FFFFFF;
@@ -21,6 +22,7 @@
      -fx-border-radius: 10px;
      -fx-background-radius: 10px;
      -fx-alignment: center;
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1.5) , 5, 0.0 , 0 , 3 );
 }
 .incorrectButton {
      -fx-background-color: #FFFFFF;
@@ -30,6 +32,7 @@
      -fx-border-radius: 10px;
      -fx-background-radius: 10px;
      -fx-alignment: center;
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1.5) , 5, 0.0 , 0 , 3 );
 }
 .visibleButton:focused {
 -fx-border-color: #000000;
