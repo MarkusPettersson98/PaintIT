@@ -13,6 +13,24 @@
      -fx-background-radius: 10px;
      -fx-alignment: center;
 }
+.correctButton {
+     -fx-background-color: #FFFFFF;
+     -fx-border-width: 2px;
+     -fx-border-color:  #66ff1a;
+     -fx-font-size: 33pt;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-alignment: center;
+}
+.incorrectButton {
+     -fx-background-color: #FFFFFF;
+     -fx-border-width: 2px;
+     -fx-border-color:  #FF0000;
+     -fx-font-size: 33pt;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-alignment: center;
+}
 .visibleButton:focused {
 -fx-border-color: #000000;
 }

@@ -4,13 +4,12 @@ import Game.GameSession;
 import Tools.Observer;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
-import com.sun.javafx.css.Size;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import sun.plugin.javascript.navig.Anchor;
+
 
 public class TileBoardView extends VBox implements Observer{
 
@@ -104,14 +103,37 @@ public class TileBoardView extends VBox implements Observer{
     public void update() {
         updateAvailableTileSlots();
         updateGuessTileSlots();
-        checkIfCorrectGuess();
 
+        if(isGuessComplete()){
+            checkIfCorrectGuess();
+        }
+    }
+    private boolean isGuessComplete(){
+        for(Tile t: guessLogic.getGuessWord()){
+            if(t == null){
+                return false;
+            }
+        }
+        return true;
     }
     private void checkIfCorrectGuess(){
         if(guessLogic.guessCurrentWord()){
-            System.out.println("Correct Guess");
+            handleCorrectGuess();
         }else{
-            System.out.println("Incorrect Guess");
+            handleIncorrectGuess();
+        }
+    }
+
+    private void handleCorrectGuess(){
+        for(TileSlot t: guessTileSlotArray){
+            t.tileButton.getStyleClass().clear();
+            t.tileButton.getStyleClass().add("correctButton");
+        }
+    }
+    private void handleIncorrectGuess(){
+        for(TileSlot t: guessTileSlotArray){
+            t.tileButton.getStyleClass().clear();
+            t.tileButton.getStyleClass().add("incorrectButton");
         }
     }
     private void updateAvailableTileSlots(){
