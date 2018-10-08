@@ -6,6 +6,10 @@ import Util.GeneralUtil;
 
 import java.util.ArrayList;
 
+/**
+ *Contains the logic for the guess of the word of the Game.
+ * It´s purpose is to keep track of the guess and check whether it is correct or not
+ */
 public class GuessLogic implements Observable {
     private String currentWord;
     private Tile[] guessWord;
@@ -14,9 +18,10 @@ public class GuessLogic implements Observable {
     private ArrayList<Observer> observers;
 
 
-
+    /**
+     *Instansiates a wordHandler that generates a word for the game and random Tiles to pick from
+     */
     public GuessLogic(){
-
         this.wordHandler = new WordHandler();
         this.availableTiles = wordHandler.getTiles();
         this.currentWord = wordHandler.getCurrentWord();
@@ -32,7 +37,10 @@ public class GuessLogic implements Observable {
     public Tile[] getAvailableTiles() {
         return availableTiles;
     }
-
+    /**
+     *Adds a tile t to the first empty slot of the guessWord ( Tile[] )
+     * @param t The tile that is added to the guess.
+     */
     public void addTileToGuess(Tile t){
         if(!isGuessFilled()) {
             for (int i = 0; i < guessWord.length; i++) {
@@ -61,7 +69,10 @@ public class GuessLogic implements Observable {
         return guessWord;
     }
 
-
+    /**
+     *Removes a tile From the guess
+     * @param tile the tile that is removed from the guess.
+     */
     public void removeTileFromGuess(Tile tile){
         int count = 0;
         for(Tile t: guessWord){
@@ -76,7 +87,10 @@ public class GuessLogic implements Observable {
         notifyObservers();
     }
 
-
+    /**
+     *@return false if guess was wrong
+     * @return True if guess was correct
+     */
     public boolean guessCurrentWord(){
         String guessWord = GeneralUtil.tileArrayToString(this.guessWord);
         if(guessWord.equals(currentWord)){

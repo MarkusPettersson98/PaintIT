@@ -13,7 +13,7 @@ public class WordHandlerTest {
     @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
-        wh.pickRandomWord();
+        
         String word = wh.getCurrentWord();
         assertNotNull(word);
     }

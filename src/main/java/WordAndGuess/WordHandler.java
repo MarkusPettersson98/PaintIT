@@ -5,7 +5,10 @@ package WordAndGuess;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-
+/**
+ *Wordhandler has the list of words for the game and generates a random word for the Game.
+ * It also generates the random tiles accompanying the word
+ */
 public class WordHandler {
     private ArrayList<String> wordList;
     private Tile[] tiles;
@@ -13,6 +16,11 @@ public class WordHandler {
     private final int tileAmount = 8;
 
 
+    /**
+     *Creates a List of words
+     * Picks a random word
+     * Creates random Tiles
+     */
     public WordHandler(){
         createWordList();
         pickRandomWord();
@@ -47,7 +55,7 @@ public class WordHandler {
 
         return tiles;
     }
-    public void createRandomTiles(String word){
+    private void createRandomTiles(String word){
         Random r = new Random();
        ArrayList<Tile>  temp = new ArrayList<>();
      for(int i = 0; i< word.length(); i ++){
@@ -75,9 +83,8 @@ public class WordHandler {
         return currentWord;
     }
 
-    public void pickRandomWord(){
+    private void pickRandomWord(){
         currentWord =  wordList.get(getRandomIndex());
-
     }
     int getRandomIndex(){
         Random rand = new Random();
