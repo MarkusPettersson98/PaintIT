@@ -11,6 +11,7 @@ public class TileSlotAvailable extends TileSlot {
     public TileSlotAvailable(Tile tile){
         super(tile);
     }
+
     @Override
     public void update(){
         tileButton.getStyleClass().clear();

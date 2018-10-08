@@ -34,16 +34,25 @@ public class GuessLogic implements Observable {
     }
 
     public void addTileToGuess(Tile t){
-        for(int i = 0; i<guessWord.length;i++){
-            if(guessWord[i] == null){
-                guessWord[i] = t;
-                break;
+        if(!isGuessFilled()) {
+            for (int i = 0; i < guessWord.length; i++) {
+                if (guessWord[i] == null) {
+                    guessWord[i] = t;
+                    break;
+                }
+            }
+            t.setStatus(Tile.Status.Used);
+            notifyObservers();
+        }
+    }
+    private boolean isGuessFilled(){
+        for(Tile t: guessWord){
+            if(t == null){
+                return false;
             }
         }
-        t.setStatus(Tile.Status.Used);
-        notifyObservers();
+        return true;
     }
-
     public String getGuessString(){
         return  GeneralUtil.tileArrayToString(guessWord);
     }
@@ -51,16 +60,8 @@ public class GuessLogic implements Observable {
     public Tile[] getGuessWord() {
         return guessWord;
     }
-    public void removeTileFromGuess() {
-      for(int i = guessWord.length-1; i>=0; i--){
-          if (guessWord[i]!= null){
-              guessWord[i].setStatus(Tile.Status.Available);
-              guessWord[i] = null;
-                  break;
-          }
-      }
-        notifyObservers();
-    }
+
+
     public void removeTileFromGuess(Tile tile){
         int count = 0;
         for(Tile t: guessWord){

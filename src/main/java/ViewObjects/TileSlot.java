@@ -45,6 +45,14 @@ public abstract class TileSlot extends AnchorPane {
         update();
 
     }
+    public void addCorrectGuessCss(){
+        tileButton.getStyleClass().clear();
+        tileButton.getStyleClass().add("correctButton");
+    }
+    public void addIncorrectGuessCss(){
+        tileButton.getStyleClass().clear();
+        tileButton.getStyleClass().add("incorrectButton");
+    }
 
     public void setTile(Tile tile) {
         this.tile = tile;

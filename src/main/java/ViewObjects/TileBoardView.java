@@ -126,14 +126,12 @@ public class TileBoardView extends VBox implements Observer{
 
     private void handleCorrectGuess(){
         for(TileSlot t: guessTileSlotArray){
-            t.tileButton.getStyleClass().clear();
-            t.tileButton.getStyleClass().add("correctButton");
+           t.addCorrectGuessCss();
         }
     }
     private void handleIncorrectGuess(){
         for(TileSlot t: guessTileSlotArray){
-            t.tileButton.getStyleClass().clear();
-            t.tileButton.getStyleClass().add("incorrectButton");
+          t.addIncorrectGuessCss();
         }
     }
     private void updateAvailableTileSlots(){
