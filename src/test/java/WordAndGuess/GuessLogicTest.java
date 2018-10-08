@@ -18,10 +18,6 @@ public class GuessLogicTest {
         guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[0]);
         assertEquals("h",guessLogic.getGuessString());
         assertEquals(null,guessLogic.getGuessWord()[0]);
-        Tile tempTest =new Tile();
-        guessLogic.addTileToGuess(tempTest);
-        assertEquals(tempTest,guessLogic.getGuessWord()[0]);
-
     }
     @Test
     public void guessCurrentWord() throws Exception {
