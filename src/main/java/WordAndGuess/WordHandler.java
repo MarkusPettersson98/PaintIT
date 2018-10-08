@@ -6,19 +6,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+/**
+ *Wordhandler has the list of words for the game and generates a random word for the Game.
+ * It also generates the random tiles accompanying the word
+ */
 public class WordHandler {
-    private List<String> wordList;
-    private List<Tile> tiles;
+    private ArrayList<String> wordList;
+    private Tile[] tiles;
     private String currentWord;
-    private final int tileAmount;
+    private final int tileAmount = 8;
 
 
+    /**
+     *Creates a List of words
+     * Picks a random word
+     * Creates random Tiles
+     */
     public WordHandler(){
         createWordList();
         pickRandomWord();
         createRandomTiles(this.currentWord);
-        tileAmount = 8;
     }
     private void createWordList(){
         wordList= new ArrayList();
@@ -45,33 +52,40 @@ public class WordHandler {
         return wordList;
     }
 
-    public List<Tile> getTiles() {
+
+    public Tile[] getTiles() {
         return tiles;
     }
-    public void createRandomTiles(String word){
+    private void createRandomTiles(String word){
         Random r = new Random();
-
-        tiles = new ArrayList<>();
-
+       ArrayList<Tile>  temp = new ArrayList<>();
      for(int i = 0; i< word.length(); i ++){
          char c = Character.toUpperCase(word.charAt(i));
 
-         tiles.add(new Tile(c,i));
+         temp.add(new Tile(c,i));
      }
      for(int i = word.length(); i<tileAmount; i++){
          char d = Character.toUpperCase((char)(r.nextInt(26) + 'a'));
-         tiles.add(new Tile(d,i));
+         temp.add(new Tile(d,i));
      }
-        Collections.shuffle(tiles);
+        Collections.shuffle(temp);
+
+        tiles = convertTilesToArray(temp);
+    }
+    private Tile[] convertTilesToArray(ArrayList<Tile> tiles){
+        Tile[] tileArray = new Tile[tiles.size()];
+        for(int i = 0; i<tiles.size(); i++){
+            tileArray[i] = tiles.get(i);
+        }
+        return tileArray;
     }
 
     public String getCurrentWord() {
         return currentWord;
     }
 
-    public void pickRandomWord(){
+    private void pickRandomWord(){
         currentWord =  wordList.get(getRandomIndex());
-
     }
     int getRandomIndex(){
         Random rand = new Random();

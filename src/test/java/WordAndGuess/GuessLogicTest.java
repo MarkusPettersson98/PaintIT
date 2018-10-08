@@ -12,12 +12,12 @@ public class GuessLogicTest {
         guessLogic.addTileToGuess(new Tile('c',0));
         guessLogic.addTileToGuess(new Tile('a',1));
         guessLogic.addTileToGuess(new Tile('h',2));
-        assertEquals(3,guessLogic.getGuessWord().size()); //Checks array size
-        guessLogic.removeTileFromGuess();
-        assertEquals(2,guessLogic.getGuessWord().size()); //makes sure removeTileFromGuess works
-        assertEquals('c',guessLogic.getGuessWord().get(0).getLetter());
-        assertEquals('a',guessLogic.getGuessWord().get(1).getLetter());
-
+        assertEquals("cah",guessLogic.getGuessString()); //Checks array size
+        guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[1]);
+        assertEquals("ch",guessLogic.getGuessString()); //makes sure removeTileFromGuess works
+        guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[0]);
+        assertEquals("h",guessLogic.getGuessString());
+        assertEquals(null,guessLogic.getGuessWord()[0]);
     }
     @Test
     public void guessCurrentWord() throws Exception {
@@ -25,11 +25,11 @@ public class GuessLogicTest {
         String word = guessLogic.getCurrentWord();
         String guess = word;
 
-        assertFalse(guessLogic.getCorrectGuessMade());
+        assertFalse(guessLogic.guessCurrentWord());
         for(int i = 0; i<guess.length(); i++){
             guessLogic.addTileToGuess(new Tile(guess.charAt(i),i));
         }
-        assertTrue(guessLogic.getCorrectGuessMade());
+        assertTrue(guessLogic.guessCurrentWord());
 
 
 

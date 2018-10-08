@@ -7,24 +7,28 @@ import Util.GeneralUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *Contains the logic for the guess of the word of the Game.
+ * It´s purpose is to keep track of the guess and check whether it is correct or not
+ */
 public class GuessLogic implements Observable {
     private String currentWord;
-    private List<Tile> guessWord;
-    private List<Tile> availableTiles;
+
+    private Tile[] guessWord;
+    private Tile[] availableTiles;
     private WordHandler wordHandler;
-    private List<Observer> observers;
-    private Boolean correctGuessMade;
+    private ArrayList<Observer> observers;
 
-    public Boolean getCorrectGuessMade() {
-        return correctGuessMade;
-    }
 
+
+    /**
+     *Instansiates a wordHandler that generates a word for the game and random Tiles to pick from
+     */
     public GuessLogic(){
-        correctGuessMade = false;
         this.wordHandler = new WordHandler();
         this.availableTiles = wordHandler.getTiles();
         this.currentWord = wordHandler.getCurrentWord();
-        guessWord = new ArrayList<>();
+        guessWord = new Tile[currentWord.length()];
         observers = new ArrayList<>();
 
     }
@@ -33,38 +37,73 @@ public class GuessLogic implements Observable {
         return currentWord;
     }
 
-    public List<Tile> getAvailableTiles() {
+
+    public Tile[] getAvailableTiles() {
+
         return availableTiles;
     }
-
-    public void addTileToGuess(Tile c){
-        guessWord.add(c);
-        c.setStatus(Tile.Status.Used);
-        if(guessWord.size() == currentWord.length()){
-            guessCurrentWord();
+    /**
+     *Adds a tile t to the first empty slot of the guessWord ( Tile[] )
+     * @param t The tile that is added to the guess.
+     */
+    public void addTileToGuess(Tile t){
+        if(!isGuessFilled()) {
+            for (int i = 0; i < guessWord.length; i++) {
+                if (guessWord[i] == null) {
+                    guessWord[i] = t;
+                    break;
+                }
+            }
+            t.setStatus(Tile.Status.Used);
+            notifyObservers();
         }
-        notifyObservers();
     }
-
+    private boolean isGuessFilled(){
+        for(Tile t: guessWord){
+            if(t == null){
+                return false;
+            }
+        }
+        return true;
+    }
     public String getGuessString(){
-        return  GeneralUtil.tileListToString(guessWord);
+        return  GeneralUtil.tileArrayToString(guessWord);
     }
 
-    public List<Tile> getGuessWord() {
+
+    public Tile[] getGuessWord() {
+
         return guessWord;
     }
-    public void removeTileFromGuess() {
-        if (guessWord.size() > 0) {
-            guessWord.get(guessWord.size()-1).setStatus(Tile.Status.Available);
-            guessWord.remove(guessWord.size() - 1);
+
+    /**
+     *Removes a tile From the guess
+     * @param tile the tile that is removed from the guess.
+     */
+    public void removeTileFromGuess(Tile tile){
+        int count = 0;
+        for(Tile t: guessWord){
+            if(guessWord[count] == tile) {
+                tile.setStatus(Tile.Status.Available);
+                guessWord[count] = null;
+                count++;
+                break;
+            }
+            count++;
         }
         notifyObservers();
     }
-    public void guessCurrentWord(){
-        String guessWord = GeneralUtil.tileListToString(this.guessWord);
+
+    /**
+     *@return false if guess was wrong
+     * @return True if guess was correct
+     */
+    public boolean guessCurrentWord(){
+        String guessWord = GeneralUtil.tileArrayToString(this.guessWord);
         if(guessWord.equals(currentWord)){
-            correctGuessMade = true;
+            return true;
         }
+        return false;
     }
 
     @Override

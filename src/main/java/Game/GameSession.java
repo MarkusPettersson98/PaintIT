@@ -11,6 +11,9 @@ import javafx.util.Pair;
 import WordAndGuess.GuessLogic;
 
 
+import WordAndGuess.GuessLogic;
+
+
 import java.util.List;
 
 /**
@@ -22,6 +25,7 @@ public class GameSession {
     private Team team;
 
     private final GameLogic gameLogic;
+
 
 
     private final TopController topController;

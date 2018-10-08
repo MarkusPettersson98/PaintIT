@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-
 import javafx.scene.layout.VBox;
 
 
@@ -29,11 +28,13 @@ public class GuessingView extends AnchorPane implements GameScreen {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         TileBoardView tileBoardView = new TileBoardView(gameSession.getGuessLogic());
 
         CanvasView canvasView = new CanvasView(gameSession.getCanvas());
         vBox.getChildren().add(canvasView);
         vBox.getChildren().add(tileBoardView);
+
 
 
     }
