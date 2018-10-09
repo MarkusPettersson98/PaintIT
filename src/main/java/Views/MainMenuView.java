@@ -69,20 +69,20 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML
     private void closeButtonMouseEntered(){
         String path = "images/icon_close_hover.png";
-        closeButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
     @FXML
     private void closeButtonMouseClicked(){
         String path = "images/icon_close.png";
-        closeButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
         showMainMenu();
     }
 
     @FXML
     private void closeButtonMouseExited(){
         String path = "images/icon_close.png";
-        closeButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
     private void showMainMenu (){

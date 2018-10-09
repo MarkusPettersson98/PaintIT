@@ -1,6 +1,5 @@
 package Tools;
 
-import Views.PaintingView;
 import javafx.scene.paint.Color;
 
 /** Represents an Eraser.

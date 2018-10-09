@@ -8,21 +8,21 @@ import Views.*;
 public abstract class ButtonFactory {
 
     public static String createPaintingViewBtnId() {
-        return (PaintingView.class.getSimpleName());
+        return PaintingView.class.getSimpleName();
     }
 
     public static String createGameSetupViewBtnId() {
-        return (GameSetupView.class.getSimpleName());
+        return GameSetupView.class.getSimpleName();
     }
 
     public static String createGuessingViewBtnId() {
-        return (GuessingView.class.getSimpleName());
+        return GuessingView.class.getSimpleName();
     }
 
-    public static String createMainMenuViewBtnId() { return (MainMenuView.class.getSimpleName()); }
+    public static String createMainMenuViewBtnId() { return MainMenuView.class.getSimpleName(); }
 
     public static String createWordRevealViewBtnId() {
-        return (WordRevealView.class.getSimpleName());
+        return WordRevealView.class.getSimpleName();
     }
 
     public static String createDoneViewBtnId() { return DoneView.class.getSimpleName(); }

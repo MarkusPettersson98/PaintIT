@@ -6,6 +6,7 @@ import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TopController {
 
@@ -14,7 +15,7 @@ public class TopController {
      * to {@link javafx.scene.Scene} in {@link App}.
      */
 
-    private static HashMap<String, GameScreen> applicationPanes = new HashMap<>();
+    private static Map<String, GameScreen> applicationPanes = new HashMap<>();
 
     @Getter private Pane currentView = new Pane();
 

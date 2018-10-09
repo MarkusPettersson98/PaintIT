@@ -33,7 +33,7 @@ public class CanvasModel implements Observable {
     /**
      * In this case, a list of {@link CanvasView}.
      */
-    List<Observer> Observers = new ArrayList<>();
+    List<Observer> observers = new ArrayList<>();
 
     protected CanvasModel(Color initValue) {
         fillCanvas(initValue);
@@ -125,7 +125,7 @@ public class CanvasModel implements Observable {
      * @throws IndexOutOfBoundsException Throws exception if out of bounds.
      */
     protected boolean inBounds(int x, int y) throws IndexOutOfBoundsException {
-        if((x < 0 || x > this.xMax) || (y < 0 || y > this.yMax)) {
+        if(x < 0 || x > this.xMax || y < 0 || y > this.yMax) {
             // xMax or yMax out of bounds, throw exception
             throw new IndexOutOfBoundsException();
         }
@@ -142,7 +142,7 @@ public class CanvasModel implements Observable {
 
     @Override
     public void addObserver(Observer observer) {
-        Observers.add(observer);
+        observers.add(observer);
     }
 
     /**
@@ -150,7 +150,7 @@ public class CanvasModel implements Observable {
      */
     @Override
     public void notifyObservers() {
-        for(Observer observer : Observers) {
+        for(Observer observer : observers) {
             observer.update();
         }
     }

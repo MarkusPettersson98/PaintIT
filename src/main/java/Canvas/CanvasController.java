@@ -1,10 +1,10 @@
 package Canvas;
 
-import Game.GameSession;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class CanvasController {
@@ -21,12 +21,12 @@ public class CanvasController {
     /**
      * Holds {@link ColorPoint} of drawn over pixels, practically saving old pixels
      */
-    ArrayList<ColorPoint> undoArrayList = new ArrayList<>();
+    List<ColorPoint> undoArrayList = new ArrayList<>();
 
     /**
      * Holds the {@link CanvasController#undoArrayList} in a stack allowing for "first in last out"-undoing.
      */
-    Stack<ArrayList<ColorPoint>> undoStack = new Stack<>();
+    Stack<List<ColorPoint>> undoStack = new Stack<>();
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -46,11 +46,12 @@ public class CanvasController {
      */
     public void paint(int x, int y, Color newColor) {
         // Check if new color value is different from current value
-        if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0)
+        if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0) {
             return;
-
-        if(!canvasModel.getPixel(x, y).equals(newColor)) {
-            undoArrayList.add(getOldColor(x,y));
+        }
+        Color tmpColor = canvasModel.getPixel(x,y);
+        if(!tmpColor.equals(newColor)) {
+            undoArrayList.add(getColorPoint(x,y));
             canvasModel.setPixel(x, y, newColor);
         }
     }
@@ -62,7 +63,7 @@ public class CanvasController {
      * @return A new ColorPoint from the canvasModel.
      */
 
-    public ColorPoint getOldColor(int x, int y) {
+    public ColorPoint getColorPoint(int x, int y) {
         return new ColorPoint(x,y,canvasModel.getPixel(x,y));
     }
 

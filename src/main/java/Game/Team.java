@@ -9,8 +9,8 @@ import lombok.Getter;
 
 public class Team {
 
-    private Player playerOne;
-    private Player playerTwo;
+    private final Player playerOne;
+    private final Player playerTwo;
     @Getter private final String teamName;
     @Getter private int streak;
 

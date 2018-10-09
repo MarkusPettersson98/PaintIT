@@ -1,14 +1,11 @@
 package Canvas;
 
 import Tools.Observer;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 import lombok.Getter;
-
-import java.io.IOException;
 
 public class CanvasView extends Canvas implements Observer {
 
@@ -18,7 +15,7 @@ public class CanvasView extends Canvas implements Observer {
     /**
      * Is used to paint on {@link Canvas}, see Oracle.
      */
-    private PixelWriter pixelWriter;
+    private final PixelWriter pixelWriter;
 
     /**
      * How the view gets the pixel that has been changed

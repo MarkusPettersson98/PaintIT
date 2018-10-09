@@ -3,10 +3,13 @@ package Game;
 
 import Canvas.CanvasModel;
 import Util.ViewFactory;
-import Views.*;
+import Views.GameScreen;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
+
+import WordAndGuess.GuessLogic;
+
 
 import WordAndGuess.GuessLogic;
 
@@ -21,7 +24,9 @@ public class GameSession {
 
     private Team team;
 
-     private GameLogic gameLogic;
+    private final GameLogic gameLogic;
+
+
 
     private final TopController topController;
 

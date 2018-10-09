@@ -1,12 +1,8 @@
 package Views;
 
 import Game.GameSession;
-import Game.Player;
 import Game.Team;
 import Util.ButtonFactory;
-import com.PaintIT.app.TopController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -55,7 +51,7 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         backButtonImageView.setOnMouseClicked(e -> {
             gameSession.show(backButtonImageView.getId());
             String path = "images/icon_back.png";
-            backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+            backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
         });
 
     }
@@ -63,13 +59,13 @@ public class GameSetupView extends AnchorPane implements GameScreen {
     @FXML
     private void backButtonImageViewEntered (){
         String path = "images/icon_back_hover.png";
-        backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
     }
 
     @FXML
     private void backButtonImageViewExited (){
         String path = "images/icon_back.png";
-        backButtonImageView.setImage((new Image(getClass().getClassLoader().getResourceAsStream((path)))));
+        backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
     private void setNames () {
