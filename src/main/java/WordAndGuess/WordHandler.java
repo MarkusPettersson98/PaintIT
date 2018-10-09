@@ -85,7 +85,7 @@ public class WordHandler {
     }
 
 
-    private void pickRandomWord(){
+    public void pickRandomWord(){
         currentWord =  wordList.get(getRandomIndex());
     }
 
