@@ -17,19 +17,21 @@ public class Dictionary {
 
 
     public Dictionary(){
-        try {
-            generateWordList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        generateWordList();
     }
 
 
-    private void generateWordList() throws IOException{
+    private void generateWordList() {
         Random rand = new Random();
-        String dictionaryContent = FileUtils.readFileToString(new File(getClass().getClassLoader().getResource("dictionary/dictionary.json").getFile()),"UTF-8");
-        JSONArray jsonArray = new JSONObject(dictionaryContent).getJSONArray("dictionary");
+        String jsonContent = "";
+
+        try {
+            jsonContent = FileUtils.readFileToString(new File(getClass().getClassLoader().getResource("dictionary/dictionary.json").getFile()),"UTF-8");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        JSONArray jsonArray = new JSONObject(jsonContent).getJSONArray("dictionary");
 
         for(int i = 0; i < jsonArray.length(); i++){
             String word = jsonArray.getJSONObject(i).getString("word");
@@ -56,14 +58,26 @@ public class Dictionary {
     }
 
     public Word getNextEasyWord(){
+            if(easyDictionary.empty()){
+                return null;
+            }
+
             return easyDictionary.pop();
     }
 
     public Word getNextMediumWord(){
+        if(mediumDictionary.empty()){
+            return null;
+        }
+
         return mediumDictionary.pop();
     }
 
     public Word getNextHardWord(){
+        if(hardDictionary.empty()){
+            return null;
+        }
+
         return hardDictionary.pop();
     }
 
