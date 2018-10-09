@@ -38,6 +38,11 @@ public class CanvasController {
         this.canvasView = new CanvasView(canvasModel);
     }
 
+    public void generateNewCanvas() {
+        this.canvasModel = new CanvasModel(Color.WHITE);
+        this.canvasView = new CanvasView(canvasModel);
+    }
+
     /** Paints model pixel with color
      *
      * @param x x-value of pixel.
@@ -93,6 +98,7 @@ public class CanvasController {
     public void clear() {
         //while(!undoStack.empty())
         //  undoStack.pop();
+        // TODO TEST AND FIX, STILL BUGGY
         undoArrayList.clear();
         copyModelToList();
         undoStack.push(undoArrayList);

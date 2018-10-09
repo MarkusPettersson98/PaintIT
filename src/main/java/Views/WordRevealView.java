@@ -79,6 +79,8 @@ public class WordRevealView extends AnchorPane implements GameScreen{
 
     @Override
     public void init() {
+        // Generate word to guess
+        gameSession.newTurn();
         // Start countdown
         setTimer(COUNTDOWNSTARTVALUE);
         startTimer();

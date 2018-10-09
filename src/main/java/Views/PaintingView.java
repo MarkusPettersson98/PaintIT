@@ -42,6 +42,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     CanvasController canvasController;
 
+    Canvas canvas;
+
     Map<String, Tool> tools = new HashMap<>();
 
     Tool currentTool;
@@ -52,7 +54,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         this.gameSession = gameSession;
 
         this.canvasController = new CanvasController();
-        Canvas canvas = canvasController.getCanvasView();
+        this.canvas = canvasController.getCanvasView();
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/paintingView.fxml"));
         fxmlLoader.setRoot(this);
@@ -64,9 +66,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
             e.printStackTrace();
         }
 
-        this.hbox.getChildren().add(canvasController.getCanvasView());
+        loadCanvas();
 
-        gameSession.setCanvasModel(canvasController.getCanvasModel());
+        // Add event handlers to canvas
+        canvasSetup();
 
 
         BrushToggleButton.setSelected(true);
@@ -90,42 +93,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         currentTool = tools.get(Brush.class.getSimpleName());
 
-        // Add event handlers
-        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            int x0 = (int) m.getX();
-            int y0 = (int) m.getY();
-            int radius = currentTool.getRadius();
-            Color color = currentTool.getColor();
-            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, color);
-                    }
-                }
-            }
-        });
-
-        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            int x0 = (int) m.getX();
-            int y0 = (int) m.getY();
-            int radius = currentTool.getRadius();
-            Color color = currentTool.getColor();
-            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, color);
-                    }
-                }
-            }
-        });
 
         colorPicker.setOnAction(e -> {
             currentTool.setColor(colorPicker.getValue());
         });
-
-        canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
-            canvasController.pushToUndoStack();
-                });
 
 
         clearBtn.setOnAction(e -> clearCanvas());
@@ -133,8 +104,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
         undoBtn.setOnAction(e -> canvasController.undo());
 
         // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
-        doneBtn.setId(ButtonFactory.createDoneViewBtnId());
-        // doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
+        doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
+        // doneBtn.setId(ButtonFactory.createDoneViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
             gameSession.show(doneBtn.getId());
@@ -194,6 +165,57 @@ public class PaintingView extends AnchorPane implements GameScreen {
     public void init() {
         // Update label with current word
         currentWordLbl.setText(gameSession.getCurrentWord());
+
+        // Create a new canvas!
+        canvasController.generateNewCanvas();
+        // Update GameSession with new canvas
+        this.canvas = canvasController.getCanvasView();
+        loadCanvas();
+
+        canvasSetup();
+    }
+
+    private void canvasSetup() {
+        // Add event handlers
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
+            int x0 = (int) m.getX();
+            int y0 = (int) m.getY();
+            int radius = currentTool.getRadius();
+            Color color = currentTool.getColor();
+            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
+                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
+                    if (currentTool.apply(x0, y0, posx, posy)) {
+                        canvasController.paint(posx, posy, color);
+                    }
+                }
+            }
+        });
+
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
+            int x0 = (int) m.getX();
+            int y0 = (int) m.getY();
+            int radius = currentTool.getRadius();
+            Color color = currentTool.getColor();
+            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
+                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
+                    if (currentTool.apply(x0, y0, posx, posy)) {
+                        canvasController.paint(posx, posy, color);
+                    }
+                }
+            }
+        });
+
+        canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
+            canvasController.pushToUndoStack();
+        });
+
+    }
+
+    private void loadCanvas() {
+        this.hbox.getChildren().clear();
+        this.hbox.getChildren().add(canvasController.getCanvasView());
+        gameSession.setCanvasModel(canvasController.getCanvasModel());
+
     }
 
     @Override
