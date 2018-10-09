@@ -5,11 +5,6 @@ public class Word {
     private String word;
     private difficulty difficulty_level;
 
-    public Word(){
-        word = "No word";
-        difficulty_level = difficulty.NaN;
-    }
-
     public Word(String word,difficulty difficulty_level){
         this.word = word;
         this.difficulty_level = difficulty_level;

@@ -1,20 +1,19 @@
 {
-    "difficulty_levels":["easy","medium","hard"],
+  "dictionary": [
 
-    "dictionary": [
-      {
-        "word": "Cat",
-        "difficulty_level": "easy"
-      },
+    {
+      "word": "Cat",
+      "difficulty_level": "easy"
+    },
 
     {
       "word": "Robot",
       "difficulty_level": "medium"
-     },
+    },
 
-     {
-       "words": "Crowd",
-       "difficulty_level": "hard"
-      }
-    ]
+    {
+      "word": "Crowd",
+      "difficulty_level": "hard"
+    }
+  ]
 }
