@@ -85,12 +85,12 @@ public class WordRevealView extends AnchorPane implements GameScreen{
         setTimer(COUNTDOWNSTARTVALUE);
         startTimer();
         // Update player labels
-        setPlayerNameLabels(gameSession.getPlayerNames());
+        setPlayerNameLabels(gameSession.getDrawerName(), gameSession.getGuesserName());
     }
 
-    private void setPlayerNameLabels(Pair<String, String> players) {
-        // Key is first value of pair, in this case drawing player
-        startingPlayerLabel.setText(players.getKey());
+    private void setPlayerNameLabels(String drawer, String guesser) {
+        startingPlayerLabel.setText(drawer + " starts drawing");
+        instructionsLabel.setText(drawer + " turn the computer around, so that " + guesser + " can't see what you are drawing.");
     }
 
     @Override
