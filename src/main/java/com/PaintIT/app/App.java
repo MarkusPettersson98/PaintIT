@@ -5,6 +5,8 @@ import Game.GameSession;
 import Views.MainMenuView;
 
 
+import WordAndGuess.Dictionary;
+import WordAndGuess.Word;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

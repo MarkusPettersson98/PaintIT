@@ -41,5 +41,4 @@ public class Team {
         return new Pair<>(playerOne.getName(), playerTwo.getName());
     }
 
-
 }
