@@ -52,7 +52,6 @@ public class Tile {
     }
 
     public Status getStatus() {
-
         return status;
     }
 
