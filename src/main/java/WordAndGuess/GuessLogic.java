@@ -74,6 +74,7 @@ public class GuessLogic implements Observable {
         }
         return true;
     }
+
     public String getGuessString(){
         return  GeneralUtil.tileArrayToString(guessWord);
     }
