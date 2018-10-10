@@ -1,8 +1,6 @@
 package ViewObjects;
 
 import WordAndGuess.Tile;
-import lombok.Builder;
-
 /**
  *Represents a Tile in the players Guess visually.
  */

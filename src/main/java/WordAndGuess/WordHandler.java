@@ -14,7 +14,7 @@ public class WordHandler {
     private ArrayList<String> wordList;
     private Tile[] tiles;
     private String currentWord;
-    private final int tileAmount = 8;
+    private static final int tileAmount = 8;
 
 
     /**
@@ -56,7 +56,7 @@ public class WordHandler {
 
 
     public Tile[] getTiles() {
-        return tiles;
+        return tiles.clone();
     }
     private void createRandomTiles(String word){
         Random r = new Random();

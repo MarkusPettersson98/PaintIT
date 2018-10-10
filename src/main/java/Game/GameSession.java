@@ -1,6 +1,5 @@
 package Game;
 
-
 import Canvas.CanvasModel;
 import Tools.Observer;
 import Util.ViewFactory;
@@ -8,13 +7,7 @@ import Views.GameScreen;
 import WordAndGuess.Tile;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
-import javafx.util.Pair;
-
 import WordAndGuess.GuessLogic;
-
-
-import WordAndGuess.GuessLogic;
-
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import org.apache.commons.io.FileUtils;
 import org.json.*;
-import WordAndGuess.Word.difficulty;
+import WordAndGuess.Word.Difficulty;
 
 public class Dictionary {
 
@@ -32,16 +32,16 @@ public class Dictionary {
 
         for(int i = 0; i < jsonArray.length(); i++){
             String word = jsonArray.getJSONObject(i).getString("word");
-            difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Word.difficulty.class,"difficulty_level");
+            Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Difficulty.class,"difficulty_level");
 
             switch (difficulty_level){
-                case easy:
+                case EASY:
                     easyDictionary.add(rand.nextInt(easyDictionary.size()+1),new Word(word,difficulty_level));
                     break;
-                case medium:
+                case MEDIUM:
                     mediumDictionary.add(rand.nextInt(mediumDictionary.size()+1),new Word(word,difficulty_level));
                     break;
-                case hard:
+                case HARD:
                     hardDictionary.add(rand.nextInt(hardDictionary.size()+1),new Word(word,difficulty_level));
                     break;
                 default:

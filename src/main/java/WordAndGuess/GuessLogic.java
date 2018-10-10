@@ -5,8 +5,6 @@ import Tools.Observer;
 import Util.GeneralUtil;
 
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  *Contains the logic for the guess of the word of the Game.
  * It´s purpose is to keep track of the guess and check whether it is correct or not
@@ -46,7 +44,7 @@ public class GuessLogic implements Observable {
 
 
     public Tile[] getAvailableTiles() {
-        return availableTiles;
+        return availableTiles.clone();
     }
 
     /**
@@ -80,8 +78,7 @@ public class GuessLogic implements Observable {
 
 
     public Tile[] getGuessWord() {
-
-        return guessWord;
+        return guessWord.clone();
     }
 
     /**

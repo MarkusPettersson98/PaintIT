@@ -1,8 +1,5 @@
 package WordAndGuess;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  *Represents an available Tile in the game. A has a letter
  */
@@ -39,7 +36,6 @@ public class Tile {
     }
 
     public char getLetter() {
-
         return letter;
     }
 
@@ -54,7 +50,6 @@ public class Tile {
     public Status getStatus() {
         return status;
     }
-
     @Override
     public String toString() {
        return Character.toString(letter);

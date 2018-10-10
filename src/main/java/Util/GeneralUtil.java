@@ -21,14 +21,13 @@ public class GeneralUtil {
         }
         return sB.toString();
     }
-    public static String tileArrayToString(Tile[] tiles){
+    public static String tileArrayToString(Tile... tiles){
         StringBuilder sB = new StringBuilder();
-        for(int i= 0; i<tiles.length; i++){
-            if(tiles[i] != null){
-                sB.append(tiles[i].getLetter());
+        for (Tile tile: tiles) {
+            if(tile != null){
+                sB.append(tile.getLetter());
             }
         }
         return sB.toString();
     }
-
 }

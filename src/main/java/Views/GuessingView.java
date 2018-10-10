@@ -3,14 +3,11 @@ package Views;
 import Canvas.CanvasView;
 import Game.GameSession;
 import ViewObjects.TileBoardView;
-import WordAndGuess.GuessLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
-
 import java.io.IOException;
 
 public class GuessingView extends AnchorPane implements GameScreen {

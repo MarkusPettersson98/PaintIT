@@ -3,7 +3,6 @@ package ViewObjects;
 import Game.GameSession;
 import Tools.Observer;
 import Util.ButtonFactory;
-import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -90,7 +89,7 @@ public class TileBoardView extends VBox implements Observer{
 
     }
 
-    private void createAvailableTileSlots(Tile[] availableTiles){
+    private void createAvailableTileSlots(Tile... availableTiles){
         hBoxBottom.getChildren().add(getAvailableTileOffset());
         for(Tile tile: availableTiles){
             TileSlot temp = new TileSlotAvailable(tile);

@@ -3,11 +3,6 @@ package ViewObjects;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
 
-import javafx.event.Event;
-import javafx.scene.input.KeyCode;
-
-import java.awt.event.KeyEvent;
-
 /** Connects the Actions in TileBoardView to methods in the Model, (GuessLogic)
  */
 

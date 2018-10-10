@@ -22,9 +22,5 @@ class GameLogic {
     public void updateGameWord(){
         guessLogic = new GuessLogic();
     }
-/*
-    public void generateNewWord() {
-        guessLogic.generateNewWord();
-    }
-*/
+
 }

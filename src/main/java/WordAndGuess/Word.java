@@ -3,14 +3,14 @@ package WordAndGuess;
 
 public class Word {
     private String word;
-    private difficulty difficulty_level;
+    private Difficulty difficulty_level;
 
-    public Word(String word,difficulty difficulty_level){
+    public Word(String word,Difficulty difficulty_level){
         this.word = word;
         this.difficulty_level = difficulty_level;
     }
 
-    public difficulty getDifficulty_level() {
+    public Difficulty getDifficulty_level() {
         return difficulty_level;
     }
 
@@ -18,7 +18,7 @@ public class Word {
         return word;
     }
 
-    public enum difficulty{
-        easy,medium,hard,NaN,
+    public enum Difficulty {
+        EASY, MEDIUM, HARD,NaN,
     }
 }
