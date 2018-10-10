@@ -12,7 +12,7 @@ public class WordHandlerTest {
 
 
     @Test
-    public void getRandomWord() throws Exception {
+    public void getRandomWordTest() throws Exception {
         WordHandler wh = new WordHandler();
         
         String word = wh.getCurrentWord();
@@ -21,13 +21,13 @@ public class WordHandlerTest {
 
 
     @Test
-    public void getWordList() throws Exception {
+    public void getWordListTest() throws Exception {
             WordHandler wh = new WordHandler();
             assertNotNull(wh.getWordList());
     }
 
     @Test
-    public void randomNumber() throws Exception{ //tests the random index
+    public void randomNumberTest() throws Exception{ //tests the random index
         WordHandler wordHandler = new WordHandler();
         for (int i = 0; i<100; i++) {
             if(wordHandler.getRandomIndex()>wordHandler.getWordList().size()-1){ //if index out of bounds
@@ -37,7 +37,7 @@ public class WordHandlerTest {
         }
     }
     @Test
-    public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
+    public void createRandomTilesTest()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
 
         Tile[] tiles = guessLogic.getAvailableTiles();
@@ -58,5 +58,14 @@ public class WordHandlerTest {
         assertTrue(true);
 
     }
+
+    @Test
+    public void getRandomIndexTest(){
+        WordHandler wordHandler = new WordHandler();
+        for(int i = 0; i < 50;i++){
+            assertTrue(wordHandler.getRandomIndex() <= wordHandler.getWordList().size());
+        }
+    }
+    
 
 }
