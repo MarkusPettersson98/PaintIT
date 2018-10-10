@@ -28,7 +28,7 @@ public class TileBoardView extends VBox implements Observer{
     @FXML VBox vBoxRoot;
 
     private TileSlot[] availableTileSlotArray;
-    private GameSession gameSession;
+    private final GameSession gameSession;
     private TileBoardController tileBoardController;
     private TileSlot[] guessTileSlotArray;
 
@@ -37,31 +37,26 @@ public class TileBoardView extends VBox implements Observer{
     /** Loads itself from it´s fxml file, and instansiates the tiles that visualises the guess from the backend.
      * Further, allows for player to use keyboard to guess.
      */
-    public TileBoardView(GameSession gameSession) {
+    public TileBoardView(final GameSession gameSession) {
         this.gameSession = gameSession;
         initFXML();
         initTiles();
-
-
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
             tileBoardController.handleKeyCode(m.getCode().toString());
         });
-
     }
 
     private void initFXML(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
+        final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
 
         try {
             fxmlLoader.load();
         } catch(Exception e) {
-            System.out.println(e.getMessage());
+            //ouch
         }
-
     }
-
 
     private void initTiles(){
         availableTileSlotArray =  new TileSlot[gameSession.getAvailableTiles().length];
@@ -79,35 +74,34 @@ public class TileBoardView extends VBox implements Observer{
 
     private void createEmptyTileSlots(){
         for(int i = 0; i < gameSession.getCurrentWord().length(); i++){
-
             guessTileSlotArray[i] = new TileSlotGuess();
         }
         hBoxTop.getChildren().add(getGuessTileOffset());
-        for(TileSlot tileSlot: guessTileSlotArray){
+        for(final TileSlot tileSlot: guessTileSlotArray){
             hBoxTop.getChildren().add(tileSlot);
         }
 
     }
 
-    private void createAvailableTileSlots(Tile... availableTiles){
+    private void createAvailableTileSlots(final Tile... availableTiles){
         hBoxBottom.getChildren().add(getAvailableTileOffset());
-        for(Tile tile: availableTiles){
-            TileSlot temp = new TileSlotAvailable(tile);
+        for(final Tile tile: availableTiles){
+            final TileSlot temp = new TileSlotAvailable(tile);
             availableTileSlotArray[tile.getPosAvailable()] = temp;
             hBoxBottom.getChildren().add(temp);
         }
     }
 
     private AnchorPane getGuessTileOffset(){
-        AnchorPane buffer = new AnchorPane();
+        final AnchorPane buffer = new AnchorPane();
         buffer.setPrefSize((double)(200+(8-guessTileSlotArray.length)*50),100);
-        return  buffer;
+        return buffer;
     }
 
     private AnchorPane getAvailableTileOffset(){
-        AnchorPane buffer = new AnchorPane();
+        final AnchorPane buffer = new AnchorPane();
         buffer.setPrefSize(200,100);
-        return  buffer;
+        return buffer;
 
     }
 
@@ -117,10 +111,10 @@ public class TileBoardView extends VBox implements Observer{
 
     private void setTilesActionListeners(){ //eventListeners
 
-        for(TileSlot t: availableTileSlotArray){
+        for(final TileSlot t: availableTileSlotArray){
             t.getTileButton().setOnAction(e-> tileBoardController.addTileToGuess(t.getTile()));
         }
-        for(TileSlot t: guessTileSlotArray){
+        for(final TileSlot t: guessTileSlotArray){
             t.getTileButton().setOnAction(e-> tileBoardController.removeTileFromGuess(t.getTile()));
         }
     }
@@ -140,13 +134,14 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
     private boolean isGuessComplete(){
-        for(Tile t: gameSession.getGuessWord()){
+        for(final Tile t: gameSession.getGuessWord()){
             if(t == null){
                 return false;
             }
         }
         return true;
     }
+
     private void checkIfCorrectGuess(){
         if(gameSession.guessCurrentWord()){
             handleCorrectGuess();
@@ -158,7 +153,7 @@ public class TileBoardView extends VBox implements Observer{
     /** This method handles a correct Guess - makes all the Tiles Green
      */
     private void handleCorrectGuess(){
-        for(TileSlot t: guessTileSlotArray){
+        for(final TileSlot t: guessTileSlotArray){
            t.addCorrectGuessCss();
         }
         startTimer();
@@ -166,19 +161,18 @@ public class TileBoardView extends VBox implements Observer{
     /** This method handles a correct Guess - makes all the Tiles Red
      */
     private void handleIncorrectGuess(){
-        for(TileSlot t: guessTileSlotArray){
+        for(final TileSlot t: guessTileSlotArray){
           t.addIncorrectGuessCss();
         }
     }
     private void updateAvailableTileSlots(){
-
-        for(TileSlot t: availableTileSlotArray){
+        for(final TileSlot t: availableTileSlotArray){
             t.update();
         }
     }
     private void updateGuessTileSlots(){
         int count = 0;
-        for(Tile t: gameSession.getGuessWord()){
+        for(final Tile t: gameSession.getGuessWord()){
             guessTileSlotArray[count].setTile(t);
             guessTileSlotArray[count].update();
             count++;
@@ -186,7 +180,7 @@ public class TileBoardView extends VBox implements Observer{
     }
 
     public void startTimer() {
-        Timer timer = new Timer();
+        final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
