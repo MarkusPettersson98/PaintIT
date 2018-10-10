@@ -73,9 +73,7 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         String player1 = player1TextField.getText();
         String player2 = player2TextField.getText();
 
-        gameSession.addTeam(new Team(player1,
-                                                   player2,
-                                          player1 + " and " + player2));
+        gameSession.addTeam(new Team(player1, player2));
 
 
     }

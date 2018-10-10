@@ -19,19 +19,18 @@ public class Team {
     private Player drawer;
     private Player guesser;
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
-    public Team(String playerOne, String playerTwo, String teamName) {
+    public Team(String playerOne, String playerTwo) {
         this.playerOne = new Player(playerOne);
         this.playerTwo = new Player(playerTwo);
-        this.teamName = teamName;
+        this.teamName = playerOne + " and " + playerTwo;
         setGuesserAndDrawer();
     }
 
     public void incrementStreak() { streak++; }
 
     public void resetStreak() {
-        // Someone guessed the wrong word one too many times. What a pity..
         streak = 0;
     }
 
@@ -55,10 +54,10 @@ public class Team {
 
     /** Returns the teams players.
      *
-     * @return returns a {@link Pair} of {@link Team#drawer} and {@link Team#guesser}
+     * @return returns a {@link Pair} of {@link Team#playerOne} and {@link Team#playerTwo}
      */
     public Pair<String, String> getPlayerNames() {
-        return new Pair<>(drawer.getName(), guesser.getName());
+        return new Pair<>(playerOne.getName(), playerTwo.getName());
     }
 
     public String getGuesserName (){
