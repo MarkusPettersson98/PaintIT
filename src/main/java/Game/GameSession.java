@@ -116,5 +116,6 @@ public class GameSession {
         // Turn over, generate, switch guesser/drawer..
         gameLogic.generateNewWord();
         team.changeDrawer();
+        getGuessLogic().
     }
 }

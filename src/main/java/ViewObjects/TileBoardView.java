@@ -5,12 +5,16 @@ import Tools.Observer;
 import Util.ButtonFactory;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /** Represents the backend Guess-components to the user with a window filled with Tiles (TileSlot), that are clickable
  *
@@ -151,7 +155,7 @@ public class TileBoardView extends VBox implements Observer{
         for(TileSlot t: guessTileSlotArray){
            t.addCorrectGuessCss();
         }
-        gameSession.show(ButtonFactory.createDoneViewBtnId());
+        startTimer();
     }
     /** This method handles a correct Guess - makes all the Tiles Red
      */
@@ -173,5 +177,20 @@ public class TileBoardView extends VBox implements Observer{
             guessTileSlotArray[count].update();
             count++;
         }
+    }
+
+    public void startTimer() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                Platform.runLater(() -> {timer.cancel(); changeToDoneView();});
+            }
+        },500,1);
+    }
+
+    public void changeToDoneView(){
+        gameSession.show(ButtonFactory.createDoneViewBtnId());
     }
 }
