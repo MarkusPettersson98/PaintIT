@@ -19,9 +19,12 @@ public class GuessingView extends AnchorPane implements GameScreen {
     VBox vBox;
     private GameSession gameSession;
 
+
+
+    private TileBoardView tileBoardView;
+    private CanvasView canvasView;
     public GuessingView(FXMLLoader fxmlLoader, GameSession gameSession) {
 
-        this.gameSession = gameSession;
         fxmlLoader.setLocation(getClass().getResource("/fxml/GuessingView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -31,16 +34,17 @@ public class GuessingView extends AnchorPane implements GameScreen {
             e.printStackTrace();
         }
 
-        TileBoardView tileBoardView = new TileBoardView(gameSession);
+        this.gameSession = gameSession;
 
-        CanvasView canvasView = new CanvasView(gameSession.getCanvas());
-        vBox.getChildren().add(canvasView);
-        vBox.getChildren().add(tileBoardView);
     }
 
     @Override
     public void init() {
-
+        this.canvasView = new CanvasView(gameSession.getCanvas());
+        this.tileBoardView = new TileBoardView(gameSession);
+        vBox.getChildren().clear();
+        vBox.getChildren().add(this.canvasView);
+        vBox.getChildren().add(this.tileBoardView);
     }
 
     @Override

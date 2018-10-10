@@ -22,11 +22,13 @@ public class WordHandler {
      * Picks a random word
      * Creates random Tiles
      */
+
     public WordHandler(){
         createWordList();
         pickRandomWord();
         createRandomTiles(this.currentWord);
     }
+
     private void createWordList(){
         wordList= new ArrayList();
         wordList.add("Cat");
@@ -85,7 +87,7 @@ public class WordHandler {
     }
 
 
-    public void pickRandomWord(){
+    private void pickRandomWord(){
         currentWord =  wordList.get(getRandomIndex());
     }
 

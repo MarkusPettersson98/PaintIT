@@ -2,7 +2,6 @@ package WordAndGuess;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.Callable;
 import org.apache.commons.io.FileUtils;
 import org.json.*;
 import WordAndGuess.Word.difficulty;

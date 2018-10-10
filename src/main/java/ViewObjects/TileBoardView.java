@@ -43,16 +43,17 @@ public class TileBoardView extends VBox implements Observer{
         initFXML();
         initTiles();
 
+
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
             tileBoardController.handleKeyCode(m.getCode().toString());
         });
+
     }
 
     private void initFXML(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
-
 
         try {
             fxmlLoader.load();
@@ -61,6 +62,7 @@ public class TileBoardView extends VBox implements Observer{
         }
 
     }
+
 
     private void initTiles(){
         availableTileSlotArray =  new TileSlot[gameSession.getAvailableTiles().length];
@@ -73,17 +75,19 @@ public class TileBoardView extends VBox implements Observer{
         setActionListeners();
         gameSession.addGuessLogicObservers(this);
         update();
+
     }
 
     private void createEmptyTileSlots(){
         for(int i = 0; i < gameSession.getCurrentWord().length(); i++){
+
             guessTileSlotArray[i] = new TileSlotGuess();
         }
-
         hBoxTop.getChildren().add(getGuessTileOffset());
         for(TileSlot tileSlot: guessTileSlotArray){
             hBoxTop.getChildren().add(tileSlot);
         }
+
     }
 
     private void createAvailableTileSlots(Tile[] availableTiles){
@@ -129,7 +133,6 @@ public class TileBoardView extends VBox implements Observer{
      */
     @Override
     public void update() {
-
         updateAvailableTileSlots();
         updateGuessTileSlots();
 
