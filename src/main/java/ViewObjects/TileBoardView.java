@@ -2,14 +2,19 @@ package ViewObjects;
 
 import Game.GameSession;
 import Tools.Observer;
+import Util.ButtonFactory;
 import WordAndGuess.GuessLogic;
 import WordAndGuess.Tile;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /** Represents the backend Guess-components to the user with a window filled with Tiles (TileSlot), that are clickable
  *
@@ -24,7 +29,7 @@ public class TileBoardView extends VBox implements Observer{
     @FXML VBox vBoxRoot;
 
     private TileSlot[] availableTileSlotArray;
-    private GuessLogic guessLogic;
+    private GameSession gameSession;
     private TileBoardController tileBoardController;
     private TileSlot[] guessTileSlotArray;
 
@@ -33,8 +38,8 @@ public class TileBoardView extends VBox implements Observer{
     /** Loads itself from it´s fxml file, and instansiates the tiles that visualises the guess from the backend.
      * Further, allows for player to use keyboard to guess.
      */
-    public TileBoardView(GuessLogic guessLogic) {
-        this.guessLogic = guessLogic;
+    public TileBoardView(GameSession gameSession) {
+        this.gameSession = gameSession;
         initFXML();
         initTiles();
 
@@ -58,20 +63,20 @@ public class TileBoardView extends VBox implements Observer{
     }
 
     private void initTiles(){
-        availableTileSlotArray =  new TileSlot[guessLogic.getAvailableTiles().length];
-        guessTileSlotArray = new TileSlot[guessLogic.getCurrentWord().length()];
-        createAvailableTileSlots(guessLogic.getAvailableTiles());
+        availableTileSlotArray =  new TileSlot[gameSession.getAvailableTiles().length];
+        guessTileSlotArray = new TileSlot[gameSession.getCurrentWord().length()];
+        createAvailableTileSlots(gameSession.getAvailableTiles());
 
         createEmptyTileSlots();
 
-        tileBoardController = new TileBoardController(guessLogic);
+        tileBoardController = new TileBoardController(gameSession.getGuessLogic());
         setActionListeners();
-        guessLogic.addObserver(this);
+        gameSession.addGuessLogicObservers(this);
         update();
     }
 
     private void createEmptyTileSlots(){
-        for(int i = 0; i < guessLogic.getCurrentWord().length(); i++){
+        for(int i = 0; i < gameSession.getCurrentWord().length(); i++){
             guessTileSlotArray[i] = new TileSlotGuess();
         }
 
@@ -133,7 +138,7 @@ public class TileBoardView extends VBox implements Observer{
         }
     }
     private boolean isGuessComplete(){
-        for(Tile t: guessLogic.getGuessWord()){
+        for(Tile t: gameSession.getGuessWord()){
             if(t == null){
                 return false;
             }
@@ -141,7 +146,7 @@ public class TileBoardView extends VBox implements Observer{
         return true;
     }
     private void checkIfCorrectGuess(){
-        if(guessLogic.guessCurrentWord()){
+        if(gameSession.guessCurrentWord()){
             handleCorrectGuess();
         }else{
             handleIncorrectGuess();
@@ -154,6 +159,7 @@ public class TileBoardView extends VBox implements Observer{
         for(TileSlot t: guessTileSlotArray){
            t.addCorrectGuessCss();
         }
+        startTimer();
     }
     /** This method handles a correct Guess - makes all the Tiles Red
      */
@@ -170,10 +176,25 @@ public class TileBoardView extends VBox implements Observer{
     }
     private void updateGuessTileSlots(){
         int count = 0;
-        for(Tile t: guessLogic.getGuessWord()){
+        for(Tile t: gameSession.getGuessWord()){
             guessTileSlotArray[count].setTile(t);
             guessTileSlotArray[count].update();
             count++;
         }
+    }
+
+    public void startTimer() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                Platform.runLater(() -> {timer.cancel(); changeToDoneView();});
+            }
+        },1000,1);
+    }
+
+    public void changeToDoneView(){
+        gameSession.show(ButtonFactory.createDoneViewBtnId());
     }
 }
