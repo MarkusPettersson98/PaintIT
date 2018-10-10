@@ -2,8 +2,10 @@ package Game;
 
 
 import Canvas.CanvasModel;
+import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
+import WordAndGuess.Tile;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
@@ -101,6 +103,14 @@ public class GameSession {
     public String getCurrentWord() {
         return gameLogic.getCurrentWord();
     }
+
+    public Tile[] getAvailableTiles(){return getGuessLogic().getAvailableTiles();}
+
+    public void addGuessLogicObservers(Observer observer){getGuessLogic().addObserver(observer);}
+
+    public Tile[] getGuessWord(){return getGuessLogic().getGuessWord();}
+
+    public boolean guessCurrentWord(){return getGuessLogic().guessCurrentWord();}
 
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..

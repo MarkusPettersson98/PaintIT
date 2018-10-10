@@ -29,7 +29,7 @@ public class GuessingView extends AnchorPane implements GameScreen {
             e.printStackTrace();
         }
 
-        TileBoardView tileBoardView = new TileBoardView(gameSession.getGuessLogic());
+        TileBoardView tileBoardView = new TileBoardView(gameSession);
 
         CanvasView canvasView = new CanvasView(gameSession.getCanvas());
         vBox.getChildren().add(canvasView);
