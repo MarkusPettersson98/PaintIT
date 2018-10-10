@@ -32,7 +32,22 @@ public class TileBoardController {
     public void removeTileFromGuess(Tile t){
         guessLogic.removeTileFromGuess(t);
     }
+    public void removeRightMostTileFromGuess(){
+        guessLogic.removeRightMostTileFromGuess();
+    }
 
-
-
+    public void handleKeyCode(String keyCode) {
+        if (keyCode.equals("BACK_SPACE")){
+            removeRightMostTileFromGuess();
+            return;
+        }
+        for (Tile tile : guessLogic.getAvailableTiles() ) {
+            if(tile.toString().equals(keyCode)) {
+                if(tile.getStatus().equals(Tile.Status.Available)) {
+                    addTileToGuess(tile);
+                    break;
+                }
+            }
+        }
+    }
 }

@@ -98,6 +98,18 @@ public class GuessLogic implements Observable {
         notifyObservers();
     }
 
+    /**
+     * Removes rightmost tile from the guessed word
+     */
+    public void removeRightMostTileFromGuess(){
+        for (int c = currentWord.length()-1; c >= 0; c-- ) {
+            if(guessWord[c]!=null) {
+                removeTileFromGuess(guessWord[c]);
+                break;
+            }
+        }
+    }
+
 
     /**
      *@return false if guess was wrong
@@ -116,6 +128,7 @@ public class GuessLogic implements Observable {
         wordHandler.pickRandomWord();
         // Fetch new word
     }
+
 
     @Override
     public void addObserver(Observer observer) {

@@ -25,9 +25,6 @@ public class GameSession {
     private Team team;
 
     private final GameLogic gameLogic;
-
-
-
     private final TopController topController;
 
     public GameSession() {

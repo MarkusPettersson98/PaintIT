@@ -3,10 +3,10 @@ package Views;
 import Canvas.CanvasView;
 import Game.GameSession;
 import ViewObjects.TileBoardView;
+import WordAndGuess.GuessLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -17,9 +17,11 @@ public class GuessingView extends AnchorPane implements GameScreen {
 
     @FXML
     VBox vBox;
+    private GameSession gameSession;
 
     public GuessingView(FXMLLoader fxmlLoader, GameSession gameSession) {
 
+        this.gameSession = gameSession;
         fxmlLoader.setLocation(getClass().getResource("/fxml/GuessingView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -34,9 +36,6 @@ public class GuessingView extends AnchorPane implements GameScreen {
         CanvasView canvasView = new CanvasView(gameSession.getCanvas());
         vBox.getChildren().add(canvasView);
         vBox.getChildren().add(tileBoardView);
-
-
-
     }
 
     @Override
