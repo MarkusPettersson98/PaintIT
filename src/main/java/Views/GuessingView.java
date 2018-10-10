@@ -35,6 +35,13 @@ public class GuessingView extends AnchorPane implements GameScreen {
         vBox.getChildren().add(canvasView);
         vBox.getChildren().add(tileBoardView);
 
+        this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
+            switch (m.getCode().toString()) {
+                case "BACK_SPACE":
+                    System.out.println("delete");
+                    break;
+            }
+        });
 
 
     }
