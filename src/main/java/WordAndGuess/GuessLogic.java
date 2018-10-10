@@ -117,6 +117,10 @@ public class GuessLogic implements Observable {
         // Fetch new word
     }
 
+    public void handleKeyCode(String keyCode) {
+        System.out.println(keyCode);
+    }
+
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
