@@ -187,7 +187,7 @@ public class TileBoardView extends VBox implements Observer{
 
                 Platform.runLater(() -> {timer.cancel(); changeToDoneView();});
             }
-        },500,1);
+        },1000,1);
     }
 
     public void changeToDoneView(){

@@ -29,10 +29,14 @@ public class GuessLogic implements Observable {
         this.wordHandler = new WordHandler();
         this.availableTiles = wordHandler.getTiles();
 
-        this.currentWord = wordHandler.getCurrentWord();
+        this.currentWord = getCurrentWord();
         guessWord = new Tile[currentWord.length()];
         observers = new ArrayList<>();
 
+    }
+
+    public void updateCurrentWord(){
+        currentWord = getCurrentWord();
     }
 
     public String getCurrentWord() {
