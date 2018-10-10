@@ -66,6 +66,6 @@ public class WordHandlerTest {
             assertTrue(wordHandler.getRandomIndex() <= wordHandler.getWordList().size());
         }
     }
-    
+
 
 }
