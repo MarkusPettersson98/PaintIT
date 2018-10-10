@@ -39,19 +39,15 @@ public class TileBoardController {
     public void handleKeyCode(String keyCode) {
         if (keyCode.equals("BACK_SPACE")){
             removeRightMostTileFromGuess();
-            System.out.println("delete rightmost letter from guess");
             return;
         }
         for (Tile tile : guessLogic.getAvailableTiles() ) {
             if(tile.toString().equals(keyCode)) {
-                System.out.println("ja den hittade " + keyCode);
                 if(tile.getStatus().equals(Tile.Status.Available)) {
                     addTileToGuess(tile);
+                    break;
                 }
             }
         }
     }
-
-
-
 }
