@@ -78,8 +78,12 @@ public class GameSession {
      *
      * @return Name of players in {@link GameSession#team} as a pair of Strings.
      */
-    public Pair<String, String> getPlayerNames() {
-        return team.getPlayerNames();
+    public String getGuesserName() {
+        return team.getGuesserName();
+    }
+
+    public String getDrawerName (){
+        return team.getDrawerName();
     }
 
     public int getTeamStreak() { return team.getStreak(); }
@@ -101,5 +105,6 @@ public class GameSession {
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
         gameLogic.generateNewWord();
+        team.changeDrawer();
     }
 }
