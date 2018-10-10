@@ -98,6 +98,15 @@ public class GuessLogic implements Observable {
         notifyObservers();
     }
 
+    public void removeRightMostTileFromGuess(){
+        for (int c = currentWord.length()-1; c >= 0; c-- ) {
+            if(guessWord[c]!=null) {
+                removeTileFromGuess(guessWord[c]);
+                break;
+            }
+        }
+    }
+
 
     /**
      *@return false if guess was wrong
@@ -117,20 +126,6 @@ public class GuessLogic implements Observable {
         // Fetch new word
     }
 
-    public void handleKeyCode(String keyCode) {
-        if (keyCode.equals("BACK_SPACE")){
-            System.out.println("delete rightmost letter from guess");
-        }
-        for (Tile tile : availableTiles ) {
-            if(tile.toString().equals(keyCode)) {
-                System.out.println("ja den hittade " + keyCode);
-                addTileToGuess(tile);
-
-                break;
-            }
-
-        }
-    }
 
     @Override
     public void addObserver(Observer observer) {

@@ -31,6 +31,7 @@ public class TileBoardView extends VBox implements Observer{
     String filePath = "/fxml/tileBoard.fxml";
 
     /** Loads itself from it´s fxml file, and instansiates the tiles that visualises the guess from the backend.
+     * Further, allows for player to use keyboard to guess.
      */
     public TileBoardView(GuessLogic guessLogic) {
         this.guessLogic = guessLogic;
@@ -38,7 +39,7 @@ public class TileBoardView extends VBox implements Observer{
         initTiles();
 
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
-            guessLogic.handleKeyCode(m.getCode().toString());
+            tileBoardController.handleKeyCode(m.getCode().toString());
         });
     }
 
