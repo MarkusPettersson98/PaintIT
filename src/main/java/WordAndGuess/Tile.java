@@ -55,4 +55,9 @@ public class Tile {
 
         return status;
     }
+
+    @Override
+    public String toString() {
+       return Character.toString(letter);
+    }
 }

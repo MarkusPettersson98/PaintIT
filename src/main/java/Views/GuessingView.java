@@ -38,12 +38,6 @@ public class GuessingView extends AnchorPane implements GameScreen {
         CanvasView canvasView = new CanvasView(gameSession.getCanvas());
         vBox.getChildren().add(canvasView);
         vBox.getChildren().add(tileBoardView);
-
-        this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
-           guessLogic.handleKeyCode(m.getCode().toString());
-        });
-
-
     }
 
     @Override

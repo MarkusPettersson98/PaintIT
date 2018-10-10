@@ -118,7 +118,18 @@ public class GuessLogic implements Observable {
     }
 
     public void handleKeyCode(String keyCode) {
-        System.out.println(keyCode);
+        if (keyCode.equals("BACK_SPACE")){
+            System.out.println("delete rightmost letter from guess");
+        }
+        for (Tile tile : availableTiles ) {
+            if(tile.toString().equals(keyCode)) {
+                System.out.println("ja den hittade " + keyCode);
+                addTileToGuess(tile);
+
+                break;
+            }
+
+        }
     }
 
     @Override

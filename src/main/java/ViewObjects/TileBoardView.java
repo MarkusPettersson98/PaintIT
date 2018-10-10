@@ -37,6 +37,9 @@ public class TileBoardView extends VBox implements Observer{
         initFXML();
         initTiles();
 
+        this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
+            guessLogic.handleKeyCode(m.getCode().toString());
+        });
     }
 
     private void initFXML(){
