@@ -3,8 +3,6 @@ package WordAndGuess;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.Callable;
-
-import com.sun.xml.internal.xsom.impl.WildcardImpl;
 import org.apache.commons.io.FileUtils;
 import org.json.*;
 import WordAndGuess.Word.difficulty;
