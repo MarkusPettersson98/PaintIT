@@ -100,6 +100,6 @@ public class GameSession {
 
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
-        gameLogic.generateNewWord();
+        gameLogic.updateGameWord();
     }
 }

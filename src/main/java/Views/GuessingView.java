@@ -17,9 +17,10 @@ public class GuessingView extends AnchorPane implements GameScreen {
 
     @FXML
     VBox vBox;
-
+    private GameSession gameSession;
+    private TileBoardView tileBoardView;
+    private CanvasView canvasView;
     public GuessingView(FXMLLoader fxmlLoader, GameSession gameSession) {
-
         fxmlLoader.setLocation(getClass().getResource("/fxml/GuessingView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -28,19 +29,19 @@ public class GuessingView extends AnchorPane implements GameScreen {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        TileBoardView tileBoardView = new TileBoardView(gameSession.getGuessLogic());
-
-        CanvasView canvasView = new CanvasView(gameSession.getCanvas());
-        vBox.getChildren().add(canvasView);
-        vBox.getChildren().add(tileBoardView);
-
-
-
+        this.gameSession = gameSession;
     }
 
     @Override
     public void init() {
+        System.out.println("GAME SESSION CURRENT WORD " + gameSession.getCurrentWord());
+        System.out.println("GuessLogic CURRENT WORD " + gameSession.getGuessLogic().getCurrentWord());
+        this.canvasView = new CanvasView(gameSession.getCanvas());
+        this.tileBoardView = new TileBoardView(gameSession.getGuessLogic());
+        vBox.getChildren().add(this.canvasView);
+        vBox.getChildren().add(this.tileBoardView);
+        System.out.println("GAME SESSION CURRENT WORD " + gameSession.getCurrentWord());
+        System.out.println("GuessLogic CURRENT WORD " + gameSession.getGuessLogic().getCurrentWord());
 
     }
 

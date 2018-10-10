@@ -9,7 +9,7 @@ class GameLogic {
 
     @Setter @Getter private CanvasModel currentPainting;
 
-    @Getter private final GuessLogic guessLogic;
+    @Getter private  GuessLogic guessLogic;
 
     GameLogic(){
         guessLogic = new GuessLogic();
@@ -19,8 +19,12 @@ class GameLogic {
         return guessLogic.getCurrentWord();
     }
 
+    public void updateGameWord(){
+        guessLogic = new GuessLogic();
+    }
+/*
     public void generateNewWord() {
         guessLogic.generateNewWord();
     }
-
+*/
 }
