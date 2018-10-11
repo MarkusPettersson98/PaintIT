@@ -70,7 +70,7 @@ public class GuessLogicTest {
         String word = "cool";
         Tile[] tiles = guessLogic.getGuessWord();
 
-        for(int i = 0; i < tiles.length;i++){
+        for(int i = 0; i < word.length()-1;i++){
             assertTrue(tiles[i].getLetter() == word.charAt(i));
         }
     }
