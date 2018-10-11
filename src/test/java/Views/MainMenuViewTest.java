@@ -25,6 +25,8 @@ public class MainMenuViewTest extends ApplicationTest{
 
     @Test
     public void playButtonTest(){
-      
+      clickOn(".button-play");
+        assert (gameSession.getCurrentPane().getChildren().toString().contains("GameSetupView"));
     }
+
 }

@@ -66,12 +66,19 @@ public class MainMenuView extends AnchorPane implements GameScreen{
 
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeButtonImageView} when the mouse hovers over it.
+     */
     @FXML
     private void closeButtonMouseEntered(){
         String path = "images/icon_close_hover.png";
         closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeButtonImageView} when it is clicked on,
+     * as well as changes the focus to {@link MainMenuView#mainMenuAnchorPane}.
+     */
     @FXML
     private void closeButtonMouseClicked(){
         String path = "images/icon_close.png";
@@ -79,21 +86,31 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         showMainMenu();
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeButtonImageView} when the mouse doesn't hover over it any more.
+     */
     @FXML
     private void closeButtonMouseExited(){
         String path = "images/icon_close.png";
         closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
+    /**
+     * Sends {@link MainMenuView#mainMenuAnchorPane} to front.
+     */
     private void showMainMenu (){
         mainMenuAnchorPane.toFront();
     }
 
+    /**
+     * Sends {@link MainMenuView#howToPlayAnchorPane} to front with
+     * {@link MainMenuView#lightBoxAnchorPane} as a backgroud.
+     */
     private void showHowToPlay (){
         lightBoxAnchorPane.toFront();
         howToPlayAnchorPane.toFront();
     }
-
+    
     private void mouseTrap(Event event){
         event.consume();
     }
