@@ -49,9 +49,9 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
         backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
         backButtonImageView.setOnMouseClicked(e -> {
-            gameSession.show(backButtonImageView.getId());
             String path = "images/icon_back.png";
             backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
+            gameSession.show(backButtonImageView.getId());
         });
 
     }
