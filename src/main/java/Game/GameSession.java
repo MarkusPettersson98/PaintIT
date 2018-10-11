@@ -1,6 +1,8 @@
 package Game;
 
+import Canvas.CanvasController;
 import Canvas.CanvasModel;
+import Canvas.CanvasView;
 import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
@@ -86,9 +88,9 @@ public class GameSession {
         team.resetStreak();
     }
 
-    public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
+    public CanvasView getCanvasView() { return gameLogic.getCurrentPainting(); }
 
-    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
+    public void setCanvasView(CanvasView canvasView) { gameLogic.setCurrentPainting(canvasView); }
 
     public String getCurrentWord() {
         return gameLogic.getCurrentWord();
