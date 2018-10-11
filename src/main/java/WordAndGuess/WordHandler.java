@@ -13,8 +13,9 @@ import java.util.Random;
 public class WordHandler {
     private ArrayList<String> wordList;
     private Tile[] tiles;
-    private String currentWord;
+    private Word currentWord;
     private static final int tileAmount = 8;
+    private Dictionary dictionary;
 
 
     /**
@@ -24,34 +25,13 @@ public class WordHandler {
      */
 
     public WordHandler(){
-        createWordList();
+        dictionary = new Dictionary();
         pickRandomWord();
-        createRandomTiles(this.currentWord);
+        createRandomTiles(this.currentWord.getWord());
     }
-
-    private void createWordList(){
-        wordList= new ArrayList();
-        wordList.add("Cat");
-        wordList.add("Dog");
-        wordList.add("Man");
-        wordList.add("Kingen");
-        wordList.add("Aron");
-
-
-        for(int i= 0; i<wordList.size();i++){
-            wordList.set(i,wordList.get(i).toUpperCase());
-        }
-    }
-
-
 
     public int getTileAmount() {
         return tileAmount;
-    }
-
-
-    public List getWordList() {
-        return wordList;
     }
 
 
@@ -83,18 +63,12 @@ public class WordHandler {
     }
 
     public String getCurrentWord() {
-        return currentWord;
+        return currentWord.getWord();
     }
 
 
     private void pickRandomWord(){
-        currentWord =  wordList.get(getRandomIndex());
-    }
-
-    int getRandomIndex(){
-        Random rand = new Random();
-        int indexAmount = wordList.size();
-        return rand.nextInt(indexAmount); //returns random index from the wordlist
+        currentWord =  dictionary.getRandomWord();
     }
 
 }

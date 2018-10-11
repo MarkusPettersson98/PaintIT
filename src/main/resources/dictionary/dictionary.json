@@ -3,22 +3,22 @@
 
     {
       "word": "Cat",
-      "difficulty_level": "easy"
+      "difficulty_level": "EASY"
     },
 
     {
       "word": "Robot",
-      "difficulty_level": "medium"
+      "difficulty_level": "MEDIUM"
     },
 
     {
       "word": "Crowd",
-      "difficulty_level": "hard"
+      "difficulty_level": "HARD"
     },
 
     {
       "word": "Dog",
-      "difficulty_level": "easy"
+      "difficulty_level": "EASY"
     }
   ]
 }

@@ -33,7 +33,7 @@ public class Dictionary {
         for(int i = 0; i < jsonArray.length(); i++){
             String word = jsonArray.getJSONObject(i).getString("word");
             Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Difficulty.class,"difficulty_level");
-
+            System.out.println(difficulty_level);
             switch (difficulty_level){
                 case EASY:
                     easyDictionary.add(rand.nextInt(easyDictionary.size()+1),new Word(word,difficulty_level));
@@ -76,6 +76,20 @@ public class Dictionary {
         }
 
         return hardDictionary.pop();
+    }
+
+    public Word getRandomWord(){
+        Random rand = new Random();
+        Integer number = rand.nextInt(2);
+        if(number == 0 && !easyDictionary.isEmpty()){
+            return getNextEasyWord();
+        } else if(number == 1 && !mediumDictionary.isEmpty()){
+            return getNextMediumWord();
+        } else if (!hardDictionary.isEmpty()){
+            return getNextHardWord();
+        } else {
+            return null;
+        }
     }
 
 

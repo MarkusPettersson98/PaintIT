@@ -118,7 +118,7 @@ public class GuessLogic implements Observable {
      */
     public boolean guessCurrentWord(){
         String guessWord = GeneralUtil.tileArrayToString(this.guessWord);
-        if(guessWord.equals(currentWord)){
+        if(guessWord.toLowerCase().equals(currentWord.toLowerCase())){
             return true;
         }
         return false;

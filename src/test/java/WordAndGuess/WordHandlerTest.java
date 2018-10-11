@@ -15,23 +15,7 @@ public class WordHandlerTest {
         assertNotNull(word);
     }
 
-
-    @Test
-    public void getWordList() throws Exception {
-            WordHandler wh = new WordHandler();
-            assertNotNull(wh.getWordList());
-    }
-
-    @Test
-    public void randomNumber() throws Exception{ //tests the random index
-        WordHandler wordHandler = new WordHandler();
-        for (int i = 0; i<100; i++) {
-            if(wordHandler.getRandomIndex()>wordHandler.getWordList().size()-1){ //if index out of bounds
-                 assertFalse(true);
-            }
-            assertTrue(true);
-        }
-    }
+    
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
