@@ -4,8 +4,11 @@ import Canvas.CanvasController;
 import Canvas.CanvasModel;
 import Canvas.CanvasView;
 import WordAndGuess.GuessLogic;
+import WordAndGuess.Word;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 class GameLogic {
 
@@ -24,5 +27,7 @@ class GameLogic {
     public void updateGameWord(){
         guessLogic.pickNewWord();
     }
+
+    public List<Word> getPossibleWords(){return guessLogic.getPossibleWords();}
 
 }

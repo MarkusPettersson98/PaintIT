@@ -63,6 +63,10 @@ public class WordHandler {
     public String getCurrentWord() {
         return currentWord.getWord().toUpperCase();
     }
+
+    public List<Word> getPossibleWords(){
+        return dictionary.getPossibleWords();
+    }
      void pickRandomWord(){
         currentWord =  dictionary.getRandomWord();
         createRandomTiles(getCurrentWord());

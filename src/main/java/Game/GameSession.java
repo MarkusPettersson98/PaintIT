@@ -7,11 +7,13 @@ import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
 import WordAndGuess.Tile;
+import WordAndGuess.Word;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import WordAndGuess.GuessLogic;
 
 import java.util.List;
+import java.util.WeakHashMap;
 
 /**
  * Main class, this is where most parts of the application is connected.
@@ -103,6 +105,10 @@ public class GameSession {
     public Tile[] getGuessWord(){return getGuessLogic().getGuessWord();}
 
     public boolean guessCurrentWord(){return getGuessLogic().guessCurrentWord();}
+
+    public List<Word> getPossibleWords(){
+        return gameLogic.getPossibleWords();
+    }
 
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
