@@ -54,6 +54,18 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
             gameSession.show(donebtn.getId());
 
         });
+        donebtn.setDisable(true);
+
+        for(ToggleButton toggleButton: toggleButtons){
+            toggleButton.setOnAction(e ->{
+                donebtn.setDisable(true);
+                for(ToggleButton toggleButton1: toggleButtons){
+                    if(toggleButton1.isSelected()){
+                        donebtn.setDisable(false);
+                    }
+                }
+            });
+        }
 
     }
 
@@ -62,10 +74,11 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
         button.setToggleGroup(this.toggleWordbtnGroup);
     }
 
-    private void clearButtons(){
+    private void clear(){
         for (ToggleButton toggleButton: toggleButtons){
             toggleButton.setSelected(false);
             toggleButton.setDisable(true);
+            words.clear();
             toggleButton.setText("No More Words");
         }
     }
@@ -74,8 +87,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     public void init() {
 
         wordList = gameSession.getPossibleWords();
-        words.clear();
-        clearButtons();
+        clear();
 
         for(Word word: wordList){
             switch (word.getDifficulty_level()){
