@@ -25,18 +25,8 @@ public class GuessLogic implements Observable {
      */
     public GuessLogic(){
         this.wordHandler = new WordHandler();
-        this.availableTiles = wordHandler.getTiles();
-
-        this.currentWord = wordHandler.getCurrentWord();
-
-        guessWord = new Tile[currentWord.length()];
-        observers = new ArrayList<>();
-
     }
 
-    public void updateCurrentWord(){
-        currentWord = getCurrentWord();
-    }
 
     public String getCurrentWord() {
         return wordHandler.getCurrentWord();
@@ -125,6 +115,14 @@ public class GuessLogic implements Observable {
     }
 
 
+    public void pickNewWord(){
+        wordHandler.pickRandomWord();
+        this.availableTiles = wordHandler.getTiles();
+        this.currentWord = wordHandler.getCurrentWord();
+        guessWord = new Tile[currentWord.length()];
+        observers = new ArrayList<>();
+
+    }
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);

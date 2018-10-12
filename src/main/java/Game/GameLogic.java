@@ -22,7 +22,7 @@ class GameLogic {
     }
 
     public void updateGameWord(){
-        guessLogic = new GuessLogic();
+        guessLogic.pickNewWord();
     }
 
 }

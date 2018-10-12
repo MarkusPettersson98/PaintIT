@@ -10,6 +10,7 @@ public class WordHandlerTest {
     @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
+        wh.pickRandomWord();
         
         String word = wh.getCurrentWord();
         assertNotNull(word);
@@ -19,6 +20,7 @@ public class WordHandlerTest {
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
+        guessLogic.pickNewWord();
 
         Tile[] tiles = guessLogic.getAvailableTiles();
         ArrayList<Character> letters = new ArrayList<>();

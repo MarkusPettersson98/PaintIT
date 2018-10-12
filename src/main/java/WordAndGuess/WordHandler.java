@@ -26,8 +26,6 @@ public class WordHandler {
 
     public WordHandler(){
         dictionary = new Dictionary();
-        pickRandomWord();
-        createRandomTiles(this.currentWord.getWord());
     }
 
     public int getTileAmount() {
@@ -63,12 +61,11 @@ public class WordHandler {
     }
 
     public String getCurrentWord() {
-        return currentWord.getWord();
+        return currentWord.getWord().toUpperCase();
     }
-
-
-    private void pickRandomWord(){
+     void pickRandomWord(){
         currentWord =  dictionary.getRandomWord();
+        createRandomTiles(getCurrentWord());
     }
 
 }

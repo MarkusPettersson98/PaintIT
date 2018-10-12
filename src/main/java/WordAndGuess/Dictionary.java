@@ -79,6 +79,9 @@ public class Dictionary {
 
     public Word getRandomWord() {
         Word nextWord = new Word("No more words!", Difficulty.EASY);
+        System.out.println(easyDictionary.size());
+        System.out.println(mediumDictionary.size());
+        System.out.println(hardDictionary.size());
 
         if (easyDictionary.isEmpty() && mediumDictionary.isEmpty() && hardDictionary.isEmpty()) {
             // return null;
@@ -94,7 +97,10 @@ public class Dictionary {
                 break;
             }
         }
-
+        System.out.println(nextWord.getWord());
+        System.out.println(easyDictionary.size());
+        System.out.println(mediumDictionary.size());
+        System.out.println(hardDictionary.size());
         return nextWord;
 
     }

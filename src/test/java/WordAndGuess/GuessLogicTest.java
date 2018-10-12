@@ -9,6 +9,7 @@ public class GuessLogicTest {
     @Test
     public void addAndRemoveCharFromGuess() throws Exception {
         GuessLogic guessLogic = new GuessLogic();
+        guessLogic.pickNewWord();
         guessLogic.addTileToGuess(new Tile('c',0));
         guessLogic.addTileToGuess(new Tile('a',1));
         guessLogic.addTileToGuess(new Tile('h',2));
@@ -22,6 +23,7 @@ public class GuessLogicTest {
     @Test
     public void guessCurrentWord() throws Exception {
        GuessLogic guessLogic = new GuessLogic();
+       guessLogic.pickNewWord();
         String word = guessLogic.getCurrentWord();
         String guess = word;
 
