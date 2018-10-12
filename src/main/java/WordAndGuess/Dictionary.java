@@ -88,7 +88,7 @@ public class Dictionary {
         return possibleWords;
     }
 
-    public void setChoosenWord(Word choosenWord){
+    public void setCurrentWord(Word choosenWord){
         Random rand = new Random();
         this.choosenWord = choosenWord;
 
@@ -109,7 +109,7 @@ public class Dictionary {
         }
     }
 
-    public Word getChoosenWord(){
+    public Word getCurrentWord(){
         return choosenWord;
     }
 

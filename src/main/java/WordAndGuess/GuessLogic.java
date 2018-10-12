@@ -116,15 +116,6 @@ public class GuessLogic implements Observable {
         return false;
     }
 
-
-    /*public void pickNewWord(){
-        this.availableTiles = wordHandler.getTiles();
-        this.currentWord = wordHandler.getCurrentWord();
-        guessWord = new Tile[currentWord.length()];
-        observers = new ArrayList<>();
-
-    }*/
-
     public void setCurrentWord(Word word){
         wordHandler.setCurrentWord(word);
         this.availableTiles = wordHandler.getTiles();
