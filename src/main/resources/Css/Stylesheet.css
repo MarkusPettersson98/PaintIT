@@ -71,12 +71,40 @@
 
 .button-mainMenu:hover{
     -fx-background-color: #ffd65b;
+
 }
 
 .button-mainMenu:pressed{
     -fx-background-color: #e68400;
 }
 
+.button-mainMenu:disabled{
+    -fx-background-color: grey;
+}
+
 .text-area  {
     -fx-background-color: white;
+}
+
+.button-chooseWord {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+    -fx-padding: 10 20 10 20;
+    -fx-font-family: Chalkboard;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button-chooseWord:selected{
+    -fx-background-color: grey;
+}
+
+.button-chooseWord:hover{
+    -fx-background-color: darkgrey;;
 }

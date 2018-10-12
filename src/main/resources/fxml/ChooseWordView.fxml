@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="720" maxWidth="1280" minHeight="0" minWidth="0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="720" maxWidth="1280" minHeight="0" minWidth="0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../Css/Stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="donebtn" layoutX="271.0" layoutY="321.0" mnemonicParsing="false" text="Button" />
-      <ToggleButton fx:id="easyWordbtn" layoutX="241.0" layoutY="95.0" mnemonicParsing="false" text="ToggleButton" />
-      <ToggleButton fx:id="mediumWordbtn" layoutX="241.0" layoutY="159.0" mnemonicParsing="false" text="ToggleButton" />
-      <ToggleButton fx:id="hardWordbtn" layoutX="241.0" layoutY="219.0" mnemonicParsing="false" text="ToggleButton" />
+      <Button fx:id="donebtn" layoutX="532.0" layoutY="460.0" mnemonicParsing="false" prefWidth="220.0" styleClass="button-play" text="Button" AnchorPane.leftAnchor="530.0" AnchorPane.rightAnchor="530.0" />
+      <ToggleButton fx:id="easyWordbtn" layoutX="409.0" layoutY="181.0" mnemonicParsing="false" prefWidth="300.0" styleClass="button-chooseWord" text="ToggleButton" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" />
+      <ToggleButton fx:id="mediumWordbtn" layoutX="413.0" layoutY="270.0" mnemonicParsing="false" prefWidth="300.0" styleClass="button-chooseWord" text="ToggleButton" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" />
+      <ToggleButton fx:id="hardWordbtn" layoutX="413.0" layoutY="358.0" mnemonicParsing="false" prefWidth="300.0" styleClass="button-chooseWord" text="ToggleButton" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" />
+      <Label layoutX="370.0" layoutY="30.0" styleClass="text-bigger" text="Pick a word:" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="261.0" prefHeight="60.0" prefWidth="176.0" styleClass="text-normal" text="Medium:" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="261.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="296.0" layoutY="357.0" prefHeight="60.0" prefWidth="176.0" styleClass="text-normal" text="Hard:" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="357.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="312.0" layoutY="186.0" prefHeight="60.0" prefWidth="176.0" styleClass="text-normal" text="Easy:" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="170.0" />
    </children>
 </fx:root>
