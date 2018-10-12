@@ -2,12 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="720" maxWidth="1280" minHeight="0" minWidth="0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="720" maxWidth="1280" minHeight="0" minWidth="0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../Css/Stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="congratsLbl" layoutX="215.0" layoutY="158.0" text="Label" />
-      <Button fx:id="doneBtn" layoutX="607.0" layoutY="519.0" mnemonicParsing="false" text="Start next round" />
-      <Label fx:id="teamStreakLbl" layoutX="974.0" layoutY="158.0" text="Label" />
+      <ImageView fx:id="confettiImageView" fitHeight="720.0" fitWidth="1280.0" layoutX="282.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/confetti.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="congratsLbl" alignment="CENTER" layoutX="215.0" layoutY="158.0" styleClass="text-congratulations" text="Label" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0" />
+      <Button fx:id="doneBtn" layoutX="607.0" layoutY="519.0" mnemonicParsing="false" styleClass="button-play" text="Start next round" AnchorPane.leftAnchor="435.0" />
+      <Label fx:id="teamStreakLbl" alignment="CENTER" layoutX="622.0" layoutY="392.0" styleClass="text-bigger" text="Label" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="350.0" />
+      <Label fx:id="congratsLbl1" alignment="CENTER" layoutX="225.0" layoutY="168.0" styleClass="text-congratulationsBlack" text="Your streak is now:" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="230.0" />
    </children>
 </fx:root>

@@ -16,6 +16,19 @@
     -fx-text-alignment: center;
 }
 
+.text-congratulations{
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 80;
+    -fx-text-alignment: center;
+    -fx-text-fill: #cf0100;
+}
+
+.text-congratulationsBlack{
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 80;
+    -fx-text-alignment: center;
+}
+
 .text-bigger {
     -fx-font-family: Chalkboard;
     -fx-font-size: 100;
