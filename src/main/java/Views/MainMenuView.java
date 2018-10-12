@@ -110,7 +110,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         lightBoxAnchorPane.toFront();
         howToPlayAnchorPane.toFront();
     }
-    
+
     private void mouseTrap(Event event){
         event.consume();
     }
