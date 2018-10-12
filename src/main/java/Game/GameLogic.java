@@ -1,13 +1,14 @@
 package Game;
 
 import Canvas.CanvasModel;
+import Canvas.CanvasView;
 import WordAndGuess.GuessLogic;
 import lombok.Getter;
 import lombok.Setter;
 
 class GameLogic {
 
-    @Setter @Getter private CanvasModel currentPainting;
+    @Setter @Getter private CanvasView currentPainting;
 
     @Getter private  GuessLogic guessLogic;
 
