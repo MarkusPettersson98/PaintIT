@@ -214,8 +214,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
     private void loadCanvas() {
         this.hbox.getChildren().clear();
         this.hbox.getChildren().add(canvasController.getCanvasView());
-        gameSession.setCanvasView(canvasController.getCanvasView());
-
+        gameSession.setCanvasModel(canvasController.getCanvasModel());
     }
 
     @Override
