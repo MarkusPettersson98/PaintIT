@@ -13,7 +13,7 @@ public class Dictionary {
     private Stack<Word> hardDictionary = new Stack();
 
 
-    public Dictionary(){
+    public Dictionary() {
         generateWordList();
     }
 
@@ -23,74 +23,79 @@ public class Dictionary {
         String jsonContent = "";
 
         try {
-            jsonContent = FileUtils.readFileToString(new File(getClass().getClassLoader().getResource("dictionary/dictionary.json").getFile()),"UTF-8");
-        }catch (IOException e){
+            jsonContent = FileUtils.readFileToString(new File(getClass().getClassLoader().getResource("dictionary/dictionary.json").getFile()), "UTF-8");
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         JSONArray jsonArray = new JSONObject(jsonContent).getJSONArray("dictionary");
 
-        for(int i = 0; i < jsonArray.length(); i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             String word = jsonArray.getJSONObject(i).getString("word");
-            Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Difficulty.class,"difficulty_level");
+            Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Difficulty.class, "difficulty_level");
             System.out.println(difficulty_level);
-            switch (difficulty_level){
+            switch (difficulty_level) {
                 case EASY:
-                    easyDictionary.add(rand.nextInt(easyDictionary.size()+1),new Word(word,difficulty_level));
+                    easyDictionary.add(rand.nextInt(easyDictionary.size() + 1), new Word(word, difficulty_level));
                     break;
                 case MEDIUM:
-                    mediumDictionary.add(rand.nextInt(mediumDictionary.size()+1),new Word(word,difficulty_level));
+                    mediumDictionary.add(rand.nextInt(mediumDictionary.size() + 1), new Word(word, difficulty_level));
                     break;
                 case HARD:
-                    hardDictionary.add(rand.nextInt(hardDictionary.size()+1),new Word(word,difficulty_level));
+                    hardDictionary.add(rand.nextInt(hardDictionary.size() + 1), new Word(word, difficulty_level));
                     break;
                 default:
-                    hardDictionary.add(rand.nextInt(hardDictionary.size()+1),new Word(word,difficulty_level));
+                    hardDictionary.add(rand.nextInt(hardDictionary.size() + 1), new Word(word, difficulty_level));
 
             }
         }
 
 
-
     }
 
-    public Word getNextEasyWord(){
-            if(easyDictionary.empty()){
-                return null;
-            }
+    public Word getNextEasyWord() {
+        if (easyDictionary.empty()) {
+            return null;
+        }
 
-            return easyDictionary.pop();
+        return easyDictionary.pop();
     }
 
-    public Word getNextMediumWord(){
-        if(mediumDictionary.empty()){
+    public Word getNextMediumWord() {
+        if (mediumDictionary.empty()) {
             return null;
         }
 
         return mediumDictionary.pop();
     }
 
-    public Word getNextHardWord(){
-        if(hardDictionary.empty()){
+    public Word getNextHardWord() {
+        if (hardDictionary.empty()) {
             return null;
         }
 
         return hardDictionary.pop();
     }
 
-    public Word getRandomWord(){
-        Random rand = new Random();
-        Integer number = rand.nextInt(2);
-        if(number == 0 && !easyDictionary.isEmpty()){
-            return getNextEasyWord();
-        } else if(number == 1 && !mediumDictionary.isEmpty()){
-            return getNextMediumWord();
-        } else if (!hardDictionary.isEmpty()){
-            return getNextHardWord();
-        } else {
-            return null;
+    public Word getRandomWord() {
+        Word nextWord = new Word("No more words!", Difficulty.EASY);
+
+        if (easyDictionary.isEmpty() && mediumDictionary.isEmpty() && hardDictionary.isEmpty()) {
+            // return null;
+            return nextWord;
         }
+
+        List<Stack<Word>> dictionaryStackList = Arrays.asList(easyDictionary, mediumDictionary, hardDictionary);
+        Collections.shuffle(dictionaryStackList);
+
+        for (Stack<Word> dictionary : dictionaryStackList) {
+            if (!dictionary.isEmpty()) {
+                nextWord = dictionary.pop();
+                break;
+            }
+        }
+
+        return nextWord;
+
     }
-
-
 }
