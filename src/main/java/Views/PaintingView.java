@@ -32,10 +32,13 @@ public class PaintingView extends AnchorPane implements GameScreen {
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn, undoBtn, doneBtn;
+    Button clearBtn, undoBtn, doneBtn, noClearBtn, yesClearBtn;
 
     @FXML
     Label currentWordLbl;
+
+    @FXML
+    Pane clearPane;
 
 
     final ToggleGroup group = new ToggleGroup();
@@ -99,12 +102,19 @@ public class PaintingView extends AnchorPane implements GameScreen {
         });
 
 
-        clearBtn.setOnAction(e -> clearCanvas());
+        clearBtn.setOnAction(e -> {
+            showclearPopup();
+        });
 
         undoBtn.setOnAction(e -> {
             canvasController.undo();
             updateUndoBtn();
         });
+
+        yesClearBtn.setOnAction(e -> clearCanvas());
+
+        noClearBtn.setOnAction(e-> System.out.println("no clear"));
+
 
         // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
         doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
@@ -145,9 +155,21 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     break;
             }
         });
+
         setRadius((int) radiusSlider.getValue());
 
+        hideclearPopup();
+
         undoBtn.setDisable(true);
+    }
+
+    private void showclearPopup() {
+        clearPane.setVisible(true);
+        clearPane.setDisable(false);
+    }
+    private void hideclearPopup() {
+        clearPane.setVisible(false);
+        clearPane.setDisable(true);
     }
 
     private void setupButton(ToggleButton button, String name) {
@@ -213,8 +235,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
             canvasController.pushToUndoStack();
             // For every push to the stack, we check if the stack is empty and changes the undoBTN accordingly.
             updateUndoBtn();
-            System.out.println("whatup!");
         });
+
     }
 
     private void loadCanvas() {
