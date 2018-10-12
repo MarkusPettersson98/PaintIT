@@ -3,6 +3,8 @@ package WordAndGuess;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class DictionaryTest {
@@ -14,26 +16,20 @@ public class DictionaryTest {
     }
 
     @Test
-    public void getNextEasyWordTest(){
-        Word easyWord = dictionary.getNextEasyWord();
-        assertTrue(easyWord.getDifficulty_level().equals(Word.Difficulty.EASY));
-        assertFalse(easyWord.getWord().equals(""));
-        assertNotNull(easyWord.getWord());
+    public void getPossibleWordsTest(){
+        List<Word> words = dictionary.getPossibleWords();
+
+        assertTrue(words.size() == 3);
+        for(Word word: words){
+            assertNotNull(word);
+        }
     }
 
     @Test
-    public void getNextMediumWordTest(){
-        Word easyWord = dictionary.getNextMediumWord();
-        assertTrue(easyWord.getDifficulty_level().equals(Word.Difficulty.MEDIUM));
-        assertFalse(easyWord.getWord().equals(""));
-        assertNotNull(easyWord.getWord());
-    }
-
-    @Test
-    public void getNextHardWordTest(){
-        Word easyWord = dictionary.getNextHardWord();
-        assertTrue(easyWord.getDifficulty_level().equals(Word.Difficulty.HARD));
-        assertFalse(easyWord.getWord().equals(""));
-        assertNotNull(easyWord.getWord());
+    public void setCurrentWordTest(){
+        List<Word> words = dictionary.getPossibleWords();
+        Word word = words.get(0);
+        dictionary.setCurrentWord(words.get(0));
+        assertTrue(dictionary.getCurrentWord().equals(word));
     }
 }

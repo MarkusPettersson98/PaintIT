@@ -45,7 +45,7 @@ public class GuessLogicTest {
     @Test
     public void removeRightMostTileFromGuessTest(){
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         guessLogic.addTileToGuess(new Tile('h',0));
         guessLogic.addTileToGuess(new Tile('s',1));
         guessLogic.addTileToGuess(new Tile('b',2));
@@ -61,7 +61,7 @@ public class GuessLogicTest {
     @Test
     public void getGuessStringTest(){
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         guessLogic.addTileToGuess(new Tile('h',0));
         guessLogic.addTileToGuess(new Tile('e',1));
         guessLogic.addTileToGuess(new Tile('y',2));
@@ -72,7 +72,7 @@ public class GuessLogicTest {
     @Test
     public void getGuessWordTest(){
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         guessLogic.addTileToGuess(new Tile('c',0));
         guessLogic.addTileToGuess(new Tile('o',1));
         guessLogic.addTileToGuess(new Tile('o',2));
@@ -88,7 +88,7 @@ public class GuessLogicTest {
     @Test
     public void isGuessFilledTest(){
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         for(int i = 0; i < guessLogic.getGuessWord().length;i++){
             guessLogic.addTileToGuess(new Tile('a',i));
         }
@@ -101,14 +101,14 @@ public class GuessLogicTest {
     @Test
     public void getAvailableTilesTest(){
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         assertTrue(guessLogic.getAvailableTiles().length == 8);
     }
 
     @Test
     public void getCurrentWordTest(){
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         assertFalse(guessLogic.getCurrentWord().equals(""));
         assertFalse(guessLogic.getCurrentWord().equals(null));
     }

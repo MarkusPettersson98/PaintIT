@@ -27,7 +27,7 @@ public class WordRevealViewTest extends ApplicationTest {
     @Test
     public void revealNowTest (){
         clickOn(".button-play");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("PaintingView"));
+        assert (gameSession.getCurrentPane().getChildren().toString().contains("ChooseWordView"));
     }
 
 
