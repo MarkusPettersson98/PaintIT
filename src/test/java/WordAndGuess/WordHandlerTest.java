@@ -15,7 +15,7 @@ public class WordHandlerTest {
         assertNotNull(word);
     }
 
-    
+
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
@@ -34,7 +34,7 @@ public class WordHandlerTest {
         }
         System.out.println("----------------------createRandomTilesTest---------------------------");
         System.out.println("THIS IS THE WORD :" + word);
-       System.out.println("These are the Tiles" + letters);
+        System.out.println("These are the Tiles" + letters);
         assertTrue(true);
 
     }
