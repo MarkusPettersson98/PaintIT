@@ -145,4 +145,7 @@ public class CanvasController {
             }
         }
     }
+    public boolean isUndoAvailable() {
+        return !undoStack.isEmpty();
+    }
 }

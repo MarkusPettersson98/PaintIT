@@ -101,7 +101,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         clearBtn.setOnAction(e -> clearCanvas());
 
-        undoBtn.setOnAction(e -> canvasController.undo());
+        undoBtn.setOnAction(e -> {
+            canvasController.undo();
+            updateUndoBtn();
+        });
 
         // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
         doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
@@ -142,8 +145,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     break;
             }
         });
-
         setRadius((int) radiusSlider.getValue());
+
+        undoBtn.setDisable(true);
     }
 
     private void setupButton(ToggleButton button, String name) {
@@ -207,8 +211,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();
+            // For every push to the stack, we check if the stack is empty and changes the undoBTN accordingly.
+            updateUndoBtn();
+            System.out.println("whatup!");
         });
-
     }
 
     private void loadCanvas() {
@@ -216,6 +222,14 @@ public class PaintingView extends AnchorPane implements GameScreen {
         this.hbox.getChildren().add(canvasController.getCanvasView());
         gameSession.setCanvasModel(canvasController.getCanvasModel());
 
+    }
+
+    private void updateUndoBtn() {
+        if(canvasController.isUndoAvailable()){
+            undoBtn.setDisable(false);
+        }else{
+            undoBtn.setDisable(true);
+        }
     }
 
     @Override
