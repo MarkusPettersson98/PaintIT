@@ -12,6 +12,7 @@ public class Dictionary {
     private Stack<Word> mediumDictionary = new Stack();
     private Stack<Word> hardDictionary = new Stack();
     private List<Word>  possibleWords = new ArrayList();
+    private Word choosenWord;
 
 
     public Dictionary() {
@@ -89,6 +90,7 @@ public class Dictionary {
 
     public void setChoosenWord(Word choosenWord){
         Random rand = new Random();
+        this.choosenWord = choosenWord;
 
         possibleWords.remove(choosenWord);
 
@@ -105,6 +107,10 @@ public class Dictionary {
                     break;
             }
         }
+    }
+
+    public Word getChoosenWord(){
+        return choosenWord;
     }
 
 

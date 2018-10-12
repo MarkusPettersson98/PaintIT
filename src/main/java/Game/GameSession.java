@@ -94,8 +94,12 @@ public class GameSession {
 
     public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
 
-    public String getCurrentWord() {
+    public Word getCurrentWord() {
         return gameLogic.getCurrentWord();
+    }
+
+    public void setCurrentWord(Word word){
+        gameLogic.setCurrentWord(word);
     }
 
     public Tile[] getAvailableTiles(){return getGuessLogic().getAvailableTiles();}
@@ -112,7 +116,7 @@ public class GameSession {
 
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
-        gameLogic.updateGameWord();
+       // gameLogic.updateGameWord();
         team.changeDrawer();
     }
 }

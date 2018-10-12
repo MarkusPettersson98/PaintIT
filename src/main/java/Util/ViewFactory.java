@@ -74,6 +74,7 @@ public abstract class ViewFactory {
         gameScreens.add(createPaintingView(gameSession));
         gameScreens.add(createGuessingView(gameSession));
         gameScreens.add(createDoneView(gameSession));
+        gameScreens.add(createChooseWordView(gameSession));
 
         return gameScreens;
     }

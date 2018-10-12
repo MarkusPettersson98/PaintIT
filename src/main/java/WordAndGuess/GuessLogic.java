@@ -30,7 +30,7 @@ public class GuessLogic implements Observable {
     }
 
 
-    public String getCurrentWord() {
+    public Word getCurrentWord() {
         return wordHandler.getCurrentWord();
     }
 
@@ -117,15 +117,22 @@ public class GuessLogic implements Observable {
     }
 
 
-    public void pickNewWord(){
-        wordHandler.pickRandomWord();
+    /*public void pickNewWord(){
         this.availableTiles = wordHandler.getTiles();
         this.currentWord = wordHandler.getCurrentWord();
         guessWord = new Tile[currentWord.length()];
         observers = new ArrayList<>();
 
-    }
+    }*/
 
+    public void setCurrentWord(Word word){
+        wordHandler.setCurrentWord(word);
+        this.availableTiles = wordHandler.getTiles();
+        this.currentWord = wordHandler.getCurrentWord().getWord();
+        guessWord = new Tile[currentWord.length()];
+        observers = new ArrayList<>();
+
+    }
     public List<Word> getPossibleWords(){
         return wordHandler.getPossibleWords();
     }

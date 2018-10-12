@@ -1,6 +1,7 @@
 package Views;
 
 import Game.GameSession;
+import Tools.Tool;
 import Util.ButtonFactory;
 import Util.ViewFactory;
 import WordAndGuess.Word;
@@ -13,8 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ChooseWordView extends AnchorPane implements GameScreen{
 
@@ -28,7 +28,10 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
 
     final ToggleGroup toggleWordbtnGroup = new ToggleGroup();
 
+    Map<String, Word> words = new HashMap<>();
+
     List<Word> wordList;
+    List<ToggleButton> toggleButtons;
 
     public ChooseWordView(FXMLLoader fxmlLoader, GameSession gameSession) {
         this.gameSession = gameSession;
@@ -43,18 +46,56 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
             e.printStackTrace();
         }
 
-        wordList = gameSession.getPossibleWords();
+        toggleButtons = Arrays.asList(easyWordbtn,mediumWordbtn,hardWordbtn);
 
-        donebtn.setId(ButtonFactory.createChooseWordViewBtnId());
-        donebtn.setOnAction(event -> {gameSession.show(donebtn.getId());});
+        donebtn.setId(ButtonFactory.createPaintingViewBtnId());
+        donebtn.setOnAction(event -> {
+            gameSession.setCurrentWord(words.get(((ToggleButton) toggleWordbtnGroup.getSelectedToggle()).getText()));
+            gameSession.show(donebtn.getId());
 
-        easyWordbtn.setText(wordList.get(0).getWord());
+        });
 
+    }
+
+    private void setupButton(ToggleButton button, String name) {
+        button.setText(name);
+        button.setToggleGroup(this.toggleWordbtnGroup);
+    }
+
+    private void clearButtons(){
+        for (ToggleButton toggleButton: toggleButtons){
+            toggleButton.setSelected(false);
+            toggleButton.setDisable(true);
+            toggleButton.setText("No More Words");
+        }
     }
 
     @Override
     public void init() {
 
+        wordList = gameSession.getPossibleWords();
+        words.clear();
+        clearButtons();
+
+        for(Word word: wordList){
+            switch (word.getDifficulty_level()){
+                case EASY:
+                    setupButton(toggleButtons.get(0),word.getWord());
+                    words.put(word.getWord(),word);
+                    toggleButtons.get(0).setDisable(false);
+                    break;
+                case MEDIUM:
+                    setupButton(toggleButtons.get(1),word.getWord());
+                    words.put(word.getWord(),word);
+                    toggleButtons.get(1).setDisable(false);
+                    break;
+                case HARD:
+                    setupButton(toggleButtons.get(2),word.getWord());
+                    words.put(word.getWord(),word);
+                    toggleButtons.get(2).setDisable(false);
+                    break;
+            }
+        }
     }
 
     @Override

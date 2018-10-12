@@ -20,14 +20,18 @@ class GameLogic {
         guessLogic = new GuessLogic();
     }
 
-    public String getCurrentWord() {
+    public Word getCurrentWord() {
         return guessLogic.getCurrentWord();
     }
 
-    public void updateGameWord(){
+    /*public void updateGameWord(){
         guessLogic.pickNewWord();
-    }
+    }*/
 
+    public void setCurrentWord(Word word){
+        guessLogic.setCurrentWord(word);
+
+    }
     public List<Word> getPossibleWords(){return guessLogic.getPossibleWords();}
 
 }

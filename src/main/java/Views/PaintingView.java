@@ -164,7 +164,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @Override
     public void init() {
         // Update label with current word
-        currentWordLbl.setText(gameSession.getCurrentWord());
+        currentWordLbl.setText(gameSession.getCurrentWord().getWord());
 
         // Create a new canvas!
         canvasController.generateNewCanvas();

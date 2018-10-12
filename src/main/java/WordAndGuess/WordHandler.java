@@ -60,16 +60,22 @@ public class WordHandler {
         return tileArray;
     }
 
-    public String getCurrentWord() {
-        return currentWord.getWord().toUpperCase();
+    public Word getCurrentWord() {
+        return dictionary.getChoosenWord();
+    }
+
+    public void setCurrentWord(Word word){
+        System.out.println(word.getWord());
+        dictionary.setChoosenWord(word);
+        createRandomTiles(word.getWord());
     }
 
     public List<Word> getPossibleWords(){
         return dictionary.getPossibleWords();
     }
-     void pickRandomWord(){
-        currentWord =  dictionary.getRandomWord();
+    /* void pickRandomWord(){
+        currentWord =  ;
         createRandomTiles(getCurrentWord());
-    }
+    }*/
 
 }

@@ -10,9 +10,9 @@ public class WordHandlerTest {
     @Test
     public void getRandomWord() throws Exception {
         WordHandler wh = new WordHandler();
-        wh.pickRandomWord();
+       // wh.pickRandomWord();
         
-        String word = wh.getCurrentWord();
+        String word = wh.getCurrentWord().getWord();
         assertNotNull(word);
     }
 
@@ -20,7 +20,7 @@ public class WordHandlerTest {
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        //guessLogic.pickNewWord();
 
         Tile[] tiles = guessLogic.getAvailableTiles();
         ArrayList<Character> letters = new ArrayList<>();
@@ -28,7 +28,7 @@ public class WordHandlerTest {
         for(Tile t: tiles){
             letters.add(t.getLetter());
         }
-        String word = guessLogic.getCurrentWord();
+        String word = guessLogic.getCurrentWord().getWord();
         for(int i = 0; i<word.length(); i++){
           if(!letters.contains(word.charAt(i))){
              assertFalse(true);
