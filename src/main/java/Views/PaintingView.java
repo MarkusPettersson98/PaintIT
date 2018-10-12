@@ -113,7 +113,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         yesClearBtn.setOnAction(e -> clearCanvas());
 
-        noClearBtn.setOnAction(e-> System.out.println("no clear"));
+        noClearBtn.setOnAction(e-> hideclearPopup());
 
 
         // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW

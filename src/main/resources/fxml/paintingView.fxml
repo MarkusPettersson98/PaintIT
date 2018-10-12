@@ -19,7 +19,7 @@
          </children>
       </Pane>
       <Label fx:id="currentWordLbl" alignment="CENTER" layoutX="30.0" layoutY="615.0" styleClass="text-wordToGuess" text="Aron" textAlignment="CENTER" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="560.0" />
-      <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+      <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: red;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
       <ToolBar layoutX="353.0" layoutY="626.0" prefHeight="66.0" prefWidth="319.0" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="540.0">
          <items>
             <ToggleButton fx:id="BrushToggleButton" mnemonicParsing="false" styleClass="button-tools" text="Brush" />
