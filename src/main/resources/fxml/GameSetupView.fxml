@@ -20,5 +20,7 @@
             <Image url="@../images/icon_back.png" />
          </image>
       </ImageView>
+      <Label fx:id="playerOneWrongName" layoutX="1057.0" layoutY="299.0" styleClass="text-errorMessage" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="300.0" />
+      <Label fx:id="playerTwoWrongName" layoutX="1057.0" layoutY="419.0" styleClass="text-errorMessage" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="420.0" />
    </children>
 </fx:root>
