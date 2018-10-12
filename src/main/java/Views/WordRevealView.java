@@ -40,10 +40,11 @@ public class WordRevealView extends AnchorPane implements GameScreen{
             e.printStackTrace();
         }
 
-        revealNowButton.setId(ButtonFactory.createPaintingViewBtnId());
+        revealNowButton.setId(ButtonFactory.createChooseWordViewBtnId());
         revealNowButton.setOnAction(e -> {
-            gameSession.show(revealNowButton.getId());
             timer.cancel();
+            gameSession.show(revealNowButton.getId());
+
         });
     }
 

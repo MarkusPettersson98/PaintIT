@@ -60,7 +60,7 @@ public class TileBoardView extends VBox implements Observer{
 
     private void initTiles(){
         availableTileSlotArray =  new TileSlot[gameSession.getAvailableTiles().length];
-        guessTileSlotArray = new TileSlot[gameSession.getCurrentWord().length()];
+        guessTileSlotArray = new TileSlot[gameSession.getCurrentWord().getWord().length()];
         createAvailableTileSlots(gameSession.getAvailableTiles());
 
         createEmptyTileSlots();
@@ -73,7 +73,7 @@ public class TileBoardView extends VBox implements Observer{
     }
 
     private void createEmptyTileSlots(){
-        for(int i = 0; i < gameSession.getCurrentWord().length(); i++){
+        for(int i = 0; i < gameSession.getCurrentWord().getWord().length(); i++){
             guessTileSlotArray[i] = new TileSlotGuess();
         }
         hBoxTop.getChildren().add(getGuessTileOffset());

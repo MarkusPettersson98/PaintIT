@@ -53,6 +53,13 @@ public abstract class ViewFactory {
      */
     public static DoneView createDoneView(GameSession gameSession) { return new DoneView(fxmlLoader, gameSession); }
 
+    /** Creates an instance of {@link ChooseWordView} and injects a reference to a {@link GameSession}.
+     *
+     * @param gameSession
+     * @return
+     */
+    public static ChooseWordView createChooseWordView(GameSession gameSession) { return new ChooseWordView(fxmlLoader, gameSession); }
+
     /** Creates an instance of every GameScreen and injects a reference to a {@link GameSession} into them.
      *
      * @param gameSession
@@ -67,6 +74,7 @@ public abstract class ViewFactory {
         gameScreens.add(createPaintingView(gameSession));
         gameScreens.add(createGuessingView(gameSession));
         gameScreens.add(createDoneView(gameSession));
+        gameScreens.add(createChooseWordView(gameSession));
 
         return gameScreens;
     }

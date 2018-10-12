@@ -7,11 +7,13 @@ import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
 import WordAndGuess.Tile;
+import WordAndGuess.Word;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import WordAndGuess.GuessLogic;
 
 import java.util.List;
+import java.util.WeakHashMap;
 
 /**
  * Main class, this is where most parts of the application is connected.
@@ -92,8 +94,12 @@ public class GameSession {
 
     public void setCurrentPainting(CanvasView canvasView) { gameLogic.setCurrentPainting(canvasView); }
 
-    public String getCurrentWord() {
+    public Word getCurrentWord() {
         return gameLogic.getCurrentWord();
+    }
+
+    public void setCurrentWord(Word word){
+        gameLogic.setCurrentWord(word);
     }
 
     public Tile[] getAvailableTiles(){return getGuessLogic().getAvailableTiles();}
@@ -104,9 +110,13 @@ public class GameSession {
 
     public boolean guessCurrentWord(){return getGuessLogic().guessCurrentWord();}
 
+    public List<Word> getPossibleWords(){
+        return gameLogic.getPossibleWords();
+    }
+
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
-        gameLogic.updateGameWord();
+       // gameLogic.updateGameWord();
         team.changeDrawer();
     }
 }

@@ -10,9 +10,9 @@ public class WordHandlerTest {
     @Test
     public void getRandomWordTest() throws Exception {
         WordHandler wh = new WordHandler();
-        wh.pickRandomWord();
+        wh.setCurrentWord(wh.getPossibleWords().get(0));
         
-        String word = wh.getCurrentWord();
+        String word = wh.getCurrentWord().getWord();
         assertNotNull(word);
     }
 
@@ -20,7 +20,7 @@ public class WordHandlerTest {
     @Test
     public void createRandomTiles()throws Exception{ //Checks if the random tiles contains the word letters
         GuessLogic guessLogic = new GuessLogic();
-        guessLogic.pickNewWord();
+        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
 
         Tile[] tiles = guessLogic.getAvailableTiles();
         ArrayList<Character> letters = new ArrayList<>();
@@ -28,16 +28,10 @@ public class WordHandlerTest {
         for(Tile t: tiles){
             letters.add(t.getLetter());
         }
-        String word = guessLogic.getCurrentWord();
+        String word = guessLogic.getCurrentWord().getWord().toUpperCase();
         for(int i = 0; i<word.length(); i++){
-          if(!letters.contains(word.charAt(i))){
-             assertFalse(true);
-          }
+             assertFalse(!letters.contains(word.charAt(i)));
         }
-        System.out.println("----------------------createRandomTilesTest---------------------------");
-        System.out.println("THIS IS THE WORD :" + word);
-        System.out.println("These are the Tiles" + letters);
-        assertTrue(true);
 
     }
 

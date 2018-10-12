@@ -11,9 +11,7 @@ import java.util.Random;
  * It also generates the random tiles accompanying the word
  */
 public class WordHandler {
-    private ArrayList<String> wordList;
     private Tile[] tiles;
-    private Word currentWord;
     private static final int tileAmount = 8;
     private Dictionary dictionary;
 
@@ -60,12 +58,17 @@ public class WordHandler {
         return tileArray;
     }
 
-    public String getCurrentWord() {
-        return currentWord.getWord().toUpperCase();
+    public Word getCurrentWord() {
+        return dictionary.getCurrentWord();
     }
-     void pickRandomWord(){
-        currentWord =  dictionary.getRandomWord();
-        createRandomTiles(getCurrentWord());
+
+    public void setCurrentWord(Word word){
+        dictionary.setCurrentWord(word);
+        createRandomTiles(word.getWord());
+    }
+
+    public List<Word> getPossibleWords(){
+        return dictionary.getPossibleWords();
     }
 
 }

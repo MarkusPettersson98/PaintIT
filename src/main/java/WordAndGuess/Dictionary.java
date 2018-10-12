@@ -11,6 +11,8 @@ public class Dictionary {
     private Stack<Word> easyDictionary = new Stack();
     private Stack<Word> mediumDictionary = new Stack();
     private Stack<Word> hardDictionary = new Stack();
+    private List<Word>  possibleWords = new ArrayList();
+    private Word choosenWord;
 
 
     public Dictionary() {
@@ -33,7 +35,7 @@ public class Dictionary {
         for (int i = 0; i < jsonArray.length(); i++) {
             String word = jsonArray.getJSONObject(i).getString("word");
             Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Difficulty.class, "difficulty_level");
-            System.out.println(difficulty_level);
+
             switch (difficulty_level) {
                 case EASY:
                     easyDictionary.add(rand.nextInt(easyDictionary.size() + 1), new Word(word, difficulty_level));
@@ -53,38 +55,10 @@ public class Dictionary {
 
     }
 
-    public Word getNextEasyWord() {
-        if (easyDictionary.empty()) {
-            return null;
-        }
-
-        return easyDictionary.pop();
-    }
-
-    public Word getNextMediumWord() {
-        if (mediumDictionary.empty()) {
-            return null;
-        }
-
-        return mediumDictionary.pop();
-    }
-
-    public Word getNextHardWord() {
-        if (hardDictionary.empty()) {
-            return null;
-        }
-
-        return hardDictionary.pop();
-    }
-
     public Word getRandomWord() {
         Word nextWord = new Word("No more words!", Difficulty.EASY);
-        System.out.println(easyDictionary.size());
-        System.out.println(mediumDictionary.size());
-        System.out.println(hardDictionary.size());
 
         if (easyDictionary.isEmpty() && mediumDictionary.isEmpty() && hardDictionary.isEmpty()) {
-            // return null;
             return nextWord;
         }
 
@@ -97,11 +71,47 @@ public class Dictionary {
                 break;
             }
         }
-        System.out.println(nextWord.getWord());
-        System.out.println(easyDictionary.size());
-        System.out.println(mediumDictionary.size());
-        System.out.println(hardDictionary.size());
+
         return nextWord;
 
     }
+
+    public List<Word> getPossibleWords(){
+        possibleWords.clear();
+
+        for (Stack<Word> dictionary: Arrays.asList(easyDictionary, mediumDictionary, hardDictionary)) {
+            if(!dictionary.isEmpty()){
+                possibleWords.add(dictionary.pop());
+            }
+        }
+
+        return possibleWords;
+    }
+
+    public void setCurrentWord(Word choosenWord){
+        Random rand = new Random();
+        this.choosenWord = choosenWord;
+
+        possibleWords.remove(choosenWord);
+
+        for (Word word: possibleWords) {
+            switch (word.getDifficulty_level()){
+                case EASY:
+                    easyDictionary.add(rand.nextInt(easyDictionary.size()+1),word);
+                    break;
+                case MEDIUM:
+                    mediumDictionary.add(rand.nextInt(mediumDictionary.size()+1),word);
+                    break;
+                case HARD:
+                    hardDictionary.add(rand.nextInt(hardDictionary.size()+1),word);
+                    break;
+            }
+        }
+    }
+
+    public Word getCurrentWord(){
+        return choosenWord;
+    }
+
+
 }
