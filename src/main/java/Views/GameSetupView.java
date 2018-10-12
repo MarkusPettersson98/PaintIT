@@ -3,9 +3,11 @@ package Views;
 import Game.GameSession;
 import Game.Team;
 import Util.ButtonFactory;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,6 +23,9 @@ public class GameSetupView extends AnchorPane implements GameScreen {
     @FXML private Button startDrawing;
     @FXML private Button backButton;
     @FXML private ImageView backButtonImageView;
+    @FXML private Label playerOneWrongName;
+    @FXML private Label playerTwoWrongName;
+
 
     private GameSession gameSession;
 
@@ -39,19 +44,27 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
         startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
-            // Create team and add it to game backend
-            setNames();
-            // Start word reveal countdown (in WordRevealView)
-            // gameSession.startWordRevealCountdown();
-            // Show next view
-            gameSession.show(startDrawing.getId());
+            Boolean textFieldOne = checkLabel(player1TextField, playerOneWrongName);
+            Boolean textFieldTwo = checkLabel(player2TextField, playerTwoWrongName);
+            //checks if names are entered
+            if (textFieldOne && textFieldTwo){
+                // Create team and add it to game backend
+                setNames();
+                // Start word reveal countdown (in WordRevealView)
+                // gameSession.startWordRevealCountdown();
+                // Show next view
+                gameSession.show(startDrawing.getId());
+            }
+            else {
+                //wait
+            }
         });
 
         backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
         backButtonImageView.setOnMouseClicked(e -> {
-            gameSession.show(backButtonImageView.getId());
             String path = "images/icon_back.png";
             backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
+            gameSession.show(backButtonImageView.getId());
         });
 
     }
@@ -73,11 +86,28 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         String player1 = player1TextField.getText();
         String player2 = player2TextField.getText();
 
-        gameSession.addTeam(new Team(player1,
-                                                   player2,
-                                          player1 + " and " + player2));
+        gameSession.addTeam(new Team(player1, player2));
+    }
 
+    private boolean checkLabel(TextField textField, Label label){
+        if (textField.getText().isEmpty()){
+            setLabelRed(textField, label);
+            return false;
+        }
+        else{
+            setLabelNormal(textField, label);
+            return true;
+        }
+    }
 
+    private void setLabelRed (TextField textField, Label label){
+        textField.setStyle("-fx-border-color: red;" + "-fx-border-width: 3px;" + "-fx-border-radius: 5px");
+        label.setText("Enter a name!");
+    }
+
+    private void setLabelNormal (TextField textField, Label label){
+        textField.setStyle("-fx-border-color: lightgrey;" + "-fx-border-width: 1px;" + "-fx-border-radius: 3px");
+        label.setText("");
     }
 
 

@@ -3,6 +3,7 @@ package Views;
 import Game.GameSession;
 import Tools.*;
 import Canvas.CanvasController;
+import Canvas.CanvasView;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -171,7 +172,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
         // Update GameSession with new canvas
         this.canvas = canvasController.getCanvasView();
         loadCanvas();
-
         canvasSetup();
     }
 
@@ -214,7 +214,11 @@ public class PaintingView extends AnchorPane implements GameScreen {
     private void loadCanvas() {
         this.hbox.getChildren().clear();
         this.hbox.getChildren().add(canvasController.getCanvasView());
-        gameSession.setCanvasModel(canvasController.getCanvasModel());
+
+        // Create new canvasView (without actionlisteners) in gamesession
+        // which is subscribed to canvasModel
+        CanvasView viewableCanvasView = new CanvasView(canvasController.getCanvasModel());
+        gameSession.setCurrentPainting(viewableCanvasView);
     }
 
     @Override

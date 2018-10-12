@@ -6,6 +6,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private AnchorPane howToPlayAnchorPane;
     @FXML private AnchorPane lightBoxAnchorPane;
     @FXML private ImageView closeButtonImageView;
+    @FXML private TextArea instructionsTextArea;
 
     public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
 
@@ -66,12 +68,19 @@ public class MainMenuView extends AnchorPane implements GameScreen{
 
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeButtonImageView} when the mouse hovers over it.
+     */
     @FXML
     private void closeButtonMouseEntered(){
         String path = "images/icon_close_hover.png";
         closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeButtonImageView} when it is clicked on,
+     * as well as changes the focus to {@link MainMenuView#mainMenuAnchorPane}.
+     */
     @FXML
     private void closeButtonMouseClicked(){
         String path = "images/icon_close.png";
@@ -79,19 +88,33 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         showMainMenu();
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeButtonImageView} when the mouse doesn't hover over it any more.
+     */
     @FXML
     private void closeButtonMouseExited(){
         String path = "images/icon_close.png";
         closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
+    /**
+     * Sets {@link MainMenuView#mainMenuAnchorPane} as visible and sets {@link MainMenuView#howToPlayAnchorPane}
+     * and {@link MainMenuView#lightBoxAnchorPane} as not visible.
+     */
     private void showMainMenu (){
-        mainMenuAnchorPane.toFront();
+        mainMenuAnchorPane.setVisible(true);
+        lightBoxAnchorPane.setVisible(false);
+        howToPlayAnchorPane.setVisible(false);
     }
 
+    /**
+     * Sets {@link MainMenuView#howToPlayAnchorPane} and the background {@link MainMenuView#lightBoxAnchorPane}
+     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} as not visible.
+     */
     private void showHowToPlay (){
-        lightBoxAnchorPane.toFront();
-        howToPlayAnchorPane.toFront();
+        lightBoxAnchorPane.setVisible(true);
+        howToPlayAnchorPane.setVisible(true);
+        mainMenuAnchorPane.setVisible(false);
     }
 
     private void mouseTrap(Event event){

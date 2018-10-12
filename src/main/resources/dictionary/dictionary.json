@@ -19,6 +19,16 @@
     {
       "word": "Dog",
       "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Sun",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Star",
+      "difficulty_level": "EASY"
     }
   ]
 }

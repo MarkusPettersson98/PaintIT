@@ -88,9 +88,9 @@ public class GameSession {
         team.resetStreak();
     }
 
-    public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
+    public CanvasView getCanvas() { return gameLogic.getCurrentPainting(); }
 
-    public void setCanvasModel(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
+    public void setCurrentPainting(CanvasView canvasView) { gameLogic.setCurrentPainting(canvasView); }
 
     public String getCurrentWord() {
         return gameLogic.getCurrentWord();

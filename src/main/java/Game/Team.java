@@ -11,30 +11,61 @@ import java.util.Random;
 
 public class Team {
 
+    /**
+     * The first {@link Player}.
+     */
     private final Player playerOne;
+
+    /**
+     * The second {@link Player}.
+     */
     private final Player playerTwo;
+
+    /**
+     * The name of the team, ie a combination of the players' names.
+     */
     @Getter private final String teamName;
+
+    /**
+     * The team's streak is the number of times the team has guessed a word correctly.
+     */
     @Getter private int streak;
 
+
+    /**
+     * The {@link Player} that is drawing the painting.
+     */
     private Player drawer;
+
+    /**
+     * The {@link Player} that is guessing what the drawer painted.
+     */
     private Player guesser;
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
-    public Team(String playerOne, String playerTwo, String teamName) {
+    public Team(String playerOne, String playerTwo) {
         this.playerOne = new Player(playerOne);
         this.playerTwo = new Player(playerTwo);
-        this.teamName = teamName;
+        this.teamName = playerOne + " and " + playerTwo;
         setGuesserAndDrawer();
     }
 
+    /**
+     * Increments the {@link Team#streak} with one.
+     */
     public void incrementStreak() { streak++; }
 
+    /**
+     * Sets the {@link Team#streak} to zero.
+     */
     public void resetStreak() {
-        // Someone guessed the wrong word one too many times. What a pity..
         streak = 0;
     }
 
+    /**
+     * Randomly sets which {@link Player} who is the {@link Team#guesser} and who is the {@link Team#drawer}.
+     */
     private void setGuesserAndDrawer (){
         int randomNumber = rand.nextInt(2);
         if (randomNumber == 0){
@@ -47,6 +78,10 @@ public class Team {
         }
     }
 
+    /**
+     * Changes who is the guesser/drawer. The {@link Player} who was the {@link Team#drawer}
+     * changes to the {@link Team#guesser} and vice versa.
+     */
     public void changeDrawer (){
         Player temporary = drawer;
         drawer = guesser;
@@ -55,16 +90,24 @@ public class Team {
 
     /** Returns the teams players.
      *
-     * @return returns a {@link Pair} of {@link Team#drawer} and {@link Team#guesser}
+     * @return returns a {@link Pair} of {@link Team#playerOne} and {@link Team#playerTwo}
      */
     public Pair<String, String> getPlayerNames() {
-        return new Pair<>(drawer.getName(), guesser.getName());
+        return new Pair<>(playerOne.getName(), playerTwo.getName());
     }
 
+    /** Returns the guesser's name.
+     *
+     * @return returns the name of {@link Team#guesser}
+     */
     public String getGuesserName (){
         return guesser.getName();
     }
 
+    /**Returns the drawer's name.
+     *
+     * @return returns the name of {@link Team#drawer}
+     */
     public String getDrawerName (){
         return drawer.getName();
     }

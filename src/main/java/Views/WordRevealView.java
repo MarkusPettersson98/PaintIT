@@ -23,7 +23,7 @@ public class WordRevealView extends AnchorPane implements GameScreen{
 
     private Timer timer;
     private int secondsleft;
-    private final int COUNTDOWNSTARTVALUE = 6;
+    private final int COUNTDOWNSTARTVALUE = 30;
 
     private GameSession gameSession;
 

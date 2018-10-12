@@ -8,7 +8,7 @@ public class WordHandlerTest {
 
 
     @Test
-    public void getRandomWord() throws Exception {
+    public void getRandomWordTest() throws Exception {
         WordHandler wh = new WordHandler();
         wh.pickRandomWord();
         
@@ -40,5 +40,6 @@ public class WordHandlerTest {
         assertTrue(true);
 
     }
+
 
 }

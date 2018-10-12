@@ -5,17 +5,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
-    public Player player;
+    private Player player;
 
     @Before
     public void setUp(){
-        player = new Player();
-        player.setName("Greta");
+        player = new Player("Test");
     }
 
     @Test
     public void nameTest(){
-        assertTrue(player.getName().equals("Greta"));
+        assertTrue(player.getName().equals("Test"));
     }
 
 }
