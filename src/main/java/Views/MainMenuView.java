@@ -6,6 +6,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private AnchorPane howToPlayAnchorPane;
     @FXML private AnchorPane lightBoxAnchorPane;
     @FXML private ImageView closeButtonImageView;
+    @FXML private TextArea instructionsTextArea;
 
     public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
 
@@ -96,19 +98,23 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     }
 
     /**
-     * Sends {@link MainMenuView#mainMenuAnchorPane} to front.
+     * Sets {@link MainMenuView#mainMenuAnchorPane} as visible and sets {@link MainMenuView#howToPlayAnchorPane}
+     * and {@link MainMenuView#lightBoxAnchorPane} as not visible.
      */
     private void showMainMenu (){
-        mainMenuAnchorPane.toFront();
+        mainMenuAnchorPane.setVisible(true);
+        lightBoxAnchorPane.setVisible(false);
+        howToPlayAnchorPane.setVisible(false);
     }
 
     /**
-     * Sends {@link MainMenuView#howToPlayAnchorPane} to front with
-     * {@link MainMenuView#lightBoxAnchorPane} as a backgroud.
+     * Sets {@link MainMenuView#howToPlayAnchorPane} and the background {@link MainMenuView#lightBoxAnchorPane}
+     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} as not visible.
      */
     private void showHowToPlay (){
-        lightBoxAnchorPane.toFront();
-        howToPlayAnchorPane.toFront();
+        lightBoxAnchorPane.setVisible(true);
+        howToPlayAnchorPane.setVisible(true);
+        mainMenuAnchorPane.setVisible(false);
     }
 
     private void mouseTrap(Event event){
