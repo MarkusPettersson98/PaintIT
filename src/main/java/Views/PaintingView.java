@@ -155,6 +155,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
                 case Z:
                     if(m.isControlDown() || m.isMetaDown()) {
                         canvasController.undo();
+                        updateUndoBtn();
                     }
                     break;
             }
@@ -164,7 +165,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         hideclearPopup();
 
-        undoBtn.setDisable(true);
+        updateUndoBtn();
     }
 
     private void showclearPopup() {
@@ -185,7 +186,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvasController.clear();
         canvasController.redrawCanvasView();
         updateUndoBtn();
-        System.out.println("wazaa");
     }
 
 
