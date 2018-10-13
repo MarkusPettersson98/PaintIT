@@ -113,7 +113,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         yesClearBtn.setOnAction(e -> {
             clearCanvas();
-            hideclearPopup();
         });
 
         noClearBtn.setOnAction(e-> hideclearPopup());
@@ -185,6 +184,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
     public void clearCanvas() {
         canvasController.clear();
         canvasController.redrawCanvasView();
+
+        hideclearPopup();
         updateUndoBtn();
     }
 
