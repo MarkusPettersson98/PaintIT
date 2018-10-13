@@ -33,10 +33,13 @@ public class PaintingView extends AnchorPane implements GameScreen {
     ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn, undoBtn, doneBtn;
+    Button clearBtn, undoBtn, doneBtn, noClearBtn, yesClearBtn;
 
     @FXML
     Label currentWordLbl;
+
+    @FXML
+    Pane clearPane;
 
 
     final ToggleGroup group = new ToggleGroup();
@@ -100,15 +103,28 @@ public class PaintingView extends AnchorPane implements GameScreen {
         });
 
 
-        clearBtn.setOnAction(e -> clearCanvas());
+        clearBtn.setOnAction(e -> {
+            showclearPopup();
+        });
 
-        undoBtn.setOnAction(e -> canvasController.undo());
+        undoBtn.setOnAction(e -> {
+            canvasController.undo();
+            updateUndoBtn();
+        });
+
+        yesClearBtn.setOnAction(e -> {
+            clearCanvas();
+        });
+
+        noClearBtn.setOnAction(e-> hideclearPopup());
+
 
         // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
         doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
         // doneBtn.setId(ButtonFactory.createDoneViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
+            hideclearPopup();
             gameSession.show(doneBtn.getId());
         });
 
@@ -139,12 +155,26 @@ public class PaintingView extends AnchorPane implements GameScreen {
                 case Z:
                     if(m.isControlDown() || m.isMetaDown()) {
                         canvasController.undo();
+                        updateUndoBtn();
                     }
                     break;
             }
         });
 
         setRadius((int) radiusSlider.getValue());
+
+        hideclearPopup();
+
+        updateUndoBtn();
+    }
+
+    private void showclearPopup() {
+        clearPane.setVisible(true);
+        clearPane.setDisable(false);
+    }
+    private void hideclearPopup() {
+        clearPane.setVisible(false);
+        clearPane.setDisable(true);
     }
 
     private void setupButton(ToggleButton button, String name) {
@@ -155,6 +185,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
     public void clearCanvas() {
         canvasController.clear();
         canvasController.redrawCanvasView();
+
+        hideclearPopup();
+        updateUndoBtn();
     }
 
 
@@ -207,6 +240,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();
+            // For every push to the stack, we check if the stack is empty and changes the undoBTN accordingly.
+            updateUndoBtn();
         });
 
     }
@@ -219,6 +254,14 @@ public class PaintingView extends AnchorPane implements GameScreen {
         // which is subscribed to canvasModel
         CanvasView viewableCanvasView = new CanvasView(canvasController.getCanvasModel());
         gameSession.setCurrentPainting(viewableCanvasView);
+    }
+
+    private void updateUndoBtn() {
+        if(canvasController.isUndoAvailable()){
+            undoBtn.setDisable(false);
+        }else{
+            undoBtn.setDisable(true);
+        }
     }
 
     @Override
