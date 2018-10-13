@@ -111,7 +111,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
             updateUndoBtn();
         });
 
-        yesClearBtn.setOnAction(e -> clearCanvas());
+        yesClearBtn.setOnAction(e -> {
+            clearCanvas();
+            hideclearPopup();
+        });
 
         noClearBtn.setOnAction(e-> hideclearPopup());
 
@@ -121,6 +124,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         // doneBtn.setId(ButtonFactory.createDoneViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
+            hideclearPopup();
             gameSession.show(doneBtn.getId());
         });
 
@@ -180,6 +184,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
     public void clearCanvas() {
         canvasController.clear();
         canvasController.redrawCanvasView();
+        updateUndoBtn();
+        System.out.println("wazaa");
     }
 
 

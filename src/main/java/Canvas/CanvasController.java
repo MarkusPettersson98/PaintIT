@@ -96,12 +96,12 @@ public class CanvasController {
     /** Clears the canvas by calling {@link CanvasModel#resetCanvas()}. Also uses {@link CanvasController#copyModelToList()} to allow for {@link CanvasController#undo} to work.
      */
     public void clear() {
-        //while(!undoStack.empty())
-        //  undoStack.pop();
+        while(!undoStack.empty())
+          undoStack.pop();
         // TODO TEST AND FIX, STILL BUGGY
-        undoArrayList.clear();
-        copyModelToList();
-        undoStack.push(undoArrayList);
+        // undoArrayList.clear();
+        // copyModelToList();
+        // undoStack.push(undoArrayList);
         canvasModel.resetCanvas();
     }
 
