@@ -19,6 +19,12 @@ public class DoneView extends AnchorPane implements GameScreen {
     @FXML
     Button doneBtn;
 
+    @FXML Label informationLabel;
+
+    @FXML Button quitGameSessionButton;
+
+    @FXML Button backToMainMenuButton;
+
     private GameSession gameSession;
 
     public DoneView(FXMLLoader fxmlLoader, GameSession gameSession) {
@@ -39,19 +45,45 @@ public class DoneView extends AnchorPane implements GameScreen {
         doneBtn.setOnAction(e -> {
             gameSession.show(doneBtn.getId());
         });
+
+        quitGameSessionButton.setOnAction(e->{
+            gameSession.setToGameOver();
+            changeToLoserView();
+            quitGameSessionButton.setVisible(false);
+        });
+
+        backToMainMenuButton.setId(ButtonFactory.createMainMenuViewBtnId());
+        backToMainMenuButton.setOnAction(e->{
+            gameSession.show(backToMainMenuButton.getId());
+        });
     }
     @Override
     public void init() {
-        // TODO MOVE THIS LOGIC TO GUESSINGVIEW?
-        gameSession.incrementTeamStreak();
         // Update labels
-        congratsLbl.setText("You made it!");
-        Integer currentStreak = gameSession.getTeamStreak();
-        teamStreakLbl.setText(currentStreak.toString());
+        if (!gameSession.getGameOver()){
+            congratsLbl.setText("You made it!");
+            Integer currentStreak = gameSession.getTeamStreak();
+            teamStreakLbl.setText(currentStreak.toString());
+            backToMainMenuButton.setVisible(false);
+        }
+        else {
+            changeToLoserView();
+        }
+
     }
 
     @Override
     public Pane getPane() {
         return this;
+    }
+
+    private void changeToLoserView (){
+        doneBtn.setVisible(false);
+        backToMainMenuButton.setVisible(true);
+        congratsLbl.setText("Game Session Ended!");
+        informationLabel.setText("Your final score is:");
+        Integer currentStreak = gameSession.getTeamStreak();
+        teamStreakLbl.setText(currentStreak.toString());
+
     }
 }

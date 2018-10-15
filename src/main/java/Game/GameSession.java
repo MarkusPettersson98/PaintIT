@@ -30,11 +30,17 @@ public class GameSession {
     private final TopController topController;
     private final CountDownTimer countDownTimer;
 
+    /**
+     * A boolean for if the game is over or if the players can keep playing.
+     */
+    private Boolean gameOver;
+
     public GameSession() {
         gameLogic = new GameLogic();
         List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
         countDownTimer = new CountDownTimer();
+        gameOver = false;
     }
 
     public Pane getCurrentPane() { return topController.getCurrentView(); }
@@ -121,6 +127,17 @@ public class GameSession {
 
     public List<Word> getPossibleWords(){
         return gameLogic.getPossibleWords();
+    }
+
+    public Boolean getGameOver (){
+        return gameOver;
+    }
+
+    /**
+     * Sets {@link GameSession#gameOver} to true, which means that they have lost or quit the game session.
+     */
+    public void setToGameOver(){
+        gameOver = true;
     }
 
     public void newTurn() {
