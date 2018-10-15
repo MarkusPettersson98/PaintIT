@@ -8,9 +8,9 @@ import lombok.Getter;
  */
 
 public class ColorPoint {
-    @Getter int x, y;
+    @Getter private int x, y;
     @Getter
-    Color c;
+    private Color c;
 
     public ColorPoint(int x, int y, Color c) {
         this.x = x;

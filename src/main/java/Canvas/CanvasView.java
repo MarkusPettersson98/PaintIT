@@ -20,7 +20,6 @@ public class CanvasView extends Canvas implements Observer {
     /**
      * How the view gets the pixel that has been changed
      */
-    //TODO: this can be changed so that the view Calls the CanvasController and asks instead, to be discussed.
     private CanvasModel canvasModel;
 
     @Getter private final GraphicsContext graphicsContext;

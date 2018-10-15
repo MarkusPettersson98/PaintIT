@@ -16,17 +16,13 @@ class GameLogic {
 
     @Getter private  GuessLogic guessLogic;
 
-    GameLogic(){
+    public GameLogic(){
         guessLogic = new GuessLogic();
     }
 
     public Word getCurrentWord() {
         return guessLogic.getCurrentWord();
     }
-
-    /*public void updateGameWord(){
-        guessLogic.pickNewWord();
-    }*/
 
     public void setCurrentWord(Word word){
         guessLogic.setCurrentWord(word);

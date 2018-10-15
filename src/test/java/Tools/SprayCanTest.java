@@ -38,7 +38,7 @@ public class SprayCanTest {
         sprayCan.apply(2,2, Color.BLACK);
         // checks if the canvas has changed at all, if not identical as dummyCanvas, it has changed.
         // this test is flawed, because it is possible to fail "the odds", meaning not painting. 0.20^25, which is 0,3,3554432e-18 %.
-        assertFalse(dummyCanvas.equals(canvasController.toString()));
+        assertFalse(dummyCanvas.equals(canvasController.canvasToString()));
     }
     */
 }

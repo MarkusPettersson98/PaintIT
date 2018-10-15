@@ -20,34 +20,29 @@ import java.io.IOException;
 public class PaintingView extends AnchorPane implements GameScreen {
 
     @FXML
-    HBox hbox;
+    private HBox hbox;
 
     @FXML
-    ColorPicker colorPicker;
+    private ColorPicker colorPicker;
 
     @FXML
-    Slider radiusSlider;
+    private Slider radiusSlider;
 
     @FXML
-    ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
+    private ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
 
     @FXML
-    Button clearBtn, undoBtn, doneBtn, noClearBtn, yesClearBtn;
+    private Button clearBtn, undoBtn, doneBtn, noClearBtn, yesClearBtn;
 
     @FXML
-    Label currentWordLbl;
+    private Label currentWordLbl;
 
     @FXML
-    Pane clearPane;
+    private Pane clearPane;
 
-
-    final ToggleGroup group = new ToggleGroup();
-
-    CanvasController canvasController;
-
-    Canvas canvas;
-
-
+    private final ToggleGroup group = new ToggleGroup();
+    private CanvasController canvasController;
+    private Canvas canvas;
     private GameSession gameSession;
 
     public PaintingView(FXMLLoader fxmlLoader, GameSession gameSession) {
@@ -118,7 +113,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
             setRadius(newValue.intValue());
         });
 
-        //TODO, make this talk with canvasController Tools.
         this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
             switch(m.getCode()) {
                 case E:
@@ -171,7 +165,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         button.setToggleGroup(this.group);
     }
 
-    public void clearCanvas() {
+    private void clearCanvas() {
         canvasController.clear();
         canvasController.redrawCanvasView();
 
@@ -180,7 +174,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
     }
 
 
-    public void setRadius(int radius) {
+    private void setRadius(int radius) {
         canvasController.setToolRadius(radius);
     }
 
@@ -199,6 +193,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     private void canvasSetup() {
         // Add event handlers
+        canvas.addEventHandler(MouseEvent.MOUSE_ENTERED, m -> hideclearPopup());
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m ->  canvasController.useTool((int) m.getX(),(int) m.getY()));
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m ->  canvasController.useTool((int) m.getX(),(int) m.getY()));
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();

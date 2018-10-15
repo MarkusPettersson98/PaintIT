@@ -14,21 +14,21 @@ public class CanvasController {
     /**
      * The CanvasModel that is being drawn on.
      */
-    @Getter CanvasModel canvasModel;
+    @Getter private CanvasModel canvasModel;
 
     /**
      * The CanvasView that shows the {@link CanvasController#canvasModel}
      */
-    @Getter CanvasView canvasView;
+    @Getter private CanvasView canvasView;
     /**
      * Holds {@link ColorPoint} of drawn over pixels, practically saving old pixels
      */
-    List<ColorPoint> undoArrayList = new ArrayList<>();
+    private List<ColorPoint> undoArrayList = new ArrayList<>();
 
     /**
      * Holds the {@link CanvasController#undoArrayList} in a stack allowing for "first in last out"-undoing.
      */
-    Stack<List<ColorPoint>> undoStack = new Stack<>();
+    private Stack<List<ColorPoint>> undoStack = new Stack<>();
 
     private Map<String, Tool> tools = new HashMap<>();
 
@@ -60,7 +60,7 @@ public class CanvasController {
         this.canvasView = new CanvasView(canvasModel);
     }
 
-    public void setupTools() {
+    private void setupTools() {
         tools.put(Brush.class.getSimpleName(), new Brush());
         tools.put(SprayCan.class.getSimpleName(),new SprayCan());
         tools.put(Eraser.class.getSimpleName(), new Eraser());
@@ -70,7 +70,7 @@ public class CanvasController {
         currentTool = tools.get(stringTool);
     }
 
-    public boolean inCircle(int posx, int posy) {
+    private boolean inCircle(int posx, int posy) {
         return (Math.pow(posx - x0, 2) + Math.pow(posy - y0, 2)) <= Math.pow(currentTool.getRadius(), 2);
     }
 
@@ -87,7 +87,7 @@ public class CanvasController {
         }
     }
 
-    public boolean checkPoint(int posx, int posy) {
+    private boolean checkPoint(int posx, int posy) {
         return (currentTool.apply(x0, y0, posx, posy) && inCircle(posx,posy));
     }
 
@@ -116,7 +116,7 @@ public class CanvasController {
      * @return A new ColorPoint from the canvasModel.
      */
 
-    public ColorPoint getColorPoint(int x, int y) {
+    private ColorPoint getColorPoint(int x, int y) {
         return new ColorPoint(x,y,canvasModel.getPixel(x,y));
     }
 
@@ -132,7 +132,7 @@ public class CanvasController {
     /**
      * Copies entire model into {@link CanvasController#undoArrayList}, is called upon by {@link CanvasController#clear()}
      */
-    public void copyModelToList() {
+    private void copyModelToList() {
         for(int y = 0; y < canvasModel.getYMax(); y++) {
             for (int x = 0; x < canvasModel.getXMax(); x++) {
                 undoArrayList.add(new ColorPoint(x,y,canvasModel.getPixel(x,y)));
@@ -144,12 +144,9 @@ public class CanvasController {
     /** Clears the canvas by calling {@link CanvasModel#resetCanvas()}. Also uses {@link CanvasController#copyModelToList()} to allow for {@link CanvasController#undo} to work.
      */
     public void clear() {
-        while(!undoStack.empty())
-          undoStack.pop();
-        // TODO TEST AND FIX, STILL BUGGY
-        // undoArrayList.clear();
-        // copyModelToList();
-        // undoStack.push(undoArrayList);
+        while(!undoStack.empty()) {
+            undoStack.pop();
+        }
         canvasModel.resetCanvas();
     }
 
@@ -157,8 +154,7 @@ public class CanvasController {
      * Calls {@link CanvasModel#toString()}
      * @return A string of the canvas.
      */
-    @Override
-    public String toString() {
+    public String canvasToString() {
         return canvasModel.toString();
     }
 
@@ -198,7 +194,7 @@ public class CanvasController {
     }
 
     public void setToolColor(Color color) {
-        currentTool.setColor(color);
+        tools.forEach((k,v) -> v.setColor(color));
     }
 
     public Color getToolColor() {

@@ -35,7 +35,7 @@ public class EraserTest {
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
         eraser.setRadius(1);
         eraser.apply(2,2, Color.WHITE);
-        assertEquals(dummyCircle,canvasController.toString());
+        assertEquals(dummyCircle,canvasController.canvasToString());
     }
     */
 }
