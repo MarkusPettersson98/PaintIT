@@ -3,6 +3,7 @@ package Game;
 import Canvas.CanvasController;
 import Canvas.CanvasModel;
 import Canvas.CanvasView;
+import Tools.CountDownTimer;
 import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
@@ -11,6 +12,7 @@ import WordAndGuess.Word;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import WordAndGuess.GuessLogic;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.WeakHashMap;
@@ -25,12 +27,15 @@ public class GameSession {
 
     private final GameLogic gameLogic;
     private final TopController topController;
+    @Getter private final CountDownTimer countDownTimer;
 
     public GameSession() {
         gameLogic = new GameLogic();
         List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
+        countDownTimer = new CountDownTimer();
     }
+
 
     public Pane getCurrentPane() { return topController.getCurrentView(); }
 
