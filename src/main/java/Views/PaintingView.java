@@ -91,6 +91,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         group.selectedToggleProperty().addListener(e -> {
             ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
+
+            canvasController.setCurrentTool(selectedButton.getText());
+
             currentTool = tools.get(selectedButton.getText());
             colorPicker.setValue(currentTool.getColor());
         });

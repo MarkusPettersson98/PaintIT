@@ -1,11 +1,13 @@
 package Canvas;
 
+import Tools.Brush;
+import Tools.Eraser;
+import Tools.SprayCan;
+import Tools.Tool;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class CanvasController {
 
@@ -28,19 +30,40 @@ public class CanvasController {
      */
     Stack<List<ColorPoint>> undoStack = new Stack<>();
 
+    Map<String, Tool> tools = new HashMap<>();
+
+    Tool currentTool;
+
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
+        setupTools();
     }
 
+    /**
+     * testing only
+     * @param xSize
+     * @param ySize
+     */
     public CanvasController(int xSize, int ySize) {
         this.canvasModel = new CanvasModel(xSize, ySize, Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
+        setupTools();
     }
 
     public void generateNewCanvas() {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
+    }
+
+    public void setupTools() {
+        tools.put(Brush.class.getSimpleName(), new Brush());
+        tools.put(SprayCan.class.getSimpleName(),new SprayCan());
+        tools.put(Eraser.class.getSimpleName(), new Eraser());
+    }
+
+    public void setCurrentTool(String stringTool) {
+        currentTool = tools.get(stringTool);
     }
 
     /** Paints model pixel with color
