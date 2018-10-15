@@ -28,7 +28,11 @@
     -fx-font-size: 80;
     -fx-text-alignment: center;
 }
-
+.text-countdown{
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 60;
+    -fx-text-alignment: center;
+}
 .text-bigger {
     -fx-font-family: Chalkboard;
     -fx-font-size: 100;

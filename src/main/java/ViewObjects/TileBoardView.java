@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -27,11 +28,14 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     @FXML HBox hBoxBottom;
     @FXML HBox hBoxTop;
     @FXML VBox vBoxRoot;
+    @FXML
+    Label countDownLbl;
 
     private TileSlot[] availableTileSlotArray;
     private final GameSession gameSession;
     private TileBoardController tileBoardController;
     private TileSlot[] guessTileSlotArray;
+    private static final int guessTime = 30;
 
     String filePath = "/fxml/tileBoard.fxml";
 
@@ -48,7 +52,8 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         initCountDown();
     }
     private void initCountDown(){
-        gameSession.startCountDown(10,this);
+        gameSession.startCountDown(guessTime,this);
+        countDownLbl.setText("    " + guessTime);
     }
     private void initFXML(){
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
@@ -98,7 +103,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
 
     private AnchorPane getGuessTileOffset(){
         final AnchorPane buffer = new AnchorPane();
-        buffer.setPrefSize((double)(200+(8-guessTileSlotArray.length)*50),100);
+        buffer.setPrefSize((double)(50+(8-guessTileSlotArray.length)*50),100);
         return buffer;
     }
 
@@ -201,8 +206,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
 
     @Override
     public void handleSecondPassed(int secondsLeft) {
-
-        System.out.println("Second Passed" + secondsLeft);
+        countDownLbl.setText("    " + Integer.toString(secondsLeft));
     }
 
     @Override
