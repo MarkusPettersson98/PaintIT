@@ -212,35 +212,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     private void canvasSetup() {
         // Add event handlers
-        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
-            int x0 = (int) m.getX();
-            int y0 = (int) m.getY();
-           /* int radius = currentTool.getRadius();
-            Color color = currentTool.getColor();
-            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, color);
-                    }
-                }
-            }*/
-            canvasController.useTool(x0,y0);
-        });
-
-        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
-            int x0 = (int) m.getX();
-            int y0 = (int) m.getY();
-          /*  int radius = currentTool.getRadius();
-            Color color = currentTool.getColor();
-            for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
-                for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                    if (currentTool.apply(x0, y0, posx, posy)) {
-                        canvasController.paint(posx, posy, color);
-                    }
-                }
-            }*/
-            canvasController.useTool(x0,y0);
-        });
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m ->  canvasController.useTool((int) m.getX(),(int) m.getY()));
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m ->  canvasController.useTool((int) m.getX(),(int) m.getY()));
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();

@@ -33,7 +33,6 @@ public class CanvasController {
     Map<String, Tool> tools = new HashMap<>();
 
     Tool currentTool;
-    private int toolRadius;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -66,12 +65,17 @@ public class CanvasController {
 
     public void setCurrentTool(String stringTool) {
         currentTool = tools.get(stringTool);
-        System.out.println("my current tool is " + currentTool.toString());
     }
 
     public void useTool(int x0, int y0) {
-        System.out.println("using " + currentTool.toString() + " at x = " + x0 + " at y = " + y0);
-        paint(x0,y0, currentTool.getColor());
+        int radius = currentTool.getRadius();
+        for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
+            for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
+                if (currentTool.apply(x0, y0, posx, posy)) {
+                    paint(posx, posy, currentTool.getColor());
+                }
+            }
+        }
     }
 
     /** Paints model pixel with color
@@ -182,7 +186,6 @@ public class CanvasController {
 
     public void setToolColor(Color color) {
         currentTool.setColor(color);
-        System.out.println(currentTool.getColor());
     }
 
     public Color getToolColor() {
@@ -191,6 +194,5 @@ public class CanvasController {
 
     public void setToolRadius(int toolRadius) {
         tools.forEach((k,v) -> v.setRadius(toolRadius));
-        System.out.println(tools.get("Brush").getRadius());
     }
 }
