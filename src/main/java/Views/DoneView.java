@@ -47,6 +47,7 @@ public class DoneView extends AnchorPane implements GameScreen {
         });
 
         quitGameSessionButton.setOnAction(e->{
+            gameSession.setToGameOver();
             changeToLoserView();
             quitGameSessionButton.setVisible(false);
         });
@@ -59,7 +60,7 @@ public class DoneView extends AnchorPane implements GameScreen {
     @Override
     public void init() {
         // Update labels
-        if (1 ==1){
+        if (!gameSession.getGameOver()){
             congratsLbl.setText("You made it!");
             Integer currentStreak = gameSession.getTeamStreak();
             teamStreakLbl.setText(currentStreak.toString());
