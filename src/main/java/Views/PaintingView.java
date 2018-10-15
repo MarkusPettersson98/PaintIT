@@ -85,24 +85,31 @@ public class PaintingView extends AnchorPane implements GameScreen {
         tools.put(SprayCan.class.getSimpleName(),new SprayCan());
         tools.put(Eraser.class.getSimpleName(), new Eraser());
 
+        //
+
         setupButton(BrushToggleButton, Brush.class.getSimpleName());
         setupButton(SprayCanToggleButton, SprayCan.class.getSimpleName());
         setupButton(EraserToggleButton, Eraser.class.getSimpleName());
 
         group.selectedToggleProperty().addListener(e -> {
             ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
-
+            //
             canvasController.setCurrentTool(selectedButton.getText());
-
+            //
             currentTool = tools.get(selectedButton.getText());
+
             colorPicker.setValue(currentTool.getColor());
+            //
+            colorPicker.setValue(canvasController.getToolColor());
+            //
         });
 
+        // is fixed in constructor of canvascontroller
         currentTool = tools.get(Brush.class.getSimpleName());
 
 
         colorPicker.setOnAction(e -> {
-            canvasController.setColor(colorPicker.getValue());
+            canvasController.setToolColor(colorPicker.getValue());
 
             currentTool.setColor(colorPicker.getValue());
         });
@@ -199,6 +206,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     public void setRadius(int radius) {
         tools.forEach((k, v) -> v.setRadius(radius));
+
+        canvasController.setToolRadius(radius);
     }
 
     @Override
@@ -243,6 +252,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     }
                 }
             }
+            canvasController.useTool(x0,y0);
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
