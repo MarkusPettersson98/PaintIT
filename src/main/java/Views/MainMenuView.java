@@ -106,27 +106,46 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         changeIconClose(closeButtonImageView);
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeHighScoreImageView} when the mouse hovers over it.
+     */
     @FXML
     private void closeHighScoreMouseEntered(){
         changeIconCloseHover(closeHighScoreImageView);
     }
 
+    /**
+     * Changes the image for {@link MainMenuView#closeHighScoreImageView} back to normal when it is clicked on,
+     * as well as changes the focus to {@link MainMenuView#mainMenuAnchorPane}.
+     */
     @FXML
     private void closeHighScoreMouseClicked() {
         changeIconClose(closeHighScoreImageView);
         showMainMenu();
     }
 
+    /**
+     * Changes the image back to normal for {@link MainMenuView#closeHighScoreImageView} when the mouse doesn't
+     * hover over it any more.
+     */
     @FXML
     private void closeHighScoreMouseExited (){
         changeIconClose(closeHighScoreImageView);
     }
 
+    /**
+     * Takes an imageView and changes it to the image for a close-icon that is hovered.
+     * @param imageView the ImageView that the image is being changed for
+     */
     private void changeIconCloseHover (ImageView imageView){
         String path = "images/icon_close_hover.png";
         imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
+    /**
+     * Takes an imageView and changes it to the image for a normal close-icon.
+     * @param imageView the ImageView that the image is being changed for
+     */
     private void changeIconClose (ImageView imageView){
         String path = "images/icon_close.png";
         imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
@@ -144,7 +163,8 @@ public class MainMenuView extends AnchorPane implements GameScreen{
 
     /**
      * Sets {@link MainMenuView#howToPlayAnchorPane} and the background {@link MainMenuView#lightBoxAnchorPane}
-     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} as not visible.
+     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} and {@link MainMenuView#highScoreAnchorPane}
+     * as not visible.
      */
     private void showHowToPlay (){
         lightBoxAnchorPane.setVisible(true);
@@ -153,6 +173,11 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         highScoreAnchorPane.setVisible(false);
     }
 
+    /**
+     * Sets {@link MainMenuView#highScoreAnchorPane} and the background {@link MainMenuView#lightBoxAnchorPane}
+     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} and {@link MainMenuView#howToPlayAnchorPane}
+     * as not visible.
+     */
     private void showHighScore (){
         lightBoxAnchorPane.setVisible(true);
         highScoreAnchorPane.setVisible(true);
