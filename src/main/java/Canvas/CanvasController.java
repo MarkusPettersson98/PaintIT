@@ -71,6 +71,7 @@ public class CanvasController {
 
     public void useTool(int x0, int y0) {
         System.out.println("using " + currentTool.toString() + " at x = " + x0 + " at y = " + y0);
+        paint(x0,y0, currentTool.getColor());
     }
 
     /** Paints model pixel with color

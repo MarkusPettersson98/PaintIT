@@ -48,9 +48,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
     Canvas canvas;
 
-    Map<String, Tool> tools = new HashMap<>();
-
-    Tool currentTool;
 
     private GameSession gameSession;
 
@@ -81,10 +78,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         // Set up tools
 
-        tools.put(Brush.class.getSimpleName(), new Brush());
-        tools.put(SprayCan.class.getSimpleName(),new SprayCan());
-        tools.put(Eraser.class.getSimpleName(), new Eraser());
-
         //
 
         setupButton(BrushToggleButton, Brush.class.getSimpleName());
@@ -96,22 +89,18 @@ public class PaintingView extends AnchorPane implements GameScreen {
             //
             canvasController.setCurrentTool(selectedButton.getText());
             //
-            currentTool = tools.get(selectedButton.getText());
 
-            colorPicker.setValue(currentTool.getColor());
             //
             colorPicker.setValue(canvasController.getToolColor());
             //
         });
 
         // is fixed in constructor of canvascontroller
-        currentTool = tools.get(Brush.class.getSimpleName());
 
 
         colorPicker.setOnAction(e -> {
             canvasController.setToolColor(colorPicker.getValue());
 
-            currentTool.setColor(colorPicker.getValue());
         });
 
 
@@ -205,8 +194,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
 
     public void setRadius(int radius) {
-        tools.forEach((k, v) -> v.setRadius(radius));
-
         canvasController.setToolRadius(radius);
     }
 
@@ -228,7 +215,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m -> {
             int x0 = (int) m.getX();
             int y0 = (int) m.getY();
-            int radius = currentTool.getRadius();
+           /* int radius = currentTool.getRadius();
             Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
@@ -236,14 +223,14 @@ public class PaintingView extends AnchorPane implements GameScreen {
                         canvasController.paint(posx, posy, color);
                     }
                 }
-            }
+            }*/
             canvasController.useTool(x0,y0);
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {
             int x0 = (int) m.getX();
             int y0 = (int) m.getY();
-            int radius = currentTool.getRadius();
+          /*  int radius = currentTool.getRadius();
             Color color = currentTool.getColor();
             for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
                 for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
@@ -251,7 +238,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
                         canvasController.paint(posx, posy, color);
                     }
                 }
-            }
+            }*/
             canvasController.useTool(x0,y0);
         });
 
