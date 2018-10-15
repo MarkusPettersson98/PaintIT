@@ -102,6 +102,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
 
         colorPicker.setOnAction(e -> {
+            canvasController.setColor(colorPicker.getValue());
+
             currentTool.setColor(colorPicker.getValue());
         });
 
@@ -135,7 +137,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
             setRadius(newValue.intValue());
         });
 
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+        //TODO, make this talk with canvasController Tools.
+        /*this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
             switch(m.getCode()) {
                 case E:
                     currentTool = tools.get(Eraser.class.getSimpleName());
@@ -162,7 +165,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     }
                     break;
             }
-        });
+        });*/
 
         setRadius((int) radiusSlider.getValue());
 
@@ -225,6 +228,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     }
                 }
             }
+            canvasController.useTool(x0,y0);
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m -> {

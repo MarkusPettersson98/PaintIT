@@ -38,6 +38,7 @@ public class CanvasController {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
         setupTools();
+        setCurrentTool("Brush");
     }
 
     /**
@@ -64,6 +65,12 @@ public class CanvasController {
 
     public void setCurrentTool(String stringTool) {
         currentTool = tools.get(stringTool);
+    }
+
+    public void useTool(int x0, int y0) {
+        System.out.println("using " + currentTool.toString() + " at x = " + x0 + " at y = " + y0);
+
+
     }
 
     /** Paints model pixel with color
@@ -170,5 +177,9 @@ public class CanvasController {
     }
     public boolean isUndoAvailable() {
         return !undoStack.isEmpty();
+    }
+
+    public void setColor(Color color) {
+        currentTool.setColor(color);
     }
 }
