@@ -16,7 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.util.*;
 
 public class PaintingView extends AnchorPane implements GameScreen {
 
@@ -72,13 +71,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
         // Add event handlers to canvas
         canvasSetup();
 
-
         BrushToggleButton.setSelected(true);
         colorPicker.setValue(Color.BLACK);
-
-        // Set up tools
-
-        //
 
         setupButton(BrushToggleButton, Brush.class.getSimpleName());
         setupButton(SprayCanToggleButton, SprayCan.class.getSimpleName());
@@ -86,23 +80,14 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         group.selectedToggleProperty().addListener(e -> {
             ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
-            //
             canvasController.setCurrentTool(selectedButton.getText());
-            //
-
-            //
             colorPicker.setValue(canvasController.getToolColor());
-            //
         });
-
-        // is fixed in constructor of canvascontroller
-
 
         colorPicker.setOnAction(e -> {
             canvasController.setToolColor(colorPicker.getValue());
 
         });
-
 
         clearBtn.setOnAction(e -> {
             showclearPopup();
@@ -134,18 +119,18 @@ public class PaintingView extends AnchorPane implements GameScreen {
         });
 
         //TODO, make this talk with canvasController Tools.
-        /*this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
             switch(m.getCode()) {
                 case E:
-                    currentTool = tools.get(Eraser.class.getSimpleName());
+                    canvasController.setCurrentTool(Eraser.class.getSimpleName());
                     EraserToggleButton.setSelected(true);
                     break;
                 case B:
-                    currentTool = tools.get(Brush.class.getSimpleName());
+                    canvasController.setCurrentTool(Brush.class.getSimpleName());
                     BrushToggleButton.setSelected(true);
                     break;
                 case S:
-                    currentTool = tools.get(SprayCan.class.getSimpleName());
+                    canvasController.setCurrentTool(SprayCan.class.getSimpleName());
                     SprayCanToggleButton.setSelected(true);
                     break;
                 case SLASH:
@@ -155,13 +140,15 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     radiusSlider.increment();
                     break;
                 case Z:
-                    if(m.isControlDown() || m.isMetaDown()) {
-                        canvasController.undo();
-                        updateUndoBtn();
+                    if(!(m.isControlDown() || m.isMetaDown())) {
+                        break;
                     }
+                case BACK_SPACE:
+                    canvasController.undo();
+                    updateUndoBtn();
                     break;
             }
-        });*/
+        });
 
         setRadius((int) radiusSlider.getValue());
 
@@ -214,7 +201,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
         // Add event handlers
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, m ->  canvasController.useTool((int) m.getX(),(int) m.getY()));
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, m ->  canvasController.useTool((int) m.getX(),(int) m.getY()));
-
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();
             // For every push to the stack, we check if the stack is empty and changes the undoBTN accordingly.
