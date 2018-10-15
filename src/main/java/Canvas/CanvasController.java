@@ -30,9 +30,12 @@ public class CanvasController {
      */
     Stack<List<ColorPoint>> undoStack = new Stack<>();
 
-    Map<String, Tool> tools = new HashMap<>();
+    private Map<String, Tool> tools = new HashMap<>();
 
-    Tool currentTool;
+    private Tool currentTool;
+
+    private int x0;
+    private int y0;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -67,15 +70,25 @@ public class CanvasController {
         currentTool = tools.get(stringTool);
     }
 
+    public boolean inCircle(int posx, int posy) {
+        return (Math.pow(posx - x0, 2) + Math.pow(posy - y0, 2)) <= Math.pow(currentTool.getRadius(), 2);
+    }
+
     public void useTool(int x0, int y0) {
         int radius = currentTool.getRadius();
+        this.x0 = x0;
+        this.y0 = y0;
         for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
             for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
-                if (currentTool.apply(x0, y0, posx, posy)) {
+                if (checkPoint(posx,posy)) {
                     paint(posx, posy, currentTool.getColor());
                 }
             }
         }
+    }
+
+    public boolean checkPoint(int posx, int posy) {
+        return (currentTool.apply(x0, y0, posx, posy) && inCircle(posx,posy));
     }
 
     /** Paints model pixel with color

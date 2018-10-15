@@ -67,6 +67,6 @@ public abstract class Tool {
      * @return whether or not the radius is less or equal to 0, uses {@link Tool#inCircle}
      */
     public boolean apply(int x0, int y0, int x, int y) {
-        return radius >=0 && inCircle(x0, y0, x, y, radius);
+        return radius >=0;
     }
 }
