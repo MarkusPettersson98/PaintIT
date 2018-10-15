@@ -54,7 +54,6 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
             gameSession.show(donebtn.getId());
 
         });
-        donebtn.setDisable(true);
 
         for(ToggleButton toggleButton: toggleButtons){
             toggleButton.setOnAction(e ->{
@@ -108,6 +107,8 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
                     break;
             }
         }
+        // Make sure that 'confirm' button is disabled
+        donebtn.setDisable(true);
     }
 
     @Override
