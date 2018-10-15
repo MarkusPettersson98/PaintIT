@@ -28,6 +28,11 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private ImageView closeButtonImageView;
     @FXML private TextArea instructionsTextArea;
 
+    @FXML private AnchorPane highScoreAnchorPane;
+    @FXML private ImageView closeHighScoreImageView;
+    @FXML private TextArea teamNameTextArea;
+    @FXML private TextArea scoreTextArea;
+
     public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/MainMenuView.fxml"));
@@ -52,7 +57,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         });
 
         highScore.setOnAction(e -> {
-                System.out.println("tja");
+            showHighScore();
         });
 
         lightBoxAnchorPane.setOnMouseClicked(e ->{
@@ -66,6 +71,13 @@ public class MainMenuView extends AnchorPane implements GameScreen{
             }
         });
 
+        highScoreAnchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mouseTrap(event);
+            }
+        });
+
     }
 
     /**
@@ -73,8 +85,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      */
     @FXML
     private void closeButtonMouseEntered(){
-        String path = "images/icon_close_hover.png";
-        closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
+        changeIconCloseHover(closeButtonImageView);
     }
 
     /**
@@ -83,8 +94,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      */
     @FXML
     private void closeButtonMouseClicked(){
-        String path = "images/icon_close.png";
-        closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
+        changeIconClose(closeButtonImageView);
         showMainMenu();
     }
 
@@ -93,8 +103,52 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      */
     @FXML
     private void closeButtonMouseExited(){
+        changeIconClose(closeButtonImageView);
+    }
+
+    /**
+     * Changes the image for {@link MainMenuView#closeHighScoreImageView} when the mouse hovers over it.
+     */
+    @FXML
+    private void closeHighScoreMouseEntered(){
+        changeIconCloseHover(closeHighScoreImageView);
+    }
+
+    /**
+     * Changes the image for {@link MainMenuView#closeHighScoreImageView} back to normal when it is clicked on,
+     * as well as changes the focus to {@link MainMenuView#mainMenuAnchorPane}.
+     */
+    @FXML
+    private void closeHighScoreMouseClicked() {
+        changeIconClose(closeHighScoreImageView);
+        showMainMenu();
+    }
+
+    /**
+     * Changes the image back to normal for {@link MainMenuView#closeHighScoreImageView} when the mouse doesn't
+     * hover over it any more.
+     */
+    @FXML
+    private void closeHighScoreMouseExited (){
+        changeIconClose(closeHighScoreImageView);
+    }
+
+    /**
+     * Takes an imageView and changes it to the image for a close-icon that is hovered.
+     * @param imageView the ImageView that the image is being changed for
+     */
+    private void changeIconCloseHover (ImageView imageView){
+        String path = "images/icon_close_hover.png";
+        imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
+    }
+
+    /**
+     * Takes an imageView and changes it to the image for a normal close-icon.
+     * @param imageView the ImageView that the image is being changed for
+     */
+    private void changeIconClose (ImageView imageView){
         String path = "images/icon_close.png";
-        closeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
+        imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
     /**
@@ -109,12 +163,26 @@ public class MainMenuView extends AnchorPane implements GameScreen{
 
     /**
      * Sets {@link MainMenuView#howToPlayAnchorPane} and the background {@link MainMenuView#lightBoxAnchorPane}
-     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} as not visible.
+     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} and {@link MainMenuView#highScoreAnchorPane}
+     * as not visible.
      */
     private void showHowToPlay (){
         lightBoxAnchorPane.setVisible(true);
         howToPlayAnchorPane.setVisible(true);
         mainMenuAnchorPane.setVisible(false);
+        highScoreAnchorPane.setVisible(false);
+    }
+
+    /**
+     * Sets {@link MainMenuView#highScoreAnchorPane} and the background {@link MainMenuView#lightBoxAnchorPane}
+     * as visible as well as sets {@link MainMenuView#mainMenuAnchorPane} and {@link MainMenuView#howToPlayAnchorPane}
+     * as not visible.
+     */
+    private void showHighScore (){
+        lightBoxAnchorPane.setVisible(true);
+        highScoreAnchorPane.setVisible(true);
+        mainMenuAnchorPane.setVisible(false);
+        howToPlayAnchorPane.setVisible(false);
     }
 
     private void mouseTrap(Event event){
