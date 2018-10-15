@@ -40,8 +40,6 @@ public class GuessingView extends AnchorPane implements GameScreen {
         vBox.getChildren().clear();
         vBox.getChildren().add(this.canvasView);
         vBox.getChildren().add(this.tileBoardView);
-
-        gameSession.getCountDownTimer().startCountDown(10);
     }
 
     @Override

@@ -9,7 +9,8 @@ public class CountDownTimer {
     private Timer timer;
     private TimerTask secondTask;
     private TimerTask countDownFinishedTask;
-    private int timeLeft;
+    private int secondsLeft;
+    private CountDownUser countDownUser;
 
     public CountDownTimer(){
         secondTask = new TimerTask() {
@@ -26,20 +27,21 @@ public class CountDownTimer {
         };
     }
 
-    public void startCountDown(int sec){
+    public void startCountDown(int sec,CountDownUser countDownUser){
+        this.countDownUser = countDownUser;
         timer = new Timer();
-        timeLeft = sec;
+        secondsLeft = sec;
         timer.scheduleAtFixedRate(secondTask,1000,1000);
         timer.schedule(countDownFinishedTask,sec*1000);
     }
     private void countDownFinished(){
-        System.out.println("KLAR");
+        countDownUser.handleTimerFinished();
         timer.cancel();
     }
     private void secondHasPassed(){
-        if(timeLeft>0){
-            timeLeft--;
+        if(secondsLeft >0){
+            secondsLeft--;
         }
-        System.out.println(timeLeft);
+       countDownUser.handleSecondPassed(secondsLeft);
     }
 }

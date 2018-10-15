@@ -4,6 +4,7 @@ import Canvas.CanvasController;
 import Canvas.CanvasModel;
 import Canvas.CanvasView;
 import Tools.CountDownTimer;
+import Tools.CountDownUser;
 import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
@@ -27,7 +28,7 @@ public class GameSession {
 
     private final GameLogic gameLogic;
     private final TopController topController;
-    @Getter private final CountDownTimer countDownTimer;
+    private final CountDownTimer countDownTimer;
 
     public GameSession() {
         gameLogic = new GameLogic();
@@ -35,7 +36,6 @@ public class GameSession {
         topController = new TopController(gameScreens);
         countDownTimer = new CountDownTimer();
     }
-
 
     public Pane getCurrentPane() { return topController.getCurrentView(); }
 
@@ -54,6 +54,10 @@ public class GameSession {
         topController.show();
     }
 
+
+    public void startCountDown(int seconds, CountDownUser caller){
+        countDownTimer.startCountDown(seconds,caller);
+    }
     /**
      * If there's no prior instance of {@link Team}, add passed reference to {@link GameSession#team}.
      * @param team

@@ -1,6 +1,7 @@
 package ViewObjects;
 
 import Game.GameSession;
+import Tools.CountDownUser;
 import Tools.Observer;
 import Util.ButtonFactory;
 import WordAndGuess.Tile;
@@ -20,7 +21,7 @@ import java.util.TimerTask;
  *
  */
 
-public class TileBoardView extends VBox implements Observer{
+public class TileBoardView extends VBox implements Observer, CountDownUser{
 
 
     @FXML HBox hBoxBottom;
@@ -44,8 +45,11 @@ public class TileBoardView extends VBox implements Observer{
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
             tileBoardController.handleKeyCode(m.getCode().toString());
         });
+        initCountDown();
     }
-
+    private void initCountDown(){
+        gameSession.startCountDown(10,this);
+    }
     private void initFXML(){
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
@@ -192,5 +196,16 @@ public class TileBoardView extends VBox implements Observer{
 
     public void changeToDoneView(){
         gameSession.show(ButtonFactory.createDoneViewBtnId());
+    }
+
+    @Override
+    public void handleSecondPassed(int secondsLeft) {
+
+        System.out.println("Second Passed" + secondsLeft);
+    }
+
+    @Override
+    public void handleTimerFinished() {
+        System.out.println("Countdown Finshed");
     }
 }
