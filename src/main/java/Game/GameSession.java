@@ -114,6 +114,10 @@ public class GameSession {
         return gameLogic.getPossibleWords();
     }
 
+    public void updateHighScore (){
+
+    }
+
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
        // gameLogic.updateGameWord();

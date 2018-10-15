@@ -157,6 +157,7 @@ public class TileBoardView extends VBox implements Observer{
            t.addCorrectGuessCss();
         }
         startTimer();
+        gameSession.incrementTeamStreak();
     }
     /** This method handles a correct Guess - makes all the Tiles Red
      */
