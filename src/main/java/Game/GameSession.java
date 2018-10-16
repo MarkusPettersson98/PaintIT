@@ -1,8 +1,8 @@
 package Game;
 
-import Canvas.CanvasController;
-import Canvas.CanvasModel;
 import Canvas.CanvasView;
+import Util.CountDownTimer;
+import Util.CountDownUser;
 import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
@@ -13,7 +13,6 @@ import javafx.scene.layout.Pane;
 import WordAndGuess.GuessLogic;
 
 import java.util.List;
-import java.util.WeakHashMap;
 
 /**
  * Main class, this is where most parts of the application is connected.
@@ -25,6 +24,7 @@ public class GameSession {
 
     private final GameLogic gameLogic;
     private final TopController topController;
+    private final CountDownTimer countDownTimer;
 
     /**
      * A boolean for if the game is over or if the players can keep playing.
@@ -35,6 +35,7 @@ public class GameSession {
         gameLogic = new GameLogic();
         List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
+        countDownTimer = new CountDownTimer();
         gameOver = false;
     }
 
@@ -55,6 +56,10 @@ public class GameSession {
         topController.show();
     }
 
+
+    public void startCountDown(int seconds, CountDownUser caller){
+        countDownTimer.startCountDown(seconds,caller);
+    }
     /**
      * If there's no prior instance of {@link Team}, add passed reference to {@link GameSession#team}.
      * @param team

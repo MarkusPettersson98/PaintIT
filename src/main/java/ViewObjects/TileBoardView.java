@@ -1,6 +1,7 @@
 package ViewObjects;
 
 import Game.GameSession;
+import Util.CountDownUser;
 import Tools.Observer;
 import Util.ButtonFactory;
 import WordAndGuess.Tile;
@@ -8,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,17 +22,20 @@ import java.util.TimerTask;
  *
  */
 
-public class TileBoardView extends VBox implements Observer{
+public class TileBoardView extends VBox implements Observer, CountDownUser{
 
 
     @FXML HBox hBoxBottom;
     @FXML HBox hBoxTop;
     @FXML VBox vBoxRoot;
+    @FXML
+    Label countDownLbl;
 
     private TileSlot[] availableTileSlotArray;
     private final GameSession gameSession;
     private TileBoardController tileBoardController;
     private TileSlot[] guessTileSlotArray;
+    private static final int guessTime = 30;
 
     String filePath = "/fxml/tileBoard.fxml";
 
@@ -44,8 +49,12 @@ public class TileBoardView extends VBox implements Observer{
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
             tileBoardController.handleKeyCode(m.getCode().toString());
         });
+        initCountDown();
     }
-
+    private void initCountDown(){
+        gameSession.startCountDown(guessTime,this);
+        countDownLbl.setText("    " + guessTime);
+    }
     private void initFXML(){
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
@@ -94,7 +103,7 @@ public class TileBoardView extends VBox implements Observer{
 
     private AnchorPane getGuessTileOffset(){
         final AnchorPane buffer = new AnchorPane();
-        buffer.setPrefSize((double)(200+(8-guessTileSlotArray.length)*50),100);
+        buffer.setPrefSize((double)(50+(8-guessTileSlotArray.length)*50),100);
         return buffer;
     }
 
@@ -193,5 +202,15 @@ public class TileBoardView extends VBox implements Observer{
 
     public void changeToDoneView(){
         gameSession.show(ButtonFactory.createDoneViewBtnId());
+    }
+
+    @Override
+    public void handleSecondPassed(int secondsLeft) {
+        countDownLbl.setText("    " + Integer.toString(secondsLeft));
+    }
+
+    @Override
+    public void handleTimerFinished() {
+        System.out.println("Countdown Finshed");
     }
 }
