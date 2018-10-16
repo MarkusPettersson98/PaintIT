@@ -1,7 +1,7 @@
 package ViewObjects;
 
 import Game.GameSession;
-import Tools.CountDownUser;
+import Util.CountDownUser;
 import Tools.Observer;
 import Util.ButtonFactory;
 import WordAndGuess.Tile;

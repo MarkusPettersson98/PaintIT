@@ -1,10 +1,8 @@
 package Game;
 
-import Canvas.CanvasController;
-import Canvas.CanvasModel;
 import Canvas.CanvasView;
-import Tools.CountDownTimer;
-import Tools.CountDownUser;
+import Util.CountDownTimer;
+import Util.CountDownUser;
 import Tools.Observer;
 import Util.ViewFactory;
 import Views.GameScreen;
@@ -13,10 +11,8 @@ import WordAndGuess.Word;
 import com.PaintIT.app.TopController;
 import javafx.scene.layout.Pane;
 import WordAndGuess.GuessLogic;
-import lombok.Getter;
 
 import java.util.List;
-import java.util.WeakHashMap;
 
 /**
  * Main class, this is where most parts of the application is connected.
