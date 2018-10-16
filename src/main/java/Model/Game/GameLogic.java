@@ -1,10 +1,8 @@
-package Game;
+package Model.Game;
 
-import Canvas.CanvasController;
-import Canvas.CanvasModel;
 import Canvas.CanvasView;
-import WordAndGuess.GuessLogic;
-import WordAndGuess.Word;
+import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Word;
 import lombok.Getter;
 import lombok.Setter;
 

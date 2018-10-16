@@ -1,4 +1,4 @@
-package Tools;
+package Model.Tools;
 
 import javafx.scene.paint.Color;
 

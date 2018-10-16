@@ -1,7 +1,9 @@
-package Canvas;
+package Model;
 
-import Tools.Observable;
-import Tools.Observer;
+import Canvas.CanvasView;
+import Canvas.ColorPoint;
+import Util.Observable;
+import Util.Observer;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
@@ -35,11 +37,11 @@ public class CanvasModel implements Observable {
      */
     List<Observer> observers = new ArrayList<>();
 
-    protected CanvasModel(Color initValue) {
+    public CanvasModel(Color initValue) {
         fillCanvas(initValue);
     }
 
-    protected CanvasModel(int xSize, int ySize, Color initColor) {
+    public CanvasModel(int xSize, int ySize, Color initColor) {
         this.xMax = xSize; this.yMax = ySize;
         this.canvas = new Color[xSize][ySize];
         fillCanvas(initColor);
@@ -52,7 +54,7 @@ public class CanvasModel implements Observable {
      * @param newValue New color of the pixel.
      * @throws IndexOutOfBoundsException Exception when you try to paint outside the canvas.
      */
-    protected void setPixel(int x, int y, Color newValue) throws IndexOutOfBoundsException {
+    public void setPixel(int x, int y, Color newValue) throws IndexOutOfBoundsException {
         // Check if xMax and yMax are in bounds of canvas
         if(!inBounds(x, y)) {
             throw new IndexOutOfBoundsException();
@@ -72,7 +74,7 @@ public class CanvasModel implements Observable {
      * @return The color of the chosen pixel.
      * @throws IndexOutOfBoundsException Exception when you try to get a pixel outside the canvas.
      */
-    protected Color getPixel(int x, int y) /*throws IndexOutOfBoundsException*/ {
+    public Color getPixel(int x, int y) /*throws IndexOutOfBoundsException*/ {
         // Check if xMax and yMax are in bounds of canvas
         //if(!inBounds(x, y)) {}
 
@@ -82,7 +84,7 @@ public class CanvasModel implements Observable {
     /**
      * Sets entire canvas to white
      */
-    protected void resetCanvas() {
+    public void resetCanvas() {
         fillCanvas(Color.WHITE);
     }
 
@@ -124,7 +126,7 @@ public class CanvasModel implements Observable {
      * @return Whether or not the values is within CanvasModel bounds.
      * @throws IndexOutOfBoundsException Throws exception if out of bounds.
      */
-    protected boolean inBounds(int x, int y) throws IndexOutOfBoundsException {
+    public boolean inBounds(int x, int y) throws IndexOutOfBoundsException {
         if(x < 0 || x > this.xMax || y < 0 || y > this.yMax) {
             // xMax or yMax out of bounds, throw exception
             throw new IndexOutOfBoundsException();

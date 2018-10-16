@@ -1,11 +1,10 @@
 package Views;
 
-import Game.GameSession;
+import Model.Game.GameSession;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 

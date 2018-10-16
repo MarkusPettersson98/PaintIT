@@ -1,9 +1,8 @@
 package Views;
 
-import Game.GameSession;
-import Game.Team;
+import Model.Game.GameSession;
+import Model.Game.Team;
 import Util.ButtonFactory;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

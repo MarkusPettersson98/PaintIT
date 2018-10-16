@@ -1,12 +1,5 @@
 package Tools;
 
-import Canvas.CanvasController;
-import javafx.scene.paint.Color;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 public class SprayCanTest {
 /*
 

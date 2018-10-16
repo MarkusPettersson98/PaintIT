@@ -1,6 +1,6 @@
 package Util;
 
-import WordAndGuess.Tile;
+import Model.WordAndGuess.Tile;
 
 import java.util.List;
 

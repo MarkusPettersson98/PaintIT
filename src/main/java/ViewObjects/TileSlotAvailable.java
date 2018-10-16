@@ -1,6 +1,6 @@
 package ViewObjects;
 
-import WordAndGuess.Tile;
+import Model.WordAndGuess.Tile;
 /**
  *Represents an available Tile from the backend.
  */

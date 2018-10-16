@@ -1,5 +1,6 @@
 package Views;
 
+import Model.Game.GameSession;
 import javafx.scene.layout.Pane;
 
 /**
@@ -11,7 +12,7 @@ public interface GameScreen {
     /**
      * Every {@link GameScreen} has a start-up routine that will be invoked whenever it's shown.
      * The {@link GameScreen#init()} method should only invoke class specific methods, which in term
-     * can rely upon data from {@link Game.GameSession}.
+     * can rely upon data from {@link GameSession}.
      */
     public void init();
 

@@ -1,5 +1,7 @@
 package Game;
 
+import Model.Game.GameSession;
+import Model.Game.Team;
 import Views.MainMenuView;
 import org.junit.Before;
 import org.junit.Test;

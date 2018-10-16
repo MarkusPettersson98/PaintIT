@@ -1,5 +1,8 @@
 package WordAndGuess;
 
+import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Tile;
+import Model.WordAndGuess.WordHandler;
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.*;

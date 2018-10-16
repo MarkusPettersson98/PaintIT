@@ -1,8 +1,10 @@
 package Views;
 
-import Game.GameSession;
-import Tools.*;
-import Canvas.CanvasController;
+import Model.Game.GameSession;
+import Model.Tools.Brush;
+import Model.Tools.Eraser;
+import Model.Tools.SprayCan;
+import Controllers.CanvasController;
 import Canvas.CanvasView;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;

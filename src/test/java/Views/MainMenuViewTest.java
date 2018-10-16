@@ -1,8 +1,6 @@
 package Views;
 
-import Game.GameSession;
-import Util.ButtonFactory;
-import Util.ViewFactory;
+import Model.Game.GameSession;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;

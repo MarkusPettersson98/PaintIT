@@ -1,6 +1,6 @@
 package ViewObjects;
 
-import WordAndGuess.Tile;
+import Model.WordAndGuess.Tile;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,7 +1,7 @@
 package Views;
 
-import Game.GameSession;
-import Game.Team;
+import Model.Game.GameSession;
+import Model.Game.Team;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.Test;

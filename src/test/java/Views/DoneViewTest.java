@@ -1,7 +1,7 @@
 package Views;
 
-import Game.GameSession;
-import Game.Team;
+import Model.Game.GameSession;
+import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

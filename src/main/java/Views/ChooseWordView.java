@@ -1,10 +1,8 @@
 package Views;
 
-import Game.GameSession;
-import Tools.Tool;
+import Model.Game.GameSession;
 import Util.ButtonFactory;
-import Util.ViewFactory;
-import WordAndGuess.Word;
+import Model.WordAndGuess.Word;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

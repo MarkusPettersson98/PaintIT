@@ -1,7 +1,6 @@
 package Util;
 
-import WordAndGuess.Tile;
-import org.junit.Before;
+import Model.WordAndGuess.Tile;
 import org.junit.Test;
 
 import java.util.ArrayList;

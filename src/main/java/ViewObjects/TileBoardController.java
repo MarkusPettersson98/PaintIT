@@ -1,7 +1,7 @@
 package ViewObjects;
 
-import WordAndGuess.GuessLogic;
-import WordAndGuess.Tile;
+import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Tile;
 
 /** Connects the Actions in TileBoardView to methods in the Model, (GuessLogic)
  */

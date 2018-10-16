@@ -1,4 +1,4 @@
-package Tools;
+package Util;
 
 /**
  * Represents Observing objects, using the Observer-Pattern

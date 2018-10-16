@@ -1,6 +1,6 @@
 package Util;
 
-import Game.GameSession;
+import Model.Game.GameSession;
 import Views.*;
 import javafx.fxml.FXMLLoader;
 import java.util.ArrayList;

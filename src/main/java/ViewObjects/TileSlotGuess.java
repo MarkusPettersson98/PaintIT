@@ -1,6 +1,6 @@
 package ViewObjects;
 
-import WordAndGuess.Tile;
+import Model.WordAndGuess.Tile;
 /**
  *Represents a Tile in the players Guess visually.
  */

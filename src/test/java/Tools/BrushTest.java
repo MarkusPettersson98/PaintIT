@@ -1,9 +1,7 @@
 package Tools;
 
-import Canvas.CanvasController;
-import Canvas.CanvasModel;
-import javafx.scene.paint.Color;
-import junit.framework.TestCase;
+import Controllers.CanvasController;
+import Model.Tools.Brush;
 import org.junit.Before;
 import org.junit.Test;
 

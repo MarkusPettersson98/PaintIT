@@ -1,4 +1,4 @@
-package Game;
+package Model.Game;
 
 /**
  * Represents a Player.

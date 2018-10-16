@@ -1,5 +1,6 @@
 package WordAndGuess;
 
+import Model.WordAndGuess.Tile;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

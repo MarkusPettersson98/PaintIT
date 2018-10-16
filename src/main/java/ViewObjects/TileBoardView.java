@@ -1,10 +1,10 @@
 package ViewObjects;
 
-import Game.GameSession;
+import Model.Game.GameSession;
 import Util.CountDownUser;
-import Tools.Observer;
+import Util.Observer;
 import Util.ButtonFactory;
-import WordAndGuess.Tile;
+import Model.WordAndGuess.Tile;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

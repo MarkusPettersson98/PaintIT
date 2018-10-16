@@ -1,4 +1,4 @@
-package Game;
+package Model.Game;
 
 import javafx.util.Pair;
 import lombok.Getter;

@@ -1,5 +1,6 @@
 package Canvas;
 
+import Model.CanvasModel;
 import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;

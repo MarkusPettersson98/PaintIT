@@ -1,5 +1,7 @@
 package WordAndGuess;
 
+import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Tile;
 import org.junit.Before;
 import org.junit.Test;
 

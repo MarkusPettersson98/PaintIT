@@ -1,6 +1,7 @@
 package Canvas;
 
-import Tools.Observer;
+import Model.CanvasModel;
+import Util.Observer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;

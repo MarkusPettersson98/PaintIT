@@ -1,4 +1,4 @@
-package WordAndGuess;
+package Model.WordAndGuess;
 
 /**
  *Word is made of a paintable word and a difficulty level of painting/guessing the word (Easy, Medium or Hard).

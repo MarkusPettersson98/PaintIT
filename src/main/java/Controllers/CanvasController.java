@@ -1,9 +1,12 @@
-package Canvas;
+package Controllers;
 
-import Tools.Brush;
-import Tools.Eraser;
-import Tools.SprayCan;
-import Tools.Tool;
+import Canvas.CanvasView;
+import Canvas.ColorPoint;
+import Model.CanvasModel;
+import Model.Tools.Brush;
+import Model.Tools.Eraser;
+import Model.Tools.SprayCan;
+import Model.Tools.Tool;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 

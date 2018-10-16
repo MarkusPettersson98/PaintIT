@@ -1,10 +1,9 @@
-package WordAndGuess;
+package Model.WordAndGuess;
 
 import java.io.*;
 import java.util.*;
 import org.apache.commons.io.FileUtils;
 import org.json.*;
-import WordAndGuess.Word.Difficulty;
 
 /**
  * Dictionary reads and holds all words that the user can choose to paint.
@@ -61,7 +60,7 @@ public class Dictionary {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             String word = jsonArray.getJSONObject(i).getString("word");
-            Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Difficulty.class, "difficulty_level");
+            Word.Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Word.Difficulty.class, "difficulty_level");
 
             switch (difficulty_level) {
                 case EASY:

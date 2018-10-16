@@ -1,6 +1,6 @@
 package Views;
 
-import Game.GameSession;
+import Model.Game.GameSession;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
