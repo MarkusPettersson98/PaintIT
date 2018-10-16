@@ -1,0 +1,55 @@
+.tileBoard {
+     -fx-border-color:  #777777;
+     -fx-background-color: #FFFFFF;
+
+     -fx-border-width: 2px;
+}
+
+.visibleButton {
+     -fx-background-color: #FFFFFF;
+     -fx-border-width: 2px;
+     -fx-border-color:  #33ccff;
+     -fx-font-size: 28pt;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-alignment: center;
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1.5) , 5, 0.0 , 0 , 3 );
+}
+.visibleButton:hover{
+-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1,5) , 2, 0.0 , 0 , 1 );
+}
+.correctButton {
+     -fx-background-color: #FFFFFF;
+     -fx-border-width: 2px;
+     -fx-border-color:  #66ff1a;
+     -fx-font-size: 28pt;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-alignment: center;
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1.5) , 5, 0.0 , 0 , 3 );
+}
+.correctButton:hover{
+-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1,5) , 2, 0.0 , 0 , 1 );
+}
+.incorrectButton {
+     -fx-background-color: #FFFFFF;
+     -fx-border-width: 2px;
+     -fx-border-color:  #FF0000;
+     -fx-font-size: 28pt;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-alignment: center;
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1.5) , 5, 0.0 , 0 , 3 );
+}
+.incorrectButton:hover{
+-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1,5) , 2, 0.0 , 0 , 1 );
+}
+
+.emptyButton {
+     -fx-background-color: #d0d0e1;
+     -fx-border-width: 2px;
+     -fx-border-color:  #737373;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-font-size: 1pt;
+}

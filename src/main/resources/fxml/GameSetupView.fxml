@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Css/Stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="317.0" layoutY="140.0" styleClass="text-veryBig" text="Enter your names" AnchorPane.leftAnchor="311.0" AnchorPane.rightAnchor="311.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="258.0" layoutY="301.0" styleClass="text-normal" text="Player 1:" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="300.0" />
+      <Label layoutX="268.0" layoutY="484.0" styleClass="text-normal" text="Player 2:" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="420.0" />
+      <TextField fx:id="player1TextField" layoutX="516.0" layoutY="285.0" styleClass="text-normal" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="285.0" />
+      <TextField fx:id="player2TextField" layoutX="526.0" layoutY="295.0" styleClass="text-normal" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="405.0" />
+      <Button fx:id="startDrawing" layoutX="611.0" layoutY="565.0" mnemonicParsing="false" styleClass="button-play" text="Start Drawing" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="445.0" AnchorPane.topAnchor="550.0" />
+      <ImageView fx:id="backButtonImageView" fitHeight="90.0" fitWidth="97.0" onMouseEntered="#backButtonImageViewEntered" onMouseExited="#backButtonImageViewExited" pickOnBounds="true" preserveRatio="true" styleClass="button-mainMenu" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <image>
+            <Image url="@../images/icon_back.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="playerOneWrongName" layoutX="1057.0" layoutY="299.0" styleClass="text-errorMessage" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="300.0" />
+      <Label fx:id="playerTwoWrongName" layoutX="1057.0" layoutY="419.0" styleClass="text-errorMessage" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="420.0" />
+   </children>
+</fx:root>

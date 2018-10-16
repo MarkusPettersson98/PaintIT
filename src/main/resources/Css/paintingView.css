@@ -1,0 +1,146 @@
+#canvas {
+    -fx-background-color: red;
+}
+
+.text-information{
+    -fx-font-size: 25px;
+    -fx-font-family: Chalkboard;
+}
+
+.text-wordToGuess{
+    -fx-font-size: 60px;
+    -fx-font-family: Chalkboard;
+    -fx-text-alignment: center;
+}
+
+.button-done{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #d5090a 0%, #c20600 100%),
+            #cf0100,
+            #ef0b01,
+            radial-gradient(center 50% 50%, radius 100%, #ee0100, #ea0400);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 60px;
+    -fx-font-family: "Marker Felt";
+    -fx-text-fill: white;
+}
+
+.button-done:hover{
+    -fx-background-color: #ff2133;
+}
+
+.button-done:pressed{
+    -fx-background-color: #bc0002;
+}
+
+.button-functions {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 20;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button-functions:hover {
+    -fx-background-color: silver;
+    -fx-cursor: HAND;
+}
+
+.button-functions:pressed {
+    -fx-background-color: #d0d0d0;
+}
+
+.button-tools {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 20;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button-tools:selected {
+    -fx-background-color: grey;
+}
+
+.button-tools:pressed {
+    -fx-background-color: #d0d0d0;
+}
+
+.button-tools:hover{
+    -fx-background-color: silver;
+    -fx-cursor: HAND;
+}
+
+.tool-bar{
+    -fx-background-color: white;
+}
+
+.slider{
+    -fx-font-size: 20;
+    -fx-font-family: Chalkboard;
+}
+.slider:hover{
+    -fx-cursor: HAND;
+}
+
+.button-yes{
+     -fx-background-color:
+                linear-gradient(#00d600, #10f210),
+                linear-gradient(#00d900 0%, #10fc10 20%, #00d600 100%),
+                linear-gradient(#20dd20 0%, #30f630 50%);
+     -fx-text-fill: #050505;
+     -fx-font-family: Chalkboard;
+     -fx-font-size: 15;
+}
+
+.button-yes:pressed {
+    -fx-background-color: #10e810;
+}
+
+.button-no{
+     -fx-background-color:
+                linear-gradient(#d60000, #f21010),
+                linear-gradient(#d60000 0%, #fc1010 20%, #d60000 100%),
+                linear-gradient(#dd2020 0%, #f63030 50%);
+
+     -fx-text-fill: #050505;
+     -fx-font-family: Chalkboard;
+     -fx-font-size: 15;
+}
+
+.button-no:pressed {
+    -fx-background-color: #e81010;
+}
+
+.button:hover {
+    -fx-cursor: HAND;
+    -fx-opacity: 0.85;
+}
+
+.popuppane {
+    -fx-background-color:
+                linear-gradient(#FFFFFF, #f2f2f2),
+                linear-gradient(#f2f2f2 0%, #e0e0e0 20%, #e5e5e5 100%),
+                linear-gradient(#e5e5e5 0%, #e5e5e5 50%);
+    -fx-border-color: grey;
+}
+.clearCanvasText {
+     -fx-text-fill: #050505;
+     -fx-font-family: Chalkboard;
+     -fx-font-size: 15;
+}
+

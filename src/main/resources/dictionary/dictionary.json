@@ -1,0 +1,34 @@
+{
+  "dictionary": [
+
+    {
+      "word": "Cat",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Robot",
+      "difficulty_level": "MEDIUM"
+    },
+
+    {
+      "word": "Crowd",
+      "difficulty_level": "HARD"
+    },
+
+    {
+      "word": "Dog",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Sun",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Star",
+      "difficulty_level": "EASY"
+    }
+  ]
+}
