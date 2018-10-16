@@ -7,6 +7,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 /**
  * Initilizes the entire program.
  *
@@ -17,7 +19,7 @@ public class App extends Application {
     }
 
     @Override
-    public void start (Stage primaryStage) throws Exception{
+    public void start (Stage primaryStage) throws Exception {
         primaryStage.setTitle("PainIT");
 
         GameSession gameSession = new GameSession();

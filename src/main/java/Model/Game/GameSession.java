@@ -140,9 +140,12 @@ public class GameSession {
         gameOver = true;
     }
 
+    public void gameOver() {
+        // Game over, save team's streak if necessary,
+    }
+
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
-       // gameLogic.updateGameWord();
         team.changeDrawer();
     }
 }

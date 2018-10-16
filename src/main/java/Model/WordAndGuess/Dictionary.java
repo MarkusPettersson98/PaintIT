@@ -1,8 +1,12 @@
 package Model.WordAndGuess;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.json.*;
 
 /**
@@ -51,7 +55,11 @@ public class Dictionary {
         String jsonContent = "";
 
         try {
-            jsonContent = FileUtils.readFileToString(new File(getClass().getClassLoader().getResource("dictionary/dictionary.json").getFile()), "UTF-8");
+            // Need to use InputStream, as the JAR executable will have trouble to read from file otherwise
+            InputStream jsonURL = getClass().getResourceAsStream("/dictionary/dictionary.json");
+            StringWriter writer = new StringWriter();
+            IOUtils.copy(jsonURL, writer, "UTF-8");
+            jsonContent = writer.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
