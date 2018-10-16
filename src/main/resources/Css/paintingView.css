@@ -177,3 +177,19 @@
 #greenbutton:hover {
     -fx-background-color: Forestgreen;
 }
+
+#blackbutton {
+    -fx-background-color: black;
+}
+
+#blackbutton:hover {
+    -fx-background-color: #202020;
+}
+
+#canvas {
+    -fx-border-color: mediumpurple;
+    -fx-background-color: white;
+    -fx-border-width: 3;
+
+
+}
