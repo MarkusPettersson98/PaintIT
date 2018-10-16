@@ -166,6 +166,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         for(final TileSlot t: guessTileSlotArray){
            t.addCorrectGuessCss();
         }
+        gameSession.resetTimer();
         startTimer();
         gameSession.incrementTeamStreak();
     }

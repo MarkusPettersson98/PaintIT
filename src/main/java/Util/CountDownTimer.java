@@ -19,16 +19,24 @@ public class CountDownTimer {
      * Instantiates the TimerTasks for the Timer.
      */
     public CountDownTimer(){
-        secondTask = new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(CountDownTimer.this::secondHasPassed);
-            }
-        };
+        //initTimerTask();
+        //initCountDownFinishedTask();
+    }
+
+    private void initCountDownFinishedTask() {
         countDownFinishedTask = new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(CountDownTimer.this::countDownFinished);
+            }
+        };
+    }
+
+    private void initTimerTask() {
+        secondTask = new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(CountDownTimer.this::secondHasPassed);
             }
         };
     }
@@ -38,11 +46,17 @@ public class CountDownTimer {
      *@param countDownUser the observer that gets notified when a second has passed.
      */
     public void startCountDown(int sec,CountDownUser countDownUser){
+        initTimerTask();
+        initCountDownFinishedTask();
         this.countDownUser = countDownUser;
         timer = new Timer();
         secondsLeft = sec;
         timer.scheduleAtFixedRate(secondTask,1000,1000);
         timer.schedule(countDownFinishedTask,sec*1000);
+    }
+
+    public void resetTimer() {
+        timer.cancel();
     }
     /** Notifies observer when the timer has finished
      *

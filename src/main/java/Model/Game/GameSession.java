@@ -39,6 +39,10 @@ public class GameSession {
         gameOver = false;
     }
 
+    public void resetTimer() {
+        countDownTimer.resetTimer();
+    }
+
     public Pane getCurrentPane() { return topController.getCurrentView(); }
 
     /**

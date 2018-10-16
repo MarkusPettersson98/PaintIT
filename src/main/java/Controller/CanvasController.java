@@ -44,7 +44,7 @@ public class CanvasController {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
         setupTools();
-        setCurrentTool("Brush");
+        setCurrentTool(Brush.class.getSimpleName());
     }
 
     /**
