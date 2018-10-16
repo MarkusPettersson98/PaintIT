@@ -24,9 +24,6 @@ public class TopController {
 
     public TopController(List<GameScreen> gameScreens) {
         for(GameScreen gameScreen : gameScreens) {
-
-            System.out.println(gameScreen.getClass().getSimpleName());
-
             applicationPanes.put(gameScreen.getClass().getSimpleName(), gameScreen);
         }
     }
