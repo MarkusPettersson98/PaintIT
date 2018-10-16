@@ -76,6 +76,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
         setupButton(EraserToggleButton, Eraser.class.getSimpleName());
 
         group.selectedToggleProperty().addListener(e -> {
+            if((ToggleButton) group.getSelectedToggle()==null) {
+                return;
+            }
             ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
             canvasController.setCurrentTool(selectedButton.getText());
             colorPicker.setValue(canvasController.getToolColor());

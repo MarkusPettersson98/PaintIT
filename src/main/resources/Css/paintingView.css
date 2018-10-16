@@ -144,3 +144,7 @@
      -fx-font-size: 15;
 }
 
+#body {
+    -fx-background-color:
+            radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50%, reflect, blue, red 75%, green)
+}
