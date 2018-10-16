@@ -1,8 +1,8 @@
 package Views;
 
-import Canvas.CanvasView;
+import Views.Components.CanvasView;
 import Model.Game.GameSession;
-import ViewObjects.TileBoardView;
+import Views.Components.TileBoardView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;

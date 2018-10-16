@@ -1,6 +1,6 @@
 package Model.Game;
 
-import Canvas.CanvasView;
+import Views.Components.CanvasView;
 import Model.WordAndGuess.GuessLogic;
 import Model.WordAndGuess.Word;
 import lombok.Getter;

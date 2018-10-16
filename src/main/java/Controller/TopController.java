@@ -1,6 +1,7 @@
-package com.PaintIT.app;
+package Controller;
 
 import Views.GameScreen;
+import com.PaintIT.app.App;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
 

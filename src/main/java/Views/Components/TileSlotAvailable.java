@@ -1,4 +1,4 @@
-package ViewObjects;
+package Views.Components;
 
 import Model.WordAndGuess.Tile;
 /**

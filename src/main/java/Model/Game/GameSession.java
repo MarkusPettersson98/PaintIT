@@ -1,6 +1,6 @@
 package Model.Game;
 
-import Canvas.CanvasView;
+import Views.Components.CanvasView;
 import Util.CountDownTimer;
 import Util.CountDownUser;
 import Util.Observer;
@@ -8,7 +8,7 @@ import Util.ViewFactory;
 import Views.GameScreen;
 import Model.WordAndGuess.Tile;
 import Model.WordAndGuess.Word;
-import com.PaintIT.app.TopController;
+import Controller.TopController;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;
 

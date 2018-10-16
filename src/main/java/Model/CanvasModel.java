@@ -1,7 +1,7 @@
 package Model;
 
-import Canvas.CanvasView;
-import Canvas.ColorPoint;
+import Views.Components.CanvasView;
+import Util.ColorPoint;
 import Util.Observable;
 import Util.Observer;
 import javafx.scene.paint.Color;

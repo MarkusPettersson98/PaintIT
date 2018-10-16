@@ -1,4 +1,4 @@
-package Canvas;
+package Views.Components;
 
 import Model.CanvasModel;
 import Util.Observer;

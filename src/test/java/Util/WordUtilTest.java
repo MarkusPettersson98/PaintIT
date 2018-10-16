@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class GeneralUtilTest {
+public class WordUtilTest {
 
     @Test
     public void charArrayListToStringTest(){
@@ -18,7 +18,7 @@ public class GeneralUtilTest {
         characterList.add('n');
         characterList.add('d');
 
-        assertTrue(GeneralUtil.charArrayListToString(characterList).equals("bond"));
+        assertTrue(WordUtil.charArrayListToString(characterList).equals("bond"));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class GeneralUtilTest {
         tileList.add(new Tile('e',1));
         tileList.add(new Tile('y',2));
 
-        assertTrue(GeneralUtil.tileListToString(tileList).equals("hey"));
+        assertTrue(WordUtil.tileListToString(tileList).equals("hey"));
     }
 
     @Test
@@ -39,6 +39,6 @@ public class GeneralUtilTest {
         tiles[2] = new Tile('v',2);
         tiles[3] = new Tile('a',3);
 
-        assertTrue(GeneralUtil.tileArrayToString(tiles).equals("java"));
+        assertTrue(WordUtil.tileArrayToString(tiles).equals("java"));
     }
 }

@@ -1,5 +1,6 @@
-package Canvas;
+package Util;
 
+import Views.Components.CanvasView;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 

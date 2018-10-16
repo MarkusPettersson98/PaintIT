@@ -1,6 +1,6 @@
 package Tools;
 
-import Controllers.CanvasController;
+import Controller.CanvasController;
 import Model.Tools.Brush;
 import org.junit.Before;
 import org.junit.Test;

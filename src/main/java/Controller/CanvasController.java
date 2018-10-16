@@ -1,7 +1,7 @@
-package Controllers;
+package Controller;
 
-import Canvas.CanvasView;
-import Canvas.ColorPoint;
+import Views.Components.CanvasView;
+import Util.ColorPoint;
 import Model.CanvasModel;
 import Model.Tools.Brush;
 import Model.Tools.Eraser;

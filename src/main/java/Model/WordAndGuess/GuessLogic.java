@@ -2,7 +2,7 @@ package Model.WordAndGuess;
 
 import Util.Observable;
 import Util.Observer;
-import Util.GeneralUtil;
+import Util.WordUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class GuessLogic implements Observable {
     }
 
     public String getGuessString(){
-        return  GeneralUtil.tileArrayToString(guessWord);
+        return  WordUtil.tileArrayToString(guessWord);
     }
 
 
@@ -110,7 +110,7 @@ public class GuessLogic implements Observable {
      * @return True if guess was correct
      */
     public boolean guessCurrentWord(){
-        String guessWord = GeneralUtil.tileArrayToString(this.guessWord);
+        String guessWord = WordUtil.tileArrayToString(this.guessWord);
         if(guessWord.toLowerCase().equals(currentWord.toLowerCase())){
             return true;
         }
