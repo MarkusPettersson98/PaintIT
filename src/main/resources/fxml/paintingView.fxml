@@ -54,8 +54,8 @@
       <Button fx:id="undoBtn" layoutX="294.0" layoutY="614.0" mnemonicParsing="false" prefWidth="76.0" styleClass="button-functions" text="Undo" AnchorPane.leftAnchor="545.0" AnchorPane.topAnchor="620.0" />
       <Button fx:id="doneBtn" layoutX="1099.0" layoutY="628.0" mnemonicParsing="false" styleClass="button-done" text="DONE" textFill="WHITE" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="560.0" />
       <Label layoutX="29.0" layoutY="581.0" styleClass="text-information" text="You are supposed to draw:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="520.0" />
-      <ToggleButton fx:id="redToggleBtn" layoutX="751.0" layoutY="540.0" mnemonicParsing="false" text="RED" />
-      <ToggleButton fx:id="blueToggleBtn" layoutX="904.0" layoutY="540.0" mnemonicParsing="false" text="BLUE" />
-      <ToggleButton fx:id="greenToggleBtn" layoutX="823.0" layoutY="540.0" mnemonicParsing="false" text="GREEN" />
+      <ToggleButton fx:id="redToggleBtn" layoutX="820.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: red;" />
+      <ToggleButton fx:id="blueToggleBtn" layoutX="916.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: blue;" />
+      <ToggleButton fx:id="greenToggleBtn" layoutX="868.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: green;" />
    </children>
 </fx:root>
