@@ -148,3 +148,48 @@
     -fx-background-color:
             radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50%, reflect, blue, red 75%, green)
 }
+
+.colorbutton {
+    -fx-border-color: black;
+    -fx-curson: HAND;
+}
+
+#redbutton {
+    -fx-background-color: red;
+}
+
+#redbutton:hover {
+    -fx-background-color: firebrick;
+}
+
+#bluebutton {
+    -fx-background-color: blue;
+}
+
+#bluebutton:hover {
+    -fx-background-color: mediumblue;
+}
+
+#greenbutton {
+    -fx-background-color: green;
+}
+
+#greenbutton:hover {
+    -fx-background-color: Forestgreen;
+}
+
+#blackbutton {
+    -fx-background-color: black;
+}
+
+#blackbutton:hover {
+    -fx-background-color: #202020;
+}
+
+#canvas {
+    -fx-border-color: mediumpurple;
+    -fx-background-color: white;
+    -fx-border-width: 3;
+
+
+}
