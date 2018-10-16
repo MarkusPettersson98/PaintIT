@@ -7,16 +7,6 @@
     },
 
     {
-      "word": "Robot",
-      "difficulty_level": "MEDIUM"
-    },
-
-    {
-      "word": "Crowd",
-      "difficulty_level": "HARD"
-    },
-
-    {
       "word": "Dog",
       "difficulty_level": "EASY"
     },
@@ -29,6 +19,120 @@
     {
       "word": "Star",
       "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Hand",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Toe",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Hair",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "TV",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Knife",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Cloud",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Window",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Door",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Pill",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Glasses",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Book",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Bed",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Robot",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Chair",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Banana",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Piano",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Guitar",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Disc",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Orange",
+      "difficulty_level": "MEDIUM"
+    },
+
+    {
+      "word": "Phone",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Computer",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Apple",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "USA",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Crown",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Clown",
+      "difficulty_level": "HARD"
     }
   ]
 }
