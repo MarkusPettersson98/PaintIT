@@ -148,3 +148,12 @@
     -fx-background-color:
             radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50%, reflect, blue, red 75%, green)
 }
+
+.colorbutton {
+    -fx-border-color: black;
+}
+
+.colorbutton:hover {
+    -fx-cursor: HAND;
+    -fx-opacity: 0.85;
+}

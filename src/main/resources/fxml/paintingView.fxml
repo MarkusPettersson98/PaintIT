@@ -34,7 +34,7 @@
          </children>
       </Pane>
       <Label fx:id="currentWordLbl" alignment="CENTER" layoutX="30.0" layoutY="615.0" styleClass="text-wordToGuess" text="Aron" textAlignment="CENTER" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="560.0" />
-      <HBox fx:id="hbox" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white; -fx-border-color: blueviolet; -fx-border-width: 3;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="5.0">
+      <HBox fx:id="hbox" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white; -fx-border-color: mediumpurple; -fx-border-width: 3;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="5.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets></HBox>
@@ -54,8 +54,8 @@
       <Button fx:id="undoBtn" layoutX="294.0" layoutY="614.0" mnemonicParsing="false" prefWidth="76.0" styleClass="button-functions" text="Undo" AnchorPane.leftAnchor="545.0" AnchorPane.topAnchor="620.0" />
       <Button fx:id="doneBtn" layoutX="1099.0" layoutY="628.0" mnemonicParsing="false" styleClass="button-done" text="DONE" textFill="WHITE" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="560.0" />
       <Label layoutX="29.0" layoutY="581.0" styleClass="text-information" text="You are supposed to draw:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="520.0" />
-      <ToggleButton fx:id="redToggleBtn" layoutX="820.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: red;" />
-      <ToggleButton fx:id="blueToggleBtn" layoutX="916.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: blue;" />
-      <ToggleButton fx:id="greenToggleBtn" layoutX="868.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: green;" />
+      <ToggleButton fx:id="redToggleBtn" layoutX="820.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: red;" styleClass="colorbutton" />
+      <ToggleButton fx:id="blueToggleBtn" layoutX="916.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: blue;" styleClass="colorbutton" />
+      <ToggleButton fx:id="greenToggleBtn" layoutX="868.0" layoutY="520.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: green;" styleClass="colorbutton" />
    </children>
 </fx:root>
