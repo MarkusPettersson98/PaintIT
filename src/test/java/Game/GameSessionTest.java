@@ -22,7 +22,7 @@ public class GameSessionTest extends ApplicationTest {
     @Test
     public void testGetTeamName (){
         String teamName = gameSession.getTeamName();
-        assertTrue(teamName.equals("There's no team!"));
+        assertTrue("There's no team!".equals(teamName));
     }
 
     @Test

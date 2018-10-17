@@ -32,7 +32,7 @@ public class TileBoardController {
     }
 
     public void handleKeyCode(String keyCode) {
-        if (keyCode.equals("BACK_SPACE")){
+        if ("BACK_SPACE".equals(keyCode)){
             removeRightMostTileFromGuess();
             return;
         }

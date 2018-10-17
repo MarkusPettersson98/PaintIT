@@ -159,7 +159,7 @@
 }
 
 #redbutton:hover {
-    -fx-background-color: firebrick;
+    -fx-background-color: #ff4c4c;
 }
 
 #bluebutton {
@@ -167,7 +167,7 @@
 }
 
 #bluebutton:hover {
-    -fx-background-color: mediumblue;
+    -fx-background-color: #4c4cff;
 }
 
 #greenbutton {
@@ -175,7 +175,7 @@
 }
 
 #greenbutton:hover {
-    -fx-background-color: Forestgreen;
+    -fx-background-color: #4ca64c;
 }
 
 #blackbutton {
@@ -186,10 +186,40 @@
     -fx-background-color: #202020;
 }
 
+#whitebutton {
+    -fx-background-color: white;
+}
+
+#whitebutton:hover {
+    -fx-background-color: #e5e5e5;
+}
+
+#beigebutton {
+    -fx-background-color: #ffe0bd;
+}
+
+#beigebutton:hover {
+    -fx-background-color: #ffecd7;
+}
+
+#yellowbutton {
+    -fx-background-color: yellow;
+}
+
+#yellowbutton:hover {
+    -fx-background-color: #ffff66;
+}
+
+#greybutton {
+    -fx-background-color: grey;
+}
+
+#greybutton:hover {
+    -fx-background-color: #a6a6a6;
+}
+
 #canvas {
     -fx-border-color: mediumpurple;
     -fx-background-color: white;
     -fx-border-width: 3;
-
-
 }
