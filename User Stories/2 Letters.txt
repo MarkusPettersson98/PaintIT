@@ -1,0 +1,14 @@
+﻿# User story 
+
+Story Identifier: STK002
+Story Name: Guess Tiles
+
+## Description
+As a guesser in the game I need to receive tiles to make a guess from so that the guess is a bit easier.
+
+## Confirmation
+
+- Can I build the correct word with the given letters?
+- Are the tiles easy to see and choose from?
+- Can I see which Tiles that are included in my guess?
+- Can I only use a guess tile once in my guess?

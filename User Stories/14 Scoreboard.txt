@@ -1,0 +1,16 @@
+﻿# User stories
+
+Story Identifier: STK014
+Story Name: Scoreboard
+
+
+## Description 
+
+As a competitive player, I want to be able to see all best scores on a scoreboard so that I can compete with them.
+
+## Confirmation
+
+
+- Can I keep track of my score while the game progresses?
+- Can I see other players highscores.
+- Can I get on to the Scoreboard if I make a good score?

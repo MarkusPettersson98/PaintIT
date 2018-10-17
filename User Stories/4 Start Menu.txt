@@ -1,0 +1,14 @@
+﻿# User stories
+
+Story Identifier: STK004
+Story Name: StartMenu
+
+
+## Description 
+
+As a player, I want to be greated by a startmenu when I start the game so that I can start playing easily.
+
+## Confirmation
+
+- Is a startmenu shown when the application starts?
+- Does the startmenu direct the player so that he can start the game?

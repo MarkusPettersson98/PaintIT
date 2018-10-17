@@ -1,7 +1,7 @@
 # User story 
 
 
-Story Identifier: STKXXX
+Story Identifier: <STK010>
 Story Name: Undo on the Canvas.
 
 ## Description 

@@ -1,0 +1,16 @@
+﻿# User story 
+
+Story Identifier: STK016
+Story Name: Hints
+
+
+## Description 
+
+As a player, I need to be able to get a hint that makes it easier to guess the word drawn so that I dont get stuck.
+
+
+## Confirmation
+
+- Can I reveal one or more letters in the correct word?
+- Can I limit the letters I have to guess from?
+- Is there a consequence/cost for the player getting a hint?

@@ -1,6 +1,6 @@
 ﻿# User story 
 
-Story Identifier: STKXXX
+Story Identifier: STK013
 Story Name: Receive relevant words
 
 

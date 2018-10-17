@@ -1,6 +1,6 @@
 ﻿# User story 
 
-Story Identifier: STK009
+Story Identifier: STK007
 Story Name: Advanced drawing
 
 

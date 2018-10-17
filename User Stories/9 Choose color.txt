@@ -1,6 +1,6 @@
 ﻿# User story 
 
-Story Identifier: <STK010>
+Story Identifier: <STK009>
 Story Name: <Choose Color>
 
 ## Description 
