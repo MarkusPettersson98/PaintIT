@@ -28,4 +28,7 @@ class GameLogic {
     }
     public List<Word> getPossibleWords(){return guessLogic.getPossibleWords();}
 
+    public void newGame() {
+        guessLogic = new GuessLogic();
+    }
 }

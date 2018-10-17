@@ -47,13 +47,15 @@ public class DoneView extends AnchorPane implements GameScreen {
         });
 
         quitGameSessionButton.setOnAction(e->{
-            gameSession.setToGameOver();
             changeToLoserView();
+            gameSession.setToGameOver(true);
+            gameSession.gameOver();
             quitGameSessionButton.setVisible(false);
         });
 
         backToMainMenuButton.setId(ButtonFactory.createMainMenuViewBtnId());
         backToMainMenuButton.setOnAction(e->{
+            gameSession.setToGameOver(false);
             gameSession.show(backToMainMenuButton.getId());
         });
     }
@@ -62,6 +64,10 @@ public class DoneView extends AnchorPane implements GameScreen {
         // Update labels
         if (!gameSession.getGameOver()){
             congratsLbl.setText("You made it!");
+            // ..
+            informationLabel.setText("");
+            doneBtn.setVisible(true);
+            quitGameSessionButton.setVisible(true);
             Integer currentStreak = gameSession.getTeamStreak();
             teamStreakLbl.setText(currentStreak.toString());
             backToMainMenuButton.setVisible(false);

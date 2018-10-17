@@ -15,7 +15,6 @@ public class HighScoreList {
     public HighScoreList(List<Score> highScores) {
         this.highScores = highScores;
         highScoreListIterator = highScores.iterator();
-        System.out.println(getFormattedString());
     }
 
     public HighScoreList add(Score newHighScore) {
@@ -31,10 +30,7 @@ public class HighScoreList {
             put(newHighScore);
         }
 
-        while(highScores.size() > MAX_SCORES) {
-            // Remove last entry in the list!
-            highScores.remove(highScores.size() - 1);
-        }
+        trim();
 
         return new HighScoreList(highScores);
     }
@@ -45,6 +41,12 @@ public class HighScoreList {
         Collections.sort(highScores);
     }
 
+    public void trim() {
+        while(highScores.size() > MAX_SCORES) {
+            // Remove last entry in the list!
+            highScores.remove(highScores.size() - 1);
+        }
+    }
 
     public boolean compareScore(Score score) {
         for(Score highScore : highScores) {

@@ -159,12 +159,18 @@ public class GameSession {
     /**
      * Sets {@link GameSession#gameOver} to true, which means that they have lost or quit the game session.
      */
-    public void setToGameOver(){
-        gameOver = true;
+    public void setToGameOver(boolean gameState){
+        // Mark that current game session is over!
+        gameOver = gameState;
     }
 
     public void gameOver() {
-        // Game over, save team's streak if necessary,
+        // Game over, save team's streak if necessary
+        saveScore();
+        // Reset words
+        gameLogic.newGame();
+        // Remove current team
+        team = null;
     }
 
     public void newTurn() {
