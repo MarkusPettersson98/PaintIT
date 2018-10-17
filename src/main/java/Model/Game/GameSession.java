@@ -28,7 +28,7 @@ import java.util.Scanner;
 public class GameSession {
 
     private Team team;
-    private String highScoreUrl = "/persistent_data/highscores.txt";
+    private String highScoreUrl = "highscores.txt";
 
     private final GameLogic gameLogic;
     private final TopController topController;
@@ -44,8 +44,22 @@ public class GameSession {
         List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
         countDownTimer = new CountDownTimer();
-        getHighScores();
+        setupHighScores();
         gameOver = false;
+    }
+
+    private void setupHighScores() {
+        // Check if highscores.txt exists or not. If not, create it!
+        File file = new File(highScoreUrl);
+        try {
+            if (file.createNewFile()) {
+                System.out.println("Created new high score file!");
+            } else {
+                System.out.println("Did not create new high score file.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void resetTimer() {
@@ -164,9 +178,9 @@ public class GameSession {
         List<Score> highScores = new ArrayList<>();
         // Prepare to read from backend
         try {
-            String highScorePath = getClass().getResource(highScoreUrl).getFile();
+            String highScorePath = highScoreUrl;
             Scanner sc = new Scanner(new File(highScorePath));
-            System.out.println(sc.hasNextLine());
+
             while(sc.hasNextLine()) {
                 // A line is formatted as "teamName:streak"
                 String currentWord = sc.nextLine();
@@ -192,7 +206,6 @@ public class GameSession {
 
     public void saveScore() {
         // only save if there is a team registered!
-
         if (team != null) {
             // Get current streak
             Score currentScore = new Score(team.getTeamName(), team.getStreak());
@@ -202,10 +215,9 @@ public class GameSession {
             HighScoreList newHighScores = highScoreList.add(currentScore);
 
             String highScoreListString = newHighScores.getFormattedString();
-            // String formattedScore = currentScore.getFormattedScore();
             try {
+                String highScorePath = highScoreUrl;
                 // Write the updates list to backend!
-                String highScorePath = getClass().getResource(highScoreUrl).getFile();
                 Files.write(Paths.get(highScorePath), (highScoreListString).getBytes(), StandardOpenOption.WRITE);
             } catch (IOException e) {
                 e.printStackTrace();

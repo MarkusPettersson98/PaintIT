@@ -1,3 +1,6 @@
+# Project specific files used for debugging
+highscores.txt
+
 # Compiled class file
 *.class
 
