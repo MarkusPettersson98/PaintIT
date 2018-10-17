@@ -38,9 +38,9 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></HBox>
-      <ToolBar layoutX="302.0" layoutY="548.0" prefHeight="66.0" prefWidth="453.0" style="-fx-background-color: 0;" AnchorPane.leftAnchor="302.0" AnchorPane.topAnchor="548.0">
+      <ToolBar layoutX="546.0" layoutY="531.0" orientation="VERTICAL" prefHeight="169.0" prefWidth="189.0" style="-fx-background-color: 0;" AnchorPane.leftAnchor="546.0" AnchorPane.topAnchor="531.0">
          <items>
-            <ToggleButton fx:id="BrushToggleButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="137.0" styleClass="button-tools">
+            <ToggleButton fx:id="BrushToggleButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="152.0" styleClass="button-tools" text="Brush">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +48,7 @@
                      </image>
                   </ImageView>
                </graphic></ToggleButton>
-            <ToggleButton fx:id="SprayCanToggleButton" ellipsisString="" mnemonicParsing="false" prefHeight="42.0" prefWidth="153.0" styleClass="button-tools" textOverrun="CLIP">
+            <ToggleButton fx:id="SprayCanToggleButton" ellipsisString="" mnemonicParsing="false" prefHeight="42.0" prefWidth="153.0" styleClass="button-tools" text="SprayCan" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -56,7 +56,7 @@
                      </image>
                   </ImageView>
                </graphic></ToggleButton>
-            <ToggleButton fx:id="EraserToggleButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="118.0" styleClass="button-tools">
+            <ToggleButton fx:id="EraserToggleButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="151.0" styleClass="button-tools" text="Eraser">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,17 +71,17 @@
             <Cursor fx:constant="HAND" />
          </cursor></ColorPicker>
       <Slider fx:id="radiusSlider" blockIncrement="2.5" layoutX="745.0" layoutY="653.0" majorTickUnit="10.0" max="40.0" minorTickCount="5" prefHeight="75.0" prefWidth="205.0" showTickLabels="true" value="5.0" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="653.0" />
-      <Button fx:id="clearBtn" layoutX="294.0" layoutY="580.0" mnemonicParsing="false" styleClass="button-functions" text="Clear" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="620.0" />
-      <Button fx:id="undoBtn" layoutX="294.0" layoutY="614.0" mnemonicParsing="false" prefWidth="76.0" styleClass="button-functions" text="Undo" AnchorPane.leftAnchor="545.0" AnchorPane.topAnchor="620.0" />
+      <Button fx:id="clearBtn" layoutX="438.0" layoutY="619.0" mnemonicParsing="false" styleClass="button-functions" text="Clear" AnchorPane.leftAnchor="438.0" AnchorPane.topAnchor="619.0" />
+      <Button fx:id="undoBtn" layoutX="439.0" layoutY="561.0" mnemonicParsing="false" prefWidth="76.0" styleClass="button-functions" text="Undo" AnchorPane.leftAnchor="439.0" AnchorPane.topAnchor="561.0" />
       <Button fx:id="doneBtn" layoutX="1099.0" layoutY="628.0" mnemonicParsing="false" styleClass="button-done" text="DONE" textFill="WHITE" AnchorPane.leftAnchor="1030.0" AnchorPane.topAnchor="560.0" />
       <Label layoutX="29.0" layoutY="581.0" styleClass="text-information" text="You are supposed to draw:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="520.0" />
       <ToggleButton id="blackbutton" fx:id="blackToggleBtn" layoutX="751.0" layoutY="522.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
-      <ToggleButton id="whitebutton" fx:id="whiteToggleBtn" layoutX="751.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
       <ToggleButton id="greybutton" fx:id="greyToggleBtn" layoutX="807.0" layoutY="522.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
-      <ToggleButton id="beigebutton" fx:id="beigeToggleBtn" layoutX="807.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
       <ToggleButton id="greenbutton" fx:id="greenToggleBtn" layoutX="863.0" layoutY="522.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
-      <ToggleButton id="yellowbutton" fx:id="yellowToggleBtn" layoutX="863.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
       <ToggleButton id="bluebutton" fx:id="blueToggleBtn" layoutX="916.0" layoutY="522.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
+      <ToggleButton id="whitebutton" fx:id="whiteToggleBtn" layoutX="751.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
+      <ToggleButton id="beigebutton" fx:id="beigeToggleBtn" layoutX="807.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
+      <ToggleButton id="yellowbutton" fx:id="yellowToggleBtn" layoutX="863.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
       <ToggleButton id="redbutton" fx:id="redToggleBtn" layoutX="916.0" layoutY="567.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" styleClass="colorbutton" />
    </children>
 </fx:root>

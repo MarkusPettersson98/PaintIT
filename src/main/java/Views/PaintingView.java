@@ -78,14 +78,11 @@ public class PaintingView extends AnchorPane implements GameScreen {
         BrushToggleButton.setSelected(true);
         colorPicker.setValue(Color.BLACK);
 
-        setupButton(BrushToggleButton, Brush.class.getSimpleName(), toolToggleGroup);
-        setupButton(SprayCanToggleButton, SprayCan.class.getSimpleName(), toolToggleGroup);
-        setupButton(EraserToggleButton, Eraser.class.getSimpleName(), toolToggleGroup);
+        setupToggleButton(BrushToggleButton, Brush.class.getSimpleName(), toolToggleGroup);
+        setupToggleButton(SprayCanToggleButton, SprayCan.class.getSimpleName(), toolToggleGroup);
+        setupToggleButton(EraserToggleButton, Eraser.class.getSimpleName(), toolToggleGroup);
 
         setupColorButtons();
-
-
-
 
         toolToggleGroup.selectedToggleProperty().addListener(e -> {
             if((ToggleButton) toolToggleGroup.getSelectedToggle()==null) {
@@ -93,7 +90,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
             }
             ToggleButton selectedButton = (ToggleButton) toolToggleGroup.getSelectedToggle();
             canvasController.setCurrentTool(selectedButton.getText());
-            colorPicker.setValue(canvasController.getToolColor());
         });
 
         colorToggleGroup.selectedToggleProperty().addListener(e -> {
@@ -102,6 +98,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
             }
             ToggleButton selectedButton = (ToggleButton) colorToggleGroup.getSelectedToggle();
             changeToolColor(colorButtonMap.get(selectedButton.getId()));
+            canvasController.pushToUndoStack();
         });
 
         colorPicker.setOnAction(e -> {
@@ -166,54 +163,32 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     canvasController.undo();
                     updateUndoBtn();
                     break;
-
-/*                case DIGIT1:
-                    changeToolColor(colorButtonMap.get(blackToggleBtn.getId()));
-                    blackToggleBtn.setSelected(true);
-                    break;
-                case DIGIT2:
-                    changeToolColor(colorButtonMap.get(redToggleBtn.getId()));
-                    redToggleBtn.setSelected(true);
-                    break;
-                case DIGIT3:
-                    changeToolColor(colorButtonMap.get(greenToggleBtn.getId()));
-                    greenToggleBtn.setSelected(true);
-                    break;
-                case DIGIT4:
-                    changeToolColor(colorButtonMap.get(blueToggleBtn.getId()));
-                    blueToggleBtn.setSelected(true);
-                    break;
-                    */
             }
         });
 
         setRadius((int) radiusSlider.getValue());
-
         hideclearPopup();
-
         updateUndoBtn();
     }
 
     private void setupColorButtons() {
-        setupButton(blueToggleBtn, "",colorToggleGroup);
-        setupButton(redToggleBtn, "",colorToggleGroup);
-        setupButton(greenToggleBtn, "",colorToggleGroup);
-        setupButton(blackToggleBtn, "", colorToggleGroup);
+        setupToggleButton(blackToggleBtn, "", colorToggleGroup);
+        setupToggleButton(greyToggleBtn, "", colorToggleGroup);
+        setupToggleButton(greenToggleBtn, "",colorToggleGroup);
+        setupToggleButton(blueToggleBtn, "",colorToggleGroup);
+        setupToggleButton(whiteToggleBtn, "",colorToggleGroup);
+        setupToggleButton(beigeToggleBtn, "",colorToggleGroup);
+        setupToggleButton(yellowToggleBtn, "",colorToggleGroup);
+        setupToggleButton(redToggleBtn, "",colorToggleGroup);
 
-        setupButton(yellowToggleBtn, "",colorToggleGroup);
-        setupButton(whiteToggleBtn, "",colorToggleGroup);
-        setupButton(beigeToggleBtn, "",colorToggleGroup);
-        setupButton(greenToggleBtn, "", colorToggleGroup);
-
-        colorButtonMap.put(yellowToggleBtn.getId(), Color.YELLOW);
+        colorButtonMap.put(blackToggleBtn.getId(),Color.BLACK);
+        colorButtonMap.put(greyToggleBtn.getId(),Color.GREY);
+        colorButtonMap.put(greenToggleBtn.getId(), Color.GREEN);
+        colorButtonMap.put(blueToggleBtn.getId(), Color.BLUE);
         colorButtonMap.put(whiteToggleBtn.getId(), Color.WHITE);
         colorButtonMap.put(beigeToggleBtn.getId(), Color.valueOf("ffe0bd"));
-        colorButtonMap.put(greyToggleBtn.getId(),Color.GREY);
-
-        colorButtonMap.put(blueToggleBtn.getId(), Color.BLUE);
-        colorButtonMap.put(greenToggleBtn.getId(), Color.GREEN);
+        colorButtonMap.put(yellowToggleBtn.getId(), Color.YELLOW);
         colorButtonMap.put(redToggleBtn.getId(), Color.RED);
-        colorButtonMap.put(blackToggleBtn.getId(),Color.BLACK);
     }
 
     private void changeToolColor(Color c) {
@@ -229,7 +204,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         clearPane.setDisable(true);
     }
 
-    private void setupButton(ToggleButton button, String name, ToggleGroup tG) {
+    private void setupToggleButton(ToggleButton button, String name, ToggleGroup tG) {
         button.setText(name);
         button.setToggleGroup(tG);
     }

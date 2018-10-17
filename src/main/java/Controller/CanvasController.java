@@ -178,8 +178,10 @@ public class CanvasController {
      * Is called upon when user has finished drawing a line.
      */
     public void pushToUndoStack() {
-        undoStack.push(new ArrayList<>(undoArrayList));
-        undoArrayList.clear();
+        if(!undoArrayList.isEmpty()) {
+            undoStack.push(new ArrayList<>(undoArrayList));
+            undoArrayList.clear();
+        }
     }
 
     /**
