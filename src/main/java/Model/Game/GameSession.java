@@ -9,6 +9,7 @@ import Views.GameScreen;
 import Model.WordAndGuess.Tile;
 import Model.WordAndGuess.Word;
 import Controller.TopController;
+import Views.HighScoreList;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;
 
@@ -43,7 +44,7 @@ public class GameSession {
         List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         topController = new TopController(gameScreens);
         countDownTimer = new CountDownTimer();
-        loadHighScores();
+        getHighScores();
         gameOver = false;
     }
 
@@ -157,7 +158,7 @@ public class GameSession {
         team.changeDrawer();
     }
 
-    public List<Score> loadHighScores() {
+    public List<Score> getHighScores() {
         // Open file from backend
         // Need to use InputStream, as the JAR executable will have trouble to read from file otherwise
         List<Score> highScores = new ArrayList<>();
@@ -170,18 +171,13 @@ public class GameSession {
                 // A line is formatted as "teamName:streak"
                 String currentWord = sc.nextLine();
 
-                System.out.println("Current word: " + currentWord);
-
                 String[] score = currentWord.split(":");
-                System.out.println(score.length);
                 // Team name is the string before ':' in the parsed line
                 String teamName = score[0];
                 // Streak is the string after ':' in the parsed line
                 int streak = Integer.valueOf(score[1]);
                 // Got our information, create a Score and add it to high score list!
                 Score tmpScore = new Score(teamName, streak);
-
-                System.out.println("Formatted score: " + tmpScore.getTeamName() + ' ' + tmpScore.getStreak());
 
                 highScores.add(tmpScore);
             }
@@ -193,16 +189,23 @@ public class GameSession {
     }
 
     public void saveScore() {
-        // If current team's streak is top 10, save it to text file
+        // Get current streak
         Score currentScore = new Score(team.getTeamName(), team.getStreak());
 
-        // If so, get formatted score, open file writer and append team's current streak to existing database
-        String formattedScore = currentScore.getFormattedScore();
+        HighScoreList highScoreList = new HighScoreList(getHighScores());
+        // Try to add new streak to high score list. add() always returns an updated list
+        HighScoreList newHighScores = highScoreList.add(currentScore);
+
+        String highScoreListString = newHighScores.getFormattedString();
+        // String formattedScore = currentScore.getFormattedScore();
         try {
+            // Write the updates list to backend!
             String highScorePath = getClass().getResource(highScoreUrl).getFile();
-            Files.write(Paths.get(highScorePath), (formattedScore + '\n').getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(highScorePath), (highScoreListString).getBytes(), StandardOpenOption.WRITE);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
 }

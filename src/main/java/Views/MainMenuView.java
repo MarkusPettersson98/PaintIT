@@ -1,6 +1,7 @@
 package Views;
 
 import Model.Game.GameSession;
+import Model.Game.Score;
 import Util.ButtonFactory;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
+import java.util.List;
 
 public class MainMenuView extends AnchorPane implements GameScreen{
 
@@ -33,8 +35,10 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private TextArea teamNameTextArea;
     @FXML private TextArea scoreTextArea;
 
-    public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
+    GameSession gameSession;
 
+    public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
+        this.gameSession = gameSession;
         fxmlLoader.setLocation(getClass().getResource("/fxml/MainMenuView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -57,6 +61,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         });
 
         highScore.setOnAction(e -> {
+            loadHighScoreList();
             showHighScore();
         });
 
@@ -192,6 +197,11 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @Override
     public void init() {
 
+    }
+
+    public void loadHighScoreList() {
+        List<Score> highScoreList = gameSession.getHighScores();
+        new HighScoreList(highScoreList);
     }
 
     @Override
