@@ -175,6 +175,8 @@ public class GameSession {
                 // Team name is the string before ':' in the parsed line
                 String teamName = score[0];
                 // Streak is the string after ':' in the parsed line
+                System.out.println(teamName);
+                System.out.println(score[1]);
                 int streak = Integer.valueOf(score[1]);
                 // Got our information, create a Score and add it to high score list!
                 Score tmpScore = new Score(teamName, streak);

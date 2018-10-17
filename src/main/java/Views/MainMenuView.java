@@ -33,7 +33,6 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private AnchorPane highScoreAnchorPane;
     @FXML private ImageView closeHighScoreImageView;
     @FXML private TextArea teamNameTextArea;
-    @FXML private TextArea scoreTextArea;
 
     GameSession gameSession;
 
@@ -184,6 +183,18 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      * as not visible.
      */
     private void showHighScore (){
+        // Load high scores
+        List<Score> highScores = gameSession.getHighScores();
+        StringBuilder teamScores = new StringBuilder();
+        int index = 0;
+        for(Score score : highScores) {
+            index++;
+            teamScores.append(index + ". " + score.getFormattedScore() + '\n');
+        }
+        // Set text in team name and team streak text area
+        teamNameTextArea.setText(teamScores.toString());
+
+        // Show high score view
         lightBoxAnchorPane.setVisible(true);
         highScoreAnchorPane.setVisible(true);
         mainMenuAnchorPane.setVisible(false);
