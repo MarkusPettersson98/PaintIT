@@ -189,21 +189,25 @@ public class GameSession {
     }
 
     public void saveScore() {
-        // Get current streak
-        Score currentScore = new Score(team.getTeamName(), team.getStreak());
+        // only save if there is a team registered!
 
-        HighScoreList highScoreList = new HighScoreList(getHighScores());
-        // Try to add new streak to high score list. add() always returns an updated list
-        HighScoreList newHighScores = highScoreList.add(currentScore);
+        if (team != null) {
+            // Get current streak
+            Score currentScore = new Score(team.getTeamName(), team.getStreak());
 
-        String highScoreListString = newHighScores.getFormattedString();
-        // String formattedScore = currentScore.getFormattedScore();
-        try {
-            // Write the updates list to backend!
-            String highScorePath = getClass().getResource(highScoreUrl).getFile();
-            Files.write(Paths.get(highScorePath), (highScoreListString).getBytes(), StandardOpenOption.WRITE);
-        } catch (IOException e) {
-            e.printStackTrace();
+            HighScoreList highScoreList = new HighScoreList(getHighScores());
+            // Try to add new streak to high score list. add() always returns an updated list
+            HighScoreList newHighScores = highScoreList.add(currentScore);
+
+            String highScoreListString = newHighScores.getFormattedString();
+            // String formattedScore = currentScore.getFormattedScore();
+            try {
+                // Write the updates list to backend!
+                String highScorePath = getClass().getResource(highScoreUrl).getFile();
+                Files.write(Paths.get(highScorePath), (highScoreListString).getBytes(), StandardOpenOption.WRITE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
