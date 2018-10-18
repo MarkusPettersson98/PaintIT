@@ -1,6 +1,6 @@
 package Util;
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Views.*;
 
 /**

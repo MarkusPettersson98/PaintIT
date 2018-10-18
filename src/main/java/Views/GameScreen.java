@@ -1,6 +1,6 @@
 package Views;
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import javafx.scene.layout.Pane;
 
 /**

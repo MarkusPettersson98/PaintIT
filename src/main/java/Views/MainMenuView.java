@@ -1,6 +1,6 @@
 package Views;
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Model.Game.Score;
 import Util.ButtonFactory;
 import javafx.event.Event;

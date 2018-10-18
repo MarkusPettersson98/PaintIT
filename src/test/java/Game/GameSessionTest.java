@@ -1,6 +1,6 @@
 package Game;
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Model.Game.Team;
 import Views.MainMenuView;
 import org.junit.Before;

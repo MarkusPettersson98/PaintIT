@@ -1,4 +1,4 @@
-package Model.Game;
+package Controller;
 
 import Views.Components.CanvasView;
 import Model.WordAndGuess.GuessLogic;

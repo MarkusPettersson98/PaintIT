@@ -1,6 +1,6 @@
 package Views;
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;

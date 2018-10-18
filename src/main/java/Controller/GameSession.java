@@ -1,5 +1,7 @@
-package Model.Game;
+package Controller;
 
+import Model.Game.Score;
+import Model.Game.Team;
 import Views.Components.CanvasView;
 import Util.CountDownTimer;
 import Util.CountDownUser;
@@ -8,7 +10,6 @@ import Util.ViewFactory;
 import Views.GameScreen;
 import Model.WordAndGuess.Tile;
 import Model.WordAndGuess.Word;
-import Controller.TopController;
 import Views.HighScoreList;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;

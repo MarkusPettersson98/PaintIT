@@ -1,6 +1,6 @@
 package Views;
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Model.Tools.Brush;
 import Model.Tools.Eraser;
 import Model.Tools.SprayCan;

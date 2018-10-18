@@ -1,7 +1,7 @@
 package Views.Components;
 
 import Controller.TileBoardController;
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Util.CountDownUser;
 import Util.Observer;
 import Util.ButtonFactory;

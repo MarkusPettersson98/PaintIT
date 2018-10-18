@@ -1,7 +1,7 @@
 package Views;
 
 import Views.Components.CanvasView;
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Views.Components.TileBoardView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

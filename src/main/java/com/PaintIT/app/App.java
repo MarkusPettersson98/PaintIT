@@ -1,7 +1,7 @@
 package com.PaintIT.app;
 
 
-import Model.Game.GameSession;
+import Controller.GameSession;
 import Views.MainMenuView;
 import javafx.application.Application;
 import javafx.scene.Scene;
