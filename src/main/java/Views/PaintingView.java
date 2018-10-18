@@ -111,7 +111,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         undoBtn.setOnAction(e -> {
             canvasController.undo();
-            updateUndoBtn();
+            updateUndoClearBtn();
         });
 
         yesClearBtn.setOnAction(e -> {
@@ -161,14 +161,14 @@ public class PaintingView extends AnchorPane implements GameScreen {
                 case U:
                 case BACK_SPACE:
                     canvasController.undo();
-                    updateUndoBtn();
+                    updateUndoClearBtn();
                     break;
             }
         });
 
         setRadius((int) radiusSlider.getValue());
         hideclearPopup();
-        updateUndoBtn();
+        updateUndoClearBtn();
     }
 
     private void setupColorButtons() {
@@ -214,7 +214,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvasController.redrawCanvasView();
 
         hideclearPopup();
-        updateUndoBtn();
+        updateUndoClearBtn();
     }
 
 
@@ -243,7 +243,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();
             // For every push to the stack, we check if the stack is empty and changes the undoBTN accordingly.
-            updateUndoBtn();
+            updateUndoClearBtn();
         });
 
     }
@@ -258,11 +258,13 @@ public class PaintingView extends AnchorPane implements GameScreen {
         gameSession.setCurrentPainting(viewableCanvasView);
     }
 
-    private void updateUndoBtn() {
+    private void updateUndoClearBtn() {
         if(canvasController.isUndoAvailable()){
             undoBtn.setDisable(false);
+            clearBtn.setDisable(false);
         }else{
             undoBtn.setDisable(true);
+            clearBtn.setDisable(true);
         }
     }
 
