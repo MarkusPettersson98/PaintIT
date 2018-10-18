@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Util.ButtonFactory;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -25,10 +25,10 @@ public class WordRevealView extends AnchorPane implements GameScreen{
     private int secondsleft;
     private final int COUNTDOWNSTARTVALUE = 30;
 
-    private GameSession gameSession;
+    private TopController topController;
 
-    public WordRevealView (FXMLLoader fxmlLoader, GameSession gameSession){
-        this.gameSession = gameSession;
+    public WordRevealView (FXMLLoader fxmlLoader, TopController topController){
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/WordRevealView.fxml"));
         fxmlLoader.setRoot(this);
@@ -43,7 +43,7 @@ public class WordRevealView extends AnchorPane implements GameScreen{
         revealNowButton.setId(ButtonFactory.createChooseWordViewBtnId());
         revealNowButton.setOnAction(e -> {
             timer.cancel();
-            gameSession.show(revealNowButton.getId());
+            topController.show(revealNowButton.getId());
 
         });
     }
@@ -79,12 +79,12 @@ public class WordRevealView extends AnchorPane implements GameScreen{
     @Override
     public void init() {
         // Generate word to guess
-        gameSession.newTurn();
+        topController.newTurn();
         // Start countdown
         setTimer(COUNTDOWNSTARTVALUE);
         startTimer();
         // Update player labels
-        setPlayerNameLabels(gameSession.getDrawerName(), gameSession.getGuesserName());
+        setPlayerNameLabels(topController.getDrawerName(), topController.getGuesserName());
     }
 
     private void setPlayerNameLabels(String drawer, String guesser) {

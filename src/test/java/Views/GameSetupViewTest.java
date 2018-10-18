@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -10,7 +10,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 public class GameSetupViewTest extends ApplicationTest{
 
-    GameSession gameSession;
+    TopController topController;
     Scene scene;
     Label playerOneWrongLabel;
     Label playerTwoWrongLabel;
@@ -22,11 +22,11 @@ public class GameSetupViewTest extends ApplicationTest{
 
     @Override
     public void start (Stage stage){
-        gameSession = new GameSession();
+        topController = new TopController();
 
-        scene = new Scene(gameSession.getCurrentPane());
+        scene = new Scene(topController.getCurrentPane());
 
-        gameSession.show(GameSetupView.class.getSimpleName());
+        topController.show(GameSetupView.class.getSimpleName());
         stage.setScene(scene);
         stage.show();
 
@@ -42,8 +42,8 @@ public class GameSetupViewTest extends ApplicationTest{
         clickOn("#player2TextField");
         write("Test Two");
         clickOn(".button-play");
-        System.out.println(gameSession.getTeamName());
-        assert (gameSession.getTeamName().equals("Test One and Test Two"));
+        System.out.println(topController.getTeamName());
+        assert (topController.getTeamName().equals("Test One and Test Two"));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class GameSetupViewTest extends ApplicationTest{
         clickOn("#player2TextField");
         write("Test Two");
         clickOn(".button-play");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("WordRevealView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("WordRevealView"));
     }
 
     @Test
@@ -77,6 +77,6 @@ public class GameSetupViewTest extends ApplicationTest{
     @Test
     public void backButtonPressedTest (){
         clickOn(".button-mainMenu");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("MainMenuView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("MainMenuView"));
     }
 }

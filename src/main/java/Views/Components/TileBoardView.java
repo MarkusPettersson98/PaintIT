@@ -1,7 +1,7 @@
 package Views.Components;
 
 import Controller.TileBoardController;
-import Controller.GameSession;
+import Controller.TopController;
 import Util.CountDownUser;
 import Util.Observer;
 import Util.ButtonFactory;
@@ -33,7 +33,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     Label countDownLbl;
 
     private TileSlot[] availableTileSlotArray;
-    private final GameSession gameSession;
+    private final TopController topController;
     private TileBoardController tileBoardController;
     private TileSlot[] guessTileSlotArray;
     private static final int guessTime = 30;
@@ -43,8 +43,8 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     /** Loads itself from it´s fxml file, and instansiates the tiles that visualises the guess from the backend.
      * Further, allows for player to use keyboard to guess.
      */
-    public TileBoardView(final GameSession gameSession) {
-        this.gameSession = gameSession;
+    public TileBoardView(final TopController topController) {
+        this.topController = topController;
         initFXML();
         initTiles();
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
@@ -53,7 +53,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         initCountDown();
     }
     private void initCountDown(){
-        gameSession.startCountDown(guessTime,this);
+        topController.startCountDown(guessTime,this);
         countDownLbl.setText("    " + guessTime);
     }
     private void initFXML(){
@@ -69,21 +69,21 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     }
 
     private void initTiles(){
-        availableTileSlotArray =  new TileSlot[gameSession.getAvailableTiles().length];
-        guessTileSlotArray = new TileSlot[gameSession.getCurrentWord().getWord().length()];
-        createAvailableTileSlots(gameSession.getAvailableTiles());
+        availableTileSlotArray =  new TileSlot[topController.getAvailableTiles().length];
+        guessTileSlotArray = new TileSlot[topController.getCurrentWord().getWord().length()];
+        createAvailableTileSlots(topController.getAvailableTiles());
 
         createEmptyTileSlots();
 
-        tileBoardController = new TileBoardController(gameSession.getGuessLogic());
+        tileBoardController = new TileBoardController(topController.getGuessLogic());
         setActionListeners();
-        gameSession.addGuessLogicObservers(this);
+        topController.addGuessLogicObservers(this);
         update();
 
     }
 
     private void createEmptyTileSlots(){
-        for(int i = 0; i < gameSession.getCurrentWord().getWord().length(); i++){
+        for(int i = 0; i < topController.getCurrentWord().getWord().length(); i++){
             guessTileSlotArray[i] = new TileSlotGuess();
         }
         hBoxTop.getChildren().add(getGuessTileOffset());
@@ -144,7 +144,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         }
     }
     private boolean isGuessComplete(){
-        for(final Tile t: gameSession.getGuessWord()){
+        for(final Tile t: topController.getGuessWord()){
             if(t == null){
                 return false;
             }
@@ -153,7 +153,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     }
 
     private void checkIfCorrectGuess(){
-        if(gameSession.guessCurrentWord()){
+        if(topController.guessCurrentWord()){
             handleCorrectGuess();
         }else{
             handleIncorrectGuess();
@@ -166,9 +166,9 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         for(final TileSlot t: guessTileSlotArray){
            t.addCorrectGuessCss();
         }
-        gameSession.resetTimer();
+        topController.resetTimer();
         startTimer();
-        gameSession.incrementTeamStreak();
+        topController.incrementTeamStreak();
     }
     /** This method handles a correct Guess - makes all the Tiles Red
      */
@@ -184,7 +184,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     }
     private void updateGuessTileSlots(){
         int count = 0;
-        for(final Tile t: gameSession.getGuessWord()){
+        for(final Tile t: topController.getGuessWord()){
             guessTileSlotArray[count].setTile(t);
             guessTileSlotArray[count].update();
             count++;
@@ -203,7 +203,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     }
 
     public void changeToDoneView(){
-        gameSession.show(ButtonFactory.createDoneViewBtnId());
+        topController.show(ButtonFactory.createDoneViewBtnId());
     }
 
     @Override

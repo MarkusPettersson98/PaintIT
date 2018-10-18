@@ -1,6 +1,4 @@
-package Views;
-
-import Model.Game.Score;
+package Model.Game;
 
 import java.util.Collections;
 import java.util.Iterator;

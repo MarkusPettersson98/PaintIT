@@ -1,6 +1,7 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
+import Model.Game.HighScoreList;
 import Model.Game.Score;
 import Util.ButtonFactory;
 import javafx.event.Event;
@@ -34,10 +35,10 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private ImageView closeHighScoreImageView;
     @FXML private TextArea teamNameTextArea;
 
-    GameSession gameSession;
+    TopController topController;
 
-    public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
-        this.gameSession = gameSession;
+    public MainMenuView (FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
         fxmlLoader.setLocation(getClass().getResource("/fxml/MainMenuView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -52,7 +53,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
 
         play.setId(ButtonFactory.createGameSetupViewBtnId());
         play.setOnAction(e -> {
-            gameSession.show(play.getId());
+            topController.show(play.getId());
         });
 
         howToPlay.setOnAction(e -> {
@@ -184,7 +185,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      */
     private void showHighScore (){
         // Load high scores
-        List<Score> highScores = gameSession.getHighScores();
+        List<Score> highScores = topController.getHighScores();
         StringBuilder teamScores = new StringBuilder();
         int index = 0;
         for(Score score : highScores) {
@@ -211,7 +212,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     }
 
     public void loadHighScoreList() {
-        List<Score> highScoreList = gameSession.getHighScores();
+        List<Score> highScoreList = topController.getHighScores();
         new HighScoreList(highScoreList);
     }
 

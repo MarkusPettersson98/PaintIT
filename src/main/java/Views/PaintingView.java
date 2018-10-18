@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Model.Tools.Brush;
 import Model.Tools.Eraser;
 import Model.Tools.SprayCan;
@@ -52,10 +52,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
     private final ToggleGroup toolToggleGroup = new ToggleGroup();
     private CanvasController canvasController;
     private Canvas canvas;
-    private GameSession gameSession;
+    private TopController topController;
 
-    public PaintingView(FXMLLoader fxmlLoader, GameSession gameSession) {
-        this.gameSession = gameSession;
+    public PaintingView(FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
 
         this.canvasController = new CanvasController();
         this.canvas = canvasController.getCanvasView();
@@ -127,7 +127,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         doneBtn.setOnAction(e -> {
             // Finished drawing
             hideclearPopup();
-            gameSession.show(doneBtn.getId());
+            topController.show(doneBtn.getId());
         });
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -225,11 +225,11 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @Override
     public void init() {
         // Update label with current word
-        currentWordLbl.setText(gameSession.getCurrentWord().getWord());
+        currentWordLbl.setText(topController.getCurrentWord().getWord());
 
         // Create a new canvas!
         canvasController.generateNewCanvas();
-        // Update GameSession with new canvas
+        // Update TopController with new canvas
         this.canvas = canvasController.getCanvasView();
         loadCanvas();
         canvasSetup();
@@ -255,7 +255,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         // Create new canvasView (without actionlisteners) in gamesession
         // which is subscribed to canvasModel
         CanvasView viewableCanvasView = new CanvasView(canvasController.getCanvasModel());
-        gameSession.setCurrentPainting(viewableCanvasView);
+        topController.setCurrentPainting(viewableCanvasView);
     }
 
     private void updateUndoClearBtn() {

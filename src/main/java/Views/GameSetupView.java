@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Model.Game.Team;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
@@ -26,10 +26,10 @@ public class GameSetupView extends AnchorPane implements GameScreen {
     @FXML private Label playerTwoWrongName;
 
 
-    private GameSession gameSession;
+    private TopController topController;
 
-    public GameSetupView (FXMLLoader fxmlLoader, GameSession gameSession){
-        this.gameSession = gameSession;
+    public GameSetupView (FXMLLoader fxmlLoader, TopController topController){
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GameSetupView.fxml"));
         fxmlLoader.setRoot(this);
@@ -50,9 +50,9 @@ public class GameSetupView extends AnchorPane implements GameScreen {
                 // Create team and add it to game backend
                 setNames();
                 // Start word reveal countdown (in WordRevealView)
-                // gameSession.startWordRevealCountdown();
+                // topController.startWordRevealCountdown();
                 // Show next view
-                gameSession.show(startDrawing.getId());
+                topController.show(startDrawing.getId());
             }
             else {
                 //wait
@@ -63,7 +63,7 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         backButtonImageView.setOnMouseClicked(e -> {
             String path = "images/icon_back.png";
             backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
-            gameSession.show(backButtonImageView.getId());
+            topController.show(backButtonImageView.getId());
         });
 
     }
@@ -85,7 +85,7 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         String player1 = player1TextField.getText();
         String player2 = player2TextField.getText();
 
-        gameSession.addTeam(new Team(player1, player2));
+        topController.addTeam(new Team(player1, player2));
     }
 
     private boolean checkLabel(TextField textField, Label label){

@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,10 +25,10 @@ public class DoneView extends AnchorPane implements GameScreen {
 
     @FXML Button backToMainMenuButton;
 
-    private GameSession gameSession;
+    private TopController topController;
 
-    public DoneView(FXMLLoader fxmlLoader, GameSession gameSession) {
-        this.gameSession = gameSession;
+    public DoneView(FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/DoneView.fxml"));
         fxmlLoader.setRoot(this);
@@ -43,32 +43,32 @@ public class DoneView extends AnchorPane implements GameScreen {
         // When doneBtn is pressed, go to WordRevealView
         doneBtn.setId(ButtonFactory.createWordRevealViewBtnId());
         doneBtn.setOnAction(e -> {
-            gameSession.show(doneBtn.getId());
+            topController.show(doneBtn.getId());
         });
 
         quitGameSessionButton.setOnAction(e->{
             changeToLoserView();
-            gameSession.setToGameOver(true);
-            gameSession.gameOver();
+            topController.setToGameOver(true);
+            topController.gameOver();
             quitGameSessionButton.setVisible(false);
         });
 
         backToMainMenuButton.setId(ButtonFactory.createMainMenuViewBtnId());
         backToMainMenuButton.setOnAction(e->{
-            gameSession.setToGameOver(false);
-            gameSession.show(backToMainMenuButton.getId());
+            topController.setToGameOver(false);
+            topController.show(backToMainMenuButton.getId());
         });
     }
     @Override
     public void init() {
         // Update labels
-        if (!gameSession.getGameOver()){
+        if (!topController.getGameOver()){
             congratsLbl.setText("You made it!");
             // ..
             informationLabel.setText("");
             doneBtn.setVisible(true);
             quitGameSessionButton.setVisible(true);
-            Integer currentStreak = gameSession.getTeamStreak();
+            Integer currentStreak = topController.getTeamStreak();
             teamStreakLbl.setText(currentStreak.toString());
             backToMainMenuButton.setVisible(false);
         }
@@ -88,7 +88,7 @@ public class DoneView extends AnchorPane implements GameScreen {
         backToMainMenuButton.setVisible(true);
         congratsLbl.setText("Game Session Ended!");
         informationLabel.setText("Your final score is:");
-        Integer currentStreak = gameSession.getTeamStreak();
+        Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
 
     }

@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Model.Game.Team;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,17 +9,17 @@ import org.testfx.framework.junit.ApplicationTest;
 
 public class WordRevealViewTest extends ApplicationTest {
 
-    GameSession gameSession;
+    TopController topController;
     Scene scene;
 
     @Override
     public void start (Stage stage){
-        gameSession = new GameSession();
-        scene = new Scene(gameSession.getCurrentPane());
+        topController = new TopController();
+        scene = new Scene(topController.getCurrentPane());
 
         Team team = new Team("Test One", "Test Two");
-        gameSession.addTeam(team);
-        gameSession.show(WordRevealView.class.getSimpleName());
+        topController.addTeam(team);
+        topController.show(WordRevealView.class.getSimpleName());
         stage.setScene(scene);
         stage.show();
     }
@@ -27,7 +27,7 @@ public class WordRevealViewTest extends ApplicationTest {
     @Test
     public void revealNowTest (){
         clickOn(".button-play");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("ChooseWordView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("ChooseWordView"));
     }
 
 

@@ -1,7 +1,7 @@
 package com.PaintIT.app;
 
 
-import Controller.GameSession;
+import Controller.TopController;
 import Views.MainMenuView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,16 +16,16 @@ public class App extends Application {
         launch(args);
     }
 
-    GameSession gameSession;
+    TopController topController;
 
     @Override
     public void start (Stage primaryStage) throws Exception {
         primaryStage.setTitle("PainIT");
 
-        this.gameSession = new GameSession();
+        this.topController = new TopController();
 
-        Scene scene = new Scene(this.gameSession.getCurrentPane());
-        this.gameSession.show(MainMenuView.class.getSimpleName());
+        Scene scene = new Scene(this.topController.getCurrentPane());
+        this.topController.show(MainMenuView.class.getSimpleName());
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -33,8 +33,8 @@ public class App extends Application {
 
     @Override
     public void stop() {
-        this.gameSession.saveScore();
-        System.out.println(gameSession.getHighScores());
+        this.topController.saveScore();
+        System.out.println(topController.getHighScores());
     }
 
 }

@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Util.ButtonFactory;
 import Model.WordAndGuess.Word;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ import java.util.*;
 
 public class ChooseWordView extends AnchorPane implements GameScreen{
 
-    private GameSession gameSession;
+    private TopController topController;
 
     @FXML
     ToggleButton easyWordbtn,mediumWordbtn,hardWordbtn;
@@ -31,8 +31,8 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     List<Word> wordList;
     List<ToggleButton> toggleButtons;
 
-    public ChooseWordView(FXMLLoader fxmlLoader, GameSession gameSession) {
-        this.gameSession = gameSession;
+    public ChooseWordView(FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/ChooseWordView.fxml"));
         fxmlLoader.setRoot(this);
@@ -48,8 +48,8 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
 
         donebtn.setId(ButtonFactory.createPaintingViewBtnId());
         donebtn.setOnAction(event -> {
-            gameSession.setCurrentWord(words.get(((ToggleButton) toggleWordbtnGroup.getSelectedToggle()).getText()));
-            gameSession.show(donebtn.getId());
+            topController.setCurrentWord(words.get(((ToggleButton) toggleWordbtnGroup.getSelectedToggle()).getText()));
+            topController.show(donebtn.getId());
 
         });
 
@@ -83,7 +83,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     @Override
     public void init() {
 
-        wordList = gameSession.getPossibleWords();
+        wordList = topController.getPossibleWords();
         clear();
 
         for(Word word: wordList){

@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.GameSession;
+import Controller.TopController;
 import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -11,7 +11,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 public class DoneViewTest extends ApplicationTest {
 
-    GameSession gameSession;
+    TopController topController;
     Scene scene;
 
     Label streakLabel;
@@ -23,14 +23,14 @@ public class DoneViewTest extends ApplicationTest {
     @Override
     public void start (Stage stage){
 
-        gameSession = new GameSession();
+        topController = new TopController();
 
         Team team = new Team ("Test One", "Test Two");
-        gameSession.addTeam(team);
+        topController.addTeam(team);
 
-        scene = new Scene(gameSession.getCurrentPane());
+        scene = new Scene(topController.getCurrentPane());
 
-        gameSession.show(DoneView.class.getSimpleName());
+        topController.show(DoneView.class.getSimpleName());
         stage.setScene(scene);
         stage.show();
         streakLabel = (Label) find("#teamStreakLbl");
@@ -38,7 +38,7 @@ public class DoneViewTest extends ApplicationTest {
 
     @Test
     public void streakLabelTest (){
-        int streak = gameSession.getTeamStreak();
+        int streak = topController.getTeamStreak();
         String labelStreak = streakLabel.getText();
         assert (streak == Integer.valueOf(labelStreak));
     }
@@ -46,7 +46,7 @@ public class DoneViewTest extends ApplicationTest {
     @Test
     public void startNewRoundTest (){
         clickOn(".button-play");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("WordRevealView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("WordRevealView"));
     }
 
 }
