@@ -31,7 +31,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     @FXML private HBox hBoxTop;
     @FXML private VBox vBoxRoot;
     @FXML
-    private Label countDownLbl;
+    Label countDownLbl;
 
     private TileSlot[] availableTileSlotArray;
     private final TopController topController;
@@ -207,7 +207,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     /**
      * Changes the view to doneView.
      */
-    public void changeToDoneView(){
+    private void changeToDoneView(){
         topController.show(ButtonFactory.createDoneViewBtnId());
     }
 
@@ -219,7 +219,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     @Override
     public void handleSecondPassed(int secondsLeft) {
         countDownLbl.setText(" Time left: " + Integer.toString(secondsLeft));
-        if (secondsLeft == 10){
+        if (secondsLeft <= 10){
             countDownLbl.setTextFill(Paint.valueOf("red"));
         }
     }
