@@ -183,6 +183,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
             t.update();
         }
     }
+    
     private void updateGuessTileSlots(){
         int count = 0;
         for(final Tile t: topController.getGuessWord()){
@@ -203,10 +204,18 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         },1000,1);
     }
 
+    /**
+     * Changes the view to doneView.
+     */
     public void changeToDoneView(){
         topController.show(ButtonFactory.createDoneViewBtnId());
     }
 
+    /**
+     * Updates the {@link TileBoardView#countDownLbl} when a second has passed. It the changes the colour of the
+     * label when there is only 10 seconds left.
+     * @param secondsLeft The amount of seconds left
+     */
     @Override
     public void handleSecondPassed(int secondsLeft) {
         countDownLbl.setText(" Time left: " + Integer.toString(secondsLeft));
@@ -215,6 +224,9 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         }
     }
 
+    /**
+     * Sets {@link TopController#gameOver to true} and changes the view to doneView when the timer is finished.
+     */
     @Override
     public void handleTimerFinished() {
         topController.setToGameOver(true);
