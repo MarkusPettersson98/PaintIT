@@ -98,5 +98,6 @@ public class DoneView extends AnchorPane implements GameScreen {
         final Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
 
+        topController.gameOver();
     }
 }
