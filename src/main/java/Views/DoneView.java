@@ -14,16 +14,16 @@ import java.io.IOException;
 public class DoneView extends AnchorPane implements GameScreen {
 
     @FXML
-    Label congratsLbl, teamStreakLbl;
+    private Label congratsLbl, teamStreakLbl;
 
     @FXML
-    Button doneBtn;
+    private Button doneBtn;
 
-    @FXML Label informationLabel;
+    @FXML private Label informationLabel;
 
-    @FXML Button quitGameSessionButton;
+    @FXML private Button quitGameSessionButton;
 
-    @FXML Button backToMainMenuButton;
+    @FXML private Button backToMainMenuButton;
 
     private TopController topController;
 

@@ -27,11 +27,11 @@ import java.util.TimerTask;
 public class TileBoardView extends VBox implements Observer, CountDownUser{
 
 
-    @FXML HBox hBoxBottom;
-    @FXML HBox hBoxTop;
-    @FXML VBox vBoxRoot;
+    @FXML private HBox hBoxBottom;
+    @FXML private HBox hBoxTop;
+    @FXML private VBox vBoxRoot;
     @FXML
-    Label countDownLbl;
+    private Label countDownLbl;
 
     private TileSlot[] availableTileSlotArray;
     private final TopController topController;
@@ -183,7 +183,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
             t.update();
         }
     }
-    
+
     private void updateGuessTileSlots(){
         int count = 0;
         for(final Tile t: topController.getGuessWord()){
