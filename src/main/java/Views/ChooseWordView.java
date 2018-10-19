@@ -86,6 +86,19 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
         wordList = topController.getPossibleWords();
         clear();
 
+        if (wordList.isEmpty()){
+            topController.setIsLastWord(true);
+            donebtn.setId(ButtonFactory.createDoneViewBtnId());
+            donebtn.setDisable(false);
+            donebtn.setOnAction(e -> {
+                topController.show(donebtn.getId());
+            });
+        }
+        else {
+            // Make sure that 'confirm' button is disabled
+            donebtn.setDisable(true);
+        }
+
         for(Word word: wordList){
             switch (word.getDifficulty_level()){
                 case EASY:
@@ -105,8 +118,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
                     break;
             }
         }
-        // Make sure that 'confirm' button is disabled
-        donebtn.setDisable(true);
+
     }
 
     @Override
