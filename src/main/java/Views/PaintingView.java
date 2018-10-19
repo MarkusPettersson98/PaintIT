@@ -5,7 +5,6 @@ import Model.Tools.Brush;
 import Model.Tools.Eraser;
 import Model.Tools.SprayCan;
 import Controller.CanvasController;
-import Views.Components.CanvasView;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -250,10 +249,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
         this.hbox.getChildren().clear();
         this.hbox.getChildren().add(canvasController.getCanvasView());
 
-        // Create new canvasView (without actionlisteners) in gamesession
-        // which is subscribed to canvasModel
-        CanvasView viewableCanvasView = new CanvasView(canvasController.getCanvasModel());
-        topController.setCurrentPainting(viewableCanvasView);
+        // Push canvas model to backend
+        topController.setCurrentPainting(canvasController.getCanvasModel());
     }
 
     private void updateUndoClearBtn() {

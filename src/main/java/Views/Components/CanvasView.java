@@ -30,10 +30,18 @@ public class CanvasView extends Canvas implements Observer {
         this.graphicsContext = this.getGraphicsContext2D();
         this.pixelWriter = graphicsContext.getPixelWriter();
         this.canvasModel = canvasModel;
-
+        redrawCanvasView();
         canvasModel.addObserver(this);
 
         graphicsContext.getCanvas().toString();
+    }
+
+    public void redrawCanvasView() {
+        for(int y = 0; y < canvasModel.getYMax(); y++) {
+            for (int x = 0; x < canvasModel.getXMax(); x++) {
+                setPixel(x, y, canvasModel.getPixel(x,y));
+            }
+        }
     }
 
     /** Sets the color on itself.

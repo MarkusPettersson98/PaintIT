@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CanvasModel;
 import Model.Game.HighScoreList;
 import Model.Game.Score;
 import Views.Components.CanvasView;
@@ -22,7 +23,7 @@ class GameLogic {
 
     private String highScoreUrl = "highscores.txt";
 
-    @Setter @Getter private CanvasView currentPainting;
+    @Setter @Getter private CanvasModel currentPainting;
 
     @Getter private  GuessLogic guessLogic;
 

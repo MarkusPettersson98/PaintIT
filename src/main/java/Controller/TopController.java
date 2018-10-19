@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CanvasModel;
 import Model.Game.Score;
 import Model.Game.Team;
 import Views.Components.CanvasView;
@@ -13,6 +14,7 @@ import Model.WordAndGuess.Word;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -109,9 +111,9 @@ public class TopController {
         team.resetStreak();
     }
 
-    public CanvasView getCanvas() { return gameLogic.getCurrentPainting(); }
+    public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
 
-    public void setCurrentPainting(CanvasView canvasView) { gameLogic.setCurrentPainting(canvasView); }
+    public void setCurrentPainting(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
 
     public Word getCurrentWord() {
         return gameLogic.getCurrentWord();

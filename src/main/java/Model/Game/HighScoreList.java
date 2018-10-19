@@ -1,18 +1,15 @@
 package Model.Game;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class HighScoreList {
 
     List<Score> highScores;
-    Iterator<Score> highScoreListIterator;
     private int MAX_SCORES = 10;
 
     public HighScoreList(List<Score> highScores) {
         this.highScores = highScores;
-        highScoreListIterator = highScores.iterator();
     }
 
     public HighScoreList add(Score newHighScore) {
