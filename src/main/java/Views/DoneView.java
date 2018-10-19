@@ -14,16 +14,16 @@ import java.io.IOException;
 public class DoneView extends AnchorPane implements GameScreen {
 
     @FXML
-    Label congratsLbl, teamStreakLbl;
+    private Label congratsLbl, teamStreakLbl;
 
     @FXML
-    Button doneBtn;
+    private Button doneBtn;
 
-    @FXML Label informationLabel;
+    @FXML private Label informationLabel;
 
-    @FXML Button quitGameSessionButton;
+    @FXML private Button quitGameSessionButton;
 
-    @FXML Button backToMainMenuButton;
+    @FXML private Button backToMainMenuButton;
 
     private TopController topController;
 
@@ -59,13 +59,13 @@ public class DoneView extends AnchorPane implements GameScreen {
             topController.show(backToMainMenuButton.getId());
         });
     }
+
     @Override
     public void init() {
         // Update labels
         if (!topController.getGameOver()){
             congratsLbl.setText("You made it!");
-            // ..
-            informationLabel.setText("");
+            informationLabel.setText("Your current score is:");
             doneBtn.setVisible(true);
             quitGameSessionButton.setVisible(true);
             final Integer currentStreak = topController.getTeamStreak();
@@ -83,9 +83,16 @@ public class DoneView extends AnchorPane implements GameScreen {
         return this;
     }
 
+    /**
+     * Changes the view to "Loser View", which means that the game is over. Updates the text in
+     * {@link DoneView#congratsLbl} and {@link DoneView#informationLabel} to inform the player that the game is over.
+     * Sets {@link DoneView#doneBtn} and {@link DoneView#quitGameSessionButton} to not visible, to prevent the player
+     * from being able to continue playing, as well as sets {@link DoneView#backToMainMenuButton} to visible.
+     */
     private void changeToLoserView (){
         doneBtn.setVisible(false);
         backToMainMenuButton.setVisible(true);
+        quitGameSessionButton.setVisible(false);
         congratsLbl.setText("Game Session Ended!");
         informationLabel.setText("Your final score is:");
         final Integer currentStreak = topController.getTeamStreak();

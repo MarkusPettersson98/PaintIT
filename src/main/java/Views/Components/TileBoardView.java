@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,9 +27,9 @@ import java.util.TimerTask;
 public class TileBoardView extends VBox implements Observer, CountDownUser{
 
 
-    @FXML HBox hBoxBottom;
-    @FXML HBox hBoxTop;
-    @FXML VBox vBoxRoot;
+    @FXML private HBox hBoxBottom;
+    @FXML private HBox hBoxTop;
+    @FXML private VBox vBoxRoot;
     @FXML
     Label countDownLbl;
 
@@ -54,7 +55,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     }
     private void initCountDown(){
         topController.startCountDown(guessTime,this);
-        countDownLbl.setText("    " + guessTime);
+        countDownLbl.setText(" Time left: " + guessTime);
     }
     private void initFXML(){
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
@@ -182,6 +183,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
             t.update();
         }
     }
+
     private void updateGuessTileSlots(){
         int count = 0;
         for(final Tile t: topController.getGuessWord()){
@@ -202,17 +204,32 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         },1000,1);
     }
 
-    public void changeToDoneView(){
+    /**
+     * Changes the view to doneView.
+     */
+    private void changeToDoneView(){
         topController.show(ButtonFactory.createDoneViewBtnId());
     }
 
+    /**
+     * Updates the {@link TileBoardView#countDownLbl} when a second has passed. It the changes the colour of the
+     * label when there is only 10 seconds left.
+     * @param secondsLeft The amount of seconds left
+     */
     @Override
     public void handleSecondPassed(int secondsLeft) {
-        countDownLbl.setText("    " + Integer.toString(secondsLeft));
+        countDownLbl.setText(" Time left: " + Integer.toString(secondsLeft));
+        if (secondsLeft <= 10){
+            countDownLbl.setTextFill(Paint.valueOf("red"));
+        }
     }
 
+    /**
+     * Sets {@link TopController#gameOver to true} and changes the view to doneView when the timer is finished.
+     */
     @Override
     public void handleTimerFinished() {
-        System.out.println("Countdown Finshed");
+        topController.setToGameOver(true);
+        changeToDoneView();
     }
 }
