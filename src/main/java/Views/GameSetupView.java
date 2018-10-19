@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class GameSetupView extends AnchorPane implements GameScreen {
 
@@ -44,7 +45,7 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         startDrawing.setOnAction(e -> {
             final Boolean textFieldOne = checkLabel(player1TextField, playerOneWrongName);
             final Boolean textFieldTwo = checkLabel(player2TextField, playerTwoWrongName);
-            //checks if names are entered
+            //checks if names are entered and if they are valid
             if (textFieldOne && textFieldTwo){
                 // Create team and add it to game backend
                 setNames();
@@ -104,7 +105,11 @@ public class GameSetupView extends AnchorPane implements GameScreen {
      * @return a boolean, true if the input is correct and false if it is wrong
      */
     private boolean checkLabel(TextField textField, Label label){
-        if (textField.getText().isEmpty()){
+        // Check for empty text fields and illegal characters
+        String input = textField.getText();
+        CharSequence illegalCharacters = ":";
+
+        if (input.isEmpty() || input.contains(illegalCharacters)){
             setLabelRed(textField, label);
             return false;
         }

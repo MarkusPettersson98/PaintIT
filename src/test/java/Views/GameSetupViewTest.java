@@ -66,6 +66,17 @@ public class GameSetupViewTest extends ApplicationTest{
     }
 
     @Test
+    public void illegalNamesEnteredTest (){
+        clickOn("#player1TextField");
+        write("Test One : Test Two");
+        clickOn(".button-play");
+        System.out.println(playerOneWrongLabel.getText().toString());
+        System.out.println(playerTwoWrongLabel.getText().toString());
+        assert (playerOneWrongLabel.getText().equals("Enter a name!") &&
+                playerTwoWrongLabel.getText().equals("Enter a name!"));
+    }
+
+    @Test
     public void oneNameEnteredTest (){
         clickOn("#player1TextField");
         write("Test One");
