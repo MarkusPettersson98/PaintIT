@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.Collections;
 import java.util.List;
 
+
 public class HighScoreList {
 
     private List<Score> highScores;
@@ -41,6 +42,9 @@ public class HighScoreList {
         Collections.sort(highScores);
     }
 
+    /**
+     * If there are more then ten scores in the highscore list it removes the lowest score.
+     */
     public void trim() {
         while(highScores.size() > MAX_SCORES) {
             // Remove last entry in the list!
@@ -48,6 +52,11 @@ public class HighScoreList {
         }
     }
 
+    /**
+     * Checks if a score was higher than a score in the highscore list.
+     * @param score An instance of a score.
+     * @return A boolean.
+     */
     public boolean compareScore(Score score) {
         for(final Score highScore : highScores) {
             // If streak of passed score is high than anyone in the list, return true

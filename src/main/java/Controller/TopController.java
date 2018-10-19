@@ -162,6 +162,9 @@ public class TopController {
         gameOver = gameState;
     }
 
+    /**
+     * Saves the score, resets the team and calls on {@link GameLogic#newGame()}.
+     */
     public void gameOver() {
         // Game over, save team's streak if necessary
         saveScore();
@@ -171,11 +174,17 @@ public class TopController {
         team = null;
     }
 
+    /**
+     * Changes the drawer to guesser and vice versa.
+     */
     public void newTurn() {
         // Turn over, generate, switch guesser/drawer..
         team.changeDrawer();
     }
 
+    /**
+     * Calls on {@link GameLogic#saveScore(String, int)} and sets the string to {@link Team#getTeamName()} and the int to {@link Team#getStreak()}.
+     */
     public void saveScore() {
         if (team != null) {
             gameLogic.saveScore(team.getTeamName(), team.getStreak());
