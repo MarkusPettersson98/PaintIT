@@ -56,6 +56,11 @@ public class GuessLogic implements Observable {
 
         }
     }
+
+    /**
+     * Checks if the guesser has filled up all empty slots.
+     * @return A boolean.
+     */
     private boolean isGuessFilled(){
         for(final Tile t: guessWord){
             if(t == null){
@@ -128,11 +133,19 @@ public class GuessLogic implements Observable {
     public List<Word> getPossibleWords(){
         return wordHandler.getPossibleWords();
     }
+
+    /**
+     * Adds observers to a list of observers.
+     * @param observer The Observer of the object.
+     */
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
 
+    /**
+     * Notify all observers.
+     */
     @Override
     public void notifyObservers() {
         for (final Observer obs: observers){

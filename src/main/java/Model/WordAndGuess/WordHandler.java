@@ -71,7 +71,7 @@ public class WordHandler {
         dictionary.setCurrentWord(word);
         createRandomTiles(word.getWord());
     }
-    
+
     public List<Word> getPossibleWords(){
         return dictionary.getPossibleWords();
     }
