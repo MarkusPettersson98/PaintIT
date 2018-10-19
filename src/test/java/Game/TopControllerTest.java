@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TopControllerTest extends ApplicationTest {
@@ -63,6 +64,17 @@ public class TopControllerTest extends ApplicationTest {
     public void showTest (){
         topController.show(MainMenuView.class.getSimpleName());
         assertTrue(topController.getCurrentPane().getChildren().toString().contains("MainMenuView"));
+    }
+
+    @Test
+    public void setGameOverTest (){
+        topController.setToGameOver(true);
+        assertTrue(topController.getGameOver());
+    }
+
+    @Test
+    public void gameNotOverWhenStartingTest (){
+        assertFalse(topController.getGameOver());
     }
 
 }
