@@ -1,6 +1,7 @@
 package Views;
 
 import Controller.TopController;
+import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -25,6 +26,7 @@ public class MainMenuViewTest extends ApplicationTest{
     @Override
     public void start(Stage stage) {
         topController = new TopController();
+        topController.addTeam(new Team("testPlayer", "testPlayer2"));
 
         scene = new Scene(topController.getCurrentPane());
         topController.show(MainMenuView.class.getSimpleName());

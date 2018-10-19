@@ -212,7 +212,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     }
 
     public void loadHighScoreList() {
-        final List<Score> highScoreList = topController.getHighScores();
+        List<Score> highScoreList = topController.getHighScores();
         new HighScoreList(highScoreList);
     }
 

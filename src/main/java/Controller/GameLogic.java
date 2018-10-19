@@ -54,7 +54,7 @@ class GameLogic {
     public List<Score> getHighScores() {
         // Open file from backend
         // Need to use InputStream, as the JAR executable will have trouble to read from file otherwise
-        final List<Score> highScores = new ArrayList<>();
+        final HighScoreList highScores = new HighScoreList();
         // Prepare to read from backend
         try {
             final String highScorePath = highScoreUrl;
@@ -63,7 +63,7 @@ class GameLogic {
             while(sc.hasNextLine()) {
                 // A line is formatted as "teamName:streak"
                 final String currentWord = sc.nextLine();
-
+                System.out.println("Current word on line: " + currentWord);
                 final String[] score = currentWord.split(":");
                 // Team name is the string before ':' in the parsed line
                 final String teamName = score[0];
@@ -80,7 +80,7 @@ class GameLogic {
             e.printStackTrace();
         }
         // Looped over all lines, return what we got back!
-        return highScores;
+        return highScores.getHighScores();
     }
 
     public int getPoints(Difficulty difficulty) {

@@ -2,18 +2,22 @@ package Model.Game;
 
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 public class HighScoreList {
 
-    private List<Score> highScores;
+    @Getter private List<Score> highScores;
     @Getter private final int MAX_SCORES = 10;
 
 
     public HighScoreList(List<Score> highScores) {
         this.highScores = highScores;
+    }
+    public HighScoreList() {
+        this.highScores = new ArrayList<>();
     }
 
     public HighScoreList add(Score newHighScore) {
@@ -36,7 +40,7 @@ public class HighScoreList {
 
     public int size() { return highScores.size(); }
 
-    private void put(Score newScore) {
+    public void put(Score newScore) {
         // Add new score to high score list, then sort the list
         highScores.add(newScore);
         Collections.sort(highScores);
