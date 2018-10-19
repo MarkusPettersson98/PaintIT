@@ -108,13 +108,7 @@ public class TopController {
 
     public void incrementTeamStreak() {
         Word currentWord = getCurrentWord();
-        int points;
-        switch(currentWord.getDifficulty_level()) {
-            case EASY: points = gameLogic.getPoints(Word.Difficulty.EASY); break;
-            case MEDIUM: points = gameLogic.getPoints(Word.Difficulty.MEDIUM); break;
-            case HARD: points = gameLogic.getPoints(Word.Difficulty.HARD); break;
-            default: points = 0; break;
-        }
+        int points = gameLogic.getPoints(currentWord.getDifficulty_level());
         team.incrementStreak(points);
     }
 
