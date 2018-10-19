@@ -59,8 +59,8 @@ public class CanvasView extends Canvas implements Observer {
      */
     @Override
     public void update() {
-        int x = canvasModel.getLatestPixelX();
-        int y = canvasModel.getLatestPixelY();
+        final int x = canvasModel.getLatestPixelX();
+        final int y = canvasModel.getLatestPixelY();
         setPixel(x, y, canvasModel.getPixel(x, y));
     }
 }

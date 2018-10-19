@@ -7,23 +7,23 @@ import java.util.List;
 public class WordUtil {
 
     public static String charArrayListToString(List<Character> charArray){
-       StringBuilder sB = new StringBuilder();
-       for (Character c: charArray){
+       final StringBuilder sB = new StringBuilder();
+       for (final Character c: charArray){
             sB.append(c);
         }
         return sB.toString() ;
     }
     public static String tileListToString(List<Tile> tiles){
 
-        StringBuilder sB = new StringBuilder();
-        for(Tile t: tiles){
+        final StringBuilder sB = new StringBuilder();
+        for(final Tile t: tiles){
             sB.append(t.getLetter());
         }
         return sB.toString();
     }
     public static String tileArrayToString(Tile... tiles){
-        StringBuilder sB = new StringBuilder();
-        for (Tile tile: tiles) {
+        final StringBuilder sB = new StringBuilder();
+        for (final Tile tile: tiles) {
             if(tile != null){
                 sB.append(tile.getLetter());
             }

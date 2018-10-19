@@ -143,7 +143,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      * @param imageView the ImageView that the image is being changed for
      */
     private void changeIconCloseHover (ImageView imageView){
-        String path = "images/icon_close_hover.png";
+        final String path = "images/icon_close_hover.png";
         imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
@@ -152,7 +152,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      * @param imageView the ImageView that the image is being changed for
      */
     private void changeIconClose (ImageView imageView){
-        String path = "images/icon_close.png";
+        final String path = "images/icon_close.png";
         imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
@@ -185,10 +185,10 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      */
     private void showHighScore (){
         // Load high scores
-        List<Score> highScores = topController.getHighScores();
-        StringBuilder teamScores = new StringBuilder();
+        final List<Score> highScores = topController.getHighScores();
+        final StringBuilder teamScores = new StringBuilder();
         int index = 0;
-        for(Score score : highScores) {
+        for(final Score score : highScores) {
             index++;
             teamScores.append(index + ". " + score.getFormattedScore() + '\n');
         }
@@ -212,7 +212,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     }
 
     public void loadHighScoreList() {
-        List<Score> highScoreList = topController.getHighScores();
+        final List<Score> highScoreList = topController.getHighScores();
         new HighScoreList(highScoreList);
     }
 

@@ -3,7 +3,6 @@ package Controller;
 import Model.CanvasModel;
 import Model.Game.Score;
 import Model.Game.Team;
-import Views.Components.CanvasView;
 import Util.CountDownTimer;
 import Util.CountDownUser;
 import Util.Observer;
@@ -14,7 +13,6 @@ import Model.WordAndGuess.Word;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;
 
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -36,7 +34,7 @@ public class TopController {
 
     public TopController() {
         gameLogic = new GameLogic();
-        List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
+        final List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
         viewController = new ViewController(gameScreens);
         countDownTimer = new CountDownTimer();
 
@@ -60,7 +58,7 @@ public class TopController {
         // Get next view to be shown
         viewController.prepareNextView(url);
         // Call init method on next view
-        GameScreen gameScreenTmp = viewController.getNextScreen();
+        final GameScreen gameScreenTmp = viewController.getNextScreen();
         gameScreenTmp.init();
         // Show next view
         viewController.show();

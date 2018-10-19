@@ -78,7 +78,7 @@ public class CanvasController {
     }
 
     public void useTool(int x0, int y0) {
-        int radius = currentTool.getRadius();
+        final int radius = currentTool.getRadius();
         this.x0 = x0;
         this.y0 = y0;
         for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
@@ -105,7 +105,7 @@ public class CanvasController {
         if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0) {
             return;
         }
-        Color tmpColor = canvasModel.getPixel(x,y);
+        final Color tmpColor = canvasModel.getPixel(x,y);
         if(!tmpColor.equals(newColor)) {
             undoArrayList.add(getColorPoint(x,y));
             canvasModel.setPixel(x, y, newColor);
@@ -185,7 +185,7 @@ public class CanvasController {
      */
     public void undo() {
         if(!undoStack.empty()) {
-            for (ColorPoint cp : undoStack.pop()) {
+            for (final ColorPoint cp : undoStack.pop()) {
                 canvasModel.setPixel(cp.getX(),cp.getY(),cp.getC());
             }
         }

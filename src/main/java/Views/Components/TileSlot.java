@@ -31,7 +31,7 @@ public abstract class TileSlot extends AnchorPane {
      */
 
     public TileSlot(Tile tile){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
+        final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {
@@ -51,7 +51,7 @@ public abstract class TileSlot extends AnchorPane {
      *
      */
     public TileSlot(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
+        final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {

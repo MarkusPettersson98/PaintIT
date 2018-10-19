@@ -1,7 +1,4 @@
 package Model.WordAndGuess;
-
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +11,6 @@ public class WordHandler {
     private Tile[] tiles;
     private static final int tileAmount = 8;
     private Dictionary dictionary;
-
 
     /**
      *Creates a List of words
@@ -35,22 +31,21 @@ public class WordHandler {
         return tiles.clone();
     }
     private void createRandomTiles(String word){
-        Random r = new Random();
-       ArrayList<Tile>  temp = new ArrayList<>();
-     for(int i = 0; i< word.length(); i ++){
-         char c = Character.toUpperCase(word.charAt(i));
-
-         temp.add(new Tile(c,i));
+        final Random r = new Random();
+        final ArrayList<Tile>  temp = new ArrayList<>();
+            for(int i = 0; i< word.length(); i ++){
+                final char c = Character.toUpperCase(word.charAt(i));
+                temp.add(new Tile(c,i));
      }
      for(int i = word.length(); i<tileAmount; i++){
-         char d = Character.toUpperCase((char)(r.nextInt(26) + 'a'));
+         final char d = Character.toUpperCase((char)(r.nextInt(26) + 'a'));
          temp.add(new Tile(d,i));
      }
         Collections.shuffle(temp);
 
         tiles = convertTilesToArray(temp);
     }
-    private Tile[] convertTilesToArray(ArrayList<Tile> tiles){
+    private Tile[] convertTilesToArray(List<Tile> tiles){
         Tile[] tileArray = new Tile[tiles.size()];
         for(int i = 0; i<tiles.size(); i++){
             tileArray[i] = tiles.get(i);

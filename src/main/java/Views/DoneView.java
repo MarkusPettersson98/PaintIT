@@ -68,7 +68,7 @@ public class DoneView extends AnchorPane implements GameScreen {
             informationLabel.setText("");
             doneBtn.setVisible(true);
             quitGameSessionButton.setVisible(true);
-            Integer currentStreak = topController.getTeamStreak();
+            final Integer currentStreak = topController.getTeamStreak();
             teamStreakLbl.setText(currentStreak.toString());
             backToMainMenuButton.setVisible(false);
         }
@@ -88,7 +88,7 @@ public class DoneView extends AnchorPane implements GameScreen {
         backToMainMenuButton.setVisible(true);
         congratsLbl.setText("Game Session Ended!");
         informationLabel.setText("Your final score is:");
-        Integer currentStreak = topController.getTeamStreak();
+        final Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
 
     }

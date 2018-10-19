@@ -53,10 +53,10 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
 
         });
 
-        for(ToggleButton toggleButton: toggleButtons){
+        for(final ToggleButton toggleButton: toggleButtons){
             toggleButton.setOnAction(e ->{
                 donebtn.setDisable(true);
-                for(ToggleButton toggleButton1: toggleButtons){
+                for(final ToggleButton toggleButton1: toggleButtons){
                     if(toggleButton1.isSelected()){
                         donebtn.setDisable(false);
                     }
@@ -72,7 +72,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     }
 
     private void clear(){
-        for (ToggleButton toggleButton: toggleButtons){
+        for (final ToggleButton toggleButton: toggleButtons){
             toggleButton.setSelected(false);
             toggleButton.setDisable(true);
             words.clear();
@@ -86,7 +86,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
         wordList = topController.getPossibleWords();
         clear();
 
-        for(Word word: wordList){
+        for(final Word word: wordList){
             switch (word.getDifficulty_level()){
                 case EASY:
                     setupButton(toggleButtons.get(0),word.getWord());

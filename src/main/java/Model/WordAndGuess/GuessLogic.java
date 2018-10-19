@@ -18,7 +18,7 @@ public class GuessLogic implements Observable {
     private Tile[] guessWord;
     private Tile[] availableTiles;
     private WordHandler wordHandler;
-    private ArrayList<Observer> observers;
+    private List<Observer> observers;
 
 
 
@@ -57,7 +57,7 @@ public class GuessLogic implements Observable {
         }
     }
     private boolean isGuessFilled(){
-        for(Tile t: guessWord){
+        for(final Tile t: guessWord){
             if(t == null){
                 return false;
             }
@@ -80,7 +80,7 @@ public class GuessLogic implements Observable {
      */
     public void removeTileFromGuess(Tile tile){
         int count = 0;
-        for(Tile t: guessWord){
+        for(final Tile t: guessWord){
             if(guessWord[count] == tile) {
                 tile.setStatus(Tile.Status.Available);
                 guessWord[count] = null;
@@ -110,7 +110,7 @@ public class GuessLogic implements Observable {
      * @return True if guess was correct
      */
     public boolean guessCurrentWord(){
-        String guessWord = WordUtil.tileArrayToString(this.guessWord);
+        final String guessWord = WordUtil.tileArrayToString(this.guessWord);
         if(guessWord.toLowerCase().equals(currentWord.toLowerCase())){
             return true;
         }
@@ -135,7 +135,7 @@ public class GuessLogic implements Observable {
 
     @Override
     public void notifyObservers() {
-        for (Observer obs: observers){
+        for (final Observer obs: observers){
             obs.update();
         }
     }

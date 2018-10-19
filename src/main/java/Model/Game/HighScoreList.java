@@ -19,7 +19,7 @@ public class HighScoreList {
 
         // We always want to add new high scores if we have less than 10 of them in total
         // Otherwise, we want to look at compareScore() return value
-        boolean isNewHighScore = compareScore(newHighScore) || highScores.size() <= MAX_SCORES;
+        final boolean isNewHighScore = compareScore(newHighScore) || highScores.size() <= MAX_SCORES;
 
         if(isNewHighScore) {
             put(newHighScore);
@@ -44,7 +44,7 @@ public class HighScoreList {
     }
 
     public boolean compareScore(Score score) {
-        for(Score highScore : highScores) {
+        for(final Score highScore : highScores) {
             // If streak of passed score is high than anyone in the list, return true
             if(score.getStreak() > highScore.getStreak()) {
                 return true;
@@ -59,8 +59,8 @@ public class HighScoreList {
  /*       teamName:streak
  /*       teamName:streak 
   */
-        StringBuilder sb = new StringBuilder();
-        for(Score score : highScores) {
+        final StringBuilder sb = new StringBuilder();
+        for(final Score score : highScores) {
             sb.append(score.getFormattedScore() + '\n');
         }
         return sb.toString();

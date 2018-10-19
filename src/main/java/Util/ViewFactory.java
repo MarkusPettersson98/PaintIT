@@ -66,7 +66,7 @@ public abstract class ViewFactory {
      * @return
      */
     public static List<GameScreen> createAllViews(TopController topController) {
-        List<GameScreen> gameScreens = new ArrayList<>();
+        final List<GameScreen> gameScreens = new ArrayList<>();
 
         gameScreens.add(createMainMenuView(topController));
         gameScreens.add(createGameSetupView(topController));

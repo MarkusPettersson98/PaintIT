@@ -43,8 +43,8 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
         startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
-            Boolean textFieldOne = checkLabel(player1TextField, playerOneWrongName);
-            Boolean textFieldTwo = checkLabel(player2TextField, playerTwoWrongName);
+            final Boolean textFieldOne = checkLabel(player1TextField, playerOneWrongName);
+            final Boolean textFieldTwo = checkLabel(player2TextField, playerTwoWrongName);
             //checks if names are entered
             if (textFieldOne && textFieldTwo){
                 // Create team and add it to game backend
@@ -61,7 +61,7 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
         backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
         backButtonImageView.setOnMouseClicked(e -> {
-            String path = "images/icon_back.png";
+            final String path = "images/icon_back.png";
             backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
             topController.show(backButtonImageView.getId());
         });
@@ -70,20 +70,20 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
     @FXML
     private void backButtonImageViewEntered (){
-        String path = "images/icon_back_hover.png";
+        final String path = "images/icon_back_hover.png";
         backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
     }
 
     @FXML
     private void backButtonImageViewExited (){
-        String path = "images/icon_back.png";
+        final String path = "images/icon_back.png";
         backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
     private void setNames () {
 
-        String player1 = player1TextField.getText();
-        String player2 = player2TextField.getText();
+        final String player1 = player1TextField.getText();
+        final String player2 = player2TextField.getText();
 
         topController.addTeam(new Team(player1, player2));
     }

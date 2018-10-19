@@ -87,7 +87,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
             if((ToggleButton) toolToggleGroup.getSelectedToggle()==null) {
                 return;
             }
-            ToggleButton selectedButton = (ToggleButton) toolToggleGroup.getSelectedToggle();
+            final ToggleButton selectedButton = (ToggleButton) toolToggleGroup.getSelectedToggle();
             canvasController.setCurrentTool(selectedButton.getText());
         });
 
@@ -95,7 +95,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
             if((ToggleButton) colorToggleGroup.getSelectedToggle()==null) {
                 return;
             }
-            ToggleButton selectedButton = (ToggleButton) colorToggleGroup.getSelectedToggle();
+            final ToggleButton selectedButton = (ToggleButton) colorToggleGroup.getSelectedToggle();
             changeToolColor(colorButtonMap.get(selectedButton.getId()));
             canvasController.pushToUndoStack();
         });

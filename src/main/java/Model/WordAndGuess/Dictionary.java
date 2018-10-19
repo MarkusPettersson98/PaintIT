@@ -1,11 +1,8 @@
 package Model.WordAndGuess;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.json.*;
 
@@ -51,24 +48,24 @@ public class Dictionary {
      * Every json-object converts to a {@link Word} and pushes in to a relevant stack depening on difficulty level.
      */
     private void generateWordList() {
-        Random rand = new Random();
+        final Random rand = new Random();
         String jsonContent = "";
 
         try {
             // Need to use InputStream, as the JAR executable will have trouble to read from file otherwise
-            InputStream jsonURL = getClass().getResourceAsStream("/dictionary/dictionary.json");
-            StringWriter writer = new StringWriter();
+            final InputStream jsonURL = getClass().getResourceAsStream("/dictionary/dictionary.json");
+            final StringWriter writer = new StringWriter();
             IOUtils.copy(jsonURL, writer, "UTF-8");
             jsonContent = writer.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        JSONArray jsonArray = new JSONObject(jsonContent).getJSONArray("dictionary");
+        final JSONArray jsonArray = new JSONObject(jsonContent).getJSONArray("dictionary");
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            String word = jsonArray.getJSONObject(i).getString("word");
-            Word.Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Word.Difficulty.class, "difficulty_level");
+            final String word = jsonArray.getJSONObject(i).getString("word");
+            final Word.Difficulty difficulty_level = jsonArray.getJSONObject(i).getEnum(Word.Difficulty.class, "difficulty_level");
 
             switch (difficulty_level) {
                 case EASY:
@@ -96,7 +93,7 @@ public class Dictionary {
     public List<Word> getPossibleWords(){
         possibleWords.clear();
 
-        for (Stack<Word> dictionary: Arrays.asList(easyDictionary, mediumDictionary, hardDictionary)) {
+        for (final Stack<Word> dictionary: Arrays.asList(easyDictionary, mediumDictionary, hardDictionary)) {
             if(!dictionary.isEmpty()){
                 possibleWords.add(dictionary.pop());
             }
@@ -110,12 +107,12 @@ public class Dictionary {
      * @param choosenWord The word that has been choosen by the painter.
      */
     public void setCurrentWord(Word choosenWord){
-        Random rand = new Random();
+        final Random rand = new Random();
         currentWord = choosenWord;
 
         possibleWords.remove(choosenWord);
 
-        for (Word word: possibleWords) {
+        for (final Word word: possibleWords) {
             switch (word.getDifficulty_level()){
                 case EASY:
                     easyDictionary.add(rand.nextInt(easyDictionary.size()+1),word);

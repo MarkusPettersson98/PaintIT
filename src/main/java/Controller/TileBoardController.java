@@ -36,7 +36,7 @@ public class TileBoardController {
             removeRightMostTileFromGuess();
             return;
         }
-        for (Tile tile : guessLogic.getAvailableTiles() ) {
+        for (final Tile tile : guessLogic.getAvailableTiles() ) {
             if(tile.toString().equals(keyCode)) {
                 if(tile.getStatus().equals(Tile.Status.Available)) {
                     addTileToGuess(tile);

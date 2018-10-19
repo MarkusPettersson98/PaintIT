@@ -23,7 +23,7 @@ public class ViewController {
     @Getter private GameScreen nextScreen;
 
     public ViewController(List<GameScreen> gameScreens) {
-        for(GameScreen gameScreen : gameScreens) {
+        for(final GameScreen gameScreen : gameScreens) {
             applicationPanes.put(gameScreen.getClass().getSimpleName(), gameScreen);
         }
     }

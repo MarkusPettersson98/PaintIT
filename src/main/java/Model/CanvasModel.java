@@ -110,11 +110,11 @@ public class CanvasModel implements Observable {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         for(int i = 0; i < yMax; i++) {
             sb.append("[ ");
             for (int j = 0; j < xMax; j++) {
-                Color temp = canvas[j][i];
+                final Color temp = canvas[j][i];
                 sb.append("[ " + temp.getRed() + ", " + temp.getGreen() + ", " + temp.getBlue() + " ] ");
             }
             sb.append("] \n");
@@ -155,7 +155,7 @@ public class CanvasModel implements Observable {
      */
     @Override
     public void notifyObservers() {
-        for(Observer observer : observers) {
+        for(final Observer observer : observers) {
             observer.update();
         }
     }
