@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -24,6 +25,8 @@ public class DoneView extends AnchorPane implements GameScreen {
     @FXML private Button quitGameSessionButton;
 
     @FXML private Button backToMainMenuButton;
+
+    @FXML private ImageView confettiImageView;
 
     private TopController topController;
 
@@ -63,7 +66,10 @@ public class DoneView extends AnchorPane implements GameScreen {
     @Override
     public void init() {
         // Update labels
-        if (!topController.getGameOver()){
+        if (topController.getIsLastWord()){
+            changeToWinnerView();
+        }
+        else if(!topController.getGameOver()){
             congratsLbl.setText("You made it!");
             informationLabel.setText("Your current score is:");
             doneBtn.setVisible(true);
@@ -99,5 +105,16 @@ public class DoneView extends AnchorPane implements GameScreen {
         teamStreakLbl.setText(currentStreak.toString());
 
         topController.gameOver();
+    }
+
+    private void changeToWinnerView (){
+        confettiImageView.setVisible(true);
+        doneBtn.setVisible(false);
+        backToMainMenuButton.setVisible(true);
+        quitGameSessionButton.setVisible(false);
+        congratsLbl.setText("You completed all the words!");
+        informationLabel.setText("Your final score is:");
+        Integer currentStreak = topController.getTeamStreak();
+        teamStreakLbl.setText(currentStreak.toString());
     }
 }

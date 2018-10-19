@@ -26,6 +26,7 @@ public class TopController {
     private final GameLogic gameLogic;
     private final ViewController viewController;
     private final CountDownTimer countDownTimer;
+    private boolean isLastWord;
 
     /**
      * A boolean for if the game is over or if the players can keep playing.
@@ -40,6 +41,7 @@ public class TopController {
 
         gameLogic.setupHighScores();
         gameOver = false;
+        isLastWord = false;
     }
 
 
@@ -177,6 +179,15 @@ public class TopController {
 
     public List<Score> getHighScores() {
         return gameLogic.getHighScores();
+    }
+
+    public boolean getIsLastWord (){
+        return isLastWord;
+    }
+
+    public void setIsLastWord (Boolean lastWord){
+        //Mark that it is the last word!
+        isLastWord = lastWord;
     }
 
 }
