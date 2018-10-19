@@ -7,8 +7,9 @@ import java.util.List;
 
 public class HighScoreList {
 
-    List<Score> highScores;
+    private List<Score> highScores;
     @Getter private final int MAX_SCORES = 10;
+
 
     public HighScoreList(List<Score> highScores) {
         this.highScores = highScores;

@@ -63,7 +63,7 @@ class GameLogic {
                 // Streak is the string after ':' in the parsed line
                 System.out.println(teamName);
                 System.out.println(score[1]);
-                final int streak = Integer.valueOf(score[1]);
+                final int streak = Integer.parseInt(score[1]);
                 // Got our information, create a Score and add it to high score list!
                 final Score tmpScore = new Score(teamName, streak);
 

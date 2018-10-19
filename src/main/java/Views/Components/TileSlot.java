@@ -15,10 +15,6 @@ public abstract class TileSlot extends AnchorPane {
     @FXML Button tileButton;
     @Setter private Tile tile;
 
-    public Tile getTileLetter() {
-        return tile;
-    }
-
     private String filePath = "/fxml/tileSlot.fxml";
 
     public Tile getTile() {
@@ -37,7 +33,6 @@ public abstract class TileSlot extends AnchorPane {
         try {
             fxmlLoader.load();
         } catch(Exception e) {
-
             System.out.println(e.getMessage());
         }
         this.tile = tile;
@@ -74,12 +69,6 @@ public abstract class TileSlot extends AnchorPane {
         tileButton.getStyleClass().clear();
         tileButton.getStyleClass().add("incorrectButton");
     }
-
-    public void setTile(Tile tile) {
-        this.tile = tile;
-    }
-
-
 
     public Button getTileButton() {
         return tileButton;

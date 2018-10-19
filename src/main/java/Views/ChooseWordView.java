@@ -19,17 +19,15 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     private TopController topController;
 
     @FXML
-    ToggleButton easyWordbtn,mediumWordbtn,hardWordbtn;
+    private ToggleButton easyWordbtn,mediumWordbtn,hardWordbtn;
 
     @FXML
-    Button donebtn;
+    private Button donebtn;
 
-    final ToggleGroup toggleWordbtnGroup = new ToggleGroup();
+    private final ToggleGroup toggleWordbtnGroup = new ToggleGroup();
 
-    Map<String, Word> words = new HashMap<>();
-
-    List<Word> wordList;
-    List<ToggleButton> toggleButtons;
+    private Map<String, Word> words = new HashMap<>();
+    private List<ToggleButton> toggleButtons;
 
     public ChooseWordView(FXMLLoader fxmlLoader, TopController topController) {
         this.topController = topController;
@@ -83,7 +81,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     @Override
     public void init() {
 
-        wordList = topController.getPossibleWords();
+        List<Word> wordList = topController.getPossibleWords();
         clear();
 
         for(final Word word: wordList){
