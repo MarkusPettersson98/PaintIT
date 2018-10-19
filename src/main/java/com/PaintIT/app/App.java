@@ -29,6 +29,14 @@ public class App extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setOnCloseRequest(e-> stopAllTimers());
+    }
+
+    /**Makes sure that all processes end when the JavaFX Scene shuts down
+     *
+     */
+    private void stopAllTimers(){
+        System.exit(0);
     }
 
     @Override
