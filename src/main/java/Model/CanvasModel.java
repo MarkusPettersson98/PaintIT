@@ -14,11 +14,11 @@ public class CanvasModel implements Observable {
     /**
      * Represents the canvas x-size.
      */
-    @Getter private int xMax = 1200;
+    @Getter private final int xMax;
     /**
      * Represents the canvas y-size.
      */
-    @Getter private int yMax = 500;
+    @Getter private final int yMax;
     /**
      * Represents the x-value of the latest pixel that has been modified.
      */
@@ -31,19 +31,22 @@ public class CanvasModel implements Observable {
      * An array of the Canvas. Using the Arrays structure so that the x and y value represents a pixel while its content ({@link ColorPoint})
       represents the value.
      */
-    private Color[][] canvas = new Color[xMax][yMax];
+    private final Color[][] canvas;
     /**
      * In this case, a list of {@link CanvasView}.
      */
-    List<Observer> observers = new ArrayList<>();
+    private List<Observer> observers = new ArrayList<>();
 
     public CanvasModel(Color initValue) {
+        xMax = 1200;
+        yMax = 500;
+        canvas = new Color[xMax][yMax];
         fillCanvas(initValue);
     }
 
     public CanvasModel(int xSize, int ySize, Color initColor) {
-        this.xMax = xSize; this.yMax = ySize;
-        this.canvas = new Color[xSize][ySize];
+        xMax = Math.abs(xSize); yMax = Math.abs(ySize);
+        canvas = new Color[xMax][yMax];
         fillCanvas(initColor);
     }
 
