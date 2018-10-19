@@ -25,6 +25,8 @@ public class CanvasModelTest {
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
          assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
+
+
     @Test
     public void testSetPixel() {
         canvasModel.setPixel(3,3,Color.RED);

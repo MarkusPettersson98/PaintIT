@@ -33,7 +33,7 @@ public class WordHandlerTest {
         }
         String word = guessLogic.getCurrentWord().getWord().toUpperCase();
         for(int i = 0; i<word.length(); i++){
-             assertFalse(!letters.contains(word.charAt(i)));
+             assertTrue(letters.contains(word.charAt(i)));
         }
 
     }

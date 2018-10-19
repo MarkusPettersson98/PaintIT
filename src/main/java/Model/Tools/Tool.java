@@ -49,7 +49,6 @@ public abstract class Tool {
      * @param r    radius of circle.
      * @return Whether or not x^2 + y^2 is less or equal to r^2.
      */
-
     public boolean inCircle(int x0, int y0, int posx, int posy, int r) {
         return (Math.pow(posx - x0, 2) + Math.pow(posy - y0, 2)) <= Math.pow(r, 2);
     }
@@ -57,14 +56,13 @@ public abstract class Tool {
     //Notifies Observers ({@link Controller.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
     // The appearance of the circle is determined by {@link PaintingView} and {@link Tool#radius}
     // TODO: fix this javadoc or functionality of apply
-    /** Doesn't really do anything.
-     *
+    /**  Returns whether or not the radius is less or equal to 0
      *
      * @param x0 The x-value for the center of the circle.
      * @param y0 The y-value for the center of the circle.
      * @param x The x-value to be checked if in circle.
      * @param y the y-value to be checked if in circle.
-     * @return whether or not the radius is less or equal to 0, uses {@link Tool#inCircle}
+     * @return whether or not the radius is less or equal to 0
      */
     public boolean apply(int x0, int y0, int x, int y) {
         return radius >=0;
