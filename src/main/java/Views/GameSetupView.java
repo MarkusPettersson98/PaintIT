@@ -51,7 +51,8 @@ public class GameSetupView extends AnchorPane implements GameScreen {
                 setNames();
                 // Start word reveal countdown (in WordRevealView)
                 // topController.startWordRevealCountdown();
-                // Show next view
+                // Cleat text fields and show next view
+                player1TextField.clear(); player2TextField.clear();
                 topController.show(startDrawing.getId());
             }
             else {
