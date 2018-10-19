@@ -1,12 +1,14 @@
 package Model.Game;
 
+import lombok.Getter;
+
 import java.util.Collections;
 import java.util.List;
 
 public class HighScoreList {
 
     List<Score> highScores;
-    private int MAX_SCORES = 10;
+    @Getter private final int MAX_SCORES = 10;
 
     public HighScoreList(List<Score> highScores) {
         this.highScores = highScores;
@@ -29,6 +31,8 @@ public class HighScoreList {
 
         return new HighScoreList(highScores);
     }
+
+    public int size() { return highScores.size(); }
 
     private void put(Score newScore) {
         // Add new score to high score list, then sort the list
@@ -55,6 +59,7 @@ public class HighScoreList {
     }
 
     public String getFormattedString() {
+        this.trim();
  /*       Format:
  /*       teamName:streak
  /*       teamName:streak 
