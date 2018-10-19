@@ -12,6 +12,7 @@ import Model.WordAndGuess.Tile;
 import Model.WordAndGuess.Word;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Word.Difficulty.*;
 
 import java.util.List;
 
@@ -109,12 +110,16 @@ public class TopController {
         Word currentWord = getCurrentWord();
         int points;
         switch(currentWord.getDifficulty_level()) {
-            case EASY: points = 1; break;
-            case MEDIUM: points = 2; break;
-            case HARD: points = 3; break;
+            case EASY: points = gameLogic.getPoints(Word.Difficulty.EASY); break;
+            case MEDIUM: points = gameLogic.getPoints(Word.Difficulty.MEDIUM); break;
+            case HARD: points = gameLogic.getPoints(Word.Difficulty.HARD); break;
             default: points = 0; break;
         }
         team.incrementStreak(points);
+    }
+
+    public int getPoints(Word.Difficulty difficulty) {
+        return gameLogic.getPoints(difficulty);
     }
 
     public void resetTeamStreak() {

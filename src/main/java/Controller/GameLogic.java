@@ -5,6 +5,7 @@ import Model.Game.HighScoreList;
 import Model.Game.Score;
 import Model.WordAndGuess.GuessLogic;
 import Model.WordAndGuess.Word;
+import Model.WordAndGuess.Word.Difficulty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,12 @@ import java.util.Scanner;
 class GameLogic {
 
     private String highScoreUrl = "highscores.txt";
+
+    private final int easyPoints = 1;
+
+    private final int mediumPoints = 2;
+
+    private final int hardPoints = 3;
 
     @Setter @Getter private CanvasModel currentPainting;
 
@@ -74,6 +81,15 @@ class GameLogic {
         }
         // Looped over all lines, return what we got back!
         return highScores;
+    }
+
+    public int getPoints(Difficulty difficulty) {
+        switch(difficulty) {
+            case EASY: return easyPoints;
+            case MEDIUM: return mediumPoints;
+            case HARD: return hardPoints;
+            default: return 0;
+        }
     }
 
     public void saveScore(String teamName, int teamStreak) {

@@ -2,6 +2,7 @@ package Game;
 
 import Controller.TopController;
 import Model.Game.Team;
+import Model.WordAndGuess.Word;
 import Views.MainMenuView;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,8 +57,9 @@ public class TopControllerTest extends ApplicationTest {
     public void incrementTeamStreakTest (){
         topController.addTeam(team);
         topController.resetTeamStreak();
+        topController.setCurrentWord(new Word("DummyString", Word.Difficulty.EASY));
         topController.incrementTeamStreak();
-        assertTrue(topController.getTeamStreak() == 1);
+        assertTrue(topController.getTeamStreak() == topController.getPoints(Word.Difficulty.EASY));
     }
 
     @Test
