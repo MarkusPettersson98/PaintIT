@@ -54,7 +54,7 @@ public class Team {
     /**
      * Increments the {@link Team#streak} with one.
      */
-    public void incrementStreak() { streak++; }
+    public void incrementStreak(int points) { streak+=points; }
 
     /**
      * Sets the {@link Team#streak} to zero.

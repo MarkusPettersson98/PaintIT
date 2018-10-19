@@ -103,7 +103,17 @@ public class TopController {
 
     public int getTeamStreak() { return team.getStreak(); }
 
-    public void incrementTeamStreak() { team.incrementStreak();}
+    public void incrementTeamStreak() {
+        Word currentWord = getCurrentWord();
+        int points;
+        switch(currentWord.getDifficulty_level()) {
+            case EASY: points = 1; break;
+            case MEDIUM: points = 2; break;
+            case HARD: points = 3; break;
+            default: points = 0; break;
+        }
+        team.incrementStreak(points);
+    }
 
     public void resetTeamStreak() {
         team.resetStreak();
