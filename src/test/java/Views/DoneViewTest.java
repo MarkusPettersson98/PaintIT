@@ -4,6 +4,7 @@ import Controller.TopController;
 import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -15,6 +16,10 @@ public class DoneViewTest extends ApplicationTest {
     Scene scene;
 
     Label streakLabel;
+
+    Button backToMainMenuButton;
+    Button doneBtn;
+    Button quitGameSessionButton;
 
     public <T extends Node> T find(final String query) {
         return lookup(query).query();
@@ -34,6 +39,9 @@ public class DoneViewTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
         streakLabel = (Label) find("#teamStreakLbl");
+        backToMainMenuButton = (Button) find(".button-backToMainMenu");
+        doneBtn = (Button) find(".button-play");
+        quitGameSessionButton = (Button) find (".button-quitGameSession");
     }
 
     @Test
@@ -47,6 +55,24 @@ public class DoneViewTest extends ApplicationTest {
     public void startNewRoundTest (){
         clickOn(".button-play");
         assert (topController.getCurrentPane().getChildren().toString().contains("WordRevealView"));
+    }
+
+    @Test
+    public void gameIsNotOverVisibleButtonsTest (){
+        assert (!backToMainMenuButton.isVisible() && doneBtn.isVisible() && quitGameSessionButton.isVisible());
+    }
+
+    @Test
+    public void quitGameVisibleButtonsTest (){
+        clickOn(quitGameSessionButton);
+        assert (backToMainMenuButton.isVisible() && !doneBtn.isVisible() && !quitGameSessionButton.isVisible());
+    }
+
+    @Test
+    public void quitGameGameIsOverTest (){
+        clickOn(quitGameSessionButton);
+        Boolean gameOver = topController.getGameOver();
+        assert (gameOver);
     }
 
 }
