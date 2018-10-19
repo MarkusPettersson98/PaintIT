@@ -91,7 +91,6 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         for(final TileSlot tileSlot: guessTileSlotArray){
             hBoxTop.getChildren().add(tileSlot);
         }
-
     }
 
     private void createAvailableTileSlots(final Tile... availableTiles){
