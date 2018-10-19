@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -54,7 +55,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     }
     private void initCountDown(){
         topController.startCountDown(guessTime,this);
-        countDownLbl.setText("    " + guessTime);
+        countDownLbl.setText(" Time left: " + guessTime);
     }
     private void initFXML(){
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filePath));
@@ -208,11 +209,15 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
 
     @Override
     public void handleSecondPassed(int secondsLeft) {
-        countDownLbl.setText("    " + Integer.toString(secondsLeft));
+        countDownLbl.setText(" Time left: " + Integer.toString(secondsLeft));
+        if (secondsLeft == 10){
+            countDownLbl.setTextFill(Paint.valueOf("red"));
+        }
     }
 
     @Override
     public void handleTimerFinished() {
-        System.out.println("Countdown Finshed");
+        topController.setToGameOver(true);
+        changeToDoneView();
     }
 }

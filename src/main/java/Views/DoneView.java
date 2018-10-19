@@ -86,6 +86,7 @@ public class DoneView extends AnchorPane implements GameScreen {
     private void changeToLoserView (){
         doneBtn.setVisible(false);
         backToMainMenuButton.setVisible(true);
+        quitGameSessionButton.setVisible(false);
         congratsLbl.setText("Game Session Ended!");
         informationLabel.setText("Your final score is:");
         Integer currentStreak = topController.getTeamStreak();
