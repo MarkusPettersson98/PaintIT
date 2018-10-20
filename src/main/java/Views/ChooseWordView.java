@@ -84,9 +84,13 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
         List<Word> wordList = topController.getPossibleWords();
         clear();
 
+        //Check if the wordlist is empty
         if (wordList.isEmpty()){
             topController.setIsLastWord(true);
+            topController.gameOver();
+            //If doneButton is pressed, change to DoneView
             donebtn.setId(ButtonFactory.createDoneViewBtnId());
+            //Change the text of donebtn and make it not disabled.
             donebtn.setText("Finish!");
             donebtn.setDisable(false);
             donebtn.setOnAction(e -> {

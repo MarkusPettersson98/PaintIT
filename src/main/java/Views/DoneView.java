@@ -80,20 +80,15 @@ public class DoneView extends AnchorPane implements GameScreen {
 
     @Override
     public void init() {
-        // Update labels
+        // First check if all the words are gone, which means the players have "won"
         if (topController.getIsLastWord()){
             changeToWinnerView();
         }
+        //Then check so that the players have guessed the word correctly and can continue to play.
         else if(!topController.getGameOver()){
-            congratsLbl.setText("You made it!");
-            informationLabel.setText("Your current score is:");
-            doneBtn.setVisible(true);
-            quitGameSessionButton.setVisible(true);
-            final Integer currentStreak = topController.getTeamStreak();
-            teamStreakLbl.setText(currentStreak.toString());
-            backToMainMenuButton.setVisible(false);
-            startNewGameButton.setVisible(false);
+            changeToNormalView();
         }
+        //This means that the players have failed to guess the word correctly and have lost
         else {
             changeToLoserView();
         }
@@ -103,6 +98,23 @@ public class DoneView extends AnchorPane implements GameScreen {
     @Override
     public Pane getPane() {
         return this;
+    }
+
+    /**
+     * Changes the view to "Normal View", which means the game will continue as normal. Updates the text in
+     * {@link DoneView#teamStreakLbl} to inform the players what their current score is. Sets
+     * {@link DoneView#doneBtn} to visible, so that the players can continue playing.
+     */
+    private void changeToNormalView (){
+        congratsLbl.setText("You made it!");
+        informationLabel.setText("Your current score is:");
+        doneBtn.setVisible(true);
+        quitGameSessionButton.setVisible(true);
+        final Integer currentStreak = topController.getTeamStreak();
+        teamStreakLbl.setText(currentStreak.toString());
+        backToMainMenuButton.setVisible(false);
+        startNewGameButton.setVisible(false);
+        confettiImageView.setVisible(false);
     }
 
     /**
@@ -121,7 +133,6 @@ public class DoneView extends AnchorPane implements GameScreen {
         final Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
         saveTeamNames();
-        topController.gameOver();
     }
 
     /**
@@ -144,6 +155,9 @@ public class DoneView extends AnchorPane implements GameScreen {
         teamStreakLbl.setText(currentStreak.toString());
     }
 
+    /**
+     * Saves the names of the player.
+     */
     private void saveTeamNames (){
         playerOne = topController.getGuesserName();
         playerTwo = topController.getGuesserName();
