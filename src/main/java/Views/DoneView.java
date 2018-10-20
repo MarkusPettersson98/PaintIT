@@ -160,7 +160,7 @@ public class DoneView extends AnchorPane implements GameScreen {
      */
     private void saveTeamNames (){
         playerOne = topController.getGuesserName();
-        playerTwo = topController.getGuesserName();
+        playerTwo = topController.getDrawerName();
     }
 
 }

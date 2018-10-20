@@ -20,6 +20,7 @@ public class DoneViewTest extends ApplicationTest {
     Button backToMainMenuButton;
     Button doneBtn;
     Button quitGameSessionButton;
+    Button startNewGameButton;
 
     public <T extends Node> T find(final String query) {
         return lookup(query).query();
@@ -42,6 +43,7 @@ public class DoneViewTest extends ApplicationTest {
         backToMainMenuButton = (Button) find(".button-backToMainMenu");
         doneBtn = (Button) find(".button-play");
         quitGameSessionButton = (Button) find (".button-quitGameSession");
+        startNewGameButton = (Button) find (".button-startNewGame");
     }
 
     @Test
@@ -59,13 +61,15 @@ public class DoneViewTest extends ApplicationTest {
 
     @Test
     public void gameIsNotOverVisibleButtonsTest (){
-        assert (!backToMainMenuButton.isVisible() && doneBtn.isVisible() && quitGameSessionButton.isVisible());
+        assert (!backToMainMenuButton.isVisible() && !startNewGameButton.isVisible() &&
+                doneBtn.isVisible() && quitGameSessionButton.isVisible());
     }
 
     @Test
     public void quitGameVisibleButtonsTest (){
         clickOn(quitGameSessionButton);
-        assert (backToMainMenuButton.isVisible() && !doneBtn.isVisible() && !quitGameSessionButton.isVisible());
+        assert (backToMainMenuButton.isVisible() && startNewGameButton.isVisible() &&
+                !doneBtn.isVisible() && !quitGameSessionButton.isVisible());
     }
 
     @Test
@@ -74,5 +78,18 @@ public class DoneViewTest extends ApplicationTest {
         Boolean gameOver = topController.getGameOver();
         assert (gameOver);
     }
+
+    @Test
+    public void startNewRoundNamesSavedTest (){
+        String playerOne = topController.getGuesserName();
+        String playerTwo = topController.getDrawerName();
+        String newTeamName = new String (playerOne + " and " + playerTwo);
+        clickOn(quitGameSessionButton);
+        clickOn(startNewGameButton);
+        String teamName = topController.getTeamName();
+        assert (newTeamName.equals(teamName));
+    }
+
+
 
 }
