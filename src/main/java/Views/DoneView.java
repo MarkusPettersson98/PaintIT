@@ -1,6 +1,7 @@
 package Views;
 
 import Controller.TopController;
+import Model.Game.Team;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +29,11 @@ public class DoneView extends AnchorPane implements GameScreen {
 
     @FXML private ImageView confettiImageView;
 
+    @FXML private Button startNewGameButton;
+
     private TopController topController;
+
+    private Team team;
 
     public DoneView(FXMLLoader fxmlLoader, TopController topController) {
         this.topController = topController;
@@ -61,6 +66,11 @@ public class DoneView extends AnchorPane implements GameScreen {
             topController.setToGameOver(false);
             topController.show(backToMainMenuButton.getId());
         });
+
+        startNewGameButton.setId(ButtonFactory.createWordRevealViewBtnId());
+        startNewGameButton.setOnAction(e->{
+            topController.show(startNewGameButton.getId());
+        });
     }
 
     @Override
@@ -77,6 +87,7 @@ public class DoneView extends AnchorPane implements GameScreen {
             final Integer currentStreak = topController.getTeamStreak();
             teamStreakLbl.setText(currentStreak.toString());
             backToMainMenuButton.setVisible(false);
+            startNewGameButton.setVisible(false);
         }
         else {
             changeToLoserView();
@@ -99,6 +110,7 @@ public class DoneView extends AnchorPane implements GameScreen {
         doneBtn.setVisible(false);
         backToMainMenuButton.setVisible(true);
         quitGameSessionButton.setVisible(false);
+        startNewGameButton.setVisible(true);
         congratsLbl.setText("Game Session Ended!");
         informationLabel.setText("Your final score is:");
         final Integer currentStreak = topController.getTeamStreak();
@@ -112,9 +124,11 @@ public class DoneView extends AnchorPane implements GameScreen {
         doneBtn.setVisible(false);
         backToMainMenuButton.setVisible(true);
         quitGameSessionButton.setVisible(false);
+        startNewGameButton.setVisible(true);
         congratsLbl.setText("You completed all the words!");
         informationLabel.setText("Your final score is:");
         Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
     }
+    
 }

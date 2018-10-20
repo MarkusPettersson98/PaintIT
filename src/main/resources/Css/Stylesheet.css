@@ -155,18 +155,21 @@
 }
 
 .button-backToMainMenu{
-    -fx-padding: 8 15 15 15;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%, #d5090a 0%, #c20600 100%),
-            #cf0100,
-            #ef0b01,
-            radial-gradient(center 50% 50%, radius 100%, #ee0100, #ea0400);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+            linear-gradient(#ff2133, #bc0002),
+            linear-gradient(#ef843b, #ea0400),
+            linear-gradient(#ee813d, #d5090a),
+            linear-gradient(#ea5932 0%, #ea0400 50%, #d20002 100%),
+            linear-gradient(from 0% 0% to 5% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
     -fx-font-weight: bold;
-    -fx-font-size: 60px;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
     -fx-font-family: "Marker Felt";
+    -fx-font-size: 50;
 }
 
 .button-backToMainMenu:hover{
@@ -176,3 +179,31 @@
 .button-backToMainMenu:pressed{
     -fx-background-color: #bc0002;
 }
+
+.button-startNewGame{
+    -fx-background-color:
+            linear-gradient(#ff2133, #bc0002),
+            linear-gradient(#ef843b, #ea0400),
+            linear-gradient(#ee813d, #d5090a),
+            linear-gradient(#ea5932 0%, #ea0400 50%, #d20002 100%),
+            linear-gradient(from 0% 0% to 5% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-font-family: "Marker Felt";
+    -fx-font-size: 50;
+}
+
+.button-startNewGame:hover{
+    -fx-background-color: #ff2133;
+}
+
+.button-startNewGame:pressed{
+    -fx-background-color: #bc0002;
+}
+
+
