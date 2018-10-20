@@ -33,7 +33,8 @@ public class DoneView extends AnchorPane implements GameScreen {
 
     private TopController topController;
 
-    private Team team;
+    private String playerOne;
+    private String playerTwo;
 
     public DoneView(FXMLLoader fxmlLoader, TopController topController) {
         this.topController = topController;
@@ -61,14 +62,18 @@ public class DoneView extends AnchorPane implements GameScreen {
             quitGameSessionButton.setVisible(false);
         });
 
+        //When backToMainMenuButton is pressed, go to MainMenuView
         backToMainMenuButton.setId(ButtonFactory.createMainMenuViewBtnId());
         backToMainMenuButton.setOnAction(e->{
             topController.setToGameOver(false);
             topController.show(backToMainMenuButton.getId());
         });
 
+        //When startNewGameButton is pressed, go to WordRevealView
         startNewGameButton.setId(ButtonFactory.createWordRevealViewBtnId());
         startNewGameButton.setOnAction(e->{
+            topController.setToGameOver(false);
+            topController.addTeam(new Team(playerOne, playerTwo));
             topController.show(startNewGameButton.getId());
         });
     }
@@ -115,11 +120,19 @@ public class DoneView extends AnchorPane implements GameScreen {
         informationLabel.setText("Your final score is:");
         final Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
-
+        saveTeamNames();
         topController.gameOver();
     }
 
+    /**
+     * Changes the view to "Winner View", which means that the players have completed all the words. Updates the text in
+     * {@link DoneView#congratsLbl} and {@link DoneView#informationLabel} to inform the player that the have completed
+     * all the words. Sets {@link DoneView#doneBtn} and {@link DoneView#quitGameSessionButton} to not visible,
+     * as well as sets {@link DoneView#backToMainMenuButton} and {@link DoneView#startNewGameButton} to visible, to
+     * give the players the chance to start a new game.
+     */
     private void changeToWinnerView (){
+        //Sets a new confetti-background
         confettiImageView.setVisible(true);
         doneBtn.setVisible(false);
         backToMainMenuButton.setVisible(true);
@@ -130,5 +143,10 @@ public class DoneView extends AnchorPane implements GameScreen {
         Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
     }
-    
+
+    private void saveTeamNames (){
+        playerOne = topController.getGuesserName();
+        playerTwo = topController.getGuesserName();
+    }
+
 }
