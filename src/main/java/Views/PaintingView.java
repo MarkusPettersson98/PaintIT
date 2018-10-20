@@ -228,6 +228,13 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvasController.generateNewCanvas();
         // Update TopController with new canvas
         this.canvas = canvasController.getCanvasView();
+        changeToolColor(Color.BLACK);
+        canvasController.setToolRadius(10);
+        radiusSlider.setValue(10);
+        canvasController.setCurrentTool("Brush");
+        BrushToggleButton.setSelected(true);
+
+
         loadCanvas();
         canvasSetup();
     }
