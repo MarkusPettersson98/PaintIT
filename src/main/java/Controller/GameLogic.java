@@ -15,19 +15,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 class GameLogic {
 
     private String highScoreUrl = "highscores.txt";
-
-    private final int easyPoints = 1;
-
-    private final int mediumPoints = 2;
-
-    private final int hardPoints = 3;
 
     @Setter @Getter private CanvasModel currentPainting;
 
@@ -84,6 +77,10 @@ class GameLogic {
     }
 
     public int getPoints(Difficulty difficulty) {
+        final int easyPoints = 1;
+        final int mediumPoints = 2;
+        final int hardPoints = 3;
+
         switch(difficulty) {
             case EASY: return easyPoints;
             case MEDIUM: return mediumPoints;

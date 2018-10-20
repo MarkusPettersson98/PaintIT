@@ -37,8 +37,8 @@ public class CanvasController {
 
     private Tool currentTool;
 
-    private int x0;
-    private int y0;
+    private int currentx0;
+    private int currenty0;
 
     public CanvasController() {
         this.canvasModel = new CanvasModel(Color.WHITE);
@@ -74,13 +74,13 @@ public class CanvasController {
     }
 
     private boolean inCircle(int posx, int posy) {
-        return (Math.pow(posx - x0, 2) + Math.pow(posy - y0, 2)) <= Math.pow(currentTool.getRadius(), 2);
+        return (Math.pow(posx - currentx0, 2) + Math.pow(posy - currenty0, 2)) <= Math.pow(currentTool.getRadius(), 2);
     }
 
     public void useTool(int x0, int y0) {
         final int radius = currentTool.getRadius();
-        this.x0 = x0;
-        this.y0 = y0;
+        this.currentx0 = x0;
+        this.currenty0 = y0;
         for (int posx = (x0 - radius); posx <= (x0 + radius); posx++) {
             for (int posy = (y0 - radius); posy <= (y0 + radius); posy++) {
                 if (checkPoint(posx,posy)) {
@@ -91,7 +91,7 @@ public class CanvasController {
     }
 
     private boolean checkPoint(int posx, int posy) {
-        return (currentTool.apply(x0, y0, posx, posy) && inCircle(posx,posy));
+        return (currentTool.apply(currentx0, currenty0, posx, posy) && inCircle(posx,posy));
     }
 
     /** Paints model pixel with color
@@ -100,7 +100,7 @@ public class CanvasController {
      * @param y y-value of pixel.
      * @param newColor new color of pixel.
      */
-    public void paint(int x, int y, Color newColor) {
+    private void paint(int x, int y, Color newColor) {
         // Check if new color value is different from current value
         if(x > canvasModel.getXBound() || x < 0 || y > canvasModel.getYBound() || y < 0) {
             return;
@@ -130,19 +130,6 @@ public class CanvasController {
     public void fillCanvas(Color color) {
         canvasModel.fillCanvas(color);
     }
-
-
-    /**
-     * Copies entire model into {@link CanvasController#undoArrayList}, is called upon by {@link CanvasController#clear()}
-     */
-    private void copyModelToList() {
-        for(int y = 0; y < canvasModel.getYMax(); y++) {
-            for (int x = 0; x < canvasModel.getXMax(); x++) {
-                undoArrayList.add(new ColorPoint(x,y,canvasModel.getPixel(x,y)));
-            }
-        }
-    }
-
 
     /** Clears the canvas by calling {@link CanvasModel#resetCanvas()}. Also uses {@link CanvasController#copyModelToList()} to allow for {@link CanvasController#undo} to work.
      */

@@ -39,7 +39,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     private TileSlot[] guessTileSlotArray;
     private static final int guessTime = 30;
 
-    String filePath = "/fxml/tileBoard.fxml";
+    private String filePath = "/fxml/tileBoard.fxml";
 
     /** Loads itself from it´s fxml file, and instansiates the tiles that visualises the guess from the backend.
      * Further, allows for player to use keyboard to guess.

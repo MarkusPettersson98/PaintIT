@@ -7,7 +7,7 @@ import Model.WordAndGuess.Tile;
  */
 
 public class TileBoardController {
-    GuessLogic guessLogic;
+    private GuessLogic guessLogic;
     public TileBoardController(GuessLogic guessLogic) {
         this.guessLogic = guessLogic;
     }
@@ -27,7 +27,7 @@ public class TileBoardController {
     public void removeTileFromGuess(Tile t){
         guessLogic.removeTileFromGuess(t);
     }
-    public void removeRightMostTileFromGuess(){
+    private void removeRightMostTileFromGuess(){
         guessLogic.removeRightMostTileFromGuess();
     }
 

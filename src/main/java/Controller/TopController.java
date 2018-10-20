@@ -12,7 +12,6 @@ import Model.WordAndGuess.Tile;
 import Model.WordAndGuess.Word;
 import javafx.scene.layout.Pane;
 import Model.WordAndGuess.GuessLogic;
-import Model.WordAndGuess.Word.Difficulty.*;
 
 import java.util.List;
 
@@ -24,9 +23,9 @@ public class TopController {
 
     private Team team;
 
-    private final GameLogic gameLogic;
-    private final ViewController viewController;
-    private final CountDownTimer countDownTimer;
+    private final GameLogic GAMELOGIC;
+    private final ViewController VIEWCONTROLLER;
+    private final CountDownTimer COUNTDOWNTIMER;
     private boolean isLastWord;
 
     /**
@@ -35,22 +34,22 @@ public class TopController {
     private Boolean gameOver;
 
     public TopController() {
-        gameLogic = new GameLogic();
+        GAMELOGIC = new GameLogic();
         final List<GameScreen> gameScreens = ViewFactory.createAllViews(this);
-        viewController = new ViewController(gameScreens);
-        countDownTimer = new CountDownTimer();
+        VIEWCONTROLLER = new ViewController(gameScreens);
+        COUNTDOWNTIMER = new CountDownTimer();
 
-        gameLogic.setupHighScores();
+        GAMELOGIC.setupHighScores();
         gameOver = false;
         isLastWord = false;
     }
 
 
     public void resetTimer() {
-        countDownTimer.resetTimer();
+        COUNTDOWNTIMER.resetTimer();
     }
 
-    public Pane getCurrentPane() { return viewController.getCurrentView(); }
+    public Pane getCurrentPane() { return VIEWCONTROLLER.getCurrentView(); }
 
     /**
      * Method for invoking {@link GameScreen#init()} of view to be shown and switching current view
@@ -59,17 +58,17 @@ public class TopController {
      */
     public void show(String url) {
         // Get next view to be shown
-        viewController.prepareNextView(url);
+        VIEWCONTROLLER.prepareNextView(url);
         // Call init method on next view
-        final GameScreen gameScreenTmp = viewController.getNextScreen();
+        final GameScreen gameScreenTmp = VIEWCONTROLLER.getNextScreen();
         gameScreenTmp.init();
         // Show next view
-        viewController.show();
+        VIEWCONTROLLER.show();
     }
 
 
     public void startCountDown(int seconds, CountDownUser caller){
-        countDownTimer.startCountDown(seconds,caller);
+        COUNTDOWNTIMER.startCountDown(seconds,caller);
     }
     /**
      * If there's no prior instance of {@link Team}, add passed reference to {@link TopController#team}.
@@ -89,7 +88,7 @@ public class TopController {
         else return "There's no team!";
     }
     public GuessLogic getGuessLogic(){
-        return gameLogic.getGuessLogic();
+        return GAMELOGIC.getGuessLogic();
     }
 
     /**
@@ -108,28 +107,28 @@ public class TopController {
 
     public void incrementTeamStreak() {
         Word currentWord = getCurrentWord();
-        int points = gameLogic.getPoints(currentWord.getDifficulty_level());
+        int points = GAMELOGIC.getPoints(currentWord.getDifficulty_level());
         team.incrementStreak(points);
     }
 
     public int getPoints(Word.Difficulty difficulty) {
-        return gameLogic.getPoints(difficulty);
+        return GAMELOGIC.getPoints(difficulty);
     }
 
     public void resetTeamStreak() {
         team.resetStreak();
     }
 
-    public CanvasModel getCanvas() { return gameLogic.getCurrentPainting(); }
+    public CanvasModel getCanvas() { return GAMELOGIC.getCurrentPainting(); }
 
-    public void setCurrentPainting(CanvasModel canvasModel) { gameLogic.setCurrentPainting(canvasModel); }
+    public void setCurrentPainting(CanvasModel canvasModel) { GAMELOGIC.setCurrentPainting(canvasModel); }
 
     public Word getCurrentWord() {
-        return gameLogic.getCurrentWord();
+        return GAMELOGIC.getCurrentWord();
     }
 
     public void setCurrentWord(Word word){
-        gameLogic.setCurrentWord(word);
+        GAMELOGIC.setCurrentWord(word);
     }
 
     public Tile[] getAvailableTiles(){return getGuessLogic().getAvailableTiles();}
@@ -141,7 +140,7 @@ public class TopController {
     public boolean guessCurrentWord(){return getGuessLogic().guessCurrentWord();}
 
     public List<Word> getPossibleWords(){
-        return gameLogic.getPossibleWords();
+        return GAMELOGIC.getPossibleWords();
     }
 
     public Boolean getGameOver (){
@@ -163,7 +162,7 @@ public class TopController {
         // Game over, save team's streak if necessary
         saveScore();
         // Reset words
-        gameLogic.newGame();
+        GAMELOGIC.newGame();
         // Remove current team
         team = null;
     }
@@ -181,12 +180,12 @@ public class TopController {
      */
     public void saveScore() {
         if (team != null) {
-            gameLogic.saveScore(team.getTeamName(), team.getStreak());
+            GAMELOGIC.saveScore(team.getTeamName(), team.getStreak());
         }
     }
 
     public List<Score> getHighScores() {
-        return gameLogic.getHighScores();
+        return GAMELOGIC.getHighScores();
     }
 
     public boolean getIsLastWord (){

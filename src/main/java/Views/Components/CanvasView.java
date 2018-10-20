@@ -50,7 +50,7 @@ public class CanvasView extends Canvas implements Observer {
      * @param y The y value that has been updated.
      * @param color The color of the pixel that has been updated.
      */
-    public void setPixel(int x, int y, Color color) {
+    private void setPixel(int x, int y, Color color) {
         pixelWriter.setColor(x,y,color);
     }
 
