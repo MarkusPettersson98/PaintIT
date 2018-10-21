@@ -163,6 +163,7 @@ public class TopController {
         saveScore();
         // Reset words
         GAMELOGIC.newGame();
+        isLastWord = false;
         // Remove current team
         team = null;
     }
@@ -176,7 +177,7 @@ public class TopController {
     }
 
     /**
-     * Calls on {@link GameLogic#saveScore(String, int)} and sets the string to {@link Team#getTeamName()} and the int to {@link Team#getStreak()}.
+     * Calls on {@link GameLogic#saveScore(String, int)} and sets the string to the team's name and the int to the team's streak.
      */
     public void saveScore() {
         if (team != null) {

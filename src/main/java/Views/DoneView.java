@@ -66,6 +66,7 @@ public class DoneView extends AnchorPane implements GameScreen {
         backToMainMenuButton.setId(ButtonFactory.createMainMenuViewBtnId());
         backToMainMenuButton.setOnAction(e->{
             topController.setToGameOver(false);
+            topController.gameOver();
             topController.show(backToMainMenuButton.getId());
         });
 
@@ -81,6 +82,7 @@ public class DoneView extends AnchorPane implements GameScreen {
 
     @Override
     public void init() {
+        saveTeamNames();
         // First check if all the words are gone, which means the players have "won"
         if (topController.getIsLastWord()){
             changeToWinnerView();
@@ -133,7 +135,6 @@ public class DoneView extends AnchorPane implements GameScreen {
         informationLabel.setText("Your final score is:");
         final Integer currentStreak = topController.getTeamStreak();
         teamStreakLbl.setText(currentStreak.toString());
-        saveTeamNames();
     }
 
     /**

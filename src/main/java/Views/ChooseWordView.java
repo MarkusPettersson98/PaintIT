@@ -86,8 +86,14 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
 
         //Check if the wordlist is empty
         if (wordList.isEmpty()){
+            // If so, set IsLastWord flag in topcontroller and show DoneView!
             topController.setIsLastWord(true);
-            topController.gameOver();
+            topController.show(ButtonFactory.createDoneViewBtnId());
+
+            
+            // Below is really unsafe code which causes a lot of unpredictable behavior and suffering ..
+            /*
+            topController.setIsLastWord(true);
             //If doneButton is pressed, change to DoneView
             donebtn.setId(ButtonFactory.createDoneViewBtnId());
             //Change the text of donebtn and make it not disabled.
@@ -96,6 +102,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
             donebtn.setOnAction(e -> {
                 topController.show(donebtn.getId());
             });
+            */
         }
         else {
             // Make sure that 'confirm' button is disabled
