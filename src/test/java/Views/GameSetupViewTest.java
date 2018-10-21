@@ -1,17 +1,16 @@
 package Views;
 
-import Game.GameSession;
+import Controller.TopController;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
 public class GameSetupViewTest extends ApplicationTest{
 
-    GameSession gameSession;
+    TopController topController;
     Scene scene;
     Label playerOneWrongLabel;
     Label playerTwoWrongLabel;
@@ -23,11 +22,11 @@ public class GameSetupViewTest extends ApplicationTest{
 
     @Override
     public void start (Stage stage){
-        gameSession = new GameSession();
+        topController = new TopController();
 
-        scene = new Scene(gameSession.getCurrentPane());
+        scene = new Scene(topController.getCurrentPane());
 
-        gameSession.show(GameSetupView.class.getSimpleName());
+        topController.show(GameSetupView.class.getSimpleName());
         stage.setScene(scene);
         stage.show();
 
@@ -43,8 +42,8 @@ public class GameSetupViewTest extends ApplicationTest{
         clickOn("#player2TextField");
         write("Test Two");
         clickOn(".button-play");
-        System.out.println(gameSession.getTeamName());
-        assert (gameSession.getTeamName().equals("Test One and Test Two"));
+        System.out.println(topController.getTeamName());
+        assert (topController.getTeamName().equals("Test One and Test Two"));
     }
 
     @Test
@@ -54,11 +53,22 @@ public class GameSetupViewTest extends ApplicationTest{
         clickOn("#player2TextField");
         write("Test Two");
         clickOn(".button-play");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("WordRevealView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("WordRevealView"));
     }
 
     @Test
     public void noNamesEnteredTest (){
+        clickOn(".button-play");
+        System.out.println(playerOneWrongLabel.getText().toString());
+        System.out.println(playerTwoWrongLabel.getText().toString());
+        assert (playerOneWrongLabel.getText().equals("Enter a name!") &&
+                playerTwoWrongLabel.getText().equals("Enter a name!"));
+    }
+
+    @Test
+    public void illegalNamesEnteredTest (){
+        clickOn("#player1TextField");
+        write("Test One : Test Two");
         clickOn(".button-play");
         System.out.println(playerOneWrongLabel.getText().toString());
         System.out.println(playerTwoWrongLabel.getText().toString());
@@ -78,6 +88,6 @@ public class GameSetupViewTest extends ApplicationTest{
     @Test
     public void backButtonPressedTest (){
         clickOn(".button-mainMenu");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("MainMenuView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("MainMenuView"));
     }
 }

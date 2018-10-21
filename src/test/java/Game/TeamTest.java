@@ -1,5 +1,6 @@
 package Game;
 
+import Model.Game.Team;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
@@ -27,13 +28,13 @@ public class TeamTest {
 
     @Test
     public void testIncrementStreak (){
-        team.incrementStreak();
+        team.incrementStreak(1);
         assertTrue(team.getStreak() == 1);
     }
 
     @Test
     public void testResetStreak (){
-        team.incrementStreak();
+        team.incrementStreak(1);
         team.resetStreak();
         assertTrue(team.getStreak() == 0);
     }

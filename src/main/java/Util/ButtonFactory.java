@@ -1,9 +1,10 @@
 package Util;
 
+import Controller.TopController;
 import Views.*;
 
 /**
- * Mimicing the FactoryPattern this class assigns buttons an ID which is relevant for identifying and switching between {@link Views.GameScreen} via {@link Game.GameSession}.
+ * Mimicing the FactoryPattern this class assigns buttons an ID which is relevant for identifying and switching between {@link Views.GameScreen} via {@link TopController}.
  */
 public abstract class ButtonFactory {
 

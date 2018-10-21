@@ -1,6 +1,6 @@
 package Util;
 
-import Game.GameSession;
+import Controller.TopController;
 import Views.*;
 import javafx.fxml.FXMLLoader;
 import java.util.ArrayList;
@@ -10,71 +10,71 @@ public abstract class ViewFactory {
 
     private static FXMLLoader fxmlLoader = new FXMLLoader();
 
-    /** Creates an instance of {@link MainMenuView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link MainMenuView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
 
-    public static MainMenuView createMainMenuView(GameSession gameSession) { return new MainMenuView(fxmlLoader, gameSession); }
+    public static MainMenuView createMainMenuView(TopController topController) { return new MainMenuView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link GameSetupView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link GameSetupView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static GameSetupView createGameSetupView(GameSession gameSession) { return new GameSetupView(fxmlLoader, gameSession); }
+    public static GameSetupView createGameSetupView(TopController topController) { return new GameSetupView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link WordRevealView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link WordRevealView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static WordRevealView createWordRevealView(GameSession gameSession) { return new WordRevealView(fxmlLoader, gameSession); }
+    public static WordRevealView createWordRevealView(TopController topController) { return new WordRevealView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link PaintingView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link PaintingView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static PaintingView createPaintingView(GameSession gameSession) { return new PaintingView(fxmlLoader, gameSession); }
+    public static PaintingView createPaintingView(TopController topController) { return new PaintingView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link GuessingView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link GuessingView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static GuessingView createGuessingView(GameSession gameSession) { return new GuessingView(fxmlLoader, gameSession); }
+    public static GuessingView createGuessingView(TopController topController) { return new GuessingView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link DoneView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link DoneView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static DoneView createDoneView(GameSession gameSession) { return new DoneView(fxmlLoader, gameSession); }
+    public static DoneView createDoneView(TopController topController) { return new DoneView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link ChooseWordView} and injects a reference to a {@link GameSession}.
+    /** Creates an instance of {@link ChooseWordView} and injects a reference to a {@link TopController}.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static ChooseWordView createChooseWordView(GameSession gameSession) { return new ChooseWordView(fxmlLoader, gameSession); }
+    public static ChooseWordView createChooseWordView(TopController topController) { return new ChooseWordView(fxmlLoader, topController); }
 
-    /** Creates an instance of every GameScreen and injects a reference to a {@link GameSession} into them.
+    /** Creates an instance of every GameScreen and injects a reference to a {@link TopController} into them.
      *
-     * @param gameSession
+     * @param topController
      * @return
      */
-    public static List<GameScreen> createAllViews(GameSession gameSession) {
-        List<GameScreen> gameScreens = new ArrayList<>();
+    public static List<GameScreen> createAllViews(TopController topController) {
+        final List<GameScreen> gameScreens = new ArrayList<>();
 
-        gameScreens.add(createMainMenuView(gameSession));
-        gameScreens.add(createGameSetupView(gameSession));
-        gameScreens.add(createWordRevealView(gameSession));
-        gameScreens.add(createPaintingView(gameSession));
-        gameScreens.add(createGuessingView(gameSession));
-        gameScreens.add(createDoneView(gameSession));
-        gameScreens.add(createChooseWordView(gameSession));
+        gameScreens.add(createMainMenuView(topController));
+        gameScreens.add(createGameSetupView(topController));
+        gameScreens.add(createWordRevealView(topController));
+        gameScreens.add(createPaintingView(topController));
+        gameScreens.add(createGuessingView(topController));
+        gameScreens.add(createDoneView(topController));
+        gameScreens.add(createChooseWordView(topController));
 
         return gameScreens;
     }

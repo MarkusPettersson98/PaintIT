@@ -1,8 +1,7 @@
 package Views;
 
-import Game.GameSession;
-import Util.ButtonFactory;
-import Util.ViewFactory;
+import Controller.TopController;
+import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -13,7 +12,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 public class MainMenuViewTest extends ApplicationTest{
 
-    GameSession gameSession;
+    TopController topController;
     Scene scene;
     AnchorPane howToPlayAnchor;
     AnchorPane mainmenuAnchor;
@@ -26,10 +25,11 @@ public class MainMenuViewTest extends ApplicationTest{
 
     @Override
     public void start(Stage stage) {
-        gameSession = new GameSession();
+        topController = new TopController();
+        topController.addTeam(new Team("testPlayer", "testPlayer2"));
 
-        scene = new Scene(gameSession.getCurrentPane());
-        gameSession.show(MainMenuView.class.getSimpleName());
+        scene = new Scene(topController.getCurrentPane());
+        topController.show(MainMenuView.class.getSimpleName());
 
         stage.setScene(scene);
         stage.show();
@@ -43,7 +43,7 @@ public class MainMenuViewTest extends ApplicationTest{
     @Test
     public void playButtonTest(){
       clickOn(".button-play");
-      assert (gameSession.getCurrentPane().getChildren().toString().contains("GameSetupView"));
+      assert (topController.getCurrentPane().getChildren().toString().contains("GameSetupView"));
     }
 
     @Test

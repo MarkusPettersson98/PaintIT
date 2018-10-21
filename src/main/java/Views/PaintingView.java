@@ -1,9 +1,10 @@
 package Views;
 
-import Game.GameSession;
-import Tools.*;
-import Canvas.CanvasController;
-import Canvas.CanvasView;
+import Controller.TopController;
+import Model.Canvas.Brush;
+import Model.Canvas.Eraser;
+import Model.Canvas.SprayCan;
+import Controller.CanvasController;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PaintingView extends AnchorPane implements GameScreen {
 
@@ -29,7 +32,10 @@ public class PaintingView extends AnchorPane implements GameScreen {
     private Slider radiusSlider;
 
     @FXML
-    private ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton;
+    private ToggleButton BrushToggleButton, SprayCanToggleButton, EraserToggleButton, blueToggleBtn, greenToggleBtn,redToggleBtn, blackToggleBtn;
+
+    @FXML
+    private ToggleButton greyToggleBtn, whiteToggleBtn, yellowToggleBtn, beigeToggleBtn;
 
     @FXML
     private Button clearBtn, undoBtn, doneBtn, noClearBtn, yesClearBtn;
@@ -40,13 +46,15 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @FXML
     private Pane clearPane;
 
-    private final ToggleGroup group = new ToggleGroup();
+    private Map<String, Color> colorButtonMap = new HashMap<>();
+    private final ToggleGroup colorToggleGroup = new ToggleGroup();
+    private final ToggleGroup toolToggleGroup = new ToggleGroup();
     private CanvasController canvasController;
     private Canvas canvas;
-    private GameSession gameSession;
+    private TopController topController;
 
-    public PaintingView(FXMLLoader fxmlLoader, GameSession gameSession) {
-        this.gameSession = gameSession;
+    public PaintingView(FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
 
         this.canvasController = new CanvasController();
         this.canvas = canvasController.getCanvasView();
@@ -69,19 +77,31 @@ public class PaintingView extends AnchorPane implements GameScreen {
         BrushToggleButton.setSelected(true);
         colorPicker.setValue(Color.BLACK);
 
-        setupButton(BrushToggleButton, Brush.class.getSimpleName());
-        setupButton(SprayCanToggleButton, SprayCan.class.getSimpleName());
-        setupButton(EraserToggleButton, Eraser.class.getSimpleName());
+        setupToggleButton(BrushToggleButton, Brush.class.getSimpleName(), toolToggleGroup);
+        setupToggleButton(SprayCanToggleButton, SprayCan.class.getSimpleName(), toolToggleGroup);
+        setupToggleButton(EraserToggleButton, Eraser.class.getSimpleName(), toolToggleGroup);
 
-        group.selectedToggleProperty().addListener(e -> {
-            ToggleButton selectedButton = (ToggleButton) group.getSelectedToggle();
+        setupColorButtons();
+
+        toolToggleGroup.selectedToggleProperty().addListener(e -> {
+            if((ToggleButton) toolToggleGroup.getSelectedToggle()==null) {
+                return;
+            }
+            final ToggleButton selectedButton = (ToggleButton) toolToggleGroup.getSelectedToggle();
             canvasController.setCurrentTool(selectedButton.getText());
-            colorPicker.setValue(canvasController.getToolColor());
+        });
+
+        colorToggleGroup.selectedToggleProperty().addListener(e -> {
+            if((ToggleButton) colorToggleGroup.getSelectedToggle()==null) {
+                return;
+            }
+            final ToggleButton selectedButton = (ToggleButton) colorToggleGroup.getSelectedToggle();
+            changeToolColor(colorButtonMap.get(selectedButton.getId()));
+            canvasController.pushToUndoStack();
         });
 
         colorPicker.setOnAction(e -> {
-            canvasController.setToolColor(colorPicker.getValue());
-
+            changeToolColor(colorPicker.getValue());
         });
 
         clearBtn.setOnAction(e -> {
@@ -90,7 +110,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
 
         undoBtn.setOnAction(e -> {
             canvasController.undo();
-            updateUndoBtn();
+            updateUndoClearBtn();
         });
 
         yesClearBtn.setOnAction(e -> {
@@ -100,13 +120,11 @@ public class PaintingView extends AnchorPane implements GameScreen {
         noClearBtn.setOnAction(e-> hideclearPopup());
 
 
-        // TODO CHANGE BACK SO THAT WE GO TO GUESSINGVIEW INSTEAD OF DONEVIEW
         doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
-        // doneBtn.setId(ButtonFactory.createDoneViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
             hideclearPopup();
-            gameSession.show(doneBtn.getId());
+            topController.show(doneBtn.getId());
         });
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -137,20 +155,43 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     if(!(m.isControlDown() || m.isMetaDown())) {
                         break;
                     }
+                case U:
                 case BACK_SPACE:
                     canvasController.undo();
-                    updateUndoBtn();
+                    updateUndoClearBtn();
                     break;
             }
         });
 
         setRadius((int) radiusSlider.getValue());
-
         hideclearPopup();
-
-        updateUndoBtn();
+        updateUndoClearBtn();
     }
 
+    private void setupColorButtons() {
+        setupToggleButton(blackToggleBtn, "", colorToggleGroup);
+        setupToggleButton(greyToggleBtn, "", colorToggleGroup);
+        setupToggleButton(greenToggleBtn, "",colorToggleGroup);
+        setupToggleButton(blueToggleBtn, "",colorToggleGroup);
+        setupToggleButton(whiteToggleBtn, "",colorToggleGroup);
+        setupToggleButton(beigeToggleBtn, "",colorToggleGroup);
+        setupToggleButton(yellowToggleBtn, "",colorToggleGroup);
+        setupToggleButton(redToggleBtn, "",colorToggleGroup);
+
+        colorButtonMap.put(blackToggleBtn.getId(),Color.BLACK);
+        colorButtonMap.put(greyToggleBtn.getId(),Color.GREY);
+        colorButtonMap.put(greenToggleBtn.getId(), Color.GREEN);
+        colorButtonMap.put(blueToggleBtn.getId(), Color.BLUE);
+        colorButtonMap.put(whiteToggleBtn.getId(), Color.WHITE);
+        colorButtonMap.put(beigeToggleBtn.getId(), Color.valueOf("ffe0bd"));
+        colorButtonMap.put(yellowToggleBtn.getId(), Color.YELLOW);
+        colorButtonMap.put(redToggleBtn.getId(), Color.RED);
+    }
+
+    private void changeToolColor(Color c) {
+        canvasController.setToolColor(c);
+        colorPicker.setValue(c);
+    }
     private void showclearPopup() {
         clearPane.setVisible(true);
         clearPane.setDisable(false);
@@ -160,9 +201,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
         clearPane.setDisable(true);
     }
 
-    private void setupButton(ToggleButton button, String name) {
+    private void setupToggleButton(ToggleButton button, String name, ToggleGroup tG) {
         button.setText(name);
-        button.setToggleGroup(this.group);
+        button.setToggleGroup(tG);
     }
 
     private void clearCanvas() {
@@ -170,7 +211,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvasController.redrawCanvasView();
 
         hideclearPopup();
-        updateUndoBtn();
+        updateUndoClearBtn();
     }
 
 
@@ -181,12 +222,19 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @Override
     public void init() {
         // Update label with current word
-        currentWordLbl.setText(gameSession.getCurrentWord().getWord());
+        currentWordLbl.setText(topController.getCurrentWord().getWord());
 
         // Create a new canvas!
         canvasController.generateNewCanvas();
-        // Update GameSession with new canvas
+        // Update TopController with new canvas
         this.canvas = canvasController.getCanvasView();
+        changeToolColor(Color.BLACK);
+        canvasController.setToolRadius(10);
+        radiusSlider.setValue(10);
+        canvasController.setCurrentTool("Brush");
+        BrushToggleButton.setSelected(true);
+
+
         loadCanvas();
         canvasSetup();
     }
@@ -199,7 +247,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, m -> {
             canvasController.pushToUndoStack();
             // For every push to the stack, we check if the stack is empty and changes the undoBTN accordingly.
-            updateUndoBtn();
+            updateUndoClearBtn();
         });
 
     }
@@ -208,17 +256,17 @@ public class PaintingView extends AnchorPane implements GameScreen {
         this.hbox.getChildren().clear();
         this.hbox.getChildren().add(canvasController.getCanvasView());
 
-        // Create new canvasView (without actionlisteners) in gamesession
-        // which is subscribed to canvasModel
-        CanvasView viewableCanvasView = new CanvasView(canvasController.getCanvasModel());
-        gameSession.setCurrentPainting(viewableCanvasView);
+        // Push canvas model to backend
+        topController.setCurrentPainting(canvasController.getCanvasModel());
     }
 
-    private void updateUndoBtn() {
+    private void updateUndoClearBtn() {
         if(canvasController.isUndoAvailable()){
             undoBtn.setDisable(false);
+            clearBtn.setDisable(false);
         }else{
             undoBtn.setDisable(true);
+            clearBtn.setDisable(true);
         }
     }
 

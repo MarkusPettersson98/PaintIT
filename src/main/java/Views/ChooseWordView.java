@@ -1,10 +1,8 @@
 package Views;
 
-import Game.GameSession;
-import Tools.Tool;
+import Controller.TopController;
 import Util.ButtonFactory;
-import Util.ViewFactory;
-import WordAndGuess.Word;
+import Model.WordAndGuess.Word;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -18,23 +16,21 @@ import java.util.*;
 
 public class ChooseWordView extends AnchorPane implements GameScreen{
 
-    private GameSession gameSession;
+    private TopController topController;
 
     @FXML
-    ToggleButton easyWordbtn,mediumWordbtn,hardWordbtn;
+    private ToggleButton easyWordbtn,mediumWordbtn,hardWordbtn;
 
     @FXML
-    Button donebtn;
+    private Button donebtn;
 
-    final ToggleGroup toggleWordbtnGroup = new ToggleGroup();
+    private final ToggleGroup toggleWordbtnGroup = new ToggleGroup();
 
-    Map<String, Word> words = new HashMap<>();
+    private Map<String, Word> words = new HashMap<>();
+    private List<ToggleButton> toggleButtons;
 
-    List<Word> wordList;
-    List<ToggleButton> toggleButtons;
-
-    public ChooseWordView(FXMLLoader fxmlLoader, GameSession gameSession) {
-        this.gameSession = gameSession;
+    public ChooseWordView(FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/ChooseWordView.fxml"));
         fxmlLoader.setRoot(this);
@@ -50,15 +46,15 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
 
         donebtn.setId(ButtonFactory.createPaintingViewBtnId());
         donebtn.setOnAction(event -> {
-            gameSession.setCurrentWord(words.get(((ToggleButton) toggleWordbtnGroup.getSelectedToggle()).getText()));
-            gameSession.show(donebtn.getId());
+            topController.setCurrentWord(words.get(((ToggleButton) toggleWordbtnGroup.getSelectedToggle()).getText()));
+            topController.show(donebtn.getId());
 
         });
 
-        for(ToggleButton toggleButton: toggleButtons){
+        for(final ToggleButton toggleButton: toggleButtons){
             toggleButton.setOnAction(e ->{
                 donebtn.setDisable(true);
-                for(ToggleButton toggleButton1: toggleButtons){
+                for(final ToggleButton toggleButton1: toggleButtons){
                     if(toggleButton1.isSelected()){
                         donebtn.setDisable(false);
                     }
@@ -74,7 +70,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     }
 
     private void clear(){
-        for (ToggleButton toggleButton: toggleButtons){
+        for (final ToggleButton toggleButton: toggleButtons){
             toggleButton.setSelected(false);
             toggleButton.setDisable(true);
             words.clear();
@@ -85,10 +81,35 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
     @Override
     public void init() {
 
-        wordList = gameSession.getPossibleWords();
+        List<Word> wordList = topController.getPossibleWords();
         clear();
 
-        for(Word word: wordList){
+        //Check if the wordlist is empty
+        if (wordList.isEmpty()){
+            // If so, set IsLastWord flag in topcontroller and show DoneView!
+            topController.setIsLastWord(true);
+            topController.show(ButtonFactory.createDoneViewBtnId());
+
+
+            // Below is really unsafe code which causes a lot of unpredictable behavior and suffering ..
+            /*
+            topController.setIsLastWord(true);
+            //If doneButton is pressed, change to DoneView
+            donebtn.setId(ButtonFactory.createDoneViewBtnId());
+            //Change the text of donebtn and make it not disabled.
+            donebtn.setText("Finish!");
+            donebtn.setDisable(false);
+            donebtn.setOnAction(e -> {
+                topController.show(donebtn.getId());
+            });
+            */
+        }
+        else {
+            // Make sure that 'confirm' button is disabled
+            donebtn.setDisable(true);
+        }
+
+        for(final Word word: wordList){
             switch (word.getDifficulty_level()){
                 case EASY:
                     setupButton(toggleButtons.get(0),word.getWord());
@@ -107,8 +128,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
                     break;
             }
         }
-        // Make sure that 'confirm' button is disabled
-        donebtn.setDisable(true);
+
     }
 
     @Override

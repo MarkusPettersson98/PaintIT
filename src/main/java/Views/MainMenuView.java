@@ -1,6 +1,8 @@
 package Views;
 
-import Game.GameSession;
+import Controller.TopController;
+import Model.Game.HighScoreList;
+import Model.Game.Score;
 import Util.ButtonFactory;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -14,7 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 
 public class MainMenuView extends AnchorPane implements GameScreen{
 
@@ -27,14 +34,16 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private AnchorPane lightBoxAnchorPane;
     @FXML private ImageView closeButtonImageView;
     @FXML private TextArea instructionsTextArea;
+    private final String INSTRUCTTIONS_URL = "src/main/resources/instructions.txt";
 
     @FXML private AnchorPane highScoreAnchorPane;
     @FXML private ImageView closeHighScoreImageView;
     @FXML private TextArea teamNameTextArea;
-    @FXML private TextArea scoreTextArea;
 
-    public MainMenuView (FXMLLoader fxmlLoader, GameSession gameSession) {
+    TopController topController;
 
+    public MainMenuView (FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
         fxmlLoader.setLocation(getClass().getResource("/fxml/MainMenuView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -49,7 +58,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
 
         play.setId(ButtonFactory.createGameSetupViewBtnId());
         play.setOnAction(e -> {
-            gameSession.show(play.getId());
+            topController.show(play.getId());
         });
 
         howToPlay.setOnAction(e -> {
@@ -57,6 +66,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
         });
 
         highScore.setOnAction(e -> {
+            loadHighScoreList();
             showHighScore();
         });
 
@@ -78,6 +88,27 @@ public class MainMenuView extends AnchorPane implements GameScreen{
             }
         });
 
+        getInstructionsText();
+
+    }
+
+    private void getInstructionsText() {
+        // Fetch instructions from instruction.txt
+        StringBuilder sb = new StringBuilder();
+        // Prepare to read from backend
+        try {
+            final Scanner sc = new Scanner(new File(INSTRUCTTIONS_URL));
+
+            while (sc.hasNextLine()) {
+                // Append instruction (line) to StringBuilder
+                final String currentInstruction = sc.nextLine();
+                sb.append(currentInstruction + '\n');
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        // Done with iterating over all lines, write instructions to instructions text area!
+        instructionsTextArea.setText(sb.toString());
     }
 
     /**
@@ -138,7 +169,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      * @param imageView the ImageView that the image is being changed for
      */
     private void changeIconCloseHover (ImageView imageView){
-        String path = "images/icon_close_hover.png";
+        final String path = "images/icon_close_hover.png";
         imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
@@ -147,7 +178,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      * @param imageView the ImageView that the image is being changed for
      */
     private void changeIconClose (ImageView imageView){
-        String path = "images/icon_close.png";
+        final String path = "images/icon_close.png";
         imageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
@@ -179,6 +210,18 @@ public class MainMenuView extends AnchorPane implements GameScreen{
      * as not visible.
      */
     private void showHighScore (){
+        // Load high scores
+        final List<Score> highScores = topController.getHighScores();
+        final StringBuilder teamScores = new StringBuilder();
+        int index = 0;
+        for(final Score score : highScores) {
+            index++;
+            teamScores.append(index + ". " + score.getFormattedScore() + '\n');
+        }
+        // Set text in team name and team streak text area
+        teamNameTextArea.setText(teamScores.toString());
+
+        // Show high score view
         lightBoxAnchorPane.setVisible(true);
         highScoreAnchorPane.setVisible(true);
         mainMenuAnchorPane.setVisible(false);
@@ -192,6 +235,11 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @Override
     public void init() {
 
+    }
+
+    public void loadHighScoreList() {
+        List<Score> highScoreList = topController.getHighScores();
+        new HighScoreList(highScoreList);
     }
 
     @Override

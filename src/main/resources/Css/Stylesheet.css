@@ -28,6 +28,11 @@
     -fx-font-size: 80;
     -fx-text-alignment: center;
 }
+.text-countdown{
+    -fx-font-family: Chalkboard;
+    -fx-font-size: 30;
+    -fx-text-alignment: center;
+}
 
 .text-bigger {
     -fx-font-family: Chalkboard;
@@ -148,3 +153,57 @@
 .button-quitGameSession:hover{
     -fx-background-color: grey;
 }
+
+.button-backToMainMenu{
+    -fx-background-color:
+            linear-gradient(#ff2133, #bc0002),
+            linear-gradient(#ef843b, #ea0400),
+            linear-gradient(#ee813d, #d5090a),
+            linear-gradient(#ea5932 0%, #ea0400 50%, #d20002 100%),
+            linear-gradient(from 0% 0% to 5% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-font-family: "Marker Felt";
+    -fx-font-size: 50;
+}
+
+.button-backToMainMenu:hover{
+    -fx-background-color: #ff2133;
+}
+
+.button-backToMainMenu:pressed{
+    -fx-background-color: #bc0002;
+}
+
+.button-startNewGame{
+    -fx-background-color:
+            linear-gradient(#ff2133, #bc0002),
+            linear-gradient(#ef843b, #ea0400),
+            linear-gradient(#ee813d, #d5090a),
+            linear-gradient(#ea5932 0%, #ea0400 50%, #d20002 100%),
+            linear-gradient(from 0% 0% to 5% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-font-family: "Marker Felt";
+    -fx-font-size: 50;
+}
+
+.button-startNewGame:hover{
+    -fx-background-color: #ff2133;
+}
+
+.button-startNewGame:pressed{
+    -fx-background-color: #bc0002;
+}
+
+

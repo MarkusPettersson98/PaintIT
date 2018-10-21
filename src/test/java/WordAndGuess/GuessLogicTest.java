@@ -1,5 +1,7 @@
 package WordAndGuess;
 
+import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Tile;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,15 +20,15 @@ public class GuessLogicTest {
     public void addAndRemoveCharFromGuess() throws Exception {
         GuessLogic guessLogic = new GuessLogic();
         guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
-        guessLogic.addTileToGuess(new Tile('c',0));
-        guessLogic.addTileToGuess(new Tile('a',1));
-        guessLogic.addTileToGuess(new Tile('h',2));
-        assertEquals("cah",guessLogic.getGuessString()); //Checks array size
-        guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[1]);
-        assertEquals("ch",guessLogic.getGuessString()); //makes sure removeTileFromGuess works
-        guessLogic.removeTileFromGuess(guessLogic.getGuessWord()[0]);
-        assertEquals("h",guessLogic.getGuessString());
-        assertEquals(null,guessLogic.getGuessWord()[0]);
+        String correctWord = guessLogic.getCurrentWord().getWord();
+        int count = 0;
+        for(char c: correctWord.toCharArray()) {
+            guessLogic.addTileToGuess(new Tile(c,count));
+            count++;
+        }
+        assertEquals(guessLogic.guessCurrentWord(),true);
+        guessLogic.removeRightMostTileFromGuess();
+        assertEquals(guessLogic.guessCurrentWord(),false);
     }
     @Test
     public void guessCurrentWord() throws Exception {
@@ -48,14 +50,13 @@ public class GuessLogicTest {
         guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         guessLogic.addTileToGuess(new Tile('h',0));
         guessLogic.addTileToGuess(new Tile('s',1));
-        guessLogic.addTileToGuess(new Tile('b',2));
-        guessLogic.removeRightMostTileFromGuess();
-
-        assertTrue(guessLogic.getGuessString().equals("hs"));
-
         guessLogic.removeRightMostTileFromGuess();
 
         assertTrue(guessLogic.getGuessString().equals("h"));
+
+        guessLogic.removeRightMostTileFromGuess();
+
+        assertTrue(guessLogic.getGuessString().equals(""));
     }
 
     @Test
@@ -64,26 +65,10 @@ public class GuessLogicTest {
         guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
         guessLogic.addTileToGuess(new Tile('h',0));
         guessLogic.addTileToGuess(new Tile('e',1));
-        guessLogic.addTileToGuess(new Tile('y',2));
 
-        assertTrue(guessLogic.getGuessString().equals("hey"));
+        assertTrue(guessLogic.getGuessString().equals("he"));
     }
 
-    @Test
-    public void getGuessWordTest(){
-        GuessLogic guessLogic = new GuessLogic();
-        guessLogic.setCurrentWord(guessLogic.getPossibleWords().get(0));
-        guessLogic.addTileToGuess(new Tile('c',0));
-        guessLogic.addTileToGuess(new Tile('o',1));
-        guessLogic.addTileToGuess(new Tile('o',2));
-        guessLogic.addTileToGuess(new Tile('l',3));
-        String word = "cool";
-        Tile[] tiles = guessLogic.getGuessWord();
-
-        for(int i = 0; i < word.length()-1;i++){
-            assertTrue(tiles[i].getLetter() == word.charAt(i));
-        }
-    }
 
     @Test
     public void isGuessFilledTest(){

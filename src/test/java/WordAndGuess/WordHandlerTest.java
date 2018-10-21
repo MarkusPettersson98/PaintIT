@@ -1,5 +1,8 @@
 package WordAndGuess;
 
+import Model.WordAndGuess.GuessLogic;
+import Model.WordAndGuess.Tile;
+import Model.WordAndGuess.WordHandler;
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
@@ -30,7 +33,7 @@ public class WordHandlerTest {
         }
         String word = guessLogic.getCurrentWord().getWord().toUpperCase();
         for(int i = 0; i<word.length(); i++){
-             assertFalse(!letters.contains(word.charAt(i)));
+             assertTrue(letters.contains(word.charAt(i)));
         }
 
     }

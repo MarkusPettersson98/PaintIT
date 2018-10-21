@@ -1,9 +1,10 @@
 package Views;
 
-import Game.GameSession;
-import Game.Team;
+import Controller.TopController;
+import Model.Game.Team;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -11,10 +12,15 @@ import org.testfx.framework.junit.ApplicationTest;
 
 public class DoneViewTest extends ApplicationTest {
 
-    GameSession gameSession;
+    TopController topController;
     Scene scene;
 
     Label streakLabel;
+
+    Button backToMainMenuButton;
+    Button doneBtn;
+    Button quitGameSessionButton;
+    Button startNewGameButton;
 
     public <T extends Node> T find(final String query) {
         return lookup(query).query();
@@ -23,22 +29,26 @@ public class DoneViewTest extends ApplicationTest {
     @Override
     public void start (Stage stage){
 
-        gameSession = new GameSession();
+        topController = new TopController();
 
         Team team = new Team ("Test One", "Test Two");
-        gameSession.addTeam(team);
+        topController.addTeam(team);
 
-        scene = new Scene(gameSession.getCurrentPane());
+        scene = new Scene(topController.getCurrentPane());
 
-        gameSession.show(DoneView.class.getSimpleName());
+        topController.show(DoneView.class.getSimpleName());
         stage.setScene(scene);
         stage.show();
         streakLabel = (Label) find("#teamStreakLbl");
+        backToMainMenuButton = (Button) find(".button-backToMainMenu");
+        doneBtn = (Button) find(".button-play");
+        quitGameSessionButton = (Button) find (".button-quitGameSession");
+        startNewGameButton = (Button) find (".button-startNewGame");
     }
 
     @Test
     public void streakLabelTest (){
-        int streak = gameSession.getTeamStreak();
+        int streak = topController.getTeamStreak();
         String labelStreak = streakLabel.getText();
         assert (streak == Integer.valueOf(labelStreak));
     }
@@ -46,7 +56,40 @@ public class DoneViewTest extends ApplicationTest {
     @Test
     public void startNewRoundTest (){
         clickOn(".button-play");
-        assert (gameSession.getCurrentPane().getChildren().toString().contains("WordRevealView"));
+        assert (topController.getCurrentPane().getChildren().toString().contains("WordRevealView"));
     }
+
+    @Test
+    public void gameIsNotOverVisibleButtonsTest (){
+        assert (!backToMainMenuButton.isVisible() && !startNewGameButton.isVisible() &&
+                doneBtn.isVisible() && quitGameSessionButton.isVisible());
+    }
+
+    @Test
+    public void quitGameVisibleButtonsTest (){
+        clickOn(quitGameSessionButton);
+        assert (backToMainMenuButton.isVisible() && startNewGameButton.isVisible() &&
+                !doneBtn.isVisible() && !quitGameSessionButton.isVisible());
+    }
+
+    @Test
+    public void quitGameGameIsOverTest (){
+        clickOn(quitGameSessionButton);
+        Boolean gameOver = topController.getGameOver();
+        assert (gameOver);
+    }
+
+    @Test
+    public void startNewRoundNamesSavedTest (){
+        String playerOne = topController.getGuesserName();
+        String playerTwo = topController.getDrawerName();
+        String newTeamName = new String (playerOne + " and " + playerTwo);
+        clickOn(quitGameSessionButton);
+        clickOn(startNewGameButton);
+        String teamName = topController.getTeamName();
+        assert (newTeamName.equals(teamName));
+    }
+
+
 
 }

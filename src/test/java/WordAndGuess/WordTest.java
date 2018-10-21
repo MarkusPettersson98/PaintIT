@@ -1,5 +1,6 @@
 package WordAndGuess;
 
+import Model.WordAndGuess.Word;
 import org.junit.Before;
 import org.junit.Test;
 

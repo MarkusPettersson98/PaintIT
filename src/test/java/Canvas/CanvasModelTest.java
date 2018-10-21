@@ -1,5 +1,6 @@
 package Canvas;
 
+import Model.Canvas.CanvasModel;
 import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CanvasModelTest {
-    public CanvasModel canvasModel;
+    private CanvasModel canvasModel;
 
     @Before
     public void setupTest() {
@@ -24,18 +25,25 @@ public class CanvasModelTest {
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
          assertTrue(dummyCanvas.equals(canvasModel.toString()));
     }
+
+
     @Test
     public void testSetPixel() {
-        canvasModel.setPixel(3,3,Color.RED);
 
+        // Sets canvasmodel to be a 2x2 matrix filled with the color white.
+        this.canvasModel = new CanvasModel(2,2,Color.WHITE);
+
+        // Attempts to set pixel [1][1] with the color black.
+        canvasModel.setPixel(1,1,Color.BLACK);
+
+        // A comparison String where the array is represented in RGB ranging
+        // in decimals from 0 to 1.
         String dummyCanvas =
-                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
-                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
-                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
-                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
-                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
+                "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
+                "[ [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
 
-        assertTrue(dummyCanvas.equals(canvasModel.toString()));
+
+        assertEquals(dummyCanvas, canvasModel.toString());
     }
 
     @Test

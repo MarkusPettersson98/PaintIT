@@ -1,9 +1,8 @@
 package Tools;
 
-import Canvas.CanvasController;
-import Canvas.CanvasModel;
+import Controller.CanvasController;
+import Model.Canvas.Brush;
 import javafx.scene.paint.Color;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +17,8 @@ public class BrushTest  {
     public void beforeBrushTest(){
         brush = new Brush();
         canvasController = new CanvasController(5,5);
+        brush.setColor(Color.BLACK);
+        canvasController.setCurrentTool("Brush");
     }
 
     @Test
@@ -28,11 +29,11 @@ public class BrushTest  {
         assertTrue(brush.inCircle(x, y, posx, posy, radius));
     }
 
-    /*
 
-    The reason why a lot of these tests are commented is because they are no longer relevant
+
+   /* The reason why a lot of these tests are commented is because they are no longer relevant
     after the refactor of how tools work. The business logic is a lot more compact and therefore
-    needs a lot fewer tests.
+    needs a lot fewer tests.*/
 
 
     @Test
@@ -43,12 +44,11 @@ public class BrushTest  {
                              "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                              "[ [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
-
-        brush.setRadius(2);
-        brush.apply(2,2, Color.BLACK);
-
+        canvasController.setToolRadius(2);
+        canvasController.useTool(2,2);
         assertEquals(dummyCircle, canvasController.canvasToString());
     }
+
 
     @Test
     public void testPaintCircleOutsideCanvas() {
@@ -61,44 +61,45 @@ public class BrushTest  {
                 "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
 
         canvasController.fillCanvas(Color.WHITE);
-        brush.setRadius(10);
-        brush.apply(2,2, Color.BLACK);
+        canvasController.setToolRadius(10);
+        canvasController.useTool(2,2);
 
         assertEquals(dummyCircle, canvasController.canvasToString());
     }
 
     @Test
     public void testPaintNegativeRadius() {
-        brush.setRadius(-10);
-        canvasController.fillCanvas(Color.BLACK);
         String dummyCanvas =
                 "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                         "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
-        brush.apply(2,2, Color.WHITE);
+        canvasController.setToolRadius(-10);
+        canvasController.fillCanvas(Color.BLACK);
+        canvasController.setToolColor(Color.WHITE);
+        canvasController.useTool(2,2);
 
         assertEquals(dummyCanvas,canvasController.canvasToString());
     }
 
     @Test
     public void testPaintZeroRadius() {
-        brush.setRadius(0);
         String dummyCanvas =
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
-        brush.apply(2,2, Color.BLACK);
+        canvasController.setToolRadius(0);
+        canvasController.useTool(2,2);
 
         assertEquals(dummyCanvas,canvasController.canvasToString());
     }
     @Test
     public void testPaintOutOfBounds() {
-        brush.setRadius(1);
-        brush.apply(10,10, Color.BLACK);
+        canvasController.setToolRadius(1);
+        canvasController.useTool(10,10);
         String dummyCanvas =
                         "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                         "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
@@ -108,6 +109,6 @@ public class BrushTest  {
 
         assertEquals(dummyCanvas,canvasController.canvasToString());
     }
-    */
+
 
 }

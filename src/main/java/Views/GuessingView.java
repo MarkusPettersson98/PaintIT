@@ -1,8 +1,8 @@
 package Views;
 
-import Canvas.CanvasView;
-import Game.GameSession;
-import ViewObjects.TileBoardView;
+import Views.Components.CanvasView;
+import Controller.TopController;
+import Views.Components.TileBoardView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -15,10 +15,10 @@ public class GuessingView extends AnchorPane implements GameScreen {
 
     @FXML
     VBox vBox;
-    private GameSession gameSession;
+    private TopController topController;
     private TileBoardView tileBoardView;
     private CanvasView canvasView;
-    public GuessingView(FXMLLoader fxmlLoader, GameSession gameSession) {
+    public GuessingView(FXMLLoader fxmlLoader, TopController topController) {
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GuessingView.fxml"));
         fxmlLoader.setRoot(this);
@@ -28,15 +28,15 @@ public class GuessingView extends AnchorPane implements GameScreen {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.gameSession = gameSession;
+        this.topController = topController;
     }
 
     @Override
     public void init() {
-        // this.canvasView = new CanvasView(gameSession.getCanvas());
-        this.canvasView = gameSession.getCanvas();
+        this.canvasView = new CanvasView(topController.getCanvas());
+
         System.out.println(canvasView);
-        this.tileBoardView = new TileBoardView(gameSession);
+        this.tileBoardView = new TileBoardView(topController);
         vBox.getChildren().clear();
         vBox.getChildren().add(this.canvasView);
         vBox.getChildren().add(this.tileBoardView);

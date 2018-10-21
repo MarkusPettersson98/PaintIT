@@ -1,9 +1,8 @@
 package Views;
 
-import Game.GameSession;
-import Game.Team;
+import Controller.TopController;
+import Model.Game.Team;
 import Util.ButtonFactory;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -15,22 +14,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class GameSetupView extends AnchorPane implements GameScreen {
 
     @FXML private TextField player1TextField;
     @FXML private TextField player2TextField;
     @FXML private Button startDrawing;
-    @FXML private Button backButton;
     @FXML private ImageView backButtonImageView;
     @FXML private Label playerOneWrongName;
     @FXML private Label playerTwoWrongName;
 
 
-    private GameSession gameSession;
+    private TopController topController;
 
-    public GameSetupView (FXMLLoader fxmlLoader, GameSession gameSession){
-        this.gameSession = gameSession;
+    public GameSetupView (FXMLLoader fxmlLoader, TopController topController){
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/GameSetupView.fxml"));
         fxmlLoader.setRoot(this);
@@ -44,16 +43,17 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
         startDrawing.setId(ButtonFactory.createWordRevealViewBtnId());
         startDrawing.setOnAction(e -> {
-            Boolean textFieldOne = checkLabel(player1TextField, playerOneWrongName);
-            Boolean textFieldTwo = checkLabel(player2TextField, playerTwoWrongName);
-            //checks if names are entered
+            final Boolean textFieldOne = checkLabel(player1TextField, playerOneWrongName);
+            final Boolean textFieldTwo = checkLabel(player2TextField, playerTwoWrongName);
+            //checks if names are entered and if they are valid
             if (textFieldOne && textFieldTwo){
                 // Create team and add it to game backend
                 setNames();
                 // Start word reveal countdown (in WordRevealView)
-                // gameSession.startWordRevealCountdown();
-                // Show next view
-                gameSession.show(startDrawing.getId());
+                // topController.startWordRevealCountdown();
+                // Cleat text fields and show next view
+                player1TextField.clear(); player2TextField.clear();
+                topController.show(startDrawing.getId());
             }
             else {
                 //wait
@@ -62,35 +62,55 @@ public class GameSetupView extends AnchorPane implements GameScreen {
 
         backButtonImageView.setId(ButtonFactory.createMainMenuViewBtnId());
         backButtonImageView.setOnMouseClicked(e -> {
-            String path = "images/icon_back.png";
+            final String path = "images/icon_back.png";
             backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
-            gameSession.show(backButtonImageView.getId());
+            topController.show(backButtonImageView.getId());
         });
 
     }
 
+    /**
+     * Changes the image for {@link GameSetupView#backButtonImageView} when it is hovered.
+     */
     @FXML
     private void backButtonImageViewEntered (){
-        String path = "images/icon_back_hover.png";
+        final String path = "images/icon_back_hover.png";
         backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream((path))));
     }
 
+    /**
+     * Changes the image for {@link GameSetupView#backButtonImageView} when the mouse exits.
+     */
     @FXML
     private void backButtonImageViewExited (){
-        String path = "images/icon_back.png";
+        final String path = "images/icon_back.png";
         backButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(path)));
     }
 
+    /**
+     * Adds a new team. The names are the ones entered in {@link GameSetupView#player1TextField} and
+     * {@link GameSetupView#player2TextField}.
+     */
     private void setNames () {
 
-        String player1 = player1TextField.getText();
-        String player2 = player2TextField.getText();
+        final String player1 = player1TextField.getText();
+        final String player2 = player2TextField.getText();
 
-        gameSession.addTeam(new Team(player1, player2));
+        topController.addTeam(new Team(player1, player2));
     }
 
+    /**
+     * Checks if the input in a textField is correct.
+     * @param textField The textField which will be checked
+     * @param label the label that should be updated depending on if the input is correct
+     * @return a boolean, true if the input is correct and false if it is wrong
+     */
     private boolean checkLabel(TextField textField, Label label){
-        if (textField.getText().isEmpty()){
+        // Check for empty text fields and illegal characters
+        String input = textField.getText();
+        CharSequence illegalCharacters = ":";
+
+        if (input.isEmpty() || input.contains(illegalCharacters)){
             setLabelRed(textField, label);
             return false;
         }
@@ -100,11 +120,21 @@ public class GameSetupView extends AnchorPane implements GameScreen {
         }
     }
 
+    /**
+     * Changes the style of a label and textField to inform the player that the input in the textField is incorrect.
+     * @param textField the textField, which style will be updated
+     * @param label the label that will be updated with information to the player
+     */
     private void setLabelRed (TextField textField, Label label){
         textField.setStyle("-fx-border-color: red;" + "-fx-border-width: 3px;" + "-fx-border-radius: 5px");
         label.setText("Enter a name!");
     }
 
+    /**
+     * Changes the style of a label and textField back to the normal layout.
+     * @param textField the textField, which style will be updated
+     * @param label the label that is no longer relevant
+     */
     private void setLabelNormal (TextField textField, Label label){
         textField.setStyle("-fx-border-color: lightgrey;" + "-fx-border-width: 1px;" + "-fx-border-radius: 3px");
         label.setText("");

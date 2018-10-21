@@ -1,34 +1,30 @@
 package Views;
 
-import Game.GameSession;
+import Controller.TopController;
 import Util.ButtonFactory;
-import javafx.application.Platform;
+import Util.CountDownUser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import java.io.IOException;
 
-public class WordRevealView extends AnchorPane implements GameScreen{
+public class WordRevealView extends AnchorPane implements GameScreen, CountDownUser{
 
     @FXML private Label startingPlayerLabel;
     @FXML private Label instructionsLabel;
     @FXML private Label numberCountdownLabel;
     @FXML private Button revealNowButton;
 
-    private Timer timer;
-    private int secondsleft;
-    private final int COUNTDOWNSTARTVALUE = 30;
+    private final int countDownStartValue = 10;
 
-    private GameSession gameSession;
+    private TopController topController;
 
-    public WordRevealView (FXMLLoader fxmlLoader, GameSession gameSession){
-        this.gameSession = gameSession;
+    public WordRevealView (FXMLLoader fxmlLoader, TopController topController){
+        this.topController = topController;
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/WordRevealView.fxml"));
         fxmlLoader.setRoot(this);
@@ -42,58 +38,42 @@ public class WordRevealView extends AnchorPane implements GameScreen{
 
         revealNowButton.setId(ButtonFactory.createChooseWordViewBtnId());
         revealNowButton.setOnAction(e -> {
-            timer.cancel();
-            gameSession.show(revealNowButton.getId());
+            topController.resetTimer();
+            topController.show(revealNowButton.getId());
 
         });
     }
-
-
-
-    public void startTimer() {
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-                Platform.runLater(() -> update());
-                secondsleft--;
-
-                if(secondsleft <= 0){
-                    // time's up, go to next page
-                    Platform.runLater(() -> revealNowButton.fire());
-                }
-            }
-        },0,1000);
+    private void update(int secondsLeft){
+        numberCountdownLabel.setText(Integer.toString(secondsLeft));
     }
-
-    private void update(){
-        numberCountdownLabel.setText(Integer.toString(secondsleft));
-    }
-
-    public void setTimer(int seconds){
-        secondsleft = seconds;
-    }
-
-
     @Override
     public void init() {
         // Generate word to guess
-        gameSession.newTurn();
+        topController.newTurn();
         // Start countdown
-        setTimer(COUNTDOWNSTARTVALUE);
-        startTimer();
+        topController.startCountDown(countDownStartValue,this);
+        update(countDownStartValue);
         // Update player labels
-        setPlayerNameLabels(gameSession.getDrawerName(), gameSession.getGuesserName());
+        setPlayerNameLabels(topController.getDrawerName(), topController.getGuesserName());
     }
 
     private void setPlayerNameLabels(String drawer, String guesser) {
-        startingPlayerLabel.setText(drawer + " starts drawing");
+        startingPlayerLabel.setText(drawer + "'s turn to draw");
         instructionsLabel.setText(drawer + " turn the computer around, so that " + guesser + " can't see what you are drawing.");
     }
 
     @Override
     public Pane getPane() {
         return this;
+    }
+
+    @Override
+    public void handleSecondPassed(int secondsLeft) {
+        update(secondsLeft);
+    }
+
+    @Override
+    public void handleTimerFinished() {
+        revealNowButton.fire();
     }
 }
