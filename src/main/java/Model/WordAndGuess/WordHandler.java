@@ -1,8 +1,6 @@
 package Model.WordAndGuess;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 /**
  *Wordhandler has the list of words for the game and generates a random word for the Game.
  * It also generates the random tiles accompanying the word
@@ -30,21 +28,42 @@ public class WordHandler {
      * Adds letters of the current word plus some random letters (total of eight letters) to a list of {@link Tile}s.
      * @param word A string with the current word.
      */
-    private void createRandomTiles(String word){
+    private void createRandomTiles(String word) {
         final Random r = new Random();
-        final ArrayList<Tile>  temp = new ArrayList<>();
-            for(int i = 0; i< word.length(); i ++){
-                final char c = Character.toUpperCase(word.charAt(i));
-                temp.add(new Tile(c,i));
-     }
-     for(int i = word.length(); i<tileAmount; i++){
-         final char d = Character.toUpperCase((char)(r.nextInt(26) + 'a'));
-         temp.add(new Tile(d,i));
-     }
-        Collections.shuffle(temp);
+        final ArrayList<Tile> temp = new ArrayList<>();
+        final char[] inTiles = new char[tileAmount];
 
+        for (int i = 0; i < word.length(); i++) {
+            // This loop adds all chars in word as tiles. Store all chars so we can in an array reference them later
+            final char c = Character.toUpperCase(word.charAt(i));
+            temp.add(new Tile(c, i));
+            inTiles[i] = c;
+        }
+
+        int i = word.length();
+        while(i < tileAmount) {
+            // Randomize a char
+            final char d = Character.toUpperCase((char) (r.nextInt(26) + 'a'));
+            // Check if randomized char is already a tile
+            boolean alreadyATile = false;
+            for(char c : inTiles) {
+                if(c == d) {
+                    // Randomized char is already a tile, don't add it as a new tile
+                    alreadyATile = true;
+                }
+            }
+            if(!alreadyATile) {
+                // Randomized char was not already a tile, add it as a tile and increment loop counter i!
+                temp.add(new Tile(d, i++));
+            }
+        }
+
+        Collections.shuffle(temp);
+        // Add all generated tiles to tiles field
         tiles = convertTilesToArray(temp);
     }
+
+
 
     /**
      * Converts a list of {@link Tile}s to an array.
