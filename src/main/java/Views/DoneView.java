@@ -73,6 +73,7 @@ public class DoneView extends AnchorPane implements GameScreen {
         startNewGameButton.setId(ButtonFactory.createWordRevealViewBtnId());
         startNewGameButton.setOnAction(e->{
             topController.setToGameOver(false);
+            topController.gameOver();
             topController.addTeam(new Team(playerOne, playerTwo));
             topController.show(startNewGameButton.getId());
         });
