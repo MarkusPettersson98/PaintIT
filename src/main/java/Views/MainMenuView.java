@@ -16,8 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class MainMenuView extends AnchorPane implements GameScreen{
 
@@ -30,6 +34,7 @@ public class MainMenuView extends AnchorPane implements GameScreen{
     @FXML private AnchorPane lightBoxAnchorPane;
     @FXML private ImageView closeButtonImageView;
     @FXML private TextArea instructionsTextArea;
+    private final String INSTRUCTTIONS_URL = "src/main/resources/instructions.txt";
 
     @FXML private AnchorPane highScoreAnchorPane;
     @FXML private ImageView closeHighScoreImageView;
@@ -83,6 +88,27 @@ public class MainMenuView extends AnchorPane implements GameScreen{
             }
         });
 
+        getInstructionsText();
+
+    }
+
+    private void getInstructionsText() {
+        // Fetch instructions from instruction.txt
+        StringBuilder sb = new StringBuilder();
+        // Prepare to read from backend
+        try {
+            final Scanner sc = new Scanner(new File(INSTRUCTTIONS_URL));
+
+            while (sc.hasNextLine()) {
+                // Append instruction (line) to StringBuilder
+                final String currentInstruction = sc.nextLine();
+                sb.append(currentInstruction + '\n');
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        // Done with iterating over all lines, write instructions to instructions text area!
+        instructionsTextArea.setText(sb.toString());
     }
 
     /**
