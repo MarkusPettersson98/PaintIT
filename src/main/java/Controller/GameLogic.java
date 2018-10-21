@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 class GameLogic {
 
-    private String highScoreUrl = "highscores.txt";
+    private String highScoreUrl = "src/main/resources/highscores.txt";
 
     @Setter @Getter private CanvasModel currentPainting;
 
