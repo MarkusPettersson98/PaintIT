@@ -11,9 +11,6 @@ import lombok.Getter;
 
 public class CanvasView extends Canvas implements Observer {
 
-    private static final int width = 1200;
-    private static final int height = 500;
-
     /**
      * Is used to paint on {@link Canvas}, see Oracle.
      */
@@ -27,7 +24,7 @@ public class CanvasView extends Canvas implements Observer {
     @Getter private final GraphicsContext graphicsContext;
 
     public CanvasView(ObservableCanvasModel canvasModel) {
-        super(width, height);
+        super(canvasModel.getXMax(), canvasModel.getYMax());
         this.canvasModel = canvasModel;
         this.graphicsContext = this.getGraphicsContext2D();
         this.pixelWriter = graphicsContext.getPixelWriter();
