@@ -1,6 +1,7 @@
 package Views.Components;
 
 import Model.Canvas.CanvasModel;
+import Model.Canvas.ObservableCanvasModel;
 import Util.Observer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,17 +22,16 @@ public class CanvasView extends Canvas implements Observer {
     /**
      * How the view gets the pixel that has been changed
      */
-    private CanvasModel canvasModel;
+    private ObservableCanvasModel canvasModel;
 
     @Getter private final GraphicsContext graphicsContext;
 
-    public CanvasView(CanvasModel canvasModel) {
+    public CanvasView(ObservableCanvasModel canvasModel) {
         super(width, height);
+        this.canvasModel = canvasModel;
         this.graphicsContext = this.getGraphicsContext2D();
         this.pixelWriter = graphicsContext.getPixelWriter();
-        this.canvasModel = canvasModel;
         redrawCanvasView();
-        canvasModel.addObserver(this);
 
         graphicsContext.getCanvas().toString();
     }

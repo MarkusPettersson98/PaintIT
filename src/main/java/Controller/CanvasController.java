@@ -41,8 +41,7 @@ public class CanvasController {
     private int currenty0;
 
     public CanvasController() {
-        this.canvasModel = new CanvasModel(Color.WHITE);
-        this.canvasView = new CanvasView(canvasModel);
+        generateNewCanvas();
         setupTools();
         setCurrentTool(Brush.class.getSimpleName());
     }
@@ -53,14 +52,14 @@ public class CanvasController {
      * @param ySize
      */
     public CanvasController(int xSize, int ySize) {
-        this.canvasModel = new CanvasModel(xSize, ySize, Color.WHITE);
-        this.canvasView = new CanvasView(canvasModel);
+        generateNewCanvas();
         setupTools();
     }
 
     public void generateNewCanvas() {
         this.canvasModel = new CanvasModel(Color.WHITE);
         this.canvasView = new CanvasView(canvasModel);
+        canvasModel.addObserver(canvasView);
     }
 
     private void setupTools() {
