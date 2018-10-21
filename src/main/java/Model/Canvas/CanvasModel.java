@@ -1,4 +1,4 @@
-package Model;
+package Model.Canvas;
 
 import Views.Components.CanvasView;
 import Util.ColorPoint;

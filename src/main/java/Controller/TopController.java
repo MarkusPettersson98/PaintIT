@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.CanvasModel;
+import Model.Canvas.CanvasModel;
 import Model.Game.Score;
 import Model.Game.Team;
 import Util.CountDownTimer;

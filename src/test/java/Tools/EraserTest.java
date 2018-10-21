@@ -1,7 +1,7 @@
 package Tools;
 
 import Controller.CanvasController;
-import Model.Tools.Eraser;
+import Model.Canvas.Eraser;
 import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;

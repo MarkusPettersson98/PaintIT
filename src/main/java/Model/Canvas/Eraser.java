@@ -1,4 +1,4 @@
-package Model.Tools;
+package Model.Canvas;
 
 import javafx.scene.paint.Color;
 

@@ -1,6 +1,6 @@
 package Views.Components;
 
-import Model.CanvasModel;
+import Model.Canvas.CanvasModel;
 import Util.Observer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

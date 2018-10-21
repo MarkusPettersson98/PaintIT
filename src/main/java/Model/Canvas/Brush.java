@@ -1,4 +1,4 @@
-package Model.Tools;
+package Model.Canvas;
 
 /** Represents a brush.
  *

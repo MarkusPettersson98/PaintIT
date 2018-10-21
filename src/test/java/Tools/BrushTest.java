@@ -1,7 +1,7 @@
 package Tools;
 
 import Controller.CanvasController;
-import Model.Tools.Brush;
+import Model.Canvas.Brush;
 import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;

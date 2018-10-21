@@ -1,6 +1,6 @@
 package Tools;
 import Controller.CanvasController;
-import Model.Tools.SprayCan;
+import Model.Canvas.SprayCan;
 import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;

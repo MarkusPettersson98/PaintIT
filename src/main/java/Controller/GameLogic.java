@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.CanvasModel;
+import Model.Canvas.CanvasModel;
 import Model.Game.HighScoreList;
 import Model.Game.Score;
 import Model.WordAndGuess.GuessLogic;

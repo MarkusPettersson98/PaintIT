@@ -1,9 +1,9 @@
 package Views;
 
 import Controller.TopController;
-import Model.Tools.Brush;
-import Model.Tools.Eraser;
-import Model.Tools.SprayCan;
+import Model.Canvas.Brush;
+import Model.Canvas.Eraser;
+import Model.Canvas.SprayCan;
 import Controller.CanvasController;
 import Util.ButtonFactory;
 import javafx.fxml.FXML;
