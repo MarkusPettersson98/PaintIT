@@ -90,7 +90,7 @@ public class ChooseWordView extends AnchorPane implements GameScreen{
             topController.setIsLastWord(true);
             topController.show(ButtonFactory.createDoneViewBtnId());
 
-            
+
             // Below is really unsafe code which causes a lot of unpredictable behavior and suffering ..
             /*
             topController.setIsLastWord(true);
