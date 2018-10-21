@@ -52,8 +52,14 @@ public class CanvasController {
      * @param ySize
      */
     public CanvasController(int xSize, int ySize) {
-        generateNewCanvas();
+        generateNewCanvas(xSize, ySize);
         setupTools();
+    }
+
+    public void generateNewCanvas(int x, int y) {
+        this.canvasModel = new CanvasModel(x, y, Color.WHITE);
+        this.canvasView = new CanvasView(canvasModel);
+        canvasModel.addObserver(canvasView);
     }
 
     public void generateNewCanvas() {

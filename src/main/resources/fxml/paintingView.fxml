@@ -22,22 +22,22 @@
             <Image url="@../images/pattern3.png" />
          </image>
       </ImageView>
-      <Pane fx:id="clearPane" layoutX="280.0" layoutY="615.0" prefHeight="75.0" prefWidth="141.0" styleClass="popuppane">
-         <children>
-            <Button fx:id="yesClearBtn" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" text="YES">
-               <styleClass>
-                  <String fx:value="button-yes" />
-                  <String fx:value="button" />
-               </styleClass></Button>
-            <Button fx:id="noClearBtn" layoutX="85.0" layoutY="32.0" mnemonicParsing="false" styleClass="button-no" text="NO" />
-            <Label layoutX="21.0" layoutY="5.0" styleClass="clearCanvasText" text="Clear Canvas?" />
-         </children>
-      </Pane>
-      <Label fx:id="currentWordLbl" alignment="CENTER" layoutX="30.0" layoutY="615.0" styleClass="text-wordToGuess" text="Aron" textAlignment="CENTER" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="560.0" />
       <HBox id="canvas" fx:id="hbox" prefHeight="500.0" prefWidth="1206.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="5.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets></HBox>
+        <Pane fx:id="clearPane" layoutX="280.0" layoutY="615.0" prefHeight="75.0" prefWidth="141.0" styleClass="popuppane">
+            <children>
+                <Button fx:id="yesClearBtn" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" text="YES">
+                    <styleClass>
+                        <String fx:value="button-yes" />
+                        <String fx:value="button" />
+                    </styleClass></Button>
+                <Button fx:id="noClearBtn" layoutX="85.0" layoutY="32.0" mnemonicParsing="false" styleClass="button-no" text="NO" />
+                <Label layoutX="21.0" layoutY="5.0" styleClass="clearCanvasText" text="Clear Canvas?" />
+            </children>
+        </Pane>
+        <Label fx:id="currentWordLbl" alignment="CENTER" layoutX="30.0" layoutY="615.0" styleClass="text-wordToGuess" text="Aron" textAlignment="CENTER" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="560.0" />
       <ToolBar layoutX="546.0" layoutY="531.0" orientation="VERTICAL" prefHeight="169.0" prefWidth="189.0" style="-fx-background-color: 0;" AnchorPane.leftAnchor="546.0" AnchorPane.topAnchor="531.0">
          <items>
             <ToggleButton fx:id="BrushToggleButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="152.0" styleClass="button-tools" text="Brush">

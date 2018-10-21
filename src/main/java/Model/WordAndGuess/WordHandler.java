@@ -31,7 +31,7 @@ public class WordHandler {
     private void createRandomTiles(String word) {
         final Random r = new Random();
         final ArrayList<Tile> temp = new ArrayList<>();
-        final char[] inTiles = new char[tileAmount];
+        final char[] inTiles = new char[word.length()];
 
         for (int i = 0; i < word.length(); i++) {
             // This loop adds all chars in word as tiles. Store all chars so we can in an array reference them later
