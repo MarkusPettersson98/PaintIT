@@ -4,14 +4,12 @@ import javafx.scene.paint.Color;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * {@link Tool} is implemented by classes who wants to apply a pattern onto the canvas.
+ */
 
 public interface Tool {
 
-    /**
-     * Determines how big the circle that will be painted is.
-     */
-    //@Getter @Setter
-    //private int radius;
     int getRadius();
 
     void setRadius(int radius);
@@ -23,17 +21,6 @@ public interface Tool {
     Color getColor();
 
     void setColor(Color color);
-
-    /**
-     * Determines if point is in circle or not. Meaning, returns if the point (posx,posy) is in the circle that is formed around (x0,y0) with the radius r.
-     *
-     * @param x0   x-value of the origin of circle.
-     * @param y0   y-value of the origin of circle.
-     * @param posx x-value of the point that is being checked.
-     * @param posy y-value of the point that is being checked.
-     * @param r    radius of circle.
-     * @return Whether or not x^2 + y^2 is less or equal to r^2.
-     */
 
 
     //Notifies Observers ({@link Controller.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.

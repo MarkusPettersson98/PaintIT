@@ -21,15 +21,6 @@ public class BrushTest  {
         canvasController.setCurrentTool("Brush");
     }
 
-    @Test
-    public void testInCircle() {
-        int x = 4, y = 4;
-        int posx = 5, posy = 5;
-        int radius = 2;
-        //assertTrue(brush.inCircle(x, y, posx, posy, radius));
-    }
-
-
 
    /* The reason why a lot of these tests are commented is because they are no longer relevant
     after the refactor of how tools work. The business logic is a lot more compact and therefore

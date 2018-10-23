@@ -2,7 +2,7 @@ package Model.Canvas;
 
 import javafx.scene.paint.Color;
 
-/** Represents an Eraser.
+/** Represents an Eraser. Eraser is used to remove color from the canvas.
  *
  */
 public class Eraser implements Tool {
