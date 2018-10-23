@@ -134,16 +134,13 @@ public class PaintingView extends AnchorPane implements GameScreen {
         this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
             switch(m.getCode()) {
                 case E:
-                    canvasController.setCurrentTool(Eraser.class.getSimpleName());
-                    EraserToggleButton.setSelected(true);
+                    EraserToggleButton.fire();
                     break;
                 case B:
-                    canvasController.setCurrentTool(Brush.class.getSimpleName());
-                    BrushToggleButton.setSelected(true);
+                    BrushToggleButton.fire();
                     break;
                 case S:
-                    canvasController.setCurrentTool(SprayCan.class.getSimpleName());
-                    SprayCanToggleButton.setSelected(true);
+                    SprayCanToggleButton.fire();
                     break;
                 case SLASH:
                     radiusSlider.decrement();
@@ -157,8 +154,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     }
                 case U:
                 case BACK_SPACE:
-                    canvasController.undo();
-                    updateUndoClearBtn();
+                    undoBtn.fire();
                     break;
             }
         });
