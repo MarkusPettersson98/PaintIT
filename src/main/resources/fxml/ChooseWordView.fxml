@@ -7,7 +7,7 @@
 
 <fx:root maxHeight="720" maxWidth="1280" minHeight="0" minWidth="0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../Css/Stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="donebtn" layoutX="532.0" layoutY="460.0" mnemonicParsing="false" prefWidth="220.0" styleClass="button-play" text="Start Drawing" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" />
+      <Button fx:id="donebtn" mnemonicParsing="false" prefWidth="220.0" styleClass="button-play" text="Start Drawing" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="560"/>
       <ToggleButton fx:id="easyWordbtn" layoutX="409.0" layoutY="181.0" mnemonicParsing="false" prefWidth="300.0" styleClass="button-chooseWord" text="ToggleButton" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" />
       <ToggleButton fx:id="mediumWordbtn" layoutX="413.0" layoutY="270.0" mnemonicParsing="false" prefWidth="300.0" styleClass="button-chooseWord" text="ToggleButton" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" />
       <ToggleButton fx:id="hardWordbtn" layoutX="413.0" layoutY="358.0" mnemonicParsing="false" prefWidth="300.0" styleClass="button-chooseWord" text="ToggleButton" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" />
