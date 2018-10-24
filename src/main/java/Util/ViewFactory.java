@@ -65,6 +65,8 @@ public abstract class ViewFactory {
      * @param topController
      * @return
      */
+    public static GuessCountdownView createGuessCountdownView(TopController topController) { return new GuessCountdownView(fxmlLoader, topController); }
+
     public static List<GameScreen> createAllViews(TopController topController) {
         final List<GameScreen> gameScreens = new ArrayList<>();
 
@@ -75,6 +77,7 @@ public abstract class ViewFactory {
         gameScreens.add(createGuessingView(topController));
         gameScreens.add(createDoneView(topController));
         gameScreens.add(createChooseWordView(topController));
+        gameScreens.add(createGuessCountdownView(topController));
 
         return gameScreens;
     }

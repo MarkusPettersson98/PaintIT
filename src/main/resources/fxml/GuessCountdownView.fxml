@@ -4,11 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Css/Stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="AnchorPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Css/Stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="startingPlayerLabel" alignment="CENTER" layoutX="308.0" layoutY="81.0" styleClass="text-big" text="PlayerX starts guessing" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="80.0" />
       <Label layoutX="511.0" layoutY="209.0" prefHeight="76.0" prefWidth="386.0" styleClass="text-normal" text="Timer starts in:" wrapText="true" AnchorPane.topAnchor="209.0" />
       <Label fx:id="numberCountdownLabel" alignment="CENTER" ellipsisString="" layoutX="519.0" layoutY="304.0" prefHeight="132.0" prefWidth="267.0" styleClass="text-bigger" textOverrun="CLIP" AnchorPane.leftAnchor="519.0" AnchorPane.rightAnchor="494.0" AnchorPane.topAnchor="304.0" />
       <Button fx:id="revealNowButton" layoutX="421.0" layoutY="582.0" mnemonicParsing="false" styleClass="button-play" text="Start now" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="560.0" />
    </children>
-</AnchorPane>
+</fx:root>
