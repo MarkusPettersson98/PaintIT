@@ -6,6 +6,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -40,6 +41,16 @@ public class ColorSettingsView extends Pane {
             pV.changeToolColor(colorPicker.getValue());
         });
 
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            switch(m.getCode()) {
+                case SLASH:
+                    radiusSlider.decrement();
+                    break;
+                case MINUS:
+                    radiusSlider.increment();
+                    break;
+            }
+        });
     }
 
     private ToggleButton setupToggleButton(ToggleButton button, ToggleGroup tG) {

@@ -157,8 +157,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
                     break;
             }
         });
-
-        setRadius((int) radiusSlider.getValue());
         hideclearPopup();
         updateUndoClearBtn();
     }
