@@ -1,7 +1,7 @@
 package Model.WordAndGuess;
 
 /**
- *Represents an available Tile in the game. A has a letter
+ *Represents an available Tile in the game.
  */
 public class Tile {
    private char letter;
