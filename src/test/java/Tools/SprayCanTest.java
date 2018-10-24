@@ -15,8 +15,8 @@ public class SprayCanTest {
     public void beforeSprayCanTest(){
         sprayCan = new SprayCan();
         canvasController = new CanvasController(5,5);
-        canvasController.setToolRadius(5);
         canvasController.setCurrentTool(sprayCan);
+        canvasController.setToolRadius(5);
         sprayCan.setColor(Color.RED);
     }
 
