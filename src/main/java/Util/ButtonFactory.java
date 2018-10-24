@@ -29,4 +29,6 @@ public abstract class ButtonFactory {
     public static String createDoneViewBtnId() { return DoneView.class.getSimpleName(); }
 
     public static String createChooseWordViewBtnId() { return ChooseWordView.class.getSimpleName(); }
+
+    public static String createGuessCountdownViewBtnId() { return GuessCountdownView.class.getSimpleName(); }
 }

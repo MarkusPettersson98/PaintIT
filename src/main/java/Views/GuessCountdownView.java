@@ -10,8 +10,10 @@ import java.io.IOException;
 
 public class GuessCountdownView extends AnchorPane implements GameScreen, CountDownUser {
 
+    private TopController topController;
 
     public GuessCountdownView(FXMLLoader fxmlLoader, TopController topController) {
+        this.topController = topController;
         fxmlLoader.setLocation(getClass().getResource("/fxml/GuessCountdownView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

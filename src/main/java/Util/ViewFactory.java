@@ -10,12 +10,19 @@ public abstract class ViewFactory {
 
     private static FXMLLoader fxmlLoader = new FXMLLoader();
 
+
+    /** Creates an instance of {@link GuessCountdownView} and injects a reference to a {@link TopController}.
+     *
+     * @param topController
+     * @return
+     */
+    public static GuessCountdownView createGuessCountdownView(TopController topController) { return new GuessCountdownView(fxmlLoader, topController); }
+
     /** Creates an instance of {@link MainMenuView} and injects a reference to a {@link TopController}.
      *
      * @param topController
      * @return
      */
-
     public static MainMenuView createMainMenuView(TopController topController) { return new MainMenuView(fxmlLoader, topController); }
 
     /** Creates an instance of {@link GameSetupView} and injects a reference to a {@link TopController}.
@@ -58,14 +65,11 @@ public abstract class ViewFactory {
      * @param topController
      * @return
      */
+
     public static ChooseWordView createChooseWordView(TopController topController) { return new ChooseWordView(fxmlLoader, topController); }
 
-    /** Creates an instance of {@link GuessCountdownView} and injects a reference to a {@link TopController}.
-     *
-     * @param topController
-     * @return
-     */
-    public static GuessCountdownView createGuessCountdownView(TopController topController) { return new GuessCountdownView(fxmlLoader, topController); }
+
+
 
     /** Creates an instance of every GameScreen and injects a reference to a {@link TopController} into them.
      *
@@ -75,6 +79,7 @@ public abstract class ViewFactory {
     public static List<GameScreen> createAllViews(TopController topController) {
         final List<GameScreen> gameScreens = new ArrayList<>();
 
+
         gameScreens.add(createMainMenuView(topController));
         gameScreens.add(createGameSetupView(topController));
         gameScreens.add(createWordRevealView(topController));
@@ -83,6 +88,7 @@ public abstract class ViewFactory {
         gameScreens.add(createDoneView(topController));
         gameScreens.add(createChooseWordView(topController));
         gameScreens.add(createGuessCountdownView(topController));
+
 
         return gameScreens;
     }
