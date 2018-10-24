@@ -133,6 +133,10 @@
     -fx-background-color: darkgrey;;
 }
 
+.button-chooseWord:pressed{
+    -fx-background-color: #6c6c6c;
+}
+
 .button-quitGameSession{
     -fx-background-color:
             #090a0c,
