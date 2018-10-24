@@ -1,0 +1,27 @@
+﻿# Meeting Agenda
+
+Group: PaintIT (group 11)
+Date: 181016
+Chair: Ellen
+Secretary: Markus
+Participants: Ellen, Henrik, Markus, Aron, Robert
+
+
+## Objectives (5 min) 
+* We don’t know if the presentation will be held in swedish or english yet.
+
+## Reports (15 min) from previous meeting
+   * There has been progress made on both the RAD and SDD, but they are not completely done yet.
+
+
+## Discussion items (35 min)
+   * Should ‘Design patterns’ be it’s own title in the SDD? - Focus on finishing the SDD without it, code might need refactoring first!
+
+
+
+## Outcomes and assignments (5 min)
+   * The group will continue with assignments from last meeting.
+
+
+## Wrap up
+   * The next meeting will be held 23/10 at 9:00.

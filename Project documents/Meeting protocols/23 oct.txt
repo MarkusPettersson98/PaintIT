@@ -1,0 +1,31 @@
+﻿# Meeting Agenda
+
+Group: PaintIT (group 11)
+Date: 031023
+Chair: Ellen
+Secretary: Aron
+Participants: Ellen, Henrik, Markus, Aron, Robert
+
+## Objectives (5 min) 
+
+* We need to decide what everyone should do.
+
+## Reports (15 min) from previous meeting
+In the previous meeting we decided to finish RAD and SDD for the peer review, which we did.
+
+## Discussion items (35 min)
+Peer Review (todo)
+ We decided that we will finish the peer review today so that we can focus on our own project after.
+We will make a plan for the Peer Review document.
+
+
+SDD and RAD todo
+We need to read through our documents and make small adjustments.
+Fix a countdown for when it’s the guessers turn.
+
+
+## Outcomes and assignments (5 min)
+Everyone works on the peer review to finish it ASAP.
+## Wrap up
+
+The next meeting will be held on thursday in KG-53 at 9.00.
