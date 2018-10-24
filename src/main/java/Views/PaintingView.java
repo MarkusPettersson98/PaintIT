@@ -15,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -184,7 +183,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         colorButtonMap.put(redToggleBtn.getId(), Color.RED);
     }
 
-    private void changeToolColor(Color c) {
+    public void changeToolColor(Color c) {
         canvasController.setToolColor(c);
         colorPicker.setValue(c);
     }
@@ -216,7 +215,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
     }
 
 
-    private void setRadius(int radius) {
+    public void setRadius(int radius) {
         canvasController.setToolRadius(radius);
     }
 
