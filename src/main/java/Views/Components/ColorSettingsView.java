@@ -55,6 +55,8 @@ public class ColorSettingsView extends Pane {
             pV.changeToolColor(colorPicker.getValue());
         });
 
+        colorPicker.setValue(Color.BLACK);
+
         this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
             switch(m.getCode()) {
                 case SLASH:
@@ -86,6 +88,38 @@ public class ColorSettingsView extends Pane {
                     break;
             }
         });
+
+
+        colorToggleGroup.selectedToggleProperty().addListener(e -> {
+            if((ToggleButton) colorToggleGroup.getSelectedToggle()==null) {
+                return;
+            }
+            final ToggleButton selectedButton = (ToggleButton) colorToggleGroup.getSelectedToggle();
+            Color tempC = colorButtonMap.get(selectedButton.getId());
+            pV.changeToolColor(tempC);
+            colorPicker.setValue(tempC);
+            pV.pushToUndoStack();
+        });
+
+        radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            pV.setRadius(newValue.intValue());
+        });
+
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m -> {
+            switch (m.getCode()) {
+                case SLASH:
+                    radiusSlider.decrement();
+                    break;
+                case MINUS:
+                    radiusSlider.increment();
+                    break;
+            }
+        });
+
+
+
+        radiusSlider.setValue(10);
     }
 
     private ToggleButton setupToggleButton(ToggleButton button, ToggleGroup tG) {
