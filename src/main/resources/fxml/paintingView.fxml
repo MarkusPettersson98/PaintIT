@@ -37,7 +37,7 @@
                 <Label layoutX="21.0" layoutY="5.0" styleClass="clearCanvasText" text="Clear Canvas?" />
             </children>
         </Pane>
-      <ToolBar layoutX="546.0" layoutY="531.0" orientation="VERTICAL" prefHeight="169.0" prefWidth="189.0" style="-fx-background-color: 0;" AnchorPane.leftAnchor="546.0" AnchorPane.topAnchor="531.0">
+      <ToolBar layoutX="568.0" layoutY="531.0" orientation="VERTICAL" prefHeight="169.0" prefWidth="167.0" style="-fx-background-color: 0;" AnchorPane.leftAnchor="568.0" AnchorPane.topAnchor="531.0">
          <items>
             <ToggleButton fx:id="BrushToggleButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="152.0" styleClass="button-tools" text="Brush">
                <graphic>

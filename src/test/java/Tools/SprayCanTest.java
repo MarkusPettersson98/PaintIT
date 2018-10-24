@@ -9,19 +9,14 @@ import static junit.framework.TestCase.assertFalse;
 
 public class SprayCanTest {
 
-
-    /*The reason why a lot of these tests are commented is because they are no longer relevant
-    after the refactor of how tools work. The business logic is a lot more compact and therefore
-    needs a lot fewer tests.*/
-
     private SprayCan sprayCan;
-    public CanvasController canvasController;
+    private CanvasController canvasController;
     @Before
     public void beforeSprayCanTest(){
         sprayCan = new SprayCan();
         canvasController = new CanvasController(5,5);
         canvasController.setToolRadius(5);
-        canvasController.setCurrentTool("SprayCan");
+        canvasController.setCurrentTool(sprayCan);
     }
 
 

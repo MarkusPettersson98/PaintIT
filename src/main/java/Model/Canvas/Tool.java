@@ -53,9 +53,6 @@ public abstract class Tool {
         return (Math.pow(posx - x0, 2) + Math.pow(posy - y0, 2)) <= Math.pow(r, 2);
     }
 
-    //Notifies Observers ({@link Controller.CanvasController}) of the brush by giving them x and y-values that form a circle around the point that is formed by the arguments.
-    // The appearance of the circle is determined by {@link PaintingView} and {@link Tool#radius}
-    // TODO: fix this javadoc or functionality of apply
     /**  Returns whether or not the radius is less or equal to 0
      *
      * @param x0 The x-value for the center of the circle.

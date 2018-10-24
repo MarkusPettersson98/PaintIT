@@ -55,7 +55,6 @@ public class DoneView extends AnchorPane implements GameScreen {
             topController.show(doneBtn.getId());
         });
 
-        //TODO: Rework GameOver stuff
         quitGameSessionButton.setOnAction(e->{
             changeToLoserView();
             topController.setToGameOver(true);
