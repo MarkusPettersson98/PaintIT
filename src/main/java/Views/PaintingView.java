@@ -6,6 +6,7 @@ import Model.Canvas.Eraser;
 import Model.Canvas.SprayCan;
 import Controller.CanvasController;
 import Util.ButtonFactory;
+import Views.Components.ColorSettingsView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
@@ -45,6 +46,9 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @FXML
     private Pane clearPane;
 
+    @FXML
+    private Pane colorSettingsView;
+
     private Map<String, Color> colorButtonMap = new HashMap<>();
     private final ToggleGroup colorToggleGroup = new ToggleGroup();
     private final ToggleGroup toolToggleGroup = new ToggleGroup();
@@ -67,6 +71,8 @@ public class PaintingView extends AnchorPane implements GameScreen {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        colorSettingsView = new ColorSettingsView(this);
 
         loadCanvas();
 

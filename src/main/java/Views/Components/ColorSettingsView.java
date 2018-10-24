@@ -2,6 +2,7 @@ package Views.Components;
 
 import Views.PaintingView;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
@@ -10,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +33,40 @@ public class ColorSettingsView extends Pane {
 
 
     public ColorSettingsView(PaintingView pV) {
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/fxml/ColorSettingsView.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
         setupColorButtons();
+
+        radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            pV.setRadius(newValue.intValue());
+        });
+
+        colorPicker.setOnAction(e -> {
+            pV.changeToolColor(colorPicker.getValue());
+        });
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            switch(m.getCode()) {
+                case SLASH:
+                    radiusSlider.decrement();
+                    break;
+                case MINUS:
+                    radiusSlider.increment();
+                    break;
+            }
+        });
+        
+        //setupColorButtons();
 
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             pV.setRadius(newValue.intValue());

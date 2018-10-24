@@ -26,6 +26,7 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></HBox>
+         <Pane fx:id="colorSettingsView" layoutX="750" layoutY="520"></Pane>
         <Pane fx:id="clearPane" layoutX="407.0" layoutY="627.0" prefHeight="75.0" prefWidth="141.0" styleClass="popuppane">
             <children>
                 <Button fx:id="yesClearBtn" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" text="YES">
