@@ -56,6 +56,7 @@ public class CountDownTimer {
     }
 
     public void resetTimer() {
+
         timer.cancel();
     }
     /** Notifies observer when the timer has finished

@@ -51,6 +51,8 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
             tileBoardController.handleKeyCode(m.getCode().toString());
         });
+        this.getStyleClass().clear();
+        this.getStyleClass().add("tileBoard");
         initCountDown();
     }
     private void initCountDown(){

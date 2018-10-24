@@ -33,9 +33,8 @@ public class GuessingView extends AnchorPane implements GameScreen {
 
     @Override
     public void init() {
-        this.canvasView = new CanvasView(topController.getCanvas());
 
-        System.out.println(canvasView);
+        this.canvasView = new CanvasView(topController.getCanvas());
         this.tileBoardView = new TileBoardView(topController);
         vBox.getChildren().clear();
         vBox.getChildren().add(this.canvasView);
