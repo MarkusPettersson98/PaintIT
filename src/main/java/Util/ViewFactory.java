@@ -60,13 +60,18 @@ public abstract class ViewFactory {
      */
     public static ChooseWordView createChooseWordView(TopController topController) { return new ChooseWordView(fxmlLoader, topController); }
 
-    /** Creates an instance of every GameScreen and injects a reference to a {@link TopController} into them.
+    /** Creates an instance of {@link GuessCountdownView} and injects a reference to a {@link TopController}.
      *
      * @param topController
      * @return
      */
     public static GuessCountdownView createGuessCountdownView(TopController topController) { return new GuessCountdownView(fxmlLoader, topController); }
 
+    /** Creates an instance of every GameScreen and injects a reference to a {@link TopController} into them.
+     *
+     * @param topController
+     * @return
+     */
     public static List<GameScreen> createAllViews(TopController topController) {
         final List<GameScreen> gameScreens = new ArrayList<>();
 
