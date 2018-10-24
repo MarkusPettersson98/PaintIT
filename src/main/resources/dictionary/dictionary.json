@@ -40,12 +40,6 @@
       "word": "TV",
       "difficulty_level": "EASY"
     },
-
-    {
-      "word": "Knife",
-      "difficulty_level": "EASY"
-    },
-
     {
       "word": "Cloud",
       "difficulty_level": "EASY"
@@ -62,17 +56,17 @@
     },
 
     {
-      "word": "Pill",
+      "word": "Eye",
       "difficulty_level": "EASY"
     },
 
     {
-      "word": "Glasses",
+      "word": "Heart",
       "difficulty_level": "EASY"
     },
 
     {
-      "word": "Book",
+      "word": "Pencil",
       "difficulty_level": "EASY"
     },
 
@@ -102,14 +96,13 @@
       "difficulty_level": "MEDIUM"
     },
     {
-      "word": "Disc",
+      "word": "Bottle",
       "difficulty_level": "MEDIUM"
     },
     {
       "word": "Orange",
       "difficulty_level": "MEDIUM"
     },
-
     {
       "word": "Phone",
       "difficulty_level": "HARD"
@@ -133,7 +126,10 @@
     {
       "word": "Clown",
       "difficulty_level": "HARD"
+    },
+    {
+      "word": "Knife",
+      "difficulty_level": "HARD"
     }
-
   ]
 }
