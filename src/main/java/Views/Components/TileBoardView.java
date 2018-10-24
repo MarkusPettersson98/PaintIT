@@ -44,14 +44,18 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     /** Loads itself from it´s fxml file, and instansiates the tiles that visualises the guess from the backend.
      * Further, allows for player to use keyboard to guess.
      */
-    public TileBoardView(final TopController topController) {
+    public TileBoardView(TopController topController) {
         this.topController = topController;
         initFXML();
         initTiles();
         this.addEventHandler(javafx.scene.input.KeyEvent.KEY_PRESSED, m -> {
             tileBoardController.handleKeyCode(m.getCode().toString());
         });
+        this.getStyleClass().clear();
+        this.getStyleClass().add("tileBoard");
         initCountDown();
+
+
     }
     private void initCountDown(){
         topController.startCountDown(guessTime,this);

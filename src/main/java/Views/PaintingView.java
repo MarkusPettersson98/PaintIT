@@ -120,7 +120,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         noClearBtn.setOnAction(e-> hideclearPopup());
 
 
-        doneBtn.setId(ButtonFactory.createGuessingViewBtnId());
+        doneBtn.setId(ButtonFactory.createGuessCountdownViewBtnId());
         doneBtn.setOnAction(e -> {
             // Finished drawing
             hideclearPopup();
