@@ -179,7 +179,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         colorButtonMap.put(greenToggleBtn.getId(), Color.GREEN);
         colorButtonMap.put(blueToggleBtn.getId(), Color.BLUE);
         colorButtonMap.put(whiteToggleBtn.getId(), Color.WHITE);
-        colorButtonMap.put(beigeToggleBtn.getId(), Color.valueOf("ffe0bd"));
+        colorButtonMap.put(beigeToggleBtn.getId(), Color.BISQUE);
         colorButtonMap.put(yellowToggleBtn.getId(), Color.YELLOW);
         colorButtonMap.put(redToggleBtn.getId(), Color.RED);
     }
