@@ -9,7 +9,7 @@ import java.util.TimerTask;
  *
  */
 public class CountDownTimer {
-    private Timer timer;
+    private Timer timer = new Timer();
     private TimerTask secondTask;
     private TimerTask countDownFinishedTask;
     private int secondsLeft;
@@ -46,25 +46,29 @@ public class CountDownTimer {
      *@param countDownUser the observer that gets notified when a second has passed.
      */
     public void startCountDown(int sec,CountDownUser countDownUser){
-        initTimerTask();
+        System.out.println("NU STARTAR COUNTDOWN");
         initCountDownFinishedTask();
+        initTimerTask();
         this.countDownUser = countDownUser;
+        resetTimer();
         timer = new Timer();
         secondsLeft = sec;
         timer.scheduleAtFixedRate(secondTask,1000,1000);
-        timer.schedule(countDownFinishedTask,sec*1000);
+        timer.schedule(countDownFinishedTask,(sec+1)*1000);
     }
 
     public void resetTimer() {
         timer.cancel();
+        timer.purge();
     }
     /** Notifies observer when the timer has finished
      *
      */
 
     private void countDownFinished(){
+        System.out.println("NU ÄR COUNTDOWN FINISHED");
+        timer.purge();
         countDownUser.handleTimerFinished();
-        timer.cancel();
     }
 
     /** Notifies observer when a second has passed

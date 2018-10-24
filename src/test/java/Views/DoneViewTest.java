@@ -50,7 +50,7 @@ public class DoneViewTest extends ApplicationTest {
     public void streakLabelTest (){
         int streak = topController.getTeamStreak();
         String labelStreak = streakLabel.getText();
-        assert (streak == Integer.valueOf(labelStreak));
+        assert (streak == Integer.parseInt(labelStreak));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class DoneViewTest extends ApplicationTest {
     public void startNewRoundNamesSavedTest (){
         String playerOne = topController.getGuesserName();
         String playerTwo = topController.getDrawerName();
-        String newTeamName = new String (playerOne + " and " + playerTwo);
+        String newTeamName = playerOne + " and " + playerTwo;
         clickOn(quitGameSessionButton);
         clickOn(startNewGameButton);
         String teamName = topController.getTeamName();

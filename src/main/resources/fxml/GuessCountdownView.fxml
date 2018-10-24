@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Css/Stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="guessingPlayerLbl" alignment="CENTER" layoutX="308.0" layoutY="81.0" styleClass="text-big" text="PlayerX starts guessing" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+      <Label fx:id="countdownLabel" alignment="CENTER" ellipsisString="" layoutX="523.0" layoutY="219.0" prefHeight="132.0" prefWidth="267.0" styleClass="text-bigger" textOverrun="CLIP" AnchorPane.leftAnchor="523.0" AnchorPane.rightAnchor="490.0" AnchorPane.topAnchor="219.0" />
+      <Button fx:id="revealNowButton" layoutX="439.0" layoutY="459.0" mnemonicParsing="false" styleClass="button-play" text="Start now" AnchorPane.leftAnchor="439.0" AnchorPane.rightAnchor="401.0" AnchorPane.topAnchor="459.0" />
+   </children>
+</fx:root>

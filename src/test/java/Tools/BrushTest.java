@@ -12,20 +12,22 @@ import static junit.framework.TestCase.assertTrue;
 public class BrushTest  {
 
     private Brush brush;
-    public CanvasController canvasController;
+    private CanvasController canvasController;
     @Before
     public void beforeBrushTest(){
         brush = new Brush();
         canvasController = new CanvasController(5,5);
         brush.setColor(Color.BLACK);
-        canvasController.setCurrentTool("Brush");
+        canvasController.setCurrentTool(brush);
     }
 
-
-   /* The reason why a lot of these tests are commented is because they are no longer relevant
-    after the refactor of how tools work. The business logic is a lot more compact and therefore
-    needs a lot fewer tests.*/
-
+    @Test
+    public void testInCircle() {
+        int x = 4, y = 4;
+        int posx = 5, posy = 5;
+        brush.setRadius(2);
+        assertTrue(brush.apply(x, y, posx, posy));
+    }
 
     @Test
     public void testPaintCircle() {
@@ -35,7 +37,7 @@ public class BrushTest  {
                              "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n" +
                              "[ [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
-        canvasController.setToolRadius(2);
+        brush.setRadius(2);
         canvasController.useTool(2,2);
         assertEquals(dummyCircle, canvasController.canvasToString());
     }
@@ -52,7 +54,7 @@ public class BrushTest  {
                 "[ [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] [ 0.0, 0.0, 0.0 ] ] \n";
 
         canvasController.fillCanvas(Color.WHITE);
-        canvasController.setToolRadius(10);
+        brush.setRadius(10);
         canvasController.useTool(2,2);
 
         assertEquals(dummyCircle, canvasController.canvasToString());
@@ -82,7 +84,7 @@ public class BrushTest  {
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 0.0, 0.0, 0.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                 "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
-        canvasController.setToolRadius(0);
+        brush.setRadius(0);
         canvasController.useTool(2,2);
 
         assertEquals(dummyCanvas,canvasController.canvasToString());

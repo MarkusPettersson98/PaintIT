@@ -122,6 +122,10 @@ public class GuessLogic implements Observable {
         return false;
     }
 
+    /**Sets the word of the round, is called when the user picks a word.
+     *
+     * @param word is the new word.
+     */
     public void setCurrentWord(Word word){
         wordHandler.setCurrentWord(word);
         this.availableTiles = wordHandler.getTiles();

@@ -5,6 +5,7 @@
 .text-information{
     -fx-font-size: 25px;
     -fx-font-family: Chalkboard;
+    -fx-text-fill: dimgray;
 }
 
 .text-wordToGuess{
@@ -195,7 +196,7 @@
 }
 
 #beigebutton {
-    -fx-background-color: #ffe0bd;
+    -fx-background-color: bisque;
 }
 
 #beigebutton:hover {

@@ -1,8 +1,7 @@
 .tileBoard {
-     -fx-border-color:  #777777;
+     -fx-border-color: mediumpurple;
      -fx-background-color: #FFFFFF;
-
-     -fx-border-width: 2px;
+     -fx-border-width: 3px 0px 0px 0px ;
 }
 
 .visibleButton {

@@ -10,7 +10,7 @@ import java.util.List;
 public class HighScoreList {
 
     @Getter private List<Score> highScores;
-    @Getter private final int MAX_SCORES = 10;
+    @Getter private static final int MAX_SCORES = 10;
 
 
     public HighScoreList(List<Score> highScores) {

@@ -78,6 +78,11 @@ public class CanvasController {
         currentTool = tools.get(stringTool);
     }
 
+    public void setCurrentTool(Tool tool) {
+        currentTool = tool;
+    }
+
+
     private boolean inCircle(int posx, int posy) {
         return (Math.pow(posx - currentx0, 2) + Math.pow(posy - currenty0, 2)) <= Math.pow(currentTool.getRadius(), 2);
     }
