@@ -72,6 +72,8 @@
     -fx-font-weight: bold;
     -fx-font-size: 60px;
     -fx-font-family: "Marker Felt";
+    -fx-cursor: HAND;
+
 }
 
 .button-play:hover{
@@ -96,6 +98,7 @@
     -fx-font-size: 30px;
     -fx-padding: 10 20 10 20;
     -fx-font-family: "Marker Felt";
+    -fx-cursor: HAND;
 }
 
 .button-mainMenu:hover{
@@ -128,6 +131,7 @@
     -fx-padding: 10 20 10 20;
     -fx-font-family: Chalkboard;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-cursor: HAND;
 }
 
 .button-chooseWord:selected{
@@ -157,6 +161,8 @@
     -fx-text-fill: linear-gradient(white, #d0d0d0);
     -fx-font-size: 18px;
     -fx-padding: 10 20 10 20;
+    -fx-cursor: HAND;
+
 }
 
 .button-quitGameSession:hover{
@@ -179,6 +185,7 @@
     -fx-text-fill: white;
     -fx-font-family: "Marker Felt";
     -fx-font-size: 50;
+    -fx-cursor: HAND;
 }
 
 .button-backToMainMenu:hover{
@@ -205,6 +212,7 @@
     -fx-text-fill: white;
     -fx-font-family: "Marker Felt";
     -fx-font-size: 50;
+    -fx-cursor: HAND;
 }
 
 .button-startNewGame:hover{

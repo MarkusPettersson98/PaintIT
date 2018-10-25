@@ -152,7 +152,7 @@
 
 .colorbutton {
     -fx-border-color: black;
-    -fx-curson: HAND;
+    -fx-cursor: HAND;
 }
 
 #redbutton {
