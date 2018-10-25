@@ -2,6 +2,6 @@
 2. One player will start painting and the other player will start guessing
 3. Pick a word and set free the Picasso inside of you!
 4. Try to guess the correct word to earn points so that your team can climb the leaderboard!
-5. GOTO 3
+5. Go to step number 3
 
 Have fun!

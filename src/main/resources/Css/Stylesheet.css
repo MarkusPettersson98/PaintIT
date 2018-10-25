@@ -3,6 +3,11 @@
     -fx-font-family: Chalkboard;
 }
 
+.text-howToPlay{
+    -fx-font-size: 25px;
+    -fx-font-family: Chalkboard;
+}
+
 .text-errorMessage {
     -fx-font-size: 30px;
     -fx-font-family: Chalkboard;
