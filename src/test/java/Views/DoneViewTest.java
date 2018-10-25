@@ -67,7 +67,7 @@ public class DoneViewTest extends ApplicationTest {
 
 
     //TODO : Something have happened with the commented tests, unsure of what... it lies within quitGameSessionButton.
-    /*
+
     @Test
     public void quitGameVisibleButtonsTest (){
         clickOn(quitGameSessionButton);
@@ -87,12 +87,12 @@ public class DoneViewTest extends ApplicationTest {
         String playerOne = topController.getGuesserName();
         String playerTwo = topController.getDrawerName();
         String newTeamName = new String (playerOne + " and " + playerTwo);
-        // clickOn(quitGameSessionButton);
-        // clickOn(startNewGameButton);
+        clickOn(quitGameSessionButton);
+        clickOn(startNewGameButton);
         String teamName = topController.getTeamName();
         assert (newTeamName.equals(teamName));
     }
-*/
+
 
 
 }
