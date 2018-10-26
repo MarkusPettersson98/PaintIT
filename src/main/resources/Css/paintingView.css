@@ -220,7 +220,7 @@
 }
 
 #canvas {
-    -fx-border-color: mediumpurple;
+    -fx-border-color: lightblue;
     -fx-background-color: white;
     -fx-border-width: 3;
 }

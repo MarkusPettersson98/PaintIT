@@ -14,6 +14,11 @@
          <children>
             <AnchorPane fx:id="mainMenuAnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="text-area">
                <children>
+                  <ImageView pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../images/sky.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fx:id="logo" fitHeight="252.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="100.0">
                      <image>
                         <Image url="@../images/paintit.png" />
