@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class GuessCountdownView extends AnchorPane implements GameScreen, CountDownUser {
 
-    private final static int COUNTDOWNAMOUNT = 5;
+    private final static int COUNTDOWNAMOUNT = 30;
     private TopController topController;
     @FXML Button revealNowButton;
     @FXML Label countdownLabel;

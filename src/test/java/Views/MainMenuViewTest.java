@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -73,5 +74,10 @@ public class MainMenuViewTest extends ApplicationTest{
         clickOn(howToPlayText);
         write("Testing");
         assert (textInTextArea.equals(howToPlayText.toString()));
+    }
+
+    @After
+    public void cleanUp() {
+        Runtime.getRuntime().gc();
     }
 }

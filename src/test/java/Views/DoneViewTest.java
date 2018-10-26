@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -44,6 +45,8 @@ public class DoneViewTest extends ApplicationTest {
         doneBtn = (Button) find(".button-play");
         quitGameSessionButton = (Button) find (".button-quitGameSession");
         startNewGameButton = (Button) find (".button-startNewGame");
+
+
     }
 
     @Test

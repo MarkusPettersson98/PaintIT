@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -42,7 +43,6 @@ public class GameSetupViewTest extends ApplicationTest{
         clickOn("#player2TextField");
         write("Test Two");
         clickOn(".button-play");
-        System.out.println(topController.getTeamName());
         assert (topController.getTeamName().equals("Test One and Test Two"));
     }
 
@@ -59,8 +59,6 @@ public class GameSetupViewTest extends ApplicationTest{
     @Test
     public void noNamesEnteredTest (){
         clickOn(".button-play");
-        System.out.println(playerOneWrongLabel.getText().toString());
-        System.out.println(playerTwoWrongLabel.getText().toString());
         assert (playerOneWrongLabel.getText().equals("Enter a name!") &&
                 playerTwoWrongLabel.getText().equals("Enter a name!"));
     }
@@ -70,8 +68,6 @@ public class GameSetupViewTest extends ApplicationTest{
         clickOn("#player1TextField");
         write("Test One : Test Two");
         clickOn(".button-play");
-        System.out.println(playerOneWrongLabel.getText().toString());
-        System.out.println(playerTwoWrongLabel.getText().toString());
         assert (playerOneWrongLabel.getText().equals("Enter a name!") &&
                 playerTwoWrongLabel.getText().equals("Enter a name!"));
     }
@@ -89,5 +85,10 @@ public class GameSetupViewTest extends ApplicationTest{
     public void backButtonPressedTest (){
         clickOn(".button-mainMenu");
         assert (topController.getCurrentPane().getChildren().toString().contains("MainMenuView"));
+    }
+
+    @After
+    public void cleanUp() {
+        Runtime.getRuntime().gc();
     }
 }

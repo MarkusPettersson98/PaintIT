@@ -4,6 +4,7 @@ import Controller.TopController;
 import Model.Game.Team;
 import Model.WordAndGuess.Word;
 import Views.MainMenuView;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -77,6 +78,11 @@ public class TopControllerTest extends ApplicationTest {
     @Test
     public void gameNotOverWhenStartingTest (){
         assertFalse(topController.getGameOver());
+    }
+
+    @After
+    public void cleanUp() {
+        Runtime.getRuntime().gc();
     }
 
 }

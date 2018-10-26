@@ -4,6 +4,7 @@ import Controller.TopController;
 import Model.Game.Team;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -30,5 +31,9 @@ public class WordRevealViewTest extends ApplicationTest {
         assert (topController.getCurrentPane().getChildren().toString().contains("ChooseWordView"));
     }
 
+    @After
+    public void cleanUp() {
+        Runtime.getRuntime().gc();
+    }
 
 }
