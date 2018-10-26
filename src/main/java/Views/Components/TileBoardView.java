@@ -37,7 +37,7 @@ public class TileBoardView extends VBox implements Observer, CountDownUser{
     private final TopController topController;
     private TileBoardController tileBoardController;
     private TileSlot[] guessTileSlotArray;
-    private static final int guessTime = 30;
+    private static final int guessTime = 10;
 
     private String filePath = "/fxml/tileBoard.fxml";
 

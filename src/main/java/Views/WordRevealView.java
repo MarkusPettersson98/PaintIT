@@ -19,7 +19,7 @@ public class WordRevealView extends AnchorPane implements GameScreen, CountDownU
     @FXML private Label numberCountdownLabel;
     @FXML private Button revealNowButton;
 
-    private final int countDownStartValue = 30;
+    private final int countDownStartValue = 10;
 
     private TopController topController;
 

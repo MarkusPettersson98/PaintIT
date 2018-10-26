@@ -22,6 +22,7 @@ public class TileBoardViewTest extends ApplicationTest {
         topController.setCurrentWord(topController.getPossibleWords().get(0));
         tileBoardView = new TileBoardView(topController);
         countDownLbl = tileBoardView.countDownLbl;
+        topController.resetTimer();
     }
 
 
