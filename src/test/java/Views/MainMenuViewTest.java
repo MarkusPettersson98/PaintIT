@@ -42,12 +42,6 @@ public class MainMenuViewTest extends ApplicationTest{
     }
 
     @Test
-    public void playButtonTest(){
-      clickOn(".button-play");
-      assert (topController.getCurrentPane().getChildren().toString().contains("GameSetupView"));
-    }
-
-    @Test
     public void howToPlayTest (){
         clickOn(".button-mainMenu");
         assert (howToPlayAnchor.isVisible() && !mainmenuAnchor.isVisible());
@@ -76,8 +70,4 @@ public class MainMenuViewTest extends ApplicationTest{
         assert (textInTextArea.equals(howToPlayText.toString()));
     }
 
-    @After
-    public void cleanUp() {
-        Runtime.getRuntime().gc();
-    }
 }

@@ -57,12 +57,6 @@ public class DoneViewTest extends ApplicationTest {
     }
 
     @Test
-    public void startNewRoundTest (){
-        clickOn(".button-play");
-        assert (topController.getCurrentPane().getChildren().toString().contains("WordRevealView"));
-    }
-
-    @Test
     public void gameIsNotOverVisibleButtonsTest (){
         assert (!backToMainMenuButton.isVisible() && !startNewGameButton.isVisible() &&
                 doneBtn.isVisible() && quitGameSessionButton.isVisible());
@@ -95,7 +89,5 @@ public class DoneViewTest extends ApplicationTest {
         String teamName = topController.getTeamName();
         assert (newTeamName.equals(teamName));
     }
-
-
-
+    
 }

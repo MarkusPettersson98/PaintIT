@@ -81,14 +81,4 @@ public class GameSetupViewTest extends ApplicationTest{
                 playerTwoWrongLabel.getText().equals("Enter a name!"));
     }
 
-    @Test
-    public void backButtonPressedTest (){
-        clickOn(".button-mainMenu");
-        assert (topController.getCurrentPane().getChildren().toString().contains("MainMenuView"));
-    }
-
-    @After
-    public void cleanUp() {
-        Runtime.getRuntime().gc();
-    }
 }
