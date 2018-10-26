@@ -108,9 +108,10 @@ public class GameSetupView extends AnchorPane implements GameScreen {
     private boolean checkLabel(TextField textField, Label label){
         // Check for empty text fields and illegal characters
         String input = textField.getText();
-        CharSequence illegalCharacters = ":";
+        CharSequence illegalCharacters = ":, \n";
+        int MAX_LENGTH = 10;
 
-        if (input.isEmpty() || input.contains(illegalCharacters)){
+        if (input.isEmpty() || input.contains(illegalCharacters) || input.length() > MAX_LENGTH){
             setLabelRed(textField, label);
             return false;
         }
