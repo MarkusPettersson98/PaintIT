@@ -44,12 +44,27 @@ public class ColorSettingsView extends Pane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        setupColorButtons();
 
+
+        // RadiusSlider Setup
         radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             pV.setRadius(newValue.intValue());
         });
+
+        radiusSlider.setValue(10);
+
+        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
+            switch(m.getCode()) {
+                case SLASH:
+                    radiusSlider.decrement();
+                    break;
+                case MINUS:
+                    radiusSlider.increment();
+                    break;
+            }
+        });
+
+        // Setup ColorPicker
 
         colorPicker.setOnAction(e -> {
             pV.changeToolColor(colorPicker.getValue());
@@ -57,38 +72,8 @@ public class ColorSettingsView extends Pane {
 
         colorPicker.setValue(Color.BLACK);
 
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-            switch(m.getCode()) {
-                case SLASH:
-                    radiusSlider.decrement();
-                    break;
-                case MINUS:
-                    radiusSlider.increment();
-                    break;
-            }
-        });
-        
-        //setupColorButtons();
-
-        radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            pV.setRadius(newValue.intValue());
-        });
-
-        colorPicker.setOnAction(e -> {
-            pV.changeToolColor(colorPicker.getValue());
-        });
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m-> {
-            switch(m.getCode()) {
-                case SLASH:
-                    radiusSlider.decrement();
-                    break;
-                case MINUS:
-                    radiusSlider.increment();
-                    break;
-            }
-        });
-
+        // Setup Color Buttons
+        setupColorButtons();
 
         colorToggleGroup.selectedToggleProperty().addListener(e -> {
             if((ToggleButton) colorToggleGroup.getSelectedToggle()==null) {
@@ -100,26 +85,6 @@ public class ColorSettingsView extends Pane {
             colorPicker.setValue(tempC);
             pV.pushToUndoStack();
         });
-
-        radiusSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            pV.setRadius(newValue.intValue());
-        });
-
-
-        this.addEventHandler(KeyEvent.KEY_PRESSED, m -> {
-            switch (m.getCode()) {
-                case SLASH:
-                    radiusSlider.decrement();
-                    break;
-                case MINUS:
-                    radiusSlider.increment();
-                    break;
-            }
-        });
-
-
-
-        radiusSlider.setValue(10);
     }
 
     private ToggleButton setupToggleButton(ToggleButton button, ToggleGroup tG) {
