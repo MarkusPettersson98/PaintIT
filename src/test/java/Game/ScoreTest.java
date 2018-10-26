@@ -22,7 +22,7 @@ public class ScoreTest {
         // Should print out on format "TeamName:TeamStreak";
         String expected = dummyTeamName + ':' + dummyStreak;
         String actual = dummyScore.getFormattedScore();
-        assertTrue(expected.equals(actual));
+        assertEquals(expected, actual);
     }
 
     @Test

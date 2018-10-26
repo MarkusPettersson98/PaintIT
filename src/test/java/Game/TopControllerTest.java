@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 public class TopControllerTest extends ApplicationTest {
@@ -51,7 +52,7 @@ public class TopControllerTest extends ApplicationTest {
     public void resetTeamStreakTest (){
         topController.addTeam(team);
         topController.resetTeamStreak();
-        assertTrue(topController.getTeamStreak() == 0);
+        assertSame(topController.getTeamStreak(), 0);
     }
 
     @Test
@@ -60,7 +61,7 @@ public class TopControllerTest extends ApplicationTest {
         topController.resetTeamStreak();
         topController.setCurrentWord(new Word("DummyString", Word.Difficulty.EASY));
         topController.incrementTeamStreak();
-        assertTrue(topController.getTeamStreak() == topController.getPoints(Word.Difficulty.EASY));
+        assertSame(topController.getTeamStreak(), topController.getPoints(Word.Difficulty.EASY));
     }
 
     @Test

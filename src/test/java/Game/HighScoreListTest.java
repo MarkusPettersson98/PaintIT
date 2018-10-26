@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 public class HighScoreListTest {
@@ -33,14 +35,14 @@ public class HighScoreListTest {
     public void add() {
         // We have a list of 10 tests. Try to add another test and check
         // if length of highScoreList still is 10.
-        assertTrue(highScoreList.getMAX_SCORES() == 10);
-        assertTrue(highScoreList.size() == 10);
+        assertSame(highScoreList.getMAX_SCORES(), 10);
+        assertSame(highScoreList.size(), 10);
 
         // Create a new score and try to add it to highScoreList
         Score tmpScore = new Score(dummyTeamName, dummyScore);
         highScoreList.add(tmpScore);
 
-        assertTrue(highScoreList.size() == highScoreList.getMAX_SCORES());
+        assertSame(highScoreList.size(), highScoreList.getMAX_SCORES());
 
         // When we add an item to highScoreList, add method will internally call the
         // put method, which will sort the highScoreList in descending order.
@@ -54,13 +56,12 @@ public class HighScoreListTest {
                                 "TestTeam3:3\n" +
                                 "TestTeam2:2\n" +
                                 "TestTeam1:1\n";
-        assertTrue(highScoreList.getFormattedString().equals(dummyString));
-
+        assertEquals(highScoreList.getFormattedString(), dummyString);
     }
 
     @Test
     public void size() {
-        assertTrue(listOfScores.size() == highScoreList.size());
+        assertSame(listOfScores.size(), highScoreList.size());
     }
 
     @Test

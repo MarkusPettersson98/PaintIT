@@ -17,8 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PaintingView extends AnchorPane implements GameScreen {
 
@@ -40,8 +38,6 @@ public class PaintingView extends AnchorPane implements GameScreen {
     @FXML
     private Pane colorSettingsView;
 
-    private Map<String, Color> colorButtonMap = new HashMap<>();
-    private final ToggleGroup colorToggleGroup = new ToggleGroup();
     private final ToggleGroup toolToggleGroup = new ToggleGroup();
     private CanvasController canvasController;
     private Canvas canvas;
@@ -151,12 +147,7 @@ public class PaintingView extends AnchorPane implements GameScreen {
         clearPane.setVisible(false);
         clearPane.setDisable(true);
     }
-
-    private void setupToggleButton(ToggleButton button, String name, ToggleGroup tG) {
-        button.setText(name);
-        button.setToggleGroup(tG);
-    }
-
+    
     private ToggleButton setupToggleButton(ToggleButton button, ToggleGroup tG) {
         button.setToggleGroup(tG);
         return button;

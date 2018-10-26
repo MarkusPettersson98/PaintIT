@@ -3,6 +3,9 @@ package Game;
 import Model.Game.Team;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 
@@ -23,26 +26,26 @@ public class TeamTest {
 
     @Test
     public void testStreakAtStart (){
-        assertTrue(team.getStreak() == 0);
+        assertSame(team.getStreak(), 0);
     }
 
     @Test
     public void testIncrementStreak (){
         team.incrementStreak(1);
-        assertTrue(team.getStreak() == 1);
+        assertSame(team.getStreak(), 1);
     }
 
     @Test
     public void testResetStreak (){
         team.incrementStreak(1);
         team.resetStreak();
-        assertTrue(team.getStreak() == 0);
+        assertSame(team.getStreak(),0);
     }
 
     @Test
     public void testSetGuesserAndDrawer (){
         if (team.getDrawerName().equals(playerOne)){
-            assertTrue(team.getGuesserName().equals(playerTwo));
+            assertEquals(team.getGuesserName(), playerTwo);
         }
         else{
             assertTrue(team.getGuesserName().equals(playerOne) &&

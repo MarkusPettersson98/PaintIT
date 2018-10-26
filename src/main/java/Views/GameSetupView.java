@@ -14,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 
 public class GameSetupView extends AnchorPane implements GameScreen {
 

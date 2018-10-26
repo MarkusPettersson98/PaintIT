@@ -23,7 +23,7 @@ public class CanvasModelTest {
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n" +
                              "[ [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] [ 1.0, 1.0, 1.0 ] ] \n";
-         assertTrue(dummyCanvas.equals(canvasModel.toString()));
+         assertEquals(dummyCanvas,canvasModel.toString());
     }
 
 
@@ -54,7 +54,7 @@ public class CanvasModelTest {
 
         trueCanvasModel.resetCanvas();
 
-        assertTrue(dummyCanvas.equals(trueCanvasModel.toString()));
+        assertEquals(dummyCanvas,trueCanvasModel.toString());
     }
 
     @Test (expected = IndexOutOfBoundsException.class)

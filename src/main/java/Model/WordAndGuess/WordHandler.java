@@ -70,7 +70,7 @@ public class WordHandler {
      * @param tiles A list of tiles that needs to be converted to an array.
      * @return An array with tiles.
      */
-    private Tile[] convertTilesToArray(ArrayList<Tile> tiles){
+    private Tile[] convertTilesToArray(List<Tile> tiles){
         Tile[] tileArray = new Tile[tiles.size()];
         for(int i = 0; i<tiles.size(); i++){
             tileArray[i] = tiles.get(i);

@@ -1,8 +1,6 @@
 package Model.Canvas;
 
 import javafx.scene.paint.Color;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * {@link Tool} is implemented by classes who wants to apply a pattern onto the canvas.
