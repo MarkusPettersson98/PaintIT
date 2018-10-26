@@ -107,14 +107,19 @@ public class GameSetupView extends AnchorPane implements GameScreen {
     private boolean checkLabel(TextField textField, Label label){
         // Check for empty text fields and illegal characters
         String input = textField.getText();
-        CharSequence illegalCharacters = ":, \n";
+        CharSequence illegalCharacters = ":";
         int MAX_LENGTH = 10;
 
-        if (input.isEmpty() || input.contains(illegalCharacters) || input.length() > MAX_LENGTH){
-            setLabelRed(textField, label);
+        if (input.isEmpty()){
+            setLabelRed(textField, label,"Enter a name!");
             return false;
-        }
-        else{
+        } else if(input.contains(illegalCharacters)){
+            setLabelRed(textField, label,"Illegal name!");
+            return false;
+        } else if(input.length() > MAX_LENGTH){
+            setLabelRed(textField, label,"Too long name!");
+            return false;
+        } else{
             setLabelNormal(textField, label);
             return true;
         }
@@ -124,10 +129,11 @@ public class GameSetupView extends AnchorPane implements GameScreen {
      * Changes the style of a label and textField to inform the player that the input in the textField is incorrect.
      * @param textField the textField, which style will be updated
      * @param label the label that will be updated with information to the player
+     * @param errorMessage the string that informs the player about what they should change in their name
      */
-    private void setLabelRed (TextField textField, Label label){
+    private void setLabelRed (TextField textField, Label label, String errorMessage){
         textField.setStyle("-fx-border-color: red;" + "-fx-border-width: 3px;" + "-fx-border-radius: 5px");
-        label.setText("Enter a name!");
+        label.setText(errorMessage);
     }
 
     /**
