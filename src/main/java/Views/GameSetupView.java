@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -107,22 +108,46 @@ public class GameSetupView extends AnchorPane implements GameScreen {
     private boolean checkLabel(TextField textField, Label label){
         // Check for empty text fields and illegal characters
         String input = textField.getText();
-        CharSequence illegalCharacters = ":";
+        //CharSequence illegalCharacters = ":";
+        String illegalCharacters = ":!";
         int MAX_LENGTH = 10;
+        Tooltip currentToolTip = new Tooltip();
 
-        if (input.isEmpty()){
-            setLabelRed(textField, label,"Enter a name!");
+        if (input.isEmpty()) {
+            setLabelRed(textField, label, "Enter a name!");
+            currentToolTip.setText(
+                    "You surely do have a name!"
+            );
+            textField.setTooltip(currentToolTip);
             return false;
-        } else if(input.contains(illegalCharacters)){
-            setLabelRed(textField, label,"Illegal name!");
-            return false;
-        } else if(input.length() > MAX_LENGTH){
-            setLabelRed(textField, label,"Too long name!");
-            return false;
-        } else{
-            setLabelNormal(textField, label);
-            return true;
         }
+
+        if (input.length() > MAX_LENGTH) {
+            setLabelRed(textField, label, "Too long name!");
+            currentToolTip.setText(
+                    "Your name can't be longer than " + MAX_LENGTH + " characters"
+            );
+            textField.setTooltip(currentToolTip);
+            return false;
+        }
+
+        for (char illegalCharacter : illegalCharacters.toCharArray()) {
+            // Iterate over every illegal character and check if textfield contains anything that is not allowed
+            if (input.indexOf(illegalCharacter) >= 0) {
+                setLabelRed(textField, label, "Illegal name!");
+                currentToolTip.setText(
+                        "Your name can't contain any of the following characters: " +
+                                illegalCharacters + ""
+                );
+                textField.setTooltip(currentToolTip);
+                return false;
+            }
+        }
+
+
+        setLabelNormal(textField, label);
+        return true;
+
     }
 
     /**
