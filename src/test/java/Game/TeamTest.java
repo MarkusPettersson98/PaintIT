@@ -52,7 +52,7 @@ public class TeamTest {
                     team.getDrawerName().equals(playerTwo));
         }
     }
-
+/*
     @Test
     public void testRandomGuesserAndDrawer(){
         int numberOfDrawer = 0;
@@ -67,7 +67,7 @@ public class TeamTest {
             }
         }
         assertTrue(numberOfDrawer > 300 && numberOfGuesser > 300);
-    }
+    }*/
 
     @Test
     public void testChangeDrawer (){
