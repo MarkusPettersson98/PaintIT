@@ -57,14 +57,17 @@ class GameLogic {
                 // A line is formatted as "teamName:streak"
                 final String currentWord = sc.nextLine();
                 final String[] score = currentWord.split(":");
-                // Team name is the string before ':' in the parsed line
-                final String teamName = score[0];
-                // Streak is the string after ':' in the parsed line
-                final int streak = Integer.parseInt(score[1]);
-                // Got our information, create a Score and add it to high score list!
-                final Score tmpScore = new Score(teamName, streak);
-
-                highScores.add(tmpScore);
+                if(score.length != 2) {
+                    // String was not parsed correctly, do nothing
+                } else {
+                    // Team name is the string before ':' in the parsed line
+                    final String teamName = score[0];
+                    // Streak is the string after ':' in the parsed line
+                    final int streak = Integer.parseInt(score[1]);
+                    // Got our information, create a Score and add it to high score list!
+                    final Score tmpScore = new Score(teamName, streak);
+                    highScores.add(tmpScore);
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
