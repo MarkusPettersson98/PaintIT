@@ -1,206 +1,27 @@
 {
   "dictionary": [
-
-    {
-      "word": "Cat",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Dog",
-      "difficulty_level": "EASY"
-    },
-
     {
       "word": "Sun",
       "difficulty_level": "EASY"
     },
-
     {
       "word": "Star",
       "difficulty_level": "EASY"
     },
-
-    {
-      "word": "Hand",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Toe",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Hair",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "TV",
-      "difficulty_level": "EASY"
-    },
-    {
-      "word": "Cloud",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Window",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Door",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Eye",
-      "difficulty_level": "EASY"
-    },
-
     {
       "word": "Heart",
-      "difficulty_level": "EASY"
+      "difficulty_level": "MEDIUM"
     },
-
     {
-      "word": "Pencil",
-      "difficulty_level": "EASY"
+      "word": "Eye",
+      "difficulty_level": "MEDIUM"
     },
-
-    {
-      "word": "Bed",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "House",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Fork",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Circle",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Grass",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Moon",
-      "difficulty_level": "EASY"
-    },
-
-    {
-      "word": "Flower",
-      "difficulty_level": "EASY"
-    },
-
     {
       "word": "Robot",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Chair",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Banana",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Piano",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Guitar",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Bottle",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Orange",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Biceps",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Earth",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Key",
-      "difficulty_level": "MEDIUM"
-    },
-    {
-      "word": "Table",
-      "difficulty_level": "MEDIUM"
-    },
-
-    {
-      "word": "Water",
-      "difficulty_level": "MEDIUM"
+      "difficulty_level": "HARD"
     },
     {
       "word": "Lamp",
-      "difficulty_level": "MEDIUM"
-    },
-
-    {
-      "word": "Phone",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Computer",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Apple",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "USA",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Crown",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Clown",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Knife",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Sweden",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Charger",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "IPhone",
-      "difficulty_level": "HARD"
-    },
-    {
-      "word": "Ear",
       "difficulty_level": "HARD"
     }
   ]
