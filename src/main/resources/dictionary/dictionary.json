@@ -76,6 +76,36 @@
     },
 
     {
+      "word": "House",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Fork",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Circle",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Grass",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Moon",
+      "difficulty_level": "EASY"
+    },
+
+    {
+      "word": "Flower",
+      "difficulty_level": "EASY"
+    },
+
+    {
       "word": "Robot",
       "difficulty_level": "MEDIUM"
     },
@@ -104,6 +134,32 @@
       "difficulty_level": "MEDIUM"
     },
     {
+      "word": "Biceps",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Earth",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Key",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Table",
+      "difficulty_level": "MEDIUM"
+    },
+
+    {
+      "word": "Water",
+      "difficulty_level": "MEDIUM"
+    },
+    {
+      "word": "Lamp",
+      "difficulty_level": "MEDIUM"
+    },
+
+    {
       "word": "Phone",
       "difficulty_level": "HARD"
     },
@@ -129,6 +185,22 @@
     },
     {
       "word": "Knife",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Sweden",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Charger",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "IPhone",
+      "difficulty_level": "HARD"
+    },
+    {
+      "word": "Ear",
       "difficulty_level": "HARD"
     }
   ]
