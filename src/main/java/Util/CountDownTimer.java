@@ -18,11 +18,6 @@ public class CountDownTimer {
     /**
      * Instantiates the TimerTasks for the Timer.
      */
-    public CountDownTimer(){
-        //initTimerTask();
-        //initCountDownFinishedTask();
-    }
-
     private void initCountDownFinishedTask() {
         countDownFinishedTask = new TimerTask() {
             @Override

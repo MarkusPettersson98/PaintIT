@@ -79,8 +79,6 @@ public class CanvasModel implements Observable, ObservableCanvasModel {
      */
     public Color getPixel(int x, int y) /*throws IndexOutOfBoundsException*/ {
         // Check if xMax and yMax are in bounds of canvas
-        //if(!inBounds(x, y)) {}
-
         return canvas[x][y];
     }
 

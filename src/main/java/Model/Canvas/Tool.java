@@ -15,7 +15,6 @@ public interface Tool {
     /**
      * Determines the color of the Tool.
      */
-    // @Getter @Setter
     Color getColor();
 
     void setColor(Color color);
