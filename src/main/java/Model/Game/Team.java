@@ -67,15 +67,8 @@ public class Team {
      * Randomly sets which {@link Player} who is the {@link Team#guesser} and who is the {@link Team#drawer}.
      */
     private void setGuesserAndDrawer (){
-        final int randomNumber = rand.nextInt(2);
-        if (randomNumber == 0){
             guesser = playerOne;
             drawer = playerTwo;
-        }
-        else {
-            guesser = playerTwo;
-            drawer = playerOne;
-        }
     }
 
     /**
