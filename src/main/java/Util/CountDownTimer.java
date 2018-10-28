@@ -46,7 +46,6 @@ public class CountDownTimer {
      *@param countDownUser the observer that gets notified when a second has passed.
      */
     public void startCountDown(int sec,CountDownUser countDownUser){
-        System.out.println("NU STARTAR COUNTDOWN");
         initCountDownFinishedTask();
         initTimerTask();
         this.countDownUser = countDownUser;
@@ -66,7 +65,6 @@ public class CountDownTimer {
      */
 
     private void countDownFinished(){
-        System.out.println("NU ÄR COUNTDOWN FINISHED");
         timer.purge();
         countDownUser.handleTimerFinished();
     }

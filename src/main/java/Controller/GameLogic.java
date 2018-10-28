@@ -56,13 +56,10 @@ class GameLogic {
             while(sc.hasNextLine()) {
                 // A line is formatted as "teamName:streak"
                 final String currentWord = sc.nextLine();
-                System.out.println("Current word on line: " + currentWord);
                 final String[] score = currentWord.split(":");
                 // Team name is the string before ':' in the parsed line
                 final String teamName = score[0];
                 // Streak is the string after ':' in the parsed line
-                System.out.println(teamName);
-                System.out.println(score[1]);
                 final int streak = Integer.parseInt(score[1]);
                 // Got our information, create a Score and add it to high score list!
                 final Score tmpScore = new Score(teamName, streak);
@@ -115,11 +112,7 @@ class GameLogic {
         // Check if highscores.txt exists or not. If not, create it!
         final File file = new File(highScoreUrl);
         try {
-            if (file.createNewFile()) {
-                System.out.println("Created new high score file!");
-            } else {
-                System.out.println("Did not create new high score file.");
-            }
+            file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
